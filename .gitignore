@@ -1,0 +1,7 @@
+/composer.lock
+/vendor
+/build
+/.php_cs.cache
+/example/
+/.idea/
+/test.php

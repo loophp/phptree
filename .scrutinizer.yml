@@ -1,0 +1,17 @@
+build: false
+
+filter:
+    paths:
+        - 'src/*'
+
+tools:
+    external_code_coverage:
+        timeout: 600
+    php_code_sniffer:
+        config:
+            standard: PSR2
+    sensiolabs_security_checker: true
+    php_loc: true
+    php_pdepend: true
+    php_sim: true
+    php_changetracking: true
