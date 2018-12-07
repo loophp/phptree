@@ -10,6 +10,8 @@ namespace drupol\phptree\Node;
 class Node implements NodeInterface
 {
     /**
+     * The storage property.
+     *
      * @var array
      */
     protected $storage;
@@ -75,7 +77,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function children():array
+    public function children(): array
     {
         return $this->storage['children'];
     }
@@ -139,7 +141,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function degree():int
+    public function degree(): int
     {
         return \count($this->storage['children']);
     }

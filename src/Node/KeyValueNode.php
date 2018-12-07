@@ -5,12 +5,14 @@ declare(strict_types = 1);
 namespace drupol\phptree\Node;
 
 /**
- * Class Node
+ * Class KeyValueNode
  */
 class KeyValueNode extends ValueNode implements KeyValueNodeInterface
 {
     /**
-     * @var mixed|null
+     * The key property.
+     *
+     * @var string|mixed|int|null
      */
     private $key;
 

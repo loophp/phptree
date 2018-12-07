@@ -10,7 +10,7 @@ namespace drupol\phptree\Node;
 class ValueNode extends Node implements ValueNodeInterface
 {
     /**
-     * @var mixed|null
+     * @var string|mixed|null
      */
     private $value;
 

@@ -4,12 +4,13 @@ namespace drupol\phptree\Visitor;
 
 use drupol\phptree\Node\NodeInterface;
 
-abstract class AbstractVisitor
+/**
+ * Class AbstractVisitor
+ */
+abstract class AbstractVisitor implements VisitorInterface
 {
     /**
-     * @param \drupol\phptree\Node\NodeInterface $node
-     *
-     * @return \Traversable
+     * {@inheritdoc}
      */
     abstract public function traverse(NodeInterface $node): \Traversable;
 }

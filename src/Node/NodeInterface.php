@@ -5,63 +5,96 @@ declare(strict_types = 1);
 namespace drupol\phptree\Node;
 
 /**
- * Class NodeInterface
+ * Interface NodeInterface
  */
 interface NodeInterface extends \Countable
 {
     /**
-     * @return \drupol\phptree\Node\NodeInterface|null
+     * Get the parent node.
+     *
+     * @return NodeInterface|null
+     *   The parent node if any, null otherwise.
      */
     public function getParent(): ?NodeInterface;
 
     /**
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * Set the parent.
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @param NodeInterface $node
+     *   The parent node.
+     *
+     * @return NodeInterface
+     *   The node.
      */
     public function setParent(NodeInterface $node): NodeInterface;
 
     /**
-     * @param \drupol\phptree\Node\NodeInterface ...$node
+     * The node to add.
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @param NodeInterface ...$node
+     *   The node to add.
+     *
+     * @return NodeInterface
+     *   The node.
      */
     public function add(NodeInterface ...$node): NodeInterface;
 
     /**
-     * @param \drupol\phptree\Node\NodeInterface ...$node
+     * Remove children.
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @param NodeInterface ...$node
+     *   The node to remove.
+     *
+     * @return NodeInterface
+     *   The node.
      */
     public function remove(NodeInterface ...$node): NodeInterface;
 
     /**
+     * Get the children.
+     *
      * @return NodeInterface[]
+     *   The children.
      */
     public function children(): array;
 
     /**
+     * Check if the node is a leaf.
+     *
      * @return bool
+     *   True if it's a leaf, false otherwise.
      */
     public function isLeaf(): bool;
 
     /**
+     * Check if the node is the root node.
+     *
      * @return bool
+     *   True if it's a root node, false otherwise.
      */
     public function isRoot(): bool;
 
     /**
-     * @return array
+     * Get the ancestors of a node.
+     *
+     * @return NodeInterface[]
+     *   The array of ancestors.
      */
     public function getAncestors(): array;
 
     /**
-     * @return array
+     * Get the node's sibblings.
+     *
+     * @return NodeInterface[]
+     *   The array of sibblings.
      */
     public function getSibblings(): array;
 
     /**
+     * The number of children a node has.
+     *
      * @return int
+     *   The amound of children.
      */
     public function degree(): int;
 }
