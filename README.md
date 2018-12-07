@@ -49,7 +49,7 @@ $tree->add(...$nodes);
 
 ## Code quality, tests and benchmarks
 
-Every time changes are introduced into the library, [Travis CI](https://travis-ci.org/drupol/htmltag/builds) run the tests and the benchmarks.
+Every time changes are introduced into the library, [Travis CI](https://travis-ci.org/drupol/phptree/builds) run the tests and the benchmarks.
 
 The library has tests written with [PHPSpec](http://www.phpspec.net/).
 Feel free to check them out in the `spec` directory. Run `composer phpspec` to trigger the tests.
