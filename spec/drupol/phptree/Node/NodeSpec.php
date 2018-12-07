@@ -21,6 +21,25 @@ class NodeSpec extends ObjectBehavior
             ->shouldReturn($this);
     }
 
+    public function it_can_remove()
+    {
+        $node1 = new Node();
+        $node2 = new Node();
+
+        $this
+            ->add($node1, $node2);
+
+        $this
+            ->remove($node2);
+
+        $this->children()[0]->shouldReturn($node1);
+
+        $this
+            ->remove($node1);
+
+        $this->children()->shouldReturn([]);
+    }
+
     public function it_can_get_the_size()
     {
         $nodes = [];

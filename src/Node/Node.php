@@ -30,11 +30,26 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function add(NodeInterface ...$nodes)
+    public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
             $this->storage['children'][] = $node->setParent($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function remove(NodeInterface ...$nodes): NodeInterface
+    {
+        $this->storage['children'] = \array_filter(
+            $this->storage['children'],
+            function ($child) use ($nodes) {
+                return !\in_array($child, $nodes, true);
+            }
+        );
 
         return $this;
     }

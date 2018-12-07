@@ -24,9 +24,16 @@ interface NodeInterface extends \Countable
     /**
      * @param \drupol\phptree\Node\NodeInterface ...$node
      *
-     * @return mixed
+     * @return \drupol\phptree\Node\NodeInterface
      */
-    public function add(NodeInterface ...$node);
+    public function add(NodeInterface ...$node): NodeInterface;
+
+    /**
+     * @param \drupol\phptree\Node\NodeInterface ...$node
+     *
+     * @return \drupol\phptree\Node\NodeInterface
+     */
+    public function remove(NodeInterface ...$node): NodeInterface;
 
     /**
      * @return NodeInterface[]
