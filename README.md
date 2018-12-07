@@ -26,19 +26,25 @@ API documentation is automatically generated with [APIGen](https://github.com/Ap
 
 ## Usage
 
-The object has to be used just like a regular array.
-
 ```php
-$tree = new drupol\phptree\Merkle();
+use drupol\phptree\Node\ValueNode;
+use drupol\phptree\Node\KeyValueNode;
 
-$tree[] = 'hello';
-$tree[] = 'world';
+$tree = new KeyValueNode('root');
 
-$tree->hash(); // this returns: b9187808075710ab9c447c6ff6fd2aeb6c4bc10cf752e849102b87c0ecf97824
+$nodes = [];
+foreach (\range('a', 'e') as $lowercaseValue) {
+    $node1 = new ValueNode($lowercaseValue);
 
-$tree['key'] = 'value';
+    foreach (\range('A', 'E') as $uppercaseValue) {
+        $node2 = new ValueNode($uppercaseValue);
+        $node1->add($node2);
+    }
 
-$tree['key']; // this returns: 'value';
+    $nodes[] = $node1;
+}
+
+$tree->add(...$nodes);
 ```
 
 ## Code quality, tests and benchmarks
