@@ -1,0 +1,41 @@
+parameters:
+  git_dir: .
+  bin_dir: vendor/bin
+  tasks:
+    phplint: ~
+    composer: ~
+    phpcpd:
+      directory: './src'
+    phpstan:
+      autoload_file: ~
+      configuration: ~
+      level: 7
+      force_patterns: []
+      ignore_patterns: ['/spec/', '/benchmarks/']
+      triggered_by: ['php']
+    phpcsfixer2: ~
+    phpcs:
+      standard: PSR2
+      ignore_patterns:
+        - vendor/
+        - spec/
+      triggered_by:
+        - php
+    phpspec:
+      format: pretty
+      stop_on_failure: true
+      verbose: true
+    securitychecker:
+      lockfile: ./composer.lock
+      format: ~
+      end_point: ~
+      timeout: ~
+      run_always: false
+    composer_require_checker:
+      composer_file: 'composer.json'
+      config_file: ~
+      ignore_parse_errors: false
+      triggered_by: ['composer.json', 'composer.lock', '*.php']
+    infection:
+      min_msi: 90
+      min_covered_msi: 90
