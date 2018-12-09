@@ -20,6 +20,7 @@ return PhpCsFixer\Config::create()
         'declare_equal_normalize' => [
           'space' => 'single',
         ],
+        'declare_strict_types' => TRUE,
         'include' => TRUE,
         'is_null' => TRUE,
         'linebreak_after_opening_tag' => TRUE,

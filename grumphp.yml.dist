@@ -31,11 +31,6 @@ parameters:
       end_point: ~
       timeout: ~
       run_always: false
-    composer_require_checker:
-      composer_file: 'composer.json'
-      config_file: ~
-      ignore_parse_errors: false
-      triggered_by: ['composer.json', 'composer.lock', '*.php']
     infection:
-      min_msi: 90
-      min_covered_msi: 90
+      min_msi: 80
+      min_covered_msi: 80

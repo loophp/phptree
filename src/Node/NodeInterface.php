@@ -53,7 +53,7 @@ interface NodeInterface extends \Countable
     /**
      * Get the children.
      *
-     * @return NodeInterface[]
+     * @return \drupol\phptree\Node\NodeInterface[]
      *   The children.
      */
     public function children(): array;

@@ -7,7 +7,7 @@ namespace drupol\phptree\Node;
 /**
  * Class ValueNode
  */
-class ValueNode extends Node implements ValueNodeInterface
+class ValueNode extends NaryNode implements ValueNodeInterface
 {
     /**
      * @var string|mixed|null
@@ -18,11 +18,12 @@ class ValueNode extends Node implements ValueNodeInterface
      * KeyValueNode constructor.
      *
      * @param mixed|null $value
+     * @param int $capacity
      * @param \drupol\phptree\Node\NodeInterface|NULL $parent
      */
-    public function __construct($value = null, NodeInterface $parent = null)
+    public function __construct($value = null, int $capacity = 0, NodeInterface $parent = null)
     {
-        parent::__construct($parent);
+        parent::__construct($capacity, $parent);
 
         $this->value = $value;
     }

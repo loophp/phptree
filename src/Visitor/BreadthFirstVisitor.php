@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace drupol\phptree\Visitor;
 
 use drupol\phptree\Node\NodeInterface;

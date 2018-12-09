@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace spec\drupol\phptree\Node;
 
 use drupol\phptree\Node\KeyValueNode;
@@ -24,5 +26,14 @@ class KeyValueNodeSpec extends ObjectBehavior
         $this
             ->getValue()
             ->shouldReturn('root');
+    }
+
+    public function it_can_throw_an_error_when_capacity_is_invalid()
+    {
+        $this->beConstructedWith(-5);
+
+        $this
+            ->capacity()
+            ->shouldReturn(0);
     }
 }
