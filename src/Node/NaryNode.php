@@ -26,11 +26,9 @@ class NaryNode extends Node
     {
         parent::__construct($parent);
 
-        if ($capacity < 0) {
-            $capacity = 0;
-        }
-
-        $this->capacity = $capacity;
+        $this->capacity = $capacity < 0 ?
+            0:
+            $capacity;
     }
 
     /**
