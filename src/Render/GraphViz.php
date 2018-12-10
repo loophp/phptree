@@ -7,6 +7,7 @@ namespace drupol\phptree\Render;
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Visitor\VisitorInterface;
 use Fhaculty\Graph\Graph;
+use Graphp\GraphViz\GraphViz as OriginalGraphViz;
 
 /**
  * Class GraphViz
@@ -24,11 +25,6 @@ class GraphViz implements RendererInterface
     private $graph;
 
     /**
-     * @var array
-     */
-    private $nodes;
-
-    /**
      * @var \Graphp\GraphViz\GraphViz
      */
     private $graphviz;
@@ -38,12 +34,11 @@ class GraphViz implements RendererInterface
      *
      * @param \drupol\phptree\Visitor\VisitorInterface $visitor
      */
-    public function __construct(VisitorInterface $visitor)
+    public function __construct(VisitorInterface $visitor, Graph $graph, OriginalGraphViz $graphViz)
     {
         $this->visitor = $visitor;
-        $this->graph = new Graph();
-        $this->graphviz = new \Graphp\GraphViz\GraphViz();
-        $this->nodes = [];
+        $this->graph = $graph;
+        $this->graphviz = $graphViz;
     }
 
     /**
@@ -53,36 +48,60 @@ class GraphViz implements RendererInterface
      */
     public function render(NodeInterface $node): string
     {
-        foreach ($this->visitor->traverse($node) as $child) {
-            $hash_parent = $this->hash($child);
-
-            if (!isset($this->nodes[$hash_parent])) {
-                $this->nodes[$hash_parent] = $this->graph->createVertex($hash_parent);
-            }
-
-            if (null === $parent = $child->getParent()) {
-                continue;
-            }
-
-            $hash = $this->hash($parent);
-
-            if (!isset($this->nodes[$hash])) {
-                $this->nodes[$hash] = $this->graph->createVertex($hash);
-            }
-
-            $this->nodes[$hash]->createEdgeTo($this->nodes[$hash_parent]);
-        }
-
-        return $this->graphviz->createScript($this->graph);
+        return $this->graphviz->createScript($this->getGraph($node));
     }
 
     /**
      * @param \drupol\phptree\Node\NodeInterface $node
      *
-     * @return int
+     * @return \Fhaculty\Graph\Graph
+     */
+    public function getGraph(NodeInterface $node): Graph
+    {
+        foreach ($this->visitor->traverse($node) as $node_visited) {
+            /** @var int $hash */
+            $hash = $this->hash($node_visited);
+
+            if (false === $this->graph->hasVertex($hash)) {
+                $this->graph->createVertex($hash);
+            }
+
+            if (null === $parent = $node_visited->getParent()) {
+                continue;
+            }
+
+            /** @var int $hash_parent */
+            $hash_parent = $this->hash($parent);
+
+            if (false === $this->graph->hasVertex($hash_parent)) {
+                $this->graph->createVertex($hash_parent);
+            }
+
+            $this->graph->getVertex($hash_parent)->createEdgeTo($this->graph->getVertex($hash));
+        }
+
+        return $this->graph;
+    }
+
+    /**
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *
+     * @return $this
+     */
+    public function display(NodeInterface $node): RendererInterface
+    {
+        $this->graphviz->display($this->getGraph($node));
+
+        return $this;
+    }
+
+    /**
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *
+     * @return int|null|string
      */
     protected function hash(NodeInterface $node)
     {
-        return (int) \spl_object_hash($node);
+        return \spl_object_hash($node);
     }
 }

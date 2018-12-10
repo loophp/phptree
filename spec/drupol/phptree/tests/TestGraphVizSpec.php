@@ -7,6 +7,8 @@ namespace spec\drupol\phptree\tests;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\tests\TestGraphViz;
 use drupol\phptree\Visitor\BreadthFirstVisitor;
+use Fhaculty\Graph\Graph;
+use Graphp\GraphViz\GraphViz;
 use PhpSpec\ObjectBehavior;
 
 class TestGraphVizSpec extends ObjectBehavior
@@ -14,15 +16,21 @@ class TestGraphVizSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $visitor = new BreadthFirstVisitor();
+        $graph = new Graph();
+        $graphviz = new GraphViz();
 
-        $this->beConstructedWith($visitor);
+        $this->beConstructedWith($visitor, $graph, $graphviz);
 
         $this->shouldHaveType(TestGraphViz::class);
     }
 
     public function it_can_create_a_graph()
     {
-        $this->beConstructedWith(new BreadthFirstVisitor());
+        $visitor = new BreadthFirstVisitor();
+        $graph = new Graph();
+        $graphviz = new GraphViz();
+
+        $this->beConstructedWith($visitor, $graph, $graphviz);
 
         $tree = new ValueNode('root', 2);
 
