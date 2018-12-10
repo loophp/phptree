@@ -24,6 +24,28 @@ class TestGraphVizSpec extends ObjectBehavior
         $this->shouldHaveType(TestGraphViz::class);
     }
 
+    public function it_can_generate_a_graph()
+    {
+        $visitor = new BreadthFirstVisitor();
+        $graph = new Graph();
+        $graphviz = new GraphViz();
+
+        $this->beConstructedWith($visitor, $graph, $graphviz);
+
+        $tree = new ValueNode('root', 2);
+
+        $nodes = [];
+        foreach (\range('A', 'F') as $letter) {
+            $nodes[] = new ValueNode($letter, 2);
+        }
+
+        $tree->add(...$nodes);
+
+        $this
+            ->getGraph($tree)
+            ->shouldReturnAnInstanceOf(Graph::class);
+    }
+
     public function it_can_create_a_graph()
     {
         $visitor = new BreadthFirstVisitor();
