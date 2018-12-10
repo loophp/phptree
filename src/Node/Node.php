@@ -159,4 +159,19 @@ class Node implements NodeInterface
             0
         );
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function withChildren(NodeInterface ...$nodes): NodeInterface
+    {
+        $clone = clone $this;
+        $clone->storage['children'] = [];
+
+        foreach ($nodes as $node) {
+            $clone->add($node);
+        }
+
+        return $clone;
+    }
 }

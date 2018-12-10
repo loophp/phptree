@@ -183,4 +183,23 @@ class NodeSpec extends ObjectBehavior
             ->getSibblings()
             ->shouldReturn([$node2, $node3]);
     }
+
+    public function it_can_use_withChildren()
+    {
+        $this
+            ->withChildren()
+            ->shouldNotReturn($this);
+
+        $child = new Node();
+
+        $this
+            ->withChildren($child)
+            ->children()
+            ->shouldReturn([$child]);
+
+        $this
+            ->withChildren()
+            ->children()
+            ->shouldReturn([]);
+    }
 }
