@@ -27,24 +27,29 @@ API documentation is automatically generated with [APIGen](https://github.com/Ap
 ## Usage
 
 ```php
-use drupol\phptree\Node\ValueNode;
-use drupol\phptree\Node\KeyValueNode;
+<?php
 
-$tree = new KeyValueNode('root');
+declare(strict_types = 1);
+
+use Graphp\GraphViz\GraphViz;
+use drupol\phptree\Converter\Graph;
+use drupol\phptree\Node\ValueNode;
+
+include './vendor/autoload.php';
+
+$tree = new ValueNode('root', 2);
 
 $nodes = [];
-foreach (\range('a', 'e') as $lowercaseValue) {
-    $node1 = new ValueNode($lowercaseValue);
-
-    foreach (\range('A', 'E') as $uppercaseValue) {
-        $node2 = new ValueNode($uppercaseValue);
-        $node1->add($node2);
-    }
-
-    $nodes[] = $node1;
+foreach (\range('A', 'Z') as $v) {
+    $nodes[] = new ValueNode($v);
 }
 
 $tree->add(...$nodes);
+
+$graphViz = new GraphViz();
+$graph = new Graph();
+
+$graphViz->display($graph->convert($tree));
 ```
 
 ## Code quality, tests and benchmarks
