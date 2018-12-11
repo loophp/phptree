@@ -97,4 +97,12 @@ interface NodeInterface extends \Countable
      *   The amound of children.
      */
     public function degree(): int;
+
+    /**
+     * Get the node depth from the root node.
+     *
+     * @return int
+     *   The depth is the number of nodes before root.
+     */
+    public function depth(): int;
 }

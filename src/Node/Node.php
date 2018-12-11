@@ -174,4 +174,12 @@ class Node implements NodeInterface
 
         return $clone;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function depth(): int
+    {
+        return \count($this->getAncestors());
+    }
 }

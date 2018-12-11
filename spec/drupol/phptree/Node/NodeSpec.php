@@ -202,4 +202,32 @@ class NodeSpec extends ObjectBehavior
             ->children()
             ->shouldReturn([]);
     }
+
+    public function it_can_get_its_depth()
+    {
+        $this
+            ->depth()
+            ->shouldReturn(0);
+
+        $tree = new \drupol\phptree\Node\ValueNode('root', 2);
+
+        $tree->add($this->getWrappedObject());
+
+        $this
+            ->depth()
+            ->shouldReturn(1);
+
+        $nodes = [];
+        foreach (\range('A', 'Z') as $v) {
+            $nodes[] = new \drupol\phptree\Node\ValueNode($v);
+        }
+
+        $tree->add(...$nodes);
+
+        $tree->add($this->getWrappedObject());
+
+        $this
+            ->depth()
+            ->shouldReturn(4);
+    }
 }
