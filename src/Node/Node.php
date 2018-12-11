@@ -170,6 +170,6 @@ class Node implements NodeInterface
      */
     public function depth(): int
     {
-        return \count(\iterator_to_array($this->getAncestors()));
+        return \iterator_count($this->getAncestors());
     }
 }
