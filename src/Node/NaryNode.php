@@ -17,10 +17,10 @@ class NaryNode extends Node
     private $capacity;
 
     /**
-     * Node constructor.
+     * NaryNode constructor.
      *
      * @param int $capacity
-     * @param \drupol\phptree\Node\NodeInterface|NULL $parent
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(int $capacity = 0, NodeInterface $parent = null)
     {

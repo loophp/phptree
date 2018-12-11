@@ -7,7 +7,7 @@ namespace drupol\phptree\Converter;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Interface ConverterInterface.
+ * Interface ConverterInterface
  */
 interface ConverterInterface
 {

@@ -15,11 +15,11 @@ class ValueNode extends NaryNode implements ValueNodeInterface
     private $value;
 
     /**
-     * KeyValueNode constructor.
+     * ValueNode constructor.
      *
      * @param mixed|null $value
      * @param int $capacity
-     * @param \drupol\phptree\Node\NodeInterface|NULL $parent
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
     public function __construct($value = null, int $capacity = 0, NodeInterface $parent = null)
     {

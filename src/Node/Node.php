@@ -19,7 +19,7 @@ class Node implements NodeInterface
     /**
      * Node constructor.
      *
-     * @param \drupol\phptree\Node\NodeInterface|NULL $parent
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(NodeInterface $parent = null)
     {
@@ -122,9 +122,10 @@ class Node implements NodeInterface
         }
 
         foreach ($parent->children() as $child) {
-            if ($child !== $this) {
-                yield $child;
+            if ($child === $this) {
+                continue;
             }
+            yield $child;
         }
     }
 

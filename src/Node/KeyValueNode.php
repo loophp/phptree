@@ -22,7 +22,7 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
      * @param mixed|null $key
      * @param mixed|null $value
      * @param int $capacity
-     * @param \drupol\phptree\Node\NodeInterface|NULL $parent
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
     public function __construct($key = null, $value = null, int $capacity = 0, NodeInterface $parent = null)
     {
