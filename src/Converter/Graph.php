@@ -8,6 +8,7 @@ use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Visitor\BreadthFirstVisitor;
 use drupol\phptree\Visitor\VisitorInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
+use Fhaculty\Graph\Vertex;
 
 /**
  * Class Graph
@@ -17,7 +18,7 @@ class Graph implements ConverterInterface
     /**
      * @var \Fhaculty\Graph\Graph
      */
-    private $graph;
+    protected $graph;
 
     /**
      * @var \drupol\phptree\Visitor\VisitorInterface
@@ -44,21 +45,18 @@ class Graph implements ConverterInterface
     public function convert(NodeInterface $node): OriginalGraph
     {
         foreach ($this->visitor->traverse($node) as $node_visited) {
-            /** @var int $hash */
-            $hash = $this->hash($node_visited);
-
-            if (false === $this->graph->hasVertex($hash)) {
-                $this->graph->createVertex($hash);
-            }
+            /** @var int $vertexId */
+            $vertexId = $this->createVertexId($node_visited);
+            $this->createVertex($node_visited);
 
             if (null === $parent = $node_visited->getParent()) {
                 continue;
             }
 
             /** @var int $hash_parent */
-            $hash_parent = $this->hash($parent);
+            $hash_parent = $this->createVertexId($parent);
 
-            $this->graph->getVertex($hash_parent)->createEdgeTo($this->graph->getVertex($hash));
+            $this->graph->getVertex($hash_parent)->createEdgeTo($this->graph->getVertex($vertexId));
         }
 
         return $this->graph;
@@ -67,9 +65,28 @@ class Graph implements ConverterInterface
     /**
      * @param \drupol\phptree\Node\NodeInterface $node
      *
+     * @return \Fhaculty\Graph\Vertex
+     */
+    protected function createVertex(NodeInterface $node): Vertex
+    {
+        /** @var int $vertexId */
+        $vertexId = $this->createVertexId($node);
+
+        if (false === $this->graph->hasVertex($vertexId)) {
+            $vertex = $this->graph->createVertex($vertexId);
+        } else {
+            $vertex = $this->graph->getVertex($vertexId);
+        }
+
+        return $vertex;
+    }
+
+    /**
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *
      * @return int|null|string
      */
-    protected function hash(NodeInterface $node)
+    protected function createVertexId(NodeInterface $node)
     {
         return \spl_object_hash($node);
     }
