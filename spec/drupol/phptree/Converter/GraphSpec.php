@@ -22,7 +22,7 @@ class GraphSpec extends ObjectBehavior
         $level2 = new Node();
 
         $root
-            ->add($level1, $level2);
+            ->add($level1, $level2, $level2);
 
         $this
             ->convert($root)
