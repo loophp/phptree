@@ -77,18 +77,18 @@ interface NodeInterface extends \Countable
     /**
      * Get the ancestors of a node.
      *
-     * @return NodeInterface[]
+     * @return \Traversable
      *   The array of ancestors.
      */
-    public function getAncestors(): array;
+    public function getAncestors(): \Traversable;
 
     /**
      * Get the node's sibblings.
      *
-     * @return NodeInterface[]
+     * @return \Traversable
      *   The array of sibblings.
      */
-    public function getSibblings(): array;
+    public function getSibblings(): \Traversable;
 
     /**
      * The number of children a node has.

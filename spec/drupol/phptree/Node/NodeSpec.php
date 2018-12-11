@@ -154,24 +154,24 @@ class NodeSpec extends ObjectBehavior
     {
         $this
             ->getAncestors()
-            ->shouldReturn([]);
+            ->shouldYield(new \ArrayIterator([]));
 
-        $node1 = new Node();
-        $node2 = new Node($node1);
-        $node3 = new Node($node2);
+        $root = new Node();
+        $level1 = new Node($root);
+        $level2 = new Node($level1);
 
-        $this->setParent($node3);
+        $this->setParent($level2);
 
         $this
             ->getAncestors()
-            ->shouldReturn([$node1, $node2, $node3]);
+            ->shouldYield(new \ArrayIterator([$level2, $level1, $root]));
     }
 
     public function it_can_get_its_sibblings()
     {
         $this
             ->getSibblings()
-            ->shouldReturn([]);
+            ->shouldYield(new \ArrayIterator([]));
 
         $node1 = new Node();
         $node2 = new Node();
@@ -181,7 +181,7 @@ class NodeSpec extends ObjectBehavior
 
         $this
             ->getSibblings()
-            ->shouldReturn([$node2, $node3]);
+            ->shouldYield(new \ArrayIterator([$node2, $node3]));
     }
 
     public function it_can_use_withChildren()

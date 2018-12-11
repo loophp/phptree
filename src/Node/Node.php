@@ -85,16 +85,13 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getAncestors(): array
+    public function getAncestors(): \Traversable
     {
-        $parents = [];
         $node = $this;
-        while ($parent = $node->getParent()) {
-            \array_unshift($parents, $parent);
-            $node = $parent;
-        }
 
-        return $parents;
+        while ($node = $node->getParent()) {
+            yield $node;
+        }
     }
 
     /**
@@ -116,7 +113,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getSibblings(): array
+    public function getSibblings(): \Traversable
     {
         $parent = $this->getParent();
 
@@ -124,18 +121,11 @@ class Node implements NodeInterface
             return [];
         }
 
-        $sibblings = $parent->children();
-
-        $node = $this;
-
-        return \array_values(
-            \array_filter(
-                $sibblings,
-                function ($child) use ($node) {
-                    return $child !== $node;
-                }
-            )
-        );
+        foreach ($parent->children() as $child) {
+            if ($child !== $this) {
+                yield $child;
+            }
+        }
     }
 
     /**
@@ -180,6 +170,6 @@ class Node implements NodeInterface
      */
     public function depth(): int
     {
-        return \count($this->getAncestors());
+        return \count(\iterator_to_array($this->getAncestors()));
     }
 }
