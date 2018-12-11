@@ -7,10 +7,7 @@ namespace spec\drupol\phptree\Visitor;
 use drupol\phptree\Node\NaryNode;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
-use drupol\phptree\Render\GraphViz;
-use drupol\phptree\Visitor\BreadthFirstVisitor;
 use drupol\phptree\Visitor\PostOrderVisitor;
-use Fhaculty\Graph\Graph;
 use PhpSpec\ObjectBehavior;
 
 class PostOrderVisitorSpec extends ObjectBehavior
@@ -51,7 +48,7 @@ class PostOrderVisitorSpec extends ObjectBehavior
             $nodes[$value] = new ValueNode($value);
         }
 
-        $tree->add(...array_values($nodes));
+        $tree->add(...\array_values($nodes));
 
         $nodes['root'] = $tree;
 

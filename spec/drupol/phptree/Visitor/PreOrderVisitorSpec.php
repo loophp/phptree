@@ -48,7 +48,7 @@ class PreOrderVisitorSpec extends ObjectBehavior
             $nodes[$value] = new ValueNode($value);
         }
 
-        $tree->add(...array_values($nodes));
+        $tree->add(...\array_values($nodes));
 
         $nodes['root'] = $tree;
 
