@@ -82,18 +82,6 @@ class GraphViz implements RendererInterface
     /**
      * @param \drupol\phptree\Node\NodeInterface $node
      *
-     * @return $this
-     */
-    public function display(NodeInterface $node): RendererInterface
-    {
-        $this->graphviz->display($this->getGraph($node));
-
-        return $this;
-    }
-
-    /**
-     * @param \drupol\phptree\Node\NodeInterface $node
-     *
      * @return int|null|string
      */
     protected function hash(NodeInterface $node)
