@@ -2,53 +2,38 @@
 
 declare(strict_types = 1);
 
-namespace drupol\phptree\Render;
+namespace drupol\phptree\Converter;
 
 use drupol\phptree\Node\NodeInterface;
+use drupol\phptree\Visitor\BreadthFirstVisitor;
 use drupol\phptree\Visitor\VisitorInterface;
-use Fhaculty\Graph\Graph;
-use Graphp\GraphViz\GraphViz as OriginalGraphViz;
+use Fhaculty\Graph\Graph as OriginalGraph;
 
 /**
- * Class GraphViz
+ * Class Graph
  */
-class GraphViz implements RendererInterface
+class Graph implements ConverterInterface
 {
-    /**
-     * @var \drupol\phptree\Visitor\VisitorInterface
-     */
-    private $visitor;
-
     /**
      * @var \Fhaculty\Graph\Graph
      */
     private $graph;
 
     /**
-     * @var \Graphp\GraphViz\GraphViz
+     * @var \drupol\phptree\Visitor\VisitorInterface
      */
-    private $graphviz;
+    private $visitor;
 
     /**
-     * GraphViz constructor.
+     * Graph constructor.
      *
-     * @param \drupol\phptree\Visitor\VisitorInterface $visitor
+     * @param \Fhaculty\Graph\Graph $graph
+     * @param \drupol\phptree\Visitor\VisitorInterface|null $visitor
      */
-    public function __construct(VisitorInterface $visitor, Graph $graph, OriginalGraphViz $graphViz)
+    public function __construct(OriginalGraph $graph = null, VisitorInterface $visitor = null)
     {
-        $this->visitor = $visitor;
-        $this->graph = $graph;
-        $this->graphviz = $graphViz;
-    }
-
-    /**
-     * @param \drupol\phptree\Node\NodeInterface $node
-     *
-     * @return string
-     */
-    public function render(NodeInterface $node): string
-    {
-        return $this->graphviz->createScript($this->getGraph($node));
+        $this->graph = $graph ?? new OriginalGraph();
+        $this->visitor = $visitor ?? new BreadthFirstVisitor();
     }
 
     /**
@@ -56,7 +41,7 @@ class GraphViz implements RendererInterface
      *
      * @return \Fhaculty\Graph\Graph
      */
-    public function getGraph(NodeInterface $node): Graph
+    public function convert(NodeInterface $node): OriginalGraph
     {
         foreach ($this->visitor->traverse($node) as $node_visited) {
             /** @var int $hash */
