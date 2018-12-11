@@ -17,6 +17,6 @@ class TestGraphViz extends GraphViz
      */
     protected function hash(NodeInterface $node)
     {
-        return $node->getValue();
+        return $node->getValue() ?? parent::hash($node);
     }
 }

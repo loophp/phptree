@@ -73,10 +73,6 @@ class GraphViz implements RendererInterface
             /** @var int $hash_parent */
             $hash_parent = $this->hash($parent);
 
-            if (false === $this->graph->hasVertex($hash_parent)) {
-                $this->graph->createVertex($hash_parent);
-            }
-
             $this->graph->getVertex($hash_parent)->createEdgeTo($this->graph->getVertex($hash));
         }
 

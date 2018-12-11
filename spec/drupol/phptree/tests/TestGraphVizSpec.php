@@ -34,7 +34,7 @@ class TestGraphVizSpec extends ObjectBehavior
 
         $tree = new ValueNode('root', 2);
 
-        $nodes = [];
+        $nodes = [0 => new ValueNode()];
         foreach (\range('A', 'F') as $letter) {
             $nodes[] = new ValueNode($letter, 2);
         }
@@ -77,5 +77,27 @@ EOF;
         $this
             ->render($tree)
             ->shouldReturn($result . PHP_EOL);
+    }
+
+    public function it_can_display()
+    {
+        $visitor = new BreadthFirstVisitor();
+        $graph = new Graph();
+        $graphviz = new GraphViz();
+
+        $this->beConstructedWith($visitor, $graph, $graphviz);
+
+        $tree = new ValueNode('root', 2);
+
+        $nodes = [];
+        foreach (\range('A', 'F') as $letter) {
+            $nodes[] = new ValueNode($letter, 2);
+        }
+
+        $tree->add(...$nodes);
+
+        $this
+            ->display($tree)
+            ->shouldReturn($this);
     }
 }
