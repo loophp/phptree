@@ -14,18 +14,22 @@ class BreadthFirstVisitor extends AbstractVisitor
     /**
      * {@inheritdoc}
      */
-    public function traverse(NodeInterface $node): \Traversable
+    public function traverse(NodeInterface $node, int $level = null): \Traversable
     {
         $queue = new \SplQueue();
         $queue->enqueue($node);
 
-        yield $node;
+        if (null === $level || $level === $node->depth()) {
+            yield $node;
+        }
 
         while ($queue->count() > 0) {
             foreach ($queue->dequeue()->children() as $child) {
                 $queue->enqueue($child);
 
-                yield $child;
+                if (null === $level || $level === $child->depth()) {
+                    yield $child;
+                }
             }
         }
     }

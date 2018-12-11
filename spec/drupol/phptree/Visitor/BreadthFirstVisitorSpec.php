@@ -45,4 +45,39 @@ class BreadthFirstVisitorSpec extends ObjectBehavior
             ->traverse($tree)
             ->shouldYield(new \ArrayIterator($rootAndNodes));
     }
+
+    public function it_can_traverse_a_tree_at_a_specific_level_only()
+    {
+        $tree = new Node();
+
+        $nodes = [];
+        $nodes1 = [];
+        $nodes2 = [];
+        foreach (\range('1', '5') as $lowercaseValue) {
+            $node1 = new Node();
+
+            foreach (\range('A', 'E') as $uppercaseValue) {
+                $node2 = new Node();
+
+                $node1->add($node2);
+
+                $nodes2[] = $node2;
+            }
+
+            $nodes1[] = $node1;
+            $nodes[] = $node1;
+        }
+
+        $tree->add(...$nodes);
+
+        $rootAndNodes = \array_merge($nodes2);
+
+        $this
+            ->traverse($tree, 2)
+            ->shouldYield(new \ArrayIterator($rootAndNodes));
+
+        $this
+            ->traverse($tree, 0)
+            ->shouldYield(new \ArrayIterator([$tree]));
+    }
 }
