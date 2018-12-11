@@ -14,5 +14,5 @@ abstract class AbstractVisitor implements VisitorInterface
     /**
      * {@inheritdoc}
      */
-    abstract public function traverse(NodeInterface $node): \Traversable;
+    abstract public function traverse(NodeInterface $node, int $level = null): \Traversable;
 }

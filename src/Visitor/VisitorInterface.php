@@ -16,8 +16,10 @@ interface VisitorInterface
      *
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node.
+     * @param int|null $level
+     *   The level.
      *
      * @return \Traversable
      */
-    public function traverse(NodeInterface $node): \Traversable;
+    public function traverse(NodeInterface $node, int $level = null): \Traversable;
 }
