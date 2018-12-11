@@ -19,23 +19,25 @@ class PreOrderVisitor extends AbstractVisitor
     /**
      * {@inheritdoc}
      */
-    public function traverse(NodeInterface $node): \Traversable
+    public function traverse(NodeInterface $node, int $level = null): \Traversable
     {
         $this->index = 0;
 
-        return $this->doTraverse($node);
+        return $this->doTraverse($node, $level);
     }
 
     /**
      * {@inheritdoc}
      */
-    private function doTraverse(NodeInterface $node): \Traversable
+    private function doTraverse(NodeInterface $node, int $level = null): \Traversable
     {
-        yield $this->index => $node;
+        if (null === $level || $level === $node->depth()) {
+            yield $this->index => $node;
+        }
 
         foreach ($node->children() as $child) {
             $this->index++;
-            yield from $this->doTraverse($child);
+            yield from $this->doTraverse($child, $level);
         }
     }
 }
