@@ -1,6 +1,7 @@
 parameters:
   git_dir: .
   bin_dir: vendor/bin
+  process_timeout: 180
   tasks:
     phplint: ~
     composer: ~
@@ -32,5 +33,6 @@ parameters:
       timeout: ~
       run_always: false
     infection:
+      threads: 10
       min_msi: 80
       min_covered_msi: 80

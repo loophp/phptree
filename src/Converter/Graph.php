@@ -18,7 +18,7 @@ class Graph implements ConverterInterface
     /**
      * @var \Fhaculty\Graph\Graph
      */
-    protected $graph;
+    private $graph;
 
     /**
      * @var \drupol\phptree\Visitor\VisitorInterface
@@ -38,13 +38,29 @@ class Graph implements ConverterInterface
     }
 
     /**
+     * @return \Fhaculty\Graph\Graph
+     */
+    public function getGraph(): OriginalGraph
+    {
+        return $this->graph;
+    }
+
+    /**
+     * @return \drupol\phptree\Visitor\VisitorInterface
+     */
+    public function getVisitor(): VisitorInterface
+    {
+        return $this->visitor;
+    }
+
+    /**
      * @param \drupol\phptree\Node\NodeInterface $node
      *
      * @return \Fhaculty\Graph\Graph
      */
     public function convert(NodeInterface $node): OriginalGraph
     {
-        foreach ($this->visitor->traverse($node) as $node_visited) {
+        foreach ($this->getVisitor()->traverse($node) as $node_visited) {
             /** @var int $vertexId */
             $vertexId = $this->createVertexId($node_visited);
             $this->createVertex($node_visited);
@@ -56,10 +72,10 @@ class Graph implements ConverterInterface
             /** @var int $hash_parent */
             $hash_parent = $this->createVertexId($parent);
 
-            $this->graph->getVertex($hash_parent)->createEdgeTo($this->graph->getVertex($vertexId));
+            $this->getGraph()->getVertex($hash_parent)->createEdgeTo($this->getGraph()->getVertex($vertexId));
         }
 
-        return $this->graph;
+        return $this->getGraph();
     }
 
     /**
@@ -72,13 +88,9 @@ class Graph implements ConverterInterface
         /** @var int $vertexId */
         $vertexId = $this->createVertexId($node);
 
-        if (false === $this->graph->hasVertex($vertexId)) {
-            $vertex = $this->graph->createVertex($vertexId);
-        } else {
-            $vertex = $this->graph->getVertex($vertexId);
-        }
-
-        return $vertex;
+        return false === $this->getGraph()->hasVertex($vertexId) ?
+            $this->getGraph()->createVertex($vertexId):
+            $vertex = $this->getGraph()->getVertex($vertexId);
     }
 
     /**
