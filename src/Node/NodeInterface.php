@@ -94,7 +94,7 @@ interface NodeInterface extends \Countable
      * The number of children a node has.
      *
      * @return int
-     *   The amound of children.
+     *   The amount of children.
      */
     public function degree(): int;
 
@@ -105,4 +105,15 @@ interface NodeInterface extends \Countable
      *   The depth is the number of nodes before root.
      */
     public function depth(): int;
+
+    /**
+     * Get a clone of the object without any children.
+     *
+     * @param \drupol\phptree\Node\NodeInterface ...$nodes
+     *   The children that the clone will have.
+     *
+     * @return \drupol\phptree\Node\NodeInterface
+     *   The new object.
+     */
+    public function withChildren(NodeInterface ...$nodes): NodeInterface;
 }

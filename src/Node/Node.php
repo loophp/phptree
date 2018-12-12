@@ -159,11 +159,9 @@ class Node implements NodeInterface
         $clone = clone $this;
         $clone->storage['children'] = [];
 
-        foreach ($nodes as $node) {
-            $clone->add($node);
-        }
-
-        return $clone;
+        return [] === $nodes ?
+            $clone:
+            $clone->add(...$nodes);
     }
 
     /**
