@@ -12,6 +12,20 @@
 
 A PHP implementation of tree data structure.
 
+This library provides 4 different trees implementations.
+* **Node**: The base class
+* **N-ary node**: (or K-ary tree) extends the base class and allows you to specify the capacity of a node, the maximum children a node can have.
+* **Value node**: extends the N-ary node and allows you to attach a value to the node.
+* **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
+
+This library provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal) that works for most types of trees.
+* In order: 
+* Post order
+* Pre order
+* Breadth first
+
+This library also provides 1 converter for the [graphp/graphp](https://github.com/graphp/graph) library.
+
 ## Documentation
 
 API documentation is automatically generated with [APIGen](https://github.com/ApiGen/ApiGen) and available at [this address](https://not-a-number.io/phptree/).
@@ -23,6 +37,11 @@ API documentation is automatically generated with [APIGen](https://github.com/Ap
 ## Installation
 
 ```composer require drupol/phptree```
+
+## Optional packages
+
+* [graphp/graphp](https://github.com/graphp/graph): To convert a tree into a graph.
+* [graphp/graphviz](https://github.com/graphp/graphviz): To render a graph into dot format or an image.
 
 ## Usage
 
@@ -47,9 +66,9 @@ foreach (\range('A', 'Z') as $v) {
 $tree->add(...$nodes);
 
 $graphViz = new GraphViz();
-$graph = new Graph();
+$converter = new Graph();
 
-$graphViz->display($graph->convert($tree));
+$graphViz->display($converter->convert($tree));
 ```
 
 ## Code quality, tests and benchmarks

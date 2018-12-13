@@ -5,8 +5,8 @@ declare(strict_types = 1);
 namespace drupol\phptree\Converter;
 
 use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Visitor\BreadthFirstVisitor;
-use drupol\phptree\Visitor\VisitorInterface;
+use drupol\phptree\Traverser\BreadthFirst;
+use drupol\phptree\Traverser\TraverserInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
 use Fhaculty\Graph\Vertex;
 
@@ -21,20 +21,20 @@ class Graph implements ConverterInterface
     private $graph;
 
     /**
-     * @var \drupol\phptree\Visitor\VisitorInterface
+     * @var \drupol\phptree\Traverser\TraverserInterface
      */
-    private $visitor;
+    private $traverser;
 
     /**
      * Graph constructor.
      *
      * @param \Fhaculty\Graph\Graph $graph
-     * @param \drupol\phptree\Visitor\VisitorInterface|null $visitor
+     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
      */
-    public function __construct(OriginalGraph $graph = null, VisitorInterface $visitor = null)
+    public function __construct(OriginalGraph $graph = null, TraverserInterface $traverser = null)
     {
         $this->graph = $graph ?? new OriginalGraph();
-        $this->visitor = $visitor ?? new BreadthFirstVisitor();
+        $this->traverser = $traverser ?? new BreadthFirst();
     }
 
     /**
@@ -46,11 +46,11 @@ class Graph implements ConverterInterface
     }
 
     /**
-     * @return \drupol\phptree\Visitor\VisitorInterface
+     * @return \drupol\phptree\Traverser\TraverserInterface
      */
-    public function getVisitor(): VisitorInterface
+    public function getTraverser(): TraverserInterface
     {
-        return $this->visitor;
+        return $this->traverser;
     }
 
     /**
@@ -60,7 +60,7 @@ class Graph implements ConverterInterface
      */
     public function convert(NodeInterface $node): OriginalGraph
     {
-        foreach ($this->getVisitor()->traverse($node) as $node_visited) {
+        foreach ($this->getTraverser()->traverse($node) as $node_visited) {
             /** @var int $vertexId */
             $vertexId = $this->createVertexId($node_visited);
             $this->createVertex($node_visited);
@@ -79,9 +79,13 @@ class Graph implements ConverterInterface
     }
 
     /**
+     * Create a vertex.
+     *
      * @param \drupol\phptree\Node\NodeInterface $node
+     *   The node.
      *
      * @return \Fhaculty\Graph\Vertex
+     *   A vertex.
      */
     protected function createVertex(NodeInterface $node): Vertex
     {
@@ -94,9 +98,13 @@ class Graph implements ConverterInterface
     }
 
     /**
+     * Create a vertex ID.
+     *
      * @param \drupol\phptree\Node\NodeInterface $node
+     *   The node.
      *
      * @return int|null|string
+     *   A vertex ID.
      */
     protected function createVertexId(NodeInterface $node)
     {

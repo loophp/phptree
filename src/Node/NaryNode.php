@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace drupol\phptree\Node;
 
-use drupol\phptree\Visitor\BreadthFirstVisitor;
+use drupol\phptree\Traverser\BreadthFirst;
 
 /**
  * Class NaryNode
@@ -54,9 +54,9 @@ class NaryNode extends Node
             }
 
             // @todo Find a way to get rid of this.
-            $visitor = new BreadthFirstVisitor();
+            $traverser = new BreadthFirst();
 
-            foreach ($visitor->traverse($this) as $node_visited) {
+            foreach ($traverser->traverse($this) as $node_visited) {
                 if ($node_visited->degree() >= $capacity) {
                     continue;
                 }

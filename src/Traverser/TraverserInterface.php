@@ -2,24 +2,22 @@
 
 declare(strict_types = 1);
 
-namespace drupol\phptree\Visitor;
+namespace drupol\phptree\Traverser;
 
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Interface VisitorInterface
+ * Interface TraverserInterface
  */
-interface VisitorInterface
+interface TraverserInterface
 {
     /**
      * Traverse the tree.
      *
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node.
-     * @param int|null $level
-     *   The level.
      *
      * @return \Traversable
      */
-    public function traverse(NodeInterface $node, int $level = null): \Traversable;
+    public function traverse(NodeInterface $node): \Traversable;
 }
