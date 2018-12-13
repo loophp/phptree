@@ -7,7 +7,7 @@ namespace spec\drupol\phptree\Converter;
 use drupol\phptree\Converter\Graph;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
-use drupol\phptree\Visitor\BreadthFirstVisitor;
+use drupol\phptree\Traverser\BreadthFirst;
 use PhpSpec\ObjectBehavior;
 
 class GraphSpec extends ObjectBehavior
@@ -40,9 +40,9 @@ class GraphSpec extends ObjectBehavior
             ->getEdges()
             ->shouldHaveCount(3);
 
-        $visitor = new BreadthFirstVisitor();
+        $traverser = new BreadthFirst();
 
-        $nodes = \iterator_to_array($visitor->traverse($root));
+        $nodes = \iterator_to_array($traverser->traverse($root));
 
         for ($i = 0; $i < \count($nodes) - 1; $i++) {
             $node0 = $nodes[0];
@@ -60,17 +60,17 @@ class GraphSpec extends ObjectBehavior
     public function it_can_use_constructor_parameters()
     {
         $graph = new \Fhaculty\Graph\Graph();
-        $visitor = new BreadthFirstVisitor();
+        $traverser = new BreadthFirst();
 
         $this
-            ->beConstructedWith($graph, $visitor);
+            ->beConstructedWith($graph, $traverser);
 
         $this
             ->getGraph()
             ->shouldReturn($graph);
 
         $this
-            ->getVisitor()
-            ->shouldReturn($visitor);
+            ->getTraverser()
+            ->shouldReturn($traverser);
     }
 }
