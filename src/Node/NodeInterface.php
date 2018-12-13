@@ -116,4 +116,12 @@ interface NodeInterface extends \Countable
      *   The new object.
      */
     public function withChildren(NodeInterface ...$nodes): NodeInterface;
+
+    /**
+     * Get the last child if any.
+     *
+     * @return \drupol\phptree\Node\NodeInterface|null
+     *   The last child if any, null otherwise.
+     */
+    public function lastChild(): ?NodeInterface;
 }
