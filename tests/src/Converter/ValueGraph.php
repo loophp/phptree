@@ -26,6 +26,10 @@ class ValueGraph extends Graph
      */
     protected function createVertexId(NodeInterface $node)
     {
+        if (\method_exists($node, 'getValue')) {
+            return $node->getValue();
+        }
+
         return \sha1((string) parent::createVertexId($node));
     }
 }
