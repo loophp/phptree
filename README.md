@@ -12,19 +12,19 @@
 
 A PHP implementation of tree data structure.
 
-This library provides 4 different trees implementations.
-* **Node**: The base class
+It provides 4 different trees implementations.
+* **Node**: The base class.
 * **N-ary node**: (or K-ary tree) extends the base class and allows you to specify the capacity of a node, the maximum children a node can have.
 * **Value node**: extends the N-ary node and allows you to attach a value to the node.
 * **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
 
-This library provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal) that works for most types of trees.
-* In order: 
+It also provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal):
+* In order
 * Post order
 * Pre order
 * Breadth first
 
-This library also provides 1 converter for the [graphp/graphp](https://github.com/graphp/graph) library.
+And it provides 1 converter for the [graphp/graphp](https://github.com/graphp/graph) library.
 
 ## Documentation
 
