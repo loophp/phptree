@@ -2,10 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace spec\drupol\phptree\tests\Converter;
+namespace spec\drupol\phptree\tests\Exporter;
 
 use drupol\phptree\Node\ValueNode;
-use drupol\phptree\tests\Converter\ValueGraph;
+use drupol\phptree\tests\Exporter\ValueGraph;
 use PhpSpec\ObjectBehavior;
 
 class ValueGraphSpec extends ObjectBehavior
@@ -20,7 +20,7 @@ class ValueGraphSpec extends ObjectBehavior
         $tree = new ValueNode('root');
 
         $this
-            ->convert($tree)
+            ->export($tree)
             ->shouldReturnAnInstanceOf(\Fhaculty\Graph\Graph::class);
     }
 }
