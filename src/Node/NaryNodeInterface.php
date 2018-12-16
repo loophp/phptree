@@ -5,12 +5,15 @@ declare(strict_types = 1);
 namespace drupol\phptree\Node;
 
 /**
- * Class NaryNode
+ * Interface NaryNodeInterface
  */
 interface NaryNodeInterface
 {
     /**
-     * {@inheritdoc}
+     * Get the node capacity.
+     *
+     * @return int
+     *   The node capacity.
      */
     public function capacity(): int;
 }

@@ -10,10 +10,10 @@ namespace drupol\phptree\Node;
 interface KeyValueNodeInterface extends ValueNodeInterface
 {
     /**
-     * Get the node key.
+     * Get the key property.
      *
      * @return string|mixed|int|null
-     *   The key value.
+     *   The key property.
      */
     public function getKey();
 }

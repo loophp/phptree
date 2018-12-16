@@ -6,6 +6,7 @@ namespace spec\drupol\phptree\tests\Exporter;
 
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\tests\Exporter\ValueGraph;
+use Fhaculty\Graph\Vertex;
 use PhpSpec\ObjectBehavior;
 
 class ValueGraphSpec extends ObjectBehavior
@@ -21,6 +22,13 @@ class ValueGraphSpec extends ObjectBehavior
 
         $this
             ->export($tree)
-            ->shouldReturnAnInstanceOf(\Fhaculty\Graph\Graph::class);
+            ->getVertex('root')
+            ->shouldReturnAnInstanceOf(Vertex::class);
+
+        $this
+            ->export($tree)
+            ->getVertex('root')
+            ->getAttribute('value')
+            ->shouldReturn('root');
     }
 }

@@ -7,11 +7,13 @@ namespace drupol\phptree\Node;
 use drupol\phptree\Traverser\BreadthFirst;
 
 /**
- * Class NaryNode
+ * Class NaryNode.
  */
 class NaryNode extends Node
 {
     /**
+     * The capacity of a node, the maximum children a node can have.
+     *
      * @var int
      */
     private $capacity;
@@ -20,7 +22,9 @@ class NaryNode extends Node
      * NaryNode constructor.
      *
      * @param int $capacity
+     *   The maximum children a node can have.
      * @param \drupol\phptree\Node\NodeInterface|null $parent
+     *   The parent.
      */
     public function __construct(int $capacity = 0, NodeInterface $parent = null)
     {

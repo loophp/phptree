@@ -18,7 +18,13 @@ class ValueGraph extends Graph
      */
     protected function createVertex(NodeInterface $node): Vertex
     {
-        return parent::createVertex($node);
+        $vertex = parent::createVertex($node);
+
+        if (\method_exists($node, 'getValue')) {
+            $vertex->setAttribute('value', $node->getValue());
+        }
+
+        return $vertex;
     }
 
     /**

@@ -17,11 +17,15 @@ use Fhaculty\Graph\Vertex;
 class Graph implements ExporterInterface
 {
     /**
+     * The graph.
+     *
      * @var \Fhaculty\Graph\Graph
      */
     private $graph;
 
     /**
+     * The traverser.
+     *
      * @var \drupol\phptree\Traverser\TraverserInterface
      */
     private $traverser;
