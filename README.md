@@ -24,7 +24,7 @@ It also provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tr
 * Pre order
 * Breadth first
 
-And it provides Exporters and Importers for:
+And it provides exporters and importers:
 * Graph: Export a tree into a graph using the [graphp/graphp](https://github.com/graphp/graph) library.
 * Text: Export a tree into a simple string.
 
@@ -55,9 +55,11 @@ declare(strict_types = 1);
 use Graphp\GraphViz\GraphViz;
 use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\ValueNode;
+use drupol\phptree\Exporter\Text;
 
 include './vendor/autoload.php';
 
+// Create the root node.
 $tree = new ValueNode('root', 2);
 
 $nodes = [];
@@ -65,12 +67,17 @@ foreach (\range('A', 'Z') as $v) {
     $nodes[] = new ValueNode($v);
 }
 
+// Add children to the root node.
 $tree->add(...$nodes);
 
+// Export to an image.
 $graphViz = new GraphViz();
-$exporter = new Graph();
+$graphExporter = new Graph();
+$graphViz->display($graphExporter->export($tree));
 
-$graphViz->display($exporter->export($tree));
+// Export to text.
+$textExporter = new Text();
+echo $textExporter->export($tree); // [root [A [C [G [O] [P]] [H [Q] [R]]] [D [I [S] [T]] [J [U] [V]]]] [B [E [K [W] [X]] [L [Y] [Z]]] [F [M] [N]]]]⏎
 ```
 
 ## Code quality, tests and benchmarks
