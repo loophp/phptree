@@ -24,7 +24,9 @@ It also provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tr
 * Pre order
 * Breadth first
 
-And it provides 1 converter for the [graphp/graphp](https://github.com/graphp/graph) library.
+And it provides Exporters and Importers for:
+* Graph: Export a tree into a graph using the [graphp/graphp](https://github.com/graphp/graph) library.
+* Text: Export a tree into a simple string.
 
 ## Documentation
 
@@ -51,7 +53,7 @@ API documentation is automatically generated with [APIGen](https://github.com/Ap
 declare(strict_types = 1);
 
 use Graphp\GraphViz\GraphViz;
-use drupol\phptree\Converter\Graph;
+use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\ValueNode;
 
 include './vendor/autoload.php';
@@ -66,9 +68,9 @@ foreach (\range('A', 'Z') as $v) {
 $tree->add(...$nodes);
 
 $graphViz = new GraphViz();
-$converter = new Graph();
+$exporter = new Graph();
 
-$graphViz->display($converter->convert($tree));
+$graphViz->display($exporter->export($tree));
 ```
 
 ## Code quality, tests and benchmarks
