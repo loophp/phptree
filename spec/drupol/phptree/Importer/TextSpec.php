@@ -42,6 +42,11 @@ class TextSpec extends ObjectBehavior
             ->import($string)
             ->isRoot()
             ->shouldReturn(TRUE);
+
+        $this
+            ->import($string)
+            ->getValue()
+            ->shouldReturn('root ');
     }
 
     public function it_can_throw_an_error_when_cannot_import()
