@@ -6,12 +6,11 @@ namespace drupol\phptree\Importer;
 
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNode;
-use drupol\phptree\Node\ValueNodeInterface;
 
 /**
  * Class Text
  */
-class Text implements ImporterInterface
+class Text extends SimpleArray
 {
     /**
      * {@inheritdoc}
@@ -20,30 +19,25 @@ class Text implements ImporterInterface
     {
         $parsed = $this->parse($data);
 
+        if ([] === $parsed) {
+            throw new \InvalidArgumentException('Unable to import the given data.');
+        }
+
         return $this->arrayToTree($parsed[0]);
     }
 
     /**
-     * Convert an array into a tree.
+     * Create a node.
      *
-     * @param array $data
+     * @param mixed $arguments
+     *   The arguments.
      *
-     * @return \drupol\phptree\Node\ValueNodeInterface
-     *   The tree.
+     * @return \drupol\phptree\Node\Node
+     *   The node.
      */
-    private function arrayToTree(array $data): ValueNodeInterface
+    protected function createNode($arguments): NodeInterface
     {
-        $data += [
-            'children' => [],
-        ];
-
-        $node = new ValueNode($data['value']);
-
-        foreach ($data['children'] as $key => $child) {
-            $node->add($this->arrayToTree($child));
-        }
-
-        return $node;
+        return new ValueNode($arguments);
     }
 
     /**
@@ -57,7 +51,7 @@ class Text implements ImporterInterface
      */
     private function parse(string $subject)
     {
-        $result = false;
+        $result = [];
 
         \preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)\]~', $subject, $matches);
 
@@ -71,7 +65,7 @@ class Text implements ImporterInterface
                 $item['value'] = $match;
             }
 
-            if (false !== $children = $this->parse($match)) {
+            if ([] !== $children = $this->parse($match)) {
                 $item['children'] = $children;
             }
 

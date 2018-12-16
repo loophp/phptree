@@ -43,4 +43,13 @@ class TextSpec extends ObjectBehavior
             ->isRoot()
             ->shouldReturn(TRUE);
     }
+
+    public function it_can_throw_an_error_when_cannot_import()
+    {
+        $string = 'invalid string';
+
+        $this
+            ->shouldThrow(\InvalidArgumentException::class)
+            ->during('import', [$string]);
+    }
 }
