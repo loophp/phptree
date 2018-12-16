@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace spec\drupol\phptree\Converter;
+namespace spec\drupol\phptree\Exporter;
 
-use drupol\phptree\Converter\Graph;
+use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Traverser\BreadthFirst;
@@ -27,7 +27,7 @@ class GraphSpec extends ObjectBehavior
             ->add($child1, $child2, $child3);
 
         $this
-            ->convert($root)
+            ->export($root)
             ->shouldReturnAnInstanceOf(\Fhaculty\Graph\Graph::class);
 
         $this

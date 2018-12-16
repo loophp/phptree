@@ -2,9 +2,9 @@
 
 declare(strict_types = 1);
 
-namespace drupol\phptree\tests\Converter;
+namespace drupol\phptree\tests\Exporter;
 
-use drupol\phptree\Converter\Graph;
+use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Vertex;
 

@@ -2,9 +2,10 @@
 
 declare(strict_types = 1);
 
-namespace drupol\phptree\Converter;
+namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\NodeInterface;
+use drupol\phptree\Node\ValueNodeInterface;
 use drupol\phptree\Traverser\BreadthFirst;
 use drupol\phptree\Traverser\TraverserInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
@@ -13,7 +14,7 @@ use Fhaculty\Graph\Vertex;
 /**
  * Class Graph
  */
-class Graph implements ConverterInterface
+class Graph implements ExporterInterface
 {
     /**
      * @var \Fhaculty\Graph\Graph
@@ -54,11 +55,15 @@ class Graph implements ConverterInterface
     }
 
     /**
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * Export a node into a Graph.
+     *
+     * @param \drupol\phptree\Node\ValueNodeInterface $node
+     *   The node.
      *
      * @return \Fhaculty\Graph\Graph
+     *   The graph.
      */
-    public function convert(NodeInterface $node): OriginalGraph
+    public function export(ValueNodeInterface $node): OriginalGraph
     {
         foreach ($this->getTraverser()->traverse($node) as $node_visited) {
             /** @var int $vertexId */
