@@ -11,6 +11,6 @@ abstract class AbstractBench
      */
     public function getData()
     {
-        return \range(1, 100);
+        return \range(1, 1000);
     }
 }

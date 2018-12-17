@@ -34,12 +34,12 @@ class NodeSpec extends ObjectBehavior
         $this
             ->remove($node2);
 
-        $this->children()[0]->shouldReturn($node1);
-
         $this
             ->remove($node1);
 
-        $this->children()->shouldReturn([]);
+        $this
+            ->count()
+            ->shouldReturn(0);
     }
 
     public function it_can_get_the_size()
@@ -83,7 +83,11 @@ class NodeSpec extends ObjectBehavior
     {
         $this
             ->children()
-            ->shouldReturn([]);
+            ->shouldBeAnInstanceOf(\Generator::class);
+
+        $this
+            ->children()
+            ->shouldYield(new \ArrayIterator([]));
 
         $node = new Node();
 
@@ -91,7 +95,7 @@ class NodeSpec extends ObjectBehavior
             ->add($node)
             ->add($node)
             ->children()
-            ->shouldReturn([$node, $node]);
+            ->shouldYield(new \ArrayIterator([$node, $node]));
     }
 
     public function it_can_get_the_last_children()
@@ -209,12 +213,12 @@ class NodeSpec extends ObjectBehavior
         $this
             ->withChildren($child)
             ->children()
-            ->shouldReturn([$child]);
+            ->shouldYield(new \ArrayIterator([$child]));
 
         $this
             ->withChildren()
             ->children()
-            ->shouldReturn([]);
+            ->shouldYield(new \ArrayIterator([]));
     }
 
     public function it_can_get_its_depth()

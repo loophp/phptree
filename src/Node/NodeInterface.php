@@ -53,21 +53,21 @@ interface NodeInterface extends \Countable
     /**
      * Get the children.
      *
-     * @return \drupol\phptree\Node\NodeInterface[]
+     * @return \Traversable<\drupol\phptree\Node\NodeInterface>
      *   The children.
      */
-    public function children(): array;
+    public function children(): \Traversable;
 
     /**
-     * Check if the node is a leaf.
+     * Check if the node has children, then it's a leaf.
      *
      * @return bool
-     *   True if it's a leaf, false otherwise.
+     *   True if it has children, false otherwise.
      */
     public function isLeaf(): bool;
 
     /**
-     * Check if the node is the root node.
+     * Check if the node is the root node (Node parent is null)
      *
      * @return bool
      *   True if it's a root node, false otherwise.
@@ -78,7 +78,7 @@ interface NodeInterface extends \Countable
      * Get the ancestors of a node.
      *
      * @return \Traversable
-     *   The array of ancestors.
+     *   The ancestors.
      */
     public function getAncestors(): \Traversable;
 
@@ -86,12 +86,12 @@ interface NodeInterface extends \Countable
      * Get the node's sibblings.
      *
      * @return \Traversable
-     *   The array of sibblings.
+     *   The sibblings.
      */
     public function getSibblings(): \Traversable;
 
     /**
-     * The number of children a node has.
+     * The amount of children a node has.
      *
      * @return int
      *   The amount of children.
@@ -107,7 +107,7 @@ interface NodeInterface extends \Countable
     public function depth(): int;
 
     /**
-     * Get a clone of the object without any children.
+     * Get a clone of the object with or without children.
      *
      * @param \drupol\phptree\Node\NodeInterface ...$nodes
      *   The children that the clone will have.

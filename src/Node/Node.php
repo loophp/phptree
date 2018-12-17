@@ -77,9 +77,9 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function children(): array
+    public function children(): \Traversable
     {
-        return $this->storage['children'];
+        yield from new \ArrayIterator($this->storage['children']);
     }
 
     /**
@@ -109,7 +109,7 @@ class Node implements NodeInterface
      */
     public function isLeaf(): bool
     {
-        return [] === $this->children();
+        return [] === $this->storage['children'];
     }
 
     /**
@@ -117,7 +117,7 @@ class Node implements NodeInterface
      */
     public function isRoot(): bool
     {
-        return null === $this->getParent();
+        return null === $this->storage['parent'];
     }
 
     /**
@@ -125,16 +125,17 @@ class Node implements NodeInterface
      */
     public function getSibblings(): \Traversable
     {
-        $parent = $this->getParent();
+        $parent = $this->storage['parent'];
 
         if (null === $parent) {
-            return [];
+            return new \ArrayIterator([]);
         }
 
         foreach ($parent->children() as $child) {
             if ($child === $this) {
                 continue;
             }
+
             yield $child;
         }
     }
@@ -152,13 +153,14 @@ class Node implements NodeInterface
      */
     public function count(): int
     {
-        return \array_reduce(
-            $this->children(),
-            function ($carry, $node) {
-                return 1 + $carry + $node->count();
-            },
-            0
-        );
+        $count = 0;
+
+        /** @var \drupol\phptree\Node\NodeInterface $child */
+        foreach ($this->children() as $child) {
+            $count += 1 + $child->count();
+        }
+
+        return $count;
     }
 
     /**

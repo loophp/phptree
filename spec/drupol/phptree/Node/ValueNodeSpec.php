@@ -13,7 +13,7 @@ class ValueNodeSpec extends ObjectBehavior
     {
         $this->shouldHaveType(ValueNode::class);
 
-        $this->children()->shouldReturn([]);
+        $this->children()->shouldYield(new \ArrayIterator([]));
     }
 
     public function it_can_be_set_with_a_value()
