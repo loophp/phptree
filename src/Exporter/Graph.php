@@ -59,13 +59,7 @@ class Graph implements ExporterInterface
     }
 
     /**
-     * Export a node into a Graph.
-     *
-     * @param \drupol\phptree\Node\ValueNodeInterface $node
-     *   The node.
-     *
-     * @return \Fhaculty\Graph\Graph
-     *   The graph.
+     * {@inheritdoc}
      */
     public function export(ValueNodeInterface $node): OriginalGraph
     {
