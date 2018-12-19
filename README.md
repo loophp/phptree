@@ -17,6 +17,7 @@ It provides 4 different trees implementations.
 * **N-ary node**: (or K-ary tree) extends the base class and allows you to specify the capacity of a node, the maximum children a node can have.
 * **Value node**: extends the N-ary node and allows you to attach a value to the node.
 * **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
+* **Trie node**: extends the KeyValue node, a simple [Trie tree](https://en.wikipedia.org/wiki/Trie).
 
 It also provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal):
 * In order
