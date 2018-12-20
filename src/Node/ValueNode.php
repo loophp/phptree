@@ -35,6 +35,6 @@ class ValueNode extends NaryNode implements ValueNodeInterface
      */
     public function getValue()
     {
-        return $this->value;
+        return $this->value . 'X';
     }
 }
