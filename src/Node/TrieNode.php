@@ -23,7 +23,7 @@ class TrieNode extends KeyValueNode
             $parent = $this->append($node);
 
             $dataWithoutFirstLetter = \substr($data, 1);
-            if (!empty($dataWithoutFirstLetter)) {
+            if ($dataWithoutFirstLetter > '') {
                 $parent->add(new TrieNode($hash, $dataWithoutFirstLetter));
             } else {
                 $nodes = [$node->getValue()];

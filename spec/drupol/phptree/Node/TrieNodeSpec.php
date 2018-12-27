@@ -20,6 +20,12 @@ class TrieNodeSpec extends ObjectBehavior
         $this->beConstructedWith('root', 'root');
 
         $nodes = [
+            1000,
+            1001,
+            10011,
+            2000,
+            2001,
+            20011,
             'ab',
             'abc',
             'abcd',
@@ -31,12 +37,12 @@ class TrieNodeSpec extends ObjectBehavior
         ];
 
         foreach ($nodes as $key => $value) {
-            $nodes[$key] = new KeyValueNode($key, $value);
+            $nodes[$key] = new KeyValueNode($key, (string) $value);
         }
 
         $this
             ->add(...$nodes)
             ->count()
-            ->shouldReturn(25);
+            ->shouldReturn(43);
     }
 }
