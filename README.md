@@ -12,7 +12,7 @@
 
 A PHP implementation of tree data structure.
 
-It provides 4 different trees implementations.
+It provides 5 different trees implementations.
 * **Node**: The base class.
 * **N-ary node**: (or K-ary tree) extends the base class and allows you to specify the capacity of a node, the maximum children a node can have.
 * **Value node**: extends the N-ary node and allows you to attach a value to the node.
