@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace spec\drupol\phptree\Exporter;
 
 use drupol\phptree\Exporter\Graph;
-use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Traverser\BreadthFirst;
 use PhpSpec\ObjectBehavior;
@@ -20,9 +19,9 @@ class GraphSpec extends ObjectBehavior
     public function it_can_generate_a_graph()
     {
         $root = new ValueNode('root');
-        $child1 = new Node();
-        $child2 = new Node();
-        $child3 = new Node();
+        $child1 = new ValueNode();
+        $child2 = new ValueNode();
+        $child3 = new ValueNode();
         $root
             ->add($child1, $child2, $child3);
 

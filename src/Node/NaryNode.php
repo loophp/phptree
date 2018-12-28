@@ -61,6 +61,7 @@ class NaryNode extends Node
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
+            /** @var \drupol\phptree\Node\Node $parent */
             $parent = $this->findFirstAvailableNode();
             $parent->storage['children'][] = $node->setParent($parent);
         }
@@ -83,8 +84,14 @@ class NaryNode extends Node
      */
     private function findFirstAvailableNode(): NodeInterface
     {
+        $capacity = $this->capacity();
+
         foreach ($this->getTraverser()->traverse($this) as $node) {
-            if ($node->degree() >= $node->capacity()) {
+            if (\method_exists($node, 'capacity')) {
+                $capacity = $node->capacity();
+            }
+
+            if ($node->degree() >= $capacity) {
                 continue;
             }
 

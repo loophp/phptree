@@ -25,7 +25,7 @@ class SimpleArraySpec extends ObjectBehavior
 
         $nodes = [];
         foreach (\range('A', 'J') as $value) {
-            $nodes[$value] = new ValueNode($value);
+            $nodes[$value] = new ValueNode($value, 2);
         }
 
         $tree->add(...\array_values($nodes));

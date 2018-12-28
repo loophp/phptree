@@ -237,7 +237,7 @@ class NodeSpec extends ObjectBehavior
 
         $nodes = [];
         foreach (\range('A', 'Z') as $v) {
-            $nodes[] = new \drupol\phptree\Node\ValueNode($v);
+            $nodes[] = new \drupol\phptree\Node\ValueNode($v, 2);
         }
 
         $tree->add(...$nodes);
