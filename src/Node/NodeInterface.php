@@ -53,7 +53,7 @@ interface NodeInterface extends \Countable
     /**
      * Get the children.
      *
-     * @return \Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return \Traversable
      *   The children.
      */
     public function children(): \Traversable;
