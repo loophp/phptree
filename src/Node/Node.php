@@ -89,14 +89,6 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function lastChild(): ?NodeInterface
-    {
-        return $this->storage['children'][$this->storage['children']->count() - 1] ?? null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getAncestors(): \Traversable
     {
         $node = $this;
