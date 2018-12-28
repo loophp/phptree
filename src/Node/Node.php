@@ -25,7 +25,7 @@ class Node implements NodeInterface
     {
         $this->storage = [
             'parent' => $parent,
-            'children' => [],
+            'children' => new \ArrayObject(),
         ];
     }
 
@@ -35,7 +35,9 @@ class Node implements NodeInterface
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
-            $this->storage['children'][] = $node->setParent($this);
+            $this->storage['children']->append(
+                $node->setParent($this)
+            );
         }
 
         return $this;
@@ -46,11 +48,13 @@ class Node implements NodeInterface
      */
     public function remove(NodeInterface ...$nodes): NodeInterface
     {
-        $this->storage['children'] = \array_filter(
-            $this->storage['children'],
-            function ($child) use ($nodes) {
-                return !\in_array($child, $nodes, true);
-            }
+        $this->storage['children'] = new \ArrayObject(
+            \array_filter(
+                (array) $this->storage['children'],
+                function ($child) use ($nodes) {
+                    return !\in_array($child, $nodes, true);
+                }
+            )
         );
 
         return $this;
@@ -79,17 +83,7 @@ class Node implements NodeInterface
      */
     public function children(): \Traversable
     {
-        yield from new \ArrayIterator($this->storage['children']);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function lastChild(): ?NodeInterface
-    {
-        return (false === $end = \end($this->storage['children'])) ?
-            null:
-            $end;
+        yield from $this->storage['children'];
     }
 
     /**
@@ -109,7 +103,7 @@ class Node implements NodeInterface
      */
     public function isLeaf(): bool
     {
-        return [] === $this->storage['children'];
+        return 0 === $this->storage['children']->count();
     }
 
     /**
@@ -145,7 +139,7 @@ class Node implements NodeInterface
      */
     public function degree(): int
     {
-        return \count($this->storage['children']);
+        return $this->storage['children']->count();
     }
 
     /**
@@ -169,7 +163,7 @@ class Node implements NodeInterface
     public function withChildren(NodeInterface ...$nodes): NodeInterface
     {
         $clone = clone $this;
-        $clone->storage['children'] = [];
+        $clone->storage['children'] = new \ArrayObject();
 
         return [] === $nodes ?
             $clone:

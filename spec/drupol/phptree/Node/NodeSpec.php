@@ -98,20 +98,6 @@ class NodeSpec extends ObjectBehavior
             ->shouldYield(new \ArrayIterator([$node, $node]));
     }
 
-    public function it_can_get_the_last_children()
-    {
-        $this
-            ->lastChild()
-            ->shouldReturn(null);
-
-        $node = new Node();
-
-        $this
-            ->add($node)
-            ->lastChild()
-            ->shouldReturn($node);
-    }
-
     public function it_can_check_if_its_a_leaf()
     {
         $this
@@ -237,7 +223,7 @@ class NodeSpec extends ObjectBehavior
 
         $nodes = [];
         foreach (\range('A', 'Z') as $v) {
-            $nodes[] = new \drupol\phptree\Node\ValueNode($v);
+            $nodes[] = new \drupol\phptree\Node\ValueNode($v, 2);
         }
 
         $tree->add(...$nodes);

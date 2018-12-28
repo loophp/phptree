@@ -30,12 +30,12 @@ class DrupolPhpTreeBench extends AbstractBench
      * @Iterations(5)
      * @Warmup(10)
      */
-    public function benchHash()
+    public function benchTreeAdd()
     {
-        $this->tree = new ValueNode();
+        $this->tree = new ValueNode('root', 2);
 
         foreach ($this->getData() as $value) {
-            $this->tree->add(new ValueNode($value));
+            $this->tree->add(new ValueNode($value, 2));
         }
     }
 }
