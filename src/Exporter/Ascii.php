@@ -57,8 +57,7 @@ class Ascii implements ExporterInterface
      */
     private function doExportAsArray(NodeInterface $node): array
     {
-        if (!($node instanceof ValueNodeInterface))
-        {
+        if (!($node instanceof ValueNodeInterface)) {
             throw new \InvalidArgumentException('Must implements ValueNodeInterface');
         }
 

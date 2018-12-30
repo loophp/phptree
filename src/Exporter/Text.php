@@ -17,8 +17,7 @@ class Text implements ExporterInterface
      */
     public function export(NodeInterface $node): string
     {
-        if (!($node instanceof ValueNodeInterface))
-        {
+        if (!($node instanceof ValueNodeInterface)) {
             throw new \InvalidArgumentException('Must implements ValueNodeInterface');
         }
 

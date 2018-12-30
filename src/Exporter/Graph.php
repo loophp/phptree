@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNodeInterface;
 use drupol\phptree\Traverser\BreadthFirst;
 use drupol\phptree\Traverser\TraverserInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
@@ -98,8 +97,8 @@ class Graph implements ExporterInterface
         if (false === $this->getGraph()->hasVertex($vertexId)) {
             $vertex = $this->getGraph()->createVertex($vertexId);
 
-            $label = NULL;
-            if (method_exists($node, 'getValue')) {
+            $label = null;
+            if (\method_exists($node, 'getValue')) {
                 $label = $node->getValue();
             }
 

@@ -17,8 +17,7 @@ class SimpleArray implements ExporterInterface
      */
     public function export(NodeInterface $node)
     {
-        if (!($node instanceof ValueNodeInterface))
-        {
+        if (!($node instanceof ValueNodeInterface)) {
             throw new \InvalidArgumentException('Must implements ValueNodeInterface');
         }
 
