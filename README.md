@@ -12,26 +12,32 @@
 
 A PHP implementation of tree data structure.
 
-It provides 5 different trees implementations.
+5 different trees implementations:
 * **Node**: The base class.
 * **N-ary node**: (or K-ary tree) extends the base class and allows you to specify the capacity of a node, the maximum children a node can have.
 * **Value node**: extends the N-ary node and allows you to attach a value to the node.
 * **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
 * **Trie node**: extends the KeyValue node, a simple [Trie tree](https://en.wikipedia.org/wiki/Trie).
 
-It also provides [4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal):
+[4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal):
 * In order
 * Post order
 * Pre order
 * Breadth first
 
-And it provides exporters and importers:
+Exporters and importers:
 * Graph: Export a tree into a graph using the [graphp/graphp](https://github.com/graphp/graph) library.
 * Text: Export a tree into a simple string.
+* Ascii: Export a tree into an ascii graphic.
+
+Modifier:
+* A modifier "Reverse" to reverse a tree.
 
 ## Documentation
 
 API documentation is automatically generated with [APIGen](https://github.com/ApiGen/ApiGen) and available at [this address](https://not-a-number.io/phptree/).
+
+Blog post: https://not-a-number.io/2018/phptree-a-fast-tree-implementation
 
 ## Requirements
 
