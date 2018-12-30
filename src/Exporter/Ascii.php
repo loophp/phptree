@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\NodeInterface;
+use drupol\phptree\Node\ValueNodeInterface;
 
 /**
  * Class Ascii
@@ -48,11 +49,19 @@ class Ascii implements ExporterInterface
     /**
      * Export the tree in an array.
      *
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *   The node.
+     *
      * @return array
      *   The tree exported into an array.
      */
     private function doExportAsArray(NodeInterface $node): array
     {
+        if (!($node instanceof ValueNodeInterface))
+        {
+            throw new \InvalidArgumentException('Must implements ValueNodeInterface');
+        }
+
         $children = [];
         /** @var ValueNodeInterface $child */
         foreach ($node->children() as $child) {
