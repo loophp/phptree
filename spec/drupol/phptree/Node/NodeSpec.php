@@ -234,4 +234,37 @@ class NodeSpec extends ObjectBehavior
             ->depth()
             ->shouldReturn(4);
     }
+
+    public function it_can_get_its_height()
+    {
+        $this
+            ->height()
+            ->shouldReturn(0);
+
+        $tree = $this;
+        foreach (\range('A', 'B') as $key => $v) {
+            $node = new \drupol\phptree\Node\ValueNode($v, 1);
+            $tree->add($node);
+            $tree = $node;
+        }
+
+        $this
+            ->height()
+            ->shouldReturn(2);
+
+        foreach (\range('C', 'F') as $key => $v) {
+            $node = new \drupol\phptree\Node\ValueNode($v, 1);
+            $tree->add($node);
+            $tree = $node;
+        }
+
+        $this
+            ->height()
+            ->shouldReturn(6);
+
+        $this
+            ->withChildren()
+            ->height()
+            ->shouldReturn(0);
+    }
 }

@@ -107,6 +107,14 @@ interface NodeInterface extends \Countable
     public function depth(): int;
 
     /**
+     * Get the tree height.
+     *
+     * @return int
+     *   The tree height.
+     */
+    public function height(): int;
+
+    /**
      * Get a clone of the object with or without children.
      *
      * @param \drupol\phptree\Node\NodeInterface ...$nodes

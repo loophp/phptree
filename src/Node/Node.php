@@ -177,4 +177,18 @@ class Node implements NodeInterface
     {
         return \iterator_count($this->getAncestors());
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function height(): int
+    {
+        $height = $this->depth();
+
+        foreach ($this->children() as $child) {
+            $height = \max($height, $child->height());
+        }
+
+        return $height;
+    }
 }
