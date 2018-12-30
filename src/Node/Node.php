@@ -63,7 +63,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setParent(NodeInterface $node): NodeInterface
+    public function setParent(NodeInterface $node = null): NodeInterface
     {
         $this->storage['parent'] = $node;
 

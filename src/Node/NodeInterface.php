@@ -26,7 +26,7 @@ interface NodeInterface extends \Countable
      * @return NodeInterface
      *   The node.
      */
-    public function setParent(NodeInterface $node): NodeInterface;
+    public function setParent(NodeInterface $node = null): NodeInterface;
 
     /**
      * The node to add.
