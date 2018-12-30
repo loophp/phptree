@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace spec\drupol\phptree\Exporter;
 
 use drupol\phptree\Exporter\Ascii;
+use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;
 
@@ -98,5 +99,20 @@ EOF;
         $this
             ->export($tree)
             ->shouldReturn($expected);
+    }
+
+    public function it_can_throw_an_error_when_tree_is_not_a_valuenode()
+    {
+        $tree = new Node();
+
+        foreach (\range('A', 'Z') as $key => $value) {
+            $nodes[$value] = new Node();
+        }
+
+        $tree->add(...\array_values($nodes));
+
+        $this
+            ->shouldThrow(\InvalidArgumentException::class)
+            ->during('export', [$tree]);
     }
 }
