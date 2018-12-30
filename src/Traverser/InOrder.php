@@ -31,8 +31,7 @@ class InOrder implements TraverserInterface
      */
     private function doTraverse(NodeInterface $node): \Traversable
     {
-        $countChildren = $node->degree();
-        $middle = \floor($countChildren/2);
+        $middle = \floor($node->degree()/2);
 
         foreach ($node->children() as $key => $child) {
             if ((int) $key === (int) $middle) {
