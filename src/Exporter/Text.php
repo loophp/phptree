@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace drupol\phptree\Exporter;
 
-use drupol\phptree\Node\ValueNodeInterface;
+use drupol\phptree\Node\NodeInterface;
 
 /**
  * Class Text
@@ -14,7 +14,7 @@ class Text implements ExporterInterface
     /**
      * {@inheritdoc}
      */
-    public function export(ValueNodeInterface $node): string
+    public function export(NodeInterface $node): string
     {
         $children = [];
         /** @var ValueNodeInterface $child */

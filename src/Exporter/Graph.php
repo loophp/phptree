@@ -61,7 +61,7 @@ class Graph implements ExporterInterface
     /**
      * {@inheritdoc}
      */
-    public function export(ValueNodeInterface $node): OriginalGraph
+    public function export(NodeInterface $node): OriginalGraph
     {
         foreach ($this->getTraverser()->traverse($node) as $node_visited) {
             /** @var int $vertexId */
@@ -95,9 +95,18 @@ class Graph implements ExporterInterface
         /** @var int $vertexId */
         $vertexId = $this->createVertexId($node);
 
-        return false === $this->getGraph()->hasVertex($vertexId) ?
-            $this->getGraph()->createVertex($vertexId):
-            $vertex = $this->getGraph()->getVertex($vertexId);
+        if (false === $this->getGraph()->hasVertex($vertexId)) {
+            $vertex = $this->getGraph()->createVertex($vertexId);
+
+            $label = NULL;
+            if (method_exists($node, 'getValue')) {
+                $label = $node->getValue();
+            }
+
+            $vertex->setAttribute('graphviz.label', $label);
+        }
+
+        return $this->getGraph()->getVertex($vertexId);
     }
 
     /**

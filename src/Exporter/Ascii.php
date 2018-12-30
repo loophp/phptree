@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace drupol\phptree\Exporter;
 
-use drupol\phptree\Node\ValueNodeInterface;
+use drupol\phptree\Node\NodeInterface;
 
 /**
  * Class Ascii
@@ -14,7 +14,7 @@ class Ascii implements ExporterInterface
     /**
      * {@inheritdoc}
      */
-    public function export(ValueNodeInterface $node): string
+    public function export(NodeInterface $node): string
     {
         $tree = new \RecursiveTreeIterator(
             new \RecursiveArrayIterator(
@@ -51,7 +51,7 @@ class Ascii implements ExporterInterface
      * @return array
      *   The tree exported into an array.
      */
-    private function doExportAsArray(ValueNodeInterface $node): array
+    private function doExportAsArray(NodeInterface $node): array
     {
         $children = [];
         /** @var ValueNodeInterface $child */

@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace drupol\phptree\Exporter;
 
-use drupol\phptree\Node\ValueNodeInterface;
+use drupol\phptree\Node\NodeInterface;
 
 /**
  * Class SimpleArray
@@ -14,7 +14,7 @@ class SimpleArray implements ExporterInterface
     /**
      * {@inheritdoc}
      */
-    public function export(ValueNodeInterface $node)
+    public function export(NodeInterface $node)
     {
         $children = [];
         /** @var ValueNodeInterface $child */
