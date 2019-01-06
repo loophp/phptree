@@ -22,12 +22,8 @@ class Reverse implements ModifierInterface
             $children->append($this->modify($child));
         }
 
-        $newTree = $tree->withChildren();
-
-        for ($i = $children->count()-1; $i >= 0; $i--) {
-            $newTree->add($children[$i]);
-        }
-
-        return $newTree;
+        return $tree->withChildren(...\array_reverse(
+            $children->getArrayCopy()
+        ));
     }
 }

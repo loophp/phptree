@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Traverser\BreadthFirst;
+use drupol\phptree\Traverser\PreOrder;
 use drupol\phptree\Traverser\TraverserInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
 use Fhaculty\Graph\Vertex;
@@ -38,7 +38,7 @@ class Graph implements ExporterInterface
     public function __construct(OriginalGraph $graph = null, TraverserInterface $traverser = null)
     {
         $this->graph = $graph ?? new OriginalGraph();
-        $this->traverser = $traverser ?? new BreadthFirst();
+        $this->traverser = $traverser ?? new PreOrder();
     }
 
     /**
