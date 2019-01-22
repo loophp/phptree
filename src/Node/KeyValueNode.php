@@ -5,24 +5,24 @@ declare(strict_types = 1);
 namespace drupol\phptree\Node;
 
 /**
- * Class KeyValueNode
+ * Class KeyValueNode.
  */
 class KeyValueNode extends ValueNode implements KeyValueNodeInterface
 {
     /**
      * The key property.
      *
-     * @var string|mixed|int|null
+     * @var null|int|mixed|string
      */
     private $key;
 
     /**
      * KeyValueNode constructor.
      *
-     * @param mixed|null $key
-     * @param mixed|null $value
+     * @param null|mixed $key
+     * @param null|mixed $value
      * @param int $capacity
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
+     * @param null|\drupol\phptree\Node\NodeInterface $parent
      */
     public function __construct($key = null, $value = null, int $capacity = 0, NodeInterface $parent = null)
     {

@@ -7,7 +7,7 @@ namespace drupol\phptree\Exporter;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Interface ExporterInterface
+ * Interface ExporterInterface.
  */
 interface ExporterInterface
 {
@@ -15,10 +15,10 @@ interface ExporterInterface
      * Export a node into something.
      *
      * @param NodeInterface $node
-     *   The node.
+     *   The node
      *
      * @return mixed
-     *   The node exported.
+     *   The node exported
      */
     public function export(NodeInterface $node);
 }

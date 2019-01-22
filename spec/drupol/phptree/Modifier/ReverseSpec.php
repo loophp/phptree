@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class ReverseSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(Reverse::class);
-    }
-
     public function it_can_reverse_a_tree()
     {
         $tree1 = new ValueNode('root');
@@ -38,5 +33,10 @@ class ReverseSpec extends ObjectBehavior
             ->modify($tree1)
             ->children()->current()->getValue()
             ->shouldReturn('E');
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(Reverse::class);
     }
 }

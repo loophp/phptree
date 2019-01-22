@@ -7,7 +7,7 @@ namespace drupol\phptree\Traverser;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Class BreadthFirst
+ * Class BreadthFirst.
  */
 class BreadthFirst implements TraverserInterface
 {
@@ -21,7 +21,7 @@ class BreadthFirst implements TraverserInterface
 
         yield $node;
 
-        while ($queue->count() > 0) {
+        while (0 < $queue->count()) {
             foreach ($queue->dequeue()->children() as $child) {
                 $queue->enqueue($child);
 

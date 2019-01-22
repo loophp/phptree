@@ -11,11 +11,6 @@ use PhpSpec\ObjectBehavior;
 
 class ValueGraphSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(ValueGraph::class);
-    }
-
     public function it_can_be_extended()
     {
         $tree = new ValueNode('root');
@@ -30,5 +25,10 @@ class ValueGraphSpec extends ObjectBehavior
             ->getVertex('root')
             ->getAttribute('value')
             ->shouldReturn('root');
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(ValueGraph::class);
     }
 }

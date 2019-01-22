@@ -8,7 +8,7 @@ use drupol\phptree\Node\Node;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Class SimpleArray
+ * Class SimpleArray.
  */
 class SimpleArray implements ImporterInterface
 {
@@ -26,7 +26,7 @@ class SimpleArray implements ImporterInterface
      * @param array $data
      *
      * @return \drupol\phptree\Node\NodeInterface
-     *   The tree.
+     *   The tree
      */
     protected function arrayToTree(array $data): NodeInterface
     {
@@ -47,10 +47,10 @@ class SimpleArray implements ImporterInterface
      * Create a node.
      *
      * @param mixed $data
-     *   The arguments.
+     *   The arguments
      *
      * @return \drupol\phptree\Node\NodeInterface
-     *   The node.
+     *   The node
      */
     protected function createNode($data): NodeInterface
     {

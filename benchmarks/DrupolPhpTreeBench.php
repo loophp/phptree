@@ -19,13 +19,6 @@ class DrupolPhpTreeBench extends AbstractBench
     private $tree;
 
     /**
-     * Init the object.
-     */
-    public function initObject()
-    {
-    }
-
-    /**
      * @Revs({1, 100, 1000})
      * @Iterations(5)
      * @Warmup(10)
@@ -37,5 +30,12 @@ class DrupolPhpTreeBench extends AbstractBench
         foreach ($this->getData() as $value) {
             $this->tree->add(new ValueNode($value, 2));
         }
+    }
+
+    /**
+     * Init the object.
+     */
+    public function initObject()
+    {
     }
 }

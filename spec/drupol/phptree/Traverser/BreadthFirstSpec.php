@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class BreadthFirstSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(BreadthFirst::class);
-    }
-
     public function it_can_traverse_a_tree()
     {
         $tree = new Node();
@@ -44,5 +39,10 @@ class BreadthFirstSpec extends ObjectBehavior
         $this
             ->traverse($tree)
             ->shouldYield(new \ArrayIterator($rootAndNodes));
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(BreadthFirst::class);
     }
 }

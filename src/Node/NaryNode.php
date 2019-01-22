@@ -30,29 +30,21 @@ class NaryNode extends Node
      * NaryNode constructor.
      *
      * @param int $capacity
-     *   The maximum children a node can have.
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
-     *   The parent.
-     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
-     *   The traverser.
+     *   The maximum children a node can have
+     * @param null|\drupol\phptree\Node\NodeInterface $parent
+     *   The parent
+     * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
+     *   The traverser
      */
     public function __construct(int $capacity = 0, NodeInterface $parent = null, TraverserInterface $traverser = null)
     {
         parent::__construct($parent);
 
-        $this->capacity = $capacity < 0 ?
-            0:
+        $this->capacity = 0 > $capacity ?
+            0 :
             $capacity;
 
         $this->traverser = $traverser ?? new BreadthFirst();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function capacity(): int
-    {
-        return $this->capacity;
     }
 
     /**
@@ -67,6 +59,14 @@ class NaryNode extends Node
         }
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function capacity(): int
+    {
+        return $this->capacity;
     }
 
     /**

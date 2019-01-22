@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class SimpleArraySpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(SimpleArray::class);
-    }
-
     public function it_can_import()
     {
         $array = [
@@ -41,6 +36,11 @@ class SimpleArraySpec extends ObjectBehavior
         $this
             ->import($array)
             ->isRoot()
-            ->shouldReturn(TRUE);
+            ->shouldReturn(true);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(SimpleArray::class);
     }
 }

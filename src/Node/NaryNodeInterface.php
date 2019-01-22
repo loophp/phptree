@@ -7,7 +7,7 @@ namespace drupol\phptree\Node;
 use drupol\phptree\Traverser\TraverserInterface;
 
 /**
- * Interface NaryNodeInterface
+ * Interface NaryNodeInterface.
  */
 interface NaryNodeInterface
 {
@@ -15,7 +15,7 @@ interface NaryNodeInterface
      * Get the node capacity.
      *
      * @return int
-     *   The node capacity.
+     *   The node capacity
      */
     public function capacity(): int;
 
@@ -23,7 +23,7 @@ interface NaryNodeInterface
      * Get the traverser in use.
      *
      * @return \drupol\phptree\Traverser\TraverserInterface
-     *   The traverser.
+     *   The traverser
      */
     public function getTraverser(): TraverserInterface;
 }

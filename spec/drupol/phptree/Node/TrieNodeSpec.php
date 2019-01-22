@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class TrieNodeSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(TrieNode::class);
-    }
-
     public function it_can_add_node()
     {
         $this->beConstructedWith('root', 'root');
@@ -44,5 +39,10 @@ class TrieNodeSpec extends ObjectBehavior
             ->add(...$nodes)
             ->count()
             ->shouldReturn(43);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(TrieNode::class);
     }
 }

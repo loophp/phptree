@@ -9,7 +9,7 @@ use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Vertex;
 
 /**
- * Class ValueGraph
+ * Class ValueGraph.
  */
 class ValueGraph extends Graph
 {

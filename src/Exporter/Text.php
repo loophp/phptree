@@ -8,7 +8,7 @@ use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNodeInterface;
 
 /**
- * Class Text
+ * Class Text.
  */
 class Text implements ExporterInterface
 {
@@ -28,7 +28,7 @@ class Text implements ExporterInterface
         }
 
         return [] === $children ?
-            \sprintf('[%s]', $node->getValue()):
+            \sprintf('[%s]', $node->getValue()) :
             \sprintf('[%s %s]', $node->getValue(), \implode(' ', $children));
     }
 }

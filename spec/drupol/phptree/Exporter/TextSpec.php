@@ -11,11 +11,6 @@ use PhpSpec\ObjectBehavior;
 
 class TextSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(Text::class);
-    }
-
     public function it_can_export_to_text()
     {
         $tree = new ValueNode('root', 2);
@@ -30,7 +25,7 @@ class TextSpec extends ObjectBehavior
         }
 
         $tree->add(...\array_values($nodes));
-        
+
         $this
             ->export($tree)
             ->shouldReturn('[root [A [C [G] [H]] [D [I] [J]]] [B [E] [F]]]');
@@ -49,5 +44,10 @@ class TextSpec extends ObjectBehavior
         $this
             ->shouldThrow(\InvalidArgumentException::class)
             ->during('export', [$tree]);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(Text::class);
     }
 }

@@ -11,11 +11,6 @@ use PhpSpec\ObjectBehavior;
 
 class SimpleArraySpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(SimpleArray::class);
-    }
-
     public function it_can_export_to_an_array()
     {
         $tree = new ValueNode('root', 2);
@@ -93,5 +88,10 @@ class SimpleArraySpec extends ObjectBehavior
         $this
             ->shouldThrow(\InvalidArgumentException::class)
             ->during('export', [$tree]);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(SimpleArray::class);
     }
 }

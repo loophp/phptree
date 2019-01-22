@@ -7,7 +7,7 @@ namespace drupol\phptree\Traverser;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Interface TraverserInterface
+ * Interface TraverserInterface.
  */
 interface TraverserInterface
 {
@@ -15,7 +15,7 @@ interface TraverserInterface
      * Traverse the tree.
      *
      * @param \drupol\phptree\Node\NodeInterface $node
-     *   The node.
+     *   The node
      *
      * @return \Traversable
      */

@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class NodeSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(Node::class);
-    }
-
     public function it_can_add(NodeInterface $node)
     {
         $node->setParent($this)->shouldBeCalledOnce();
@@ -23,107 +18,32 @@ class NodeSpec extends ObjectBehavior
             ->shouldReturn($this);
     }
 
-    public function it_can_remove()
-    {
-        $node1 = new Node();
-        $node2 = new Node();
-
-        $this
-            ->add($node1, $node2);
-
-        $this
-            ->remove($node2);
-
-        $this
-            ->remove($node1);
-
-        $this
-            ->count()
-            ->shouldReturn(0);
-    }
-
-    public function it_can_get_the_size()
-    {
-        $nodes = [];
-        $linearNodes = [];
-        foreach (\range('a', 'e') as $lowercaseValue) {
-            $node1 = new Node();
-            $linearNodes[] = $node1;
-
-            foreach (\range('A', 'E') as $uppercaseValue) {
-                $node2 = new Node();
-                $linearNodes[] = $node2;
-
-                $node1->add($node2);
-            }
-
-            $nodes[] = $node1;
-        }
-
-        $this->add(...$nodes);
-
-        $this
-            ->count()
-            ->shouldReturn(30);
-    }
-
-    public function it_can_get_and_set_the_parent(NodeInterface $parent)
-    {
-        $this
-            ->getParent()
-            ->shouldReturn(NULL);
-
-        $this
-            ->setParent($parent)
-            ->getParent()
-            ->shouldReturn($parent);
-    }
-
-    public function it_can_get_its_children()
-    {
-        $this
-            ->children()
-            ->shouldBeAnInstanceOf(\Generator::class);
-
-        $this
-            ->children()
-            ->shouldYield(new \ArrayIterator([]));
-
-        $node = new Node();
-
-        $this
-            ->add($node)
-            ->add($node)
-            ->children()
-            ->shouldYield(new \ArrayIterator([$node, $node]));
-    }
-
     public function it_can_check_if_its_a_leaf()
     {
         $this
             ->isLeaf()
-            ->shouldReturn(TRUE);
+            ->shouldReturn(true);
 
         $node = new Node();
 
         $this
             ->add($node)
             ->isLeaf()
-            ->shouldReturn(FALSE);
+            ->shouldReturn(false);
     }
 
-    public function it_has_a_degree()
+    public function it_can_check_if_node_is_root()
     {
         $this
-            ->degree()
-            ->shouldReturn(0);
+            ->isRoot()
+            ->shouldReturn(true);
 
         $node = new Node();
 
         $this
-            ->add($node)
-            ->degree()
-            ->shouldReturn(1);
+            ->setParent($node)
+            ->isRoot()
+            ->shouldReturn(false);
     }
 
     public function it_can_count_its_children()
@@ -140,18 +60,16 @@ class NodeSpec extends ObjectBehavior
             ->shouldReturn(1);
     }
 
-    public function it_can_check_if_node_is_root()
+    public function it_can_get_and_set_the_parent(NodeInterface $parent)
     {
         $this
-            ->isRoot()
-            ->shouldReturn(TRUE);
-
-        $node = new Node();
+            ->getParent()
+            ->shouldReturn(null);
 
         $this
-            ->setParent($node)
-            ->isRoot()
-            ->shouldReturn(FALSE);
+            ->setParent($parent)
+            ->getParent()
+            ->shouldReturn($parent);
     }
 
     public function it_can_get_its_ancestors()
@@ -171,40 +89,23 @@ class NodeSpec extends ObjectBehavior
             ->shouldYield(new \ArrayIterator([$level2, $level1, $root]));
     }
 
-    public function it_can_get_its_sibblings()
+    public function it_can_get_its_children()
     {
         $this
-            ->getSibblings()
-            ->shouldYield(new \ArrayIterator([]));
-
-        $node1 = new Node();
-        $node2 = new Node();
-        $node3 = new Node();
-
-        $node1->add($this->getWrappedObject(), $node2, $node3);
-
-        $this
-            ->getSibblings()
-            ->shouldYield(new \ArrayIterator([$node2, $node3]));
-    }
-
-    public function it_can_use_withChildren()
-    {
-        $this
-            ->withChildren()
-            ->shouldNotReturn($this);
-
-        $child = new Node();
-
-        $this
-            ->withChildren($child)
             ->children()
-            ->shouldYield(new \ArrayIterator([$child]));
+            ->shouldBeAnInstanceOf(\Generator::class);
 
         $this
-            ->withChildren()
             ->children()
             ->shouldYield(new \ArrayIterator([]));
+
+        $node = new Node();
+
+        $this
+            ->add($node)
+            ->add($node)
+            ->children()
+            ->shouldYield(new \ArrayIterator([$node, $node]));
     }
 
     public function it_can_get_its_depth()
@@ -266,5 +167,104 @@ class NodeSpec extends ObjectBehavior
             ->withChildren()
             ->height()
             ->shouldReturn(0);
+    }
+
+    public function it_can_get_its_sibblings()
+    {
+        $this
+            ->getSibblings()
+            ->shouldYield(new \ArrayIterator([]));
+
+        $node1 = new Node();
+        $node2 = new Node();
+        $node3 = new Node();
+
+        $node1->add($this->getWrappedObject(), $node2, $node3);
+
+        $this
+            ->getSibblings()
+            ->shouldYield(new \ArrayIterator([$node2, $node3]));
+    }
+
+    public function it_can_get_the_size()
+    {
+        $nodes = [];
+        $linearNodes = [];
+        foreach (\range('a', 'e') as $lowercaseValue) {
+            $node1 = new Node();
+            $linearNodes[] = $node1;
+
+            foreach (\range('A', 'E') as $uppercaseValue) {
+                $node2 = new Node();
+                $linearNodes[] = $node2;
+
+                $node1->add($node2);
+            }
+
+            $nodes[] = $node1;
+        }
+
+        $this->add(...$nodes);
+
+        $this
+            ->count()
+            ->shouldReturn(30);
+    }
+
+    public function it_can_remove()
+    {
+        $node1 = new Node();
+        $node2 = new Node();
+
+        $this
+            ->add($node1, $node2);
+
+        $this
+            ->remove($node2);
+
+        $this
+            ->remove($node1);
+
+        $this
+            ->count()
+            ->shouldReturn(0);
+    }
+
+    public function it_can_use_withChildren()
+    {
+        $this
+            ->withChildren()
+            ->shouldNotReturn($this);
+
+        $child = new Node();
+
+        $this
+            ->withChildren($child)
+            ->children()
+            ->shouldYield(new \ArrayIterator([$child]));
+
+        $this
+            ->withChildren()
+            ->children()
+            ->shouldYield(new \ArrayIterator([]));
+    }
+
+    public function it_has_a_degree()
+    {
+        $this
+            ->degree()
+            ->shouldReturn(0);
+
+        $node = new Node();
+
+        $this
+            ->add($node)
+            ->degree()
+            ->shouldReturn(1);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(Node::class);
     }
 }

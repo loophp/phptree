@@ -11,11 +11,6 @@ use PhpSpec\ObjectBehavior;
 
 class TextSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(Text::class);
-    }
-
     public function it_can_import()
     {
         $string = '[root [A [C [G] [H]] [D [I] [J]]] [B [E] [F]]]';
@@ -41,7 +36,7 @@ class TextSpec extends ObjectBehavior
         $this
             ->import($string)
             ->isRoot()
-            ->shouldReturn(TRUE);
+            ->shouldReturn(true);
 
         $this
             ->import($string)
@@ -56,5 +51,10 @@ class TextSpec extends ObjectBehavior
         $this
             ->shouldThrow(\InvalidArgumentException::class)
             ->during('import', [$string]);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(Text::class);
     }
 }

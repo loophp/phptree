@@ -8,7 +8,7 @@ use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNode;
 
 /**
- * Class Text
+ * Class Text.
  */
 class Text extends SimpleArray
 {
@@ -30,10 +30,10 @@ class Text extends SimpleArray
      * Create a node.
      *
      * @param mixed $arguments
-     *   The arguments.
+     *   The arguments
      *
      * @return \drupol\phptree\Node\Node
-     *   The node.
+     *   The node
      */
     protected function createNode($arguments): NodeInterface
     {
@@ -44,10 +44,10 @@ class Text extends SimpleArray
      * Parse a string into an array.
      *
      * @param string $subject
-     *   The subject string.
+     *   The subject string
      *
      * @return array|bool
-     *   The array.
+     *   The array
      */
     private function parse(string $subject)
     {

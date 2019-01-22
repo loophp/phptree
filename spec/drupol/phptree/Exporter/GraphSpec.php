@@ -11,11 +11,6 @@ use PhpSpec\ObjectBehavior;
 
 class GraphSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(Graph::class);
-    }
-
     public function it_can_generate_a_graph()
     {
         $root = new ValueNode('root');
@@ -43,7 +38,7 @@ class GraphSpec extends ObjectBehavior
 
         $nodes = \iterator_to_array($traverser->traverse($root));
 
-        for ($i = 0; $i < \count($nodes) - 1; $i++) {
+        for ($i = 0; \count($nodes) - 1 > $i; ++$i) {
             $node0 = $nodes[0];
             $node1 = $nodes[$i + 1];
 
@@ -52,7 +47,7 @@ class GraphSpec extends ObjectBehavior
                 ->getVertices()
                 ->getVertexId(\spl_object_hash($node0))
                 ->hasEdgeTo($this->getGraph()->getVertices()->getVertexId(\spl_object_hash($node1)))
-                ->shouldReturn(TRUE);
+                ->shouldReturn(true);
         }
     }
 
@@ -71,5 +66,10 @@ class GraphSpec extends ObjectBehavior
         $this
             ->getTraverser()
             ->shouldReturn($traverser);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(Graph::class);
     }
 }

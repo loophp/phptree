@@ -8,7 +8,7 @@ use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNodeInterface;
 
 /**
- * Class Ascii
+ * Class Ascii.
  */
 class Ascii implements ExporterInterface
 {
@@ -37,7 +37,7 @@ class Ascii implements ExporterInterface
 
         foreach ($tree as $value) {
             $entry = ('Array' === $entry = $tree->getEntry()) ?
-                    '┐':
+                    '┐' :
                     ' ' . $entry;
 
             $output .= $tree->getPrefix() . $entry . $tree->getPostfix() . PHP_EOL;
@@ -50,10 +50,10 @@ class Ascii implements ExporterInterface
      * Export the tree in an array.
      *
      * @param \drupol\phptree\Node\NodeInterface $node
-     *   The node.
+     *   The node
      *
      * @return array
-     *   The tree exported into an array.
+     *   The tree exported into an array
      */
     private function doExportAsArray(NodeInterface $node): array
     {
@@ -68,7 +68,7 @@ class Ascii implements ExporterInterface
         }
 
         return [] === $children ?
-            [$node->getValue()]:
+            [$node->getValue()] :
             [$node->getValue(), $children];
     }
 }

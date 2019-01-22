@@ -8,7 +8,7 @@ use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Vertex;
 
 /**
- * Class KeyValueGraph
+ * Class KeyValueGraph.
  */
 class KeyValueGraph extends ValueGraph
 {
