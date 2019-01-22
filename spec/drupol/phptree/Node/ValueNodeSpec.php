@@ -9,13 +9,6 @@ use PhpSpec\ObjectBehavior;
 
 class ValueNodeSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(ValueNode::class);
-
-        $this->children()->shouldYield(new \ArrayIterator([]));
-    }
-
     public function it_can_be_set_with_a_value()
     {
         $this
@@ -24,5 +17,12 @@ class ValueNodeSpec extends ObjectBehavior
         $this
             ->getValue()
             ->shouldReturn('root');
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(ValueNode::class);
+
+        $this->children()->shouldYield(new \ArrayIterator([]));
     }
 }

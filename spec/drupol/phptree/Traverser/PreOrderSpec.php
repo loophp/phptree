@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class PreOrderSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(PreOrder::class);
-    }
-
     public function it_can_traverse_a_tree()
     {
         $tree = new Node();
@@ -33,5 +28,10 @@ class PreOrderSpec extends ObjectBehavior
         $this
             ->traverse($tree)
             ->shouldYield(new \ArrayIterator($rootAndNodes));
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(PreOrder::class);
     }
 }

@@ -7,7 +7,7 @@ namespace drupol\phptree\Modifier;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Class Reverse
+ * Class Reverse.
  */
 class Reverse implements ModifierInterface
 {
@@ -17,7 +17,7 @@ class Reverse implements ModifierInterface
     public function modify(NodeInterface $tree): NodeInterface
     {
         $children = new \ArrayObject();
-        
+
         foreach ($tree->children() as $child) {
             $children->append($this->modify($child));
         }

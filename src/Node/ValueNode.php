@@ -5,23 +5,23 @@ declare(strict_types = 1);
 namespace drupol\phptree\Node;
 
 /**
- * Class ValueNode
+ * Class ValueNode.
  */
 class ValueNode extends NaryNode implements ValueNodeInterface
 {
     /**
      * The value property.
      *
-     * @var string|mixed|null
+     * @var null|mixed|string
      */
     private $value;
 
     /**
      * ValueNode constructor.
      *
-     * @param mixed|null $value
+     * @param null|mixed $value
      * @param int $capacity
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
+     * @param null|\drupol\phptree\Node\NodeInterface $parent
      */
     public function __construct($value = null, int $capacity = 0, NodeInterface $parent = null)
     {

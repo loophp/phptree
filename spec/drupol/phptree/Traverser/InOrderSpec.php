@@ -10,11 +10,6 @@ use PhpSpec\ObjectBehavior;
 
 class InOrderSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(InOrder::class);
-    }
-
     public function it_can_traverse_a_tree_of_degree2()
     {
         $tree = new ValueNode('root', 2);
@@ -84,5 +79,10 @@ class InOrderSpec extends ObjectBehavior
         $this
             ->traverse($tree)
             ->shouldYield(new \ArrayIterator($nodes));
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(InOrder::class);
     }
 }

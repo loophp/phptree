@@ -7,7 +7,7 @@ namespace drupol\phptree\Traverser;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Class PostOrder
+ * Class PostOrder.
  */
 class PostOrder implements TraverserInterface
 {
@@ -33,7 +33,7 @@ class PostOrder implements TraverserInterface
     {
         foreach ($node->children() as $child) {
             yield from $this->doTraverse($child);
-            $this->index++;
+            ++$this->index;
         }
 
         yield $this->index => $node;

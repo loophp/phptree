@@ -9,9 +9,19 @@ use PhpSpec\ObjectBehavior;
 
 class NaryNodeSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
+    public function it_can_be_counted()
     {
-        $this->shouldHaveType(NaryNode::class);
+        $this->beConstructedWith(2);
+
+        foreach (\range('A', 'Z') as $value) {
+            $node = new NaryNode(2);
+
+            $this->add($node);
+        }
+
+        $this
+            ->count()
+            ->shouldReturn(26);
     }
 
     public function it_can_get_the_capacity()
@@ -39,18 +49,8 @@ class NaryNodeSpec extends ObjectBehavior
             ->shouldReturn(0);
     }
 
-    public function it_can_be_counted()
+    public function it_is_initializable()
     {
-        $this->beConstructedWith(2);
-
-        foreach (\range('A', 'Z') as $value) {
-            $node = new NaryNode(2);
-
-            $this->add($node);
-        }
-
-        $this
-            ->count()
-            ->shouldReturn(26);
+        $this->shouldHaveType(NaryNode::class);
     }
 }

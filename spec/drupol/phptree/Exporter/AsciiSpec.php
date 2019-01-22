@@ -11,11 +11,6 @@ use PhpSpec\ObjectBehavior;
 
 class AsciiSpec extends ObjectBehavior
 {
-    public function it_is_initializable()
-    {
-        $this->shouldHaveType(Ascii::class);
-    }
-
     public function it_can_export_to_ascii()
     {
         $tree = new ValueNode('root', 2);
@@ -26,7 +21,7 @@ class AsciiSpec extends ObjectBehavior
 
         $tree->add(...\array_values($nodes));
 
-        $expected = <<<EOF
+        $expected = <<<'EOF'
 ├─ root
 └─┐
   ├─┐
@@ -114,5 +109,10 @@ EOF;
         $this
             ->shouldThrow(\InvalidArgumentException::class)
             ->during('export', [$tree]);
+    }
+
+    public function it_is_initializable()
+    {
+        $this->shouldHaveType(Ascii::class);
     }
 }

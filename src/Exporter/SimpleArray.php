@@ -8,7 +8,7 @@ use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNodeInterface;
 
 /**
- * Class SimpleArray
+ * Class SimpleArray.
  */
 class SimpleArray implements ExporterInterface
 {
@@ -28,7 +28,7 @@ class SimpleArray implements ExporterInterface
         }
 
         return [] === $children ?
-            ['value' => $node->getValue()]:
+            ['value' => $node->getValue()] :
             ['value' => $node->getValue(), 'children' => $children];
     }
 }

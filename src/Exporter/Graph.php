@@ -11,7 +11,7 @@ use Fhaculty\Graph\Graph as OriginalGraph;
 use Fhaculty\Graph\Vertex;
 
 /**
- * Class Graph
+ * Class Graph.
  */
 class Graph implements ExporterInterface
 {
@@ -33,28 +33,12 @@ class Graph implements ExporterInterface
      * Graph constructor.
      *
      * @param \Fhaculty\Graph\Graph $graph
-     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
+     * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
      */
     public function __construct(OriginalGraph $graph = null, TraverserInterface $traverser = null)
     {
         $this->graph = $graph ?? new OriginalGraph();
         $this->traverser = $traverser ?? new PreOrder();
-    }
-
-    /**
-     * @return \Fhaculty\Graph\Graph
-     */
-    public function getGraph(): OriginalGraph
-    {
-        return $this->graph;
-    }
-
-    /**
-     * @return \drupol\phptree\Traverser\TraverserInterface
-     */
-    public function getTraverser(): TraverserInterface
-    {
-        return $this->traverser;
     }
 
     /**
@@ -81,13 +65,29 @@ class Graph implements ExporterInterface
     }
 
     /**
+     * @return \Fhaculty\Graph\Graph
+     */
+    public function getGraph(): OriginalGraph
+    {
+        return $this->graph;
+    }
+
+    /**
+     * @return \drupol\phptree\Traverser\TraverserInterface
+     */
+    public function getTraverser(): TraverserInterface
+    {
+        return $this->traverser;
+    }
+
+    /**
      * Create a vertex.
      *
      * @param \drupol\phptree\Node\NodeInterface $node
-     *   The node.
+     *   The node
      *
      * @return \Fhaculty\Graph\Vertex
-     *   A vertex.
+     *   A vertex
      */
     protected function createVertex(NodeInterface $node): Vertex
     {
@@ -112,10 +112,10 @@ class Graph implements ExporterInterface
      * Create a vertex ID.
      *
      * @param \drupol\phptree\Node\NodeInterface $node
-     *   The node.
+     *   The node
      *
-     * @return int|null|string
-     *   A vertex ID.
+     * @return null|int|string
+     *   A vertex ID
      */
     protected function createVertexId(NodeInterface $node)
     {

@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace drupol\phptree\Node;
 
 /**
- * Class TrieNode
+ * Class TrieNode.
  */
 class TrieNode extends KeyValueNode
 {
@@ -23,7 +23,7 @@ class TrieNode extends KeyValueNode
             $parent = $this->append($node);
 
             $dataWithoutFirstLetter = \substr($data, 1);
-            if ($dataWithoutFirstLetter > '') {
+            if ('' < $dataWithoutFirstLetter) {
                 $parent->add(new TrieNode($hash, $dataWithoutFirstLetter));
             } else {
                 $nodes = [$node->getValue()];
