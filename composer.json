@@ -4,8 +4,6 @@
     "description": "An implementation of tree data structure",
     "keywords": ["tree", "php"],
     "license": "MIT",
-    "prefer-stable": true,
-    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Pol Dellaiera",
@@ -17,9 +15,9 @@
     },
     "require-dev":{
         "drupol/php-conventions": "^1",
-        "graphp/graphviz": "^0.2.1",
-        "php-http/guzzle6-adapter": "^1.1",
-        "scrutinizer/ocular": "^1.3"
+        "graphp/graphviz": "^0.2",
+        "php-http/guzzle6-adapter": "^2",
+        "scrutinizer/ocular": "^1"
     },
     "autoload": {
         "psr-4": {
