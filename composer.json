@@ -16,8 +16,9 @@
     "require-dev":{
         "drupol/php-conventions": "^1",
         "graphp/graphviz": "^0.2",
-        "php-http/guzzle6-adapter": "^2",
-        "scrutinizer/ocular": "^1"
+        "scrutinizer/ocular": "^1",
+        "apigen/apigen": "dev-master",
+        "roave/better-reflection": "dev-master#c87d856"
     },
     "autoload": {
         "psr-4": {
