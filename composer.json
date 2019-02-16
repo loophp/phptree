@@ -2,7 +2,10 @@
     "name": "drupol/phptree",
     "type": "library",
     "description": "An implementation of tree data structure",
-    "keywords": ["tree", "php"],
+    "keywords": [
+        "tree",
+        "php"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -13,12 +16,20 @@
     "require": {
         "php": ">=7.1"
     },
-    "require-dev":{
+    "require-dev": {
+        "apigen/apigen": "dev-master",
         "drupol/php-conventions": "^1",
         "graphp/graphviz": "^0.2",
-        "scrutinizer/ocular": "^1",
-        "apigen/apigen": "dev-master",
-        "roave/better-reflection": "dev-master#c87d856"
+        "roave/better-reflection": "dev-master#c87d856",
+        "scrutinizer/ocular": "^1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/drupol/php-conventions/config/php7/grumphp.yml"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -31,15 +42,10 @@
             "drupol\\phptree\\benchmarks\\": "benchmarks/"
         }
     },
-    "config": {
-        "sort-packages": true
-    },
     "scripts": {
         "apigen": "./vendor/bin/apigen generate src --destination build/docs",
-        "phpspec": "./vendor/bin/phpspec run",
+        "bench": "./vendor/bin/phpbench run --report=aggregate --store --precision=3",
         "grumphp": "./vendor/bin/grumphp run",
-        "phpcs": "./vendor/bin/phpcs --ignore=vendor .",
-        "phpcbf": "./vendor/bin/phpcbf --ignore=vendor .",
         "infection": "./vendor/bin/infection run -j 10",
         "scrutinizer": "./vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml",
         "bench": "./vendor/bin/phpbench run --report=aggregate --store --precision=3"
