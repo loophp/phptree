@@ -47,12 +47,6 @@
         "bench": "./vendor/bin/phpbench run --report=aggregate --store --precision=3",
         "grumphp": "./vendor/bin/grumphp run",
         "infection": "./vendor/bin/infection run -j 10",
-        "scrutinizer": "./vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml",
-        "bench": "./vendor/bin/phpbench run --report=aggregate --store --precision=3"
-    },
-    "extra": {
-        "grumphp": {
-            "config-default-path": "vendor/drupol/php-conventions/config/php7/grumphp.yml"
-        }
+        "scrutinizer": "./vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml"
     }
 }
