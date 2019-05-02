@@ -14,9 +14,7 @@ class NaryNodeSpec extends ObjectBehavior
         $this->beConstructedWith(2);
 
         foreach (\range('A', 'Z') as $value) {
-            $node = new NaryNode(2);
-
-            $this->add($node);
+            $this->add(new NaryNode(2));
         }
 
         $this

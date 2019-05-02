@@ -6,6 +6,7 @@ namespace spec\drupol\phptree\Node;
 
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\NodeInterface;
+use drupol\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;
 
 class NodeSpec extends ObjectBehavior
@@ -114,7 +115,7 @@ class NodeSpec extends ObjectBehavior
             ->depth()
             ->shouldReturn(0);
 
-        $tree = new \drupol\phptree\Node\ValueNode('root', 2);
+        $tree = new ValueNode('root', 2);
 
         $tree->add($this->getWrappedObject());
 
@@ -124,16 +125,14 @@ class NodeSpec extends ObjectBehavior
 
         $nodes = [];
         foreach (\range('A', 'Z') as $v) {
-            $nodes[] = new \drupol\phptree\Node\ValueNode($v, 2);
+            $nodes[] = new ValueNode($v, 2);
         }
 
         $tree->add(...$nodes);
 
-        $tree->add($this->getWrappedObject());
-
         $this
             ->depth()
-            ->shouldReturn(4);
+            ->shouldReturn(1);
     }
 
     public function it_can_get_its_height()
@@ -144,7 +143,7 @@ class NodeSpec extends ObjectBehavior
 
         $tree = $this;
         foreach (\range('A', 'B') as $key => $v) {
-            $node = new \drupol\phptree\Node\ValueNode($v, 1);
+            $node = new ValueNode($v, 1);
             $tree->add($node);
             $tree = $node;
         }
@@ -154,7 +153,7 @@ class NodeSpec extends ObjectBehavior
             ->shouldReturn(2);
 
         foreach (\range('C', 'F') as $key => $v) {
-            $node = new \drupol\phptree\Node\ValueNode($v, 1);
+            $node = new ValueNode($v, 1);
             $tree->add($node);
             $tree = $node;
         }

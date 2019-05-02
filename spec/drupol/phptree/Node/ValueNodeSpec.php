@@ -21,6 +21,9 @@ class ValueNodeSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
+        $this
+            ->beConstructedWith('root');
+
         $this->shouldHaveType(ValueNode::class);
 
         $this->children()->shouldYield(new \ArrayIterator([]));

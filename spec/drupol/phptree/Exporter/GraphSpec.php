@@ -13,15 +13,15 @@ class GraphSpec extends ObjectBehavior
 {
     public function it_can_generate_a_graph()
     {
-        $root = new ValueNode('root');
-        $child1 = new ValueNode();
-        $child2 = new ValueNode();
-        $child3 = new ValueNode();
-        $root
+        $tree = new ValueNode('root');
+        $child1 = new ValueNode('child1');
+        $child2 = new ValueNode('child2');
+        $child3 = new ValueNode('child3');
+        $tree
             ->add($child1, $child2, $child3);
 
         $this
-            ->export($root)
+            ->export($tree)
             ->shouldReturnAnInstanceOf(\Fhaculty\Graph\Graph::class);
 
         $this
@@ -36,7 +36,7 @@ class GraphSpec extends ObjectBehavior
 
         $traverser = new BreadthFirst();
 
-        $nodes = \iterator_to_array($traverser->traverse($root));
+        $nodes = \iterator_to_array($traverser->traverse($tree));
 
         for ($i = 0; \count($nodes) - 1 > $i; ++$i) {
             $node0 = $nodes[0];
