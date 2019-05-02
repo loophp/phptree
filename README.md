@@ -1,5 +1,6 @@
 [![Latest Stable Version](https://poser.pugx.org/drupol/phptree/v/stable)](https://packagist.org/packages/drupol/phptree)
  [![Total Downloads](https://poser.pugx.org/drupol/phptree/downloads)](https://packagist.org/packages/drupol/phptree)
+ [![GitHub stars](https://img.shields.io/github/stars/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
  [![Build Status](https://travis-ci.org/drupol/phptree.svg?branch=master)](https://travis-ci.org/drupol/phptree)
  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/drupol/phptree/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
  [![Code Coverage](https://scrutinizer-ci.com/g/drupol/phptree/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
@@ -19,7 +20,7 @@ A PHP implementation of tree data structure.
 * **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
 * **Trie node**: extends the KeyValue node, a simple [Trie tree](https://en.wikipedia.org/wiki/Trie).
 
-[4 trees traversals algorithm](https://en.wikipedia.org/wiki/Tree_traversal):
+[4 trees traversal algorithms](https://en.wikipedia.org/wiki/Tree_traversal):
 * In order
 * Post order
 * Pre order
