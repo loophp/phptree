@@ -9,7 +9,7 @@ use drupol\phptree\Traverser\TraverserInterface;
 /**
  * Interface NaryNodeInterface.
  */
-interface NaryNodeInterface
+interface NaryNodeInterface extends NodeInterface
 {
     /**
      * Get the node capacity.

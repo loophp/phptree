@@ -7,7 +7,7 @@ namespace drupol\phptree\Node;
 /**
  * Interface ValueNodeInterface.
  */
-interface ValueNodeInterface extends NodeInterface
+interface ValueNodeInterface extends NaryNodeInterface
 {
     /**
      * Get the value property.
