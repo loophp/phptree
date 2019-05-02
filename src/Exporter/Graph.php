@@ -57,6 +57,7 @@ class Graph implements ExporterInterface
 
             /** @var int $hash_parent */
             $hash_parent = $this->createVertexId($parent);
+            $this->createVertex($parent);
 
             $this->getGraph()->getVertex($hash_parent)->createEdgeTo($this->getGraph()->getVertex($vertexId));
         }
