@@ -4,7 +4,9 @@
     "description": "An implementation of tree data structure",
     "keywords": [
         "tree",
-        "php"
+        "php",
+        "data structure",
+        "binary tree"
     ],
     "license": "MIT",
     "authors": [
@@ -17,13 +19,19 @@
         "php": ">=7.1"
     },
     "require-dev": {
-        "apigen/apigen": "dev-master",
         "drupol/php-conventions": "^1",
+        "drupol/phpspec-annotation": "^1",
         "graphp/graphviz": "^0.2",
-        "roave/better-reflection": "dev-master#c87d856",
+        "infection/infection": "^0.12",
+        "leanphp/phpspec-code-coverage": "^4",
+        "phpbench/phpbench": "^0.16",
+        "phpspec/phpspec": "^4",
         "scrutinizer/ocular": "^1"
     },
     "config": {
+        "platform": {
+            "php": "7.1.28"
+        },
         "sort-packages": true
     },
     "extra": {
