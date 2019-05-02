@@ -10,7 +10,7 @@ use drupol\phptree\Traverser\TraverserInterface;
 /**
  * Class NaryNode.
  */
-class NaryNode extends Node
+class NaryNode extends Node implements NaryNodeInterface
 {
     /**
      * The capacity of a node, the maximum children a node can have.
@@ -53,9 +53,25 @@ class NaryNode extends Node
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
-            /** @var \drupol\phptree\Node\Node $parent */
-            $parent = $this->findFirstAvailableNode();
-            $parent->storage['children'][] = $node->setParent($parent);
+            if (0 === $this->capacity() || ($this->degree() < $this->capacity())) {
+                parent::add($node);
+
+                continue;
+            }
+
+            foreach ($this->traverser->traverse($this) as $candidate) {
+                if (!($candidate instanceof NaryNodeInterface)) {
+                    continue;
+                }
+
+                if ($candidate->degree() >= $candidate->capacity()) {
+                    continue;
+                }
+
+                $candidate->add($node);
+
+                break;
+            }
         }
 
         return $this;
@@ -72,32 +88,8 @@ class NaryNode extends Node
     /**
      * {@inheritdoc}
      */
-    public function getTraverser()
+    public function getTraverser(): TraverserInterface
     {
         return $this->traverser;
-    }
-
-    /**
-     * Find first node in the tree that could have a new children.
-     *
-     * @return \drupol\phptree\Node\NodeInterface
-     */
-    private function findFirstAvailableNode(): NodeInterface
-    {
-        $capacity = $this->capacity();
-
-        foreach ($this->getTraverser()->traverse($this) as $node) {
-            if (\method_exists($node, 'capacity')) {
-                $capacity = $node->capacity();
-            }
-
-            if ($node->degree() >= $capacity) {
-                continue;
-            }
-
-            return $node;
-        }
-
-        return $this;
     }
 }
