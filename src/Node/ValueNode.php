@@ -23,7 +23,7 @@ class ValueNode extends NaryNode implements ValueNodeInterface
      * @param int $capacity
      * @param null|\drupol\phptree\Node\NodeInterface $parent
      */
-    public function __construct($value = null, int $capacity = 0, NodeInterface $parent = null)
+    public function __construct($value, int $capacity = 0, NodeInterface $parent = null)
     {
         parent::__construct($capacity, $parent);
 
