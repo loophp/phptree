@@ -37,7 +37,7 @@ Modifier:
 
 API documentation is automatically generated with [APIGen](https://github.com/ApiGen/ApiGen) and available at [this address](https://not-a-number.io/phptree/).
 
-Blog post: https://not-a-number.io/2018/phptree-a-fast-tree-implementation
+Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](https://not-a-number.io/2018/phptree-a-fast-tree-implementation)
 
 ## Requirements
 
