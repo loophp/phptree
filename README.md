@@ -1,6 +1,6 @@
-[![Latest Stable Version](https://poser.pugx.org/drupol/phptree/v/stable)](https://packagist.org/packages/drupol/phptree)
- [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
+[![Latest Stable Version](https://img.shields.io/packagist/v/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
  [![GitHub stars](https://img.shields.io/github/stars/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
+ [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
  [![Build Status](https://img.shields.io/travis/drupol/phptree/master.svg?style=flat-square)](https://travis-ci.org/drupol/phptree)
  [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
  [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
