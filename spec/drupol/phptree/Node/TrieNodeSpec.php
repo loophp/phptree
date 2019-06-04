@@ -6,9 +6,8 @@ namespace spec\drupol\phptree\Node;
 
 use drupol\phptree\Node\KeyValueNode;
 use drupol\phptree\Node\TrieNode;
-use PhpSpec\ObjectBehavior;
 
-class TrieNodeSpec extends ObjectBehavior
+class TrieNodeSpec extends NodeObjectBehavior
 {
     public function it_can_add_node()
     {

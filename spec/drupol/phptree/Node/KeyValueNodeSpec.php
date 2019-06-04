@@ -5,9 +5,8 @@ declare(strict_types = 1);
 namespace spec\drupol\phptree\Node;
 
 use drupol\phptree\Node\KeyValueNode;
-use PhpSpec\ObjectBehavior;
 
-class KeyValueNodeSpec extends ObjectBehavior
+class KeyValueNodeSpec extends NodeObjectBehavior
 {
     public function it_can_be_set_with_a_key_and_value()
     {

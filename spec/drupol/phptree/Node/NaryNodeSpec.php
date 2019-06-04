@@ -5,21 +5,27 @@ declare(strict_types = 1);
 namespace spec\drupol\phptree\Node;
 
 use drupol\phptree\Node\NaryNode;
-use PhpSpec\ObjectBehavior;
+use drupol\phptree\Node\ValueNode;
+use drupol\phptree\Traverser\TraverserInterface;
 
-class NaryNodeSpec extends ObjectBehavior
+class NaryNodeSpec extends NodeObjectBehavior
 {
     public function it_can_be_counted()
     {
         $this->beConstructedWith(2);
 
         foreach (\range('A', 'Z') as $value) {
-            $this->add(new NaryNode(2));
+            $this->add(new ValueNode($value, 3));
         }
 
         $this
             ->count()
             ->shouldReturn(26);
+    }
+
+    public function it_can_get_its_traverser()
+    {
+        $this->getTraverser()->shouldBeAnInstanceOf(TraverserInterface::class);
     }
 
     public function it_can_get_the_capacity()

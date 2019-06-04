@@ -47,7 +47,8 @@
     "autoload-dev": {
         "psr-4": {
             "drupol\\phptree\\tests\\": "tests/src/",
-            "drupol\\phptree\\benchmarks\\": "benchmarks/"
+            "drupol\\phptree\\benchmarks\\": "benchmarks/",
+            "spec\\drupol\\phptree\\": "spec/drupol/phptree/"
         }
     },
     "scripts": {

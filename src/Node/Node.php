@@ -155,6 +155,43 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function offsetExists($offset)
+    {
+        return $this->storage['children']->offsetExists($offset);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetGet($offset)
+    {
+        return $this->storage['children']->offsetGet($offset);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetSet($offset, $value)
+    {
+        if (!($value instanceof NodeInterface)) {
+            throw new \InvalidArgumentException('The value must implements NodeInterface.');
+        }
+
+        $this->storage['children']
+            ->offsetSet($offset, $value->setParent($this));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetUnset($offset)
+    {
+        $this->storage['children']->offsetUnset($offset);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function remove(NodeInterface ...$nodes): NodeInterface
     {
         $this->storage['children'] = new \ArrayObject(

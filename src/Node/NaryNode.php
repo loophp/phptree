@@ -53,7 +53,9 @@ class NaryNode extends Node implements NaryNodeInterface
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
-            if (0 === $this->capacity() || ($this->degree() < $this->capacity())) {
+            $capacity = $this->capacity();
+
+            if (0 === $capacity || ($this->degree() < $capacity)) {
                 parent::add($node);
 
                 continue;
@@ -91,5 +93,21 @@ class NaryNode extends Node implements NaryNodeInterface
     public function getTraverser(): TraverserInterface
     {
         return $this->traverser;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function offsetSet($offset, $value)
+    {
+        if (null === $offset) {
+            $this->add($value);
+        } else {
+            if ($this->capacity() - 1 < $offset) {
+                throw new \OutOfBoundsException('The offset is out of range.');
+            }
+
+            parent::offsetSet($offset, $value);
+        }
     }
 }

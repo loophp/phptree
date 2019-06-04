@@ -7,9 +7,8 @@ namespace spec\drupol\phptree\Node;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNode;
-use PhpSpec\ObjectBehavior;
 
-class NodeSpec extends ObjectBehavior
+class NodeSpec extends NodeObjectBehavior
 {
     public function it_can_add(NodeInterface $node)
     {
@@ -214,6 +213,7 @@ class NodeSpec extends ObjectBehavior
     {
         $node1 = new Node();
         $node2 = new Node();
+        $node3 = new Node();
 
         $this
             ->add($node1, $node2);
@@ -222,7 +222,14 @@ class NodeSpec extends ObjectBehavior
             ->remove($node2);
 
         $this
+            ->count()
+            ->shouldReturn(1);
+
+        $this
             ->remove($node1);
+
+        $this
+            ->remove($node3);
 
         $this
             ->count()
