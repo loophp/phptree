@@ -1,0 +1,9 @@
+imports:
+  - { resource: vendor/drupol/php-conventions/config/php7/grumphp.yml }
+
+parameters:
+  extensions:
+    - drupol\PhpConventions\GrumphpTasksExtension
+  extra_tasks:
+    phpspec:
+      verbose: true

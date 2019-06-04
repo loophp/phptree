@@ -34,11 +34,6 @@
         },
         "sort-packages": true
     },
-    "extra": {
-        "grumphp": {
-            "config-default-path": "vendor/drupol/php-conventions/config/php7/grumphp.yml"
-        }
-    },
     "autoload": {
         "psr-4": {
             "drupol\\phptree\\": "src/"
