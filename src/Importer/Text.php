@@ -55,7 +55,11 @@ class Text extends SimpleArray
 
         \preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)\]~', $subject, $matches);
 
-        foreach (\array_filter($matches['nested']) as $match) {
+        if (null === $matches = \array_filter($matches['nested'])) {
+            $matches = [];
+        }
+
+        foreach ($matches as $match) {
             $item = [];
             $position = \strpos($match, '[');
 

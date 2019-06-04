@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace spec\drupol\phptree\Node;
 
-use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
 
 class ValueNodeSpec extends NodeObjectBehavior
@@ -76,20 +75,6 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->shouldHaveSameGraph($tree);
     }
 
-    public function it_is_initializable()
-    {
-        $this
-            ->beConstructedWith('root');
-
-        $this->shouldHaveType(ValueNode::class);
-
-        $this->children()->shouldYield(new \ArrayIterator([]));
-
-        $export = '[root]';
-        $this->shouldHaveSameTextExport($export);
-    }
-
-
     public function it_can_remove()
     {
         $this
@@ -103,7 +88,6 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->add($node1, $node2);
 
         $this->shouldHaveSameTextExport('[root [A] [B]]');
-
 
         $this
             ->remove($node2);
@@ -125,4 +109,16 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->shouldReturn(0);
     }
 
+    public function it_is_initializable()
+    {
+        $this
+            ->beConstructedWith('root');
+
+        $this->shouldHaveType(ValueNode::class);
+
+        $this->children()->shouldYield(new \ArrayIterator([]));
+
+        $export = '[root]';
+        $this->shouldHaveSameTextExport($export);
+    }
 }
