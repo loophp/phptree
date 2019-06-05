@@ -269,6 +269,18 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(1);
     }
 
+    public function it_is_a_traversable()
+    {
+        $node1 = new Node();
+        $node2 = new Node();
+        $node3 = new Node();
+
+        $this
+            ->add($node1, $node2, $node3);
+
+        $this->shouldIterateLike($this->children());
+    }
+
     public function it_is_initializable()
     {
         $this->shouldHaveType(Node::class);

@@ -5,7 +5,10 @@ declare(strict_types = 1);
 namespace spec\drupol\phptree\Node;
 
 use drupol\phptree\Node\NaryNode;
+use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
+use drupol\phptree\Traverser\BreadthFirst;
+use drupol\phptree\Traverser\PreOrder;
 use drupol\phptree\Traverser\TraverserInterface;
 
 class NaryNodeSpec extends NodeObjectBehavior
@@ -44,6 +47,25 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->shouldReturn(3);
     }
 
+    public function it_can_have_children()
+    {
+        $this->beConstructedWith(2);
+
+        $child1 = new Node();
+        $child2 = new NaryNode(2);
+        $child3 = new Node();
+        $child4 = new Node();
+        $child5 = new Node();
+        $child6 = new Node();
+        $child7 = new Node();
+
+        $this
+            ->add($child1, $child2, $child3, $child4, $child5, $child6, $child7);
+
+        $this->degree()->shouldReturn(2);
+        $this->count()->shouldReturn(4);
+    }
+
     public function it_can_throw_an_error_when_capacity_is_invalid()
     {
         $this->beConstructedWith(-5);
@@ -53,8 +75,17 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->shouldReturn(0);
     }
 
+    public function it_can_use_a_different_traverser()
+    {
+        $this->beConstructedWith(2, null, new PreOrder());
+
+        $this->getTraverser()->shouldBeAnInstanceOf(PreOrder::class);
+    }
+
     public function it_is_initializable()
     {
         $this->shouldHaveType(NaryNode::class);
+
+        $this->getTraverser()->shouldBeAnInstanceOf(BreadthFirst::class);
     }
 }

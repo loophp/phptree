@@ -47,6 +47,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->shouldThrow(\InvalidArgumentException::class)->during('offsetSet', [0, 'This is not a node']);
         $this->offsetGet(0)->getValue()->shouldReturn('zero');
     }
+
     public function it_can_be_set_with_a_value()
     {
         $this
