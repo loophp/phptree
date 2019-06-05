@@ -7,7 +7,7 @@ namespace drupol\phptree\Node;
 /**
  * Interface NodeInterface.
  */
-interface NodeInterface extends \Countable, \ArrayAccess
+interface NodeInterface extends \Countable, \ArrayAccess, \Traversable, \IteratorAggregate
 {
     /**
      * The node to add.

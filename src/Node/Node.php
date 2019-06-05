@@ -97,6 +97,14 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function getIterator()
+    {
+        yield from $this->children();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getParent(): ?NodeInterface
     {
         return $this->storage['parent'];
@@ -194,10 +202,10 @@ class Node implements NodeInterface
      */
     public function remove(NodeInterface ...$nodes): NodeInterface
     {
-        $this->storage['children'] = new \ArrayObject(
+        $this->storage['children']->exchangeArray(
             \array_filter(
-                (array) $this->storage['children'],
-                function ($child) use ($nodes) {
+                $this->storage['children']->getArrayCopy(),
+                static function ($child) use ($nodes) {
                     return !\in_array($child, $nodes, true);
                 }
             )
