@@ -10,13 +10,6 @@ namespace drupol\phptree\Node;
 class KeyValueNode extends ValueNode implements KeyValueNodeInterface
 {
     /**
-     * The key property.
-     *
-     * @var null|int|mixed|string
-     */
-    private $key;
-
-    /**
      * KeyValueNode constructor.
      *
      * @param null|mixed $key
@@ -28,7 +21,7 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
     {
         parent::__construct($value, $capacity, $parent);
 
-        $this->key = $key;
+        $this->storage()->set('key', $key);
     }
 
     /**
@@ -36,6 +29,6 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
      */
     public function getKey()
     {
-        return $this->key;
+        return $this->storage()->get('key');
     }
 }

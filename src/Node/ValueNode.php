@@ -10,13 +10,6 @@ namespace drupol\phptree\Node;
 class ValueNode extends NaryNode implements ValueNodeInterface
 {
     /**
-     * The value property.
-     *
-     * @var null|mixed|string
-     */
-    private $value;
-
-    /**
      * ValueNode constructor.
      *
      * @param null|mixed $value
@@ -27,7 +20,7 @@ class ValueNode extends NaryNode implements ValueNodeInterface
     {
         parent::__construct($capacity, $parent);
 
-        $this->value = $value;
+        $this->storage()->set('value', $value);
     }
 
     /**
@@ -35,6 +28,6 @@ class ValueNode extends NaryNode implements ValueNodeInterface
      */
     public function getValue()
     {
-        return $this->value;
+        return $this->storage()->get('value');
     }
 }

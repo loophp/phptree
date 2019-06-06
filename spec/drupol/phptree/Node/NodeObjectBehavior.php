@@ -13,6 +13,7 @@ use PhpSpec\ObjectBehavior;
  *
  * @method shouldHaveSameGraph(NodeInterface $node)
  * @method shouldHaveSameTextExport(string $export)
+ * @method shouldNotHaveSameTextExport(string $export)
  */
 abstract class NodeObjectBehavior extends ObjectBehavior
 {
@@ -36,6 +37,13 @@ abstract class NodeObjectBehavior extends ObjectBehavior
                 $left = $exporterText->export($subject);
 
                 return $left === $key;
+            },
+            'notHaveSameTextExport' => function ($subject, $key) {
+                $exporterText = new Text();
+
+                $left = $exporterText->export($subject);
+
+                return $left !== $key;
             },
         ];
     }

@@ -26,6 +26,7 @@
         "leanphp/phpspec-code-coverage": "^4",
         "phpbench/phpbench": "^0.16",
         "phpspec/phpspec": "^4",
+        "phptaskman/changelog": "^1.0",
         "scrutinizer/ocular": "^1"
     },
     "config": {

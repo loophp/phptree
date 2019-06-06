@@ -13,20 +13,6 @@ use drupol\phptree\Traverser\TraverserInterface;
 class NaryNode extends Node implements NaryNodeInterface
 {
     /**
-     * The capacity of a node, the maximum children a node can have.
-     *
-     * @var int
-     */
-    private $capacity;
-
-    /**
-     * The traverser.
-     *
-     * @var TraverserInterface
-     */
-    private $traverser;
-
-    /**
      * NaryNode constructor.
      *
      * @param int $capacity
@@ -40,11 +26,16 @@ class NaryNode extends Node implements NaryNodeInterface
     {
         parent::__construct($parent);
 
-        $this->capacity = 0 > $capacity ?
+        $capacity = 0 > $capacity ?
             0 :
             $capacity;
 
-        $this->traverser = $traverser ?? new BreadthFirst();
+        $this->storage()->set(
+            'capacity',
+            $capacity
+        );
+
+        $this->storage()->set('traverser', $traverser ?? new BreadthFirst());
     }
 
     /**
@@ -61,7 +52,7 @@ class NaryNode extends Node implements NaryNodeInterface
                 continue;
             }
 
-            foreach ($this->traverser->traverse($this) as $candidate) {
+            foreach ($this->getTraverser()->traverse($this) as $candidate) {
                 if (!($candidate instanceof NaryNodeInterface)) {
                     continue;
                 }
@@ -84,7 +75,7 @@ class NaryNode extends Node implements NaryNodeInterface
      */
     public function capacity(): int
     {
-        return $this->capacity;
+        return $this->storage()->get('capacity');
     }
 
     /**
@@ -92,7 +83,7 @@ class NaryNode extends Node implements NaryNodeInterface
      */
     public function getTraverser(): TraverserInterface
     {
-        return $this->traverser;
+        return $this->storage()->get('traverser');
     }
 
     /**

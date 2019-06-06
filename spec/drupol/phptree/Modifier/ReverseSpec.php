@@ -28,11 +28,7 @@ class ReverseSpec extends ObjectBehavior
             ->count()
             ->shouldReturn(5);
 
-        // @todo write better test here and test all children and recursively.
-        $this
-            ->modify($tree1)
-            ->children()->current()->getValue()
-            ->shouldReturn('E');
+        $this->modify($tree1)->shouldNotBeEqualTo($tree2);
     }
 
     public function it_is_initializable()
