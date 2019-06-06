@@ -23,13 +23,6 @@ interface NodeStorageInterface extends StorageInterface
     public function getParent(): ?NodeInterface;
 
     /**
-     * @param \Traversable $children
-     *
-     * @return StorageInterface
-     */
-    public function setChildren(\Traversable $children): StorageInterface;
-
-    /**
      * @param null|NodeInterface $parent
      *
      * @return StorageInterface

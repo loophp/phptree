@@ -42,14 +42,6 @@ final class NodeStorage extends Storage implements NodeStorageInterface
     /**
      * {@inheritdoc}
      */
-    public function setChildren(\Traversable $children): StorageInterface
-    {
-        return $this->set('children', $children);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setParent(?NodeInterface $parent): StorageInterface
     {
         return $this->set('parent', $parent);
