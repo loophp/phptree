@@ -5,8 +5,7 @@ declare(strict_types = 1);
 namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Traverser\PreOrder;
-use drupol\phptree\Traverser\TraverserInterface;
+use drupol\phptree\Node\ValueNodeInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
 use Fhaculty\Graph\Vertex;
 
@@ -23,35 +22,24 @@ class Graph implements ExporterInterface
     private $graph;
 
     /**
-     * The traverser.
-     *
-     * @var \drupol\phptree\Traverser\TraverserInterface
-     */
-    private $traverser;
-
-    /**
-     * Graph constructor.
-     *
-     * @param \Fhaculty\Graph\Graph $graph
-     * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
-     */
-    public function __construct(OriginalGraph $graph = null, TraverserInterface $traverser = null)
-    {
-        $this->graph = $graph ?? new OriginalGraph();
-        $this->traverser = $traverser ?? new PreOrder();
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function export(NodeInterface $node): OriginalGraph
     {
-        foreach ($this->getTraverser()->traverse($node) as $node_visited) {
+        $this->graph = new OriginalGraph();
+
+        $root = $node;
+
+        foreach ($node->all() as $node_visited) {
             /** @var int $vertexId */
             $vertexId = $this->createVertexId($node_visited);
             $this->createVertex($node_visited);
 
             if (null === $parent = $node_visited->getParent()) {
+                continue;
+            }
+
+            if ($root === $node_visited) {
                 continue;
             }
 
@@ -63,22 +51,6 @@ class Graph implements ExporterInterface
         }
 
         return $this->getGraph();
-    }
-
-    /**
-     * @return \Fhaculty\Graph\Graph
-     */
-    public function getGraph(): OriginalGraph
-    {
-        return $this->graph;
-    }
-
-    /**
-     * @return \drupol\phptree\Traverser\TraverserInterface
-     */
-    public function getTraverser(): TraverserInterface
-    {
-        return $this->traverser;
     }
 
     /**
@@ -98,12 +70,9 @@ class Graph implements ExporterInterface
         if (false === $this->getGraph()->hasVertex($vertexId)) {
             $vertex = $this->getGraph()->createVertex($vertexId);
 
-            $label = null;
-            if (\method_exists($node, 'getValue')) {
-                $label = $node->getValue();
+            if ($node instanceof ValueNodeInterface) {
+                $vertex->setAttribute('graphviz.label', $node->getValue());
             }
-
-            $vertex->setAttribute('graphviz.label', $label);
         }
 
         return $this->getGraph()->getVertex($vertexId);
@@ -121,5 +90,13 @@ class Graph implements ExporterInterface
     protected function createVertexId(NodeInterface $node)
     {
         return \spl_object_hash($node);
+    }
+
+    /**
+     * @return \Fhaculty\Graph\Graph
+     */
+    protected function getGraph(): OriginalGraph
+    {
+        return $this->graph;
     }
 }

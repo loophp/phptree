@@ -6,6 +6,7 @@ namespace drupol\phptree\tests\Exporter;
 
 use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\NodeInterface;
+use drupol\phptree\Node\ValueNodeInterface;
 use Fhaculty\Graph\Vertex;
 
 /**
@@ -20,7 +21,7 @@ class ValueGraph extends Graph
     {
         $vertex = parent::createVertex($node);
 
-        if (\method_exists($node, 'getValue')) {
+        if ($node instanceof ValueNodeInterface) {
             $vertex->setAttribute('value', $node->getValue());
         }
 
@@ -32,7 +33,7 @@ class ValueGraph extends Graph
      */
     protected function createVertexId(NodeInterface $node)
     {
-        if (\method_exists($node, 'getValue')) {
+        if ($node instanceof ValueNodeInterface) {
             return $node->getValue();
         }
 

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace drupol\phptree\tests\Exporter;
 
+use drupol\phptree\Node\KeyValueNodeInterface;
 use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Vertex;
 
@@ -19,7 +20,7 @@ class KeyValueGraph extends ValueGraph
     {
         $vertex = parent::createVertex($node);
 
-        if (\method_exists($node, 'getValue') && \method_exists($node, 'getKey')) {
+        if ($node instanceof KeyValueNodeInterface) {
             $vertex->setAttribute('graphviz.label', $node->getValue());
         }
 
@@ -31,7 +32,7 @@ class KeyValueGraph extends ValueGraph
      */
     protected function createVertexId(NodeInterface $node)
     {
-        if (\method_exists($node, 'getValue') && \method_exists($node, 'getKey')) {
+        if ($node instanceof KeyValueNodeInterface) {
             return $node->getKey() . $node->getValue();
         }
 
