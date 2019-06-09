@@ -46,6 +46,18 @@ class Node implements NodeInterface
 
     /**
      * {@inheritdoc}
+     */
+    public function all(): \Traversable
+    {
+        yield $this;
+
+        foreach ($this->children() as $candidate) {
+            yield from $candidate->all();
+        }
+    }
+
+    /**
+     * {@inheritdoc}
      *
      * @return \drupol\phptree\Node\NodeInterface|\Traversable
      */
@@ -59,11 +71,10 @@ class Node implements NodeInterface
      */
     public function count(): int
     {
-        $count = 0;
+        $count = -1;
 
-        /** @var \drupol\phptree\Node\NodeInterface $child */
-        foreach ($this->children() as $child) {
-            $count += 1 + $child->count();
+        foreach ($this->all() as $node) {
+            ++$count;
         }
 
         return $count;
@@ -80,9 +91,45 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function delete(NodeInterface $node, NodeInterface $root = null): ?NodeInterface
+    {
+        $root = $root ?? $this;
+
+        if ($candidate = $this->find($node)) {
+            if ($candidate === $root) {
+                throw new \InvalidArgumentException('Unable to delete root node.');
+            }
+
+            if (null !== $parent = $candidate->getParent()) {
+                $parent->remove($node);
+            }
+
+            return $candidate->setParent(null);
+        }
+
+        return null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function depth(): int
     {
         return \iterator_count($this->getAncestors());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function find(NodeInterface $node): ?NodeInterface
+    {
+        foreach ($this->all() as $candidate) {
+            if ($candidate === $node) {
+                return $node;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -102,7 +149,7 @@ class Node implements NodeInterface
      */
     public function getIterator()
     {
-        yield from $this->children();
+        yield from $this->all();
     }
 
     /**
@@ -185,7 +232,9 @@ class Node implements NodeInterface
     public function offsetSet($offset, $value)
     {
         if (!($value instanceof NodeInterface)) {
-            throw new \InvalidArgumentException('The value must implements NodeInterface.');
+            throw new \InvalidArgumentException(
+                'The value must implements NodeInterface.'
+            );
         }
 
         $this->storage()->getChildren()
@@ -220,7 +269,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setParent(NodeInterface $node = null): NodeInterface
+    public function setParent(?NodeInterface $node): NodeInterface
     {
         $this->storage()->setParent($node);
 

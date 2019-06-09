@@ -60,6 +60,52 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(1);
     }
 
+    public function it_can_delete()
+    {
+        $node1 = new Node();
+        $node2 = new Node();
+        $node3 = new Node();
+        $node4 = new Node();
+        $node3->add($node4);
+
+        $this
+            ->add($node1, $node2, $node3);
+
+        $this
+            ->count()
+            ->shouldReturn(4);
+
+        $this
+            ->delete($node2)
+            ->shouldReturn($node2->setParent(null));
+
+        $this
+            ->degree()
+            ->shouldReturn(2);
+
+        $this
+            ->count()
+            ->shouldReturn(3);
+
+        $this
+            ->delete($node3)
+            ->shouldReturn($node3->setParent(null));
+
+        $this
+            ->degree()
+            ->shouldReturn(1);
+
+        $node5 = new Node();
+
+        $this
+            ->delete($node5)
+            ->shouldReturn(null);
+
+        $this
+            ->shouldThrow(\InvalidArgumentException::class)
+            ->during('delete', [$this]);
+    }
+
     public function it_can_get_and_set_the_parent(NodeInterface $parent)
     {
         $this
@@ -278,7 +324,7 @@ class NodeSpec extends NodeObjectBehavior
         $this
             ->add($node1, $node2, $node3);
 
-        $this->shouldIterateLike($this->children());
+        $this->shouldIterateLike($this->all());
     }
 
     public function it_is_initializable()
