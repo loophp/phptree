@@ -28,18 +28,12 @@ class Graph implements ExporterInterface
     {
         $this->graph = new OriginalGraph();
 
-        $root = $node;
-
         foreach ($node->all() as $node_visited) {
             /** @var int $vertexId */
             $vertexId = $this->createVertexId($node_visited);
             $this->createVertex($node_visited);
 
             if (null === $parent = $node_visited->getParent()) {
-                continue;
-            }
-
-            if ($root === $node_visited) {
                 continue;
             }
 
