@@ -43,10 +43,14 @@ class NaryNode extends Node implements NaryNodeInterface
      */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
-        foreach ($nodes as $node) {
-            $capacity = $this->capacity();
+        $capacity = $this->capacity();
 
-            if (0 === $capacity || ($this->degree() < $capacity)) {
+        if (0 === $capacity) {
+            return parent::add(...$nodes);
+        }
+
+        foreach ($nodes as $node) {
+            if ($this->degree() < $capacity) {
                 parent::add($node);
 
                 continue;
