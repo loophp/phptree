@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace drupol\phptree\tests\Exporter;
 
+use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\KeyValueNodeInterface;
 use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Vertex;
@@ -11,7 +12,7 @@ use Fhaculty\Graph\Vertex;
 /**
  * Class KeyValueGraph.
  */
-class KeyValueGraph extends ValueGraph
+class KeyValueGraph extends Graph
 {
     /**
      * {@inheritdoc}
@@ -21,7 +22,7 @@ class KeyValueGraph extends ValueGraph
         $vertex = parent::createVertex($node);
 
         if ($node instanceof KeyValueNodeInterface) {
-            $vertex->setAttribute('graphviz.label', $node->getValue());
+            $vertex->setAttribute('graphviz.label', $node->getKey() . $vertex->getAttribute('graphviz.label'));
         }
 
         return $vertex;
