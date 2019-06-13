@@ -13,26 +13,27 @@
 
 A PHP implementation of tree data structure.
 
-5 different trees implementations:
+It provides different trees implementations:
 * **Node**: The base class.
 * **N-ary node**: (or K-ary tree) extends the base class and allows you to specify the capacity of a node, the maximum children a node can have.
 * **Value node**: extends the N-ary node and allows you to attach a value to the node.
 * **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
 * **Trie node**: extends the KeyValue node, a simple [Trie tree](https://en.wikipedia.org/wiki/Trie).
+* **Auto-balanced node**: extends the N-ary node and tries to keep the tree as symetric as possible. It automatically balance all the children as soon as they are added.
 
 [4 trees traversal algorithms](https://en.wikipedia.org/wiki/Tree_traversal):
-* In order
-* Post order
-* Pre order
-* Breadth first
+* **In order**
+* **Post order**
+* **Pre order**
+* **Breadth first**
 
 Exporters and importers:
-* Graph: Export a tree into a graph using the [graphp/graphp](https://github.com/graphp/graph) library.
-* Text: Export a tree into a simple string.
-* Ascii: Export a tree into an ascii graphic.
+* **Ascii**: Export a tree into an ascii graphic, just for swag and visualisation fun.
+* **Graph**: Export a tree into a graph using the [graphp/graphp](https://github.com/graphp/graph) library.
+* **Text**: Export a tree into a simple string, easy for storing in a database.
 
 Modifier:
-* A modifier "Reverse" to reverse a tree.
+* **Reverse**: To reverse a tree, all the children are mirrored.
 
 ## Documentation
 
