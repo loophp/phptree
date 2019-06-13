@@ -71,13 +71,7 @@ class Node implements NodeInterface
      */
     public function count(): int
     {
-        $count = -1;
-
-        foreach ($this->all() as $node) {
-            ++$count;
-        }
-
-        return $count;
+        return \iterator_count($this->all()) - 1;
     }
 
     /**
