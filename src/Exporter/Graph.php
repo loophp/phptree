@@ -30,18 +30,12 @@ class Graph implements ExporterInterface
 
         foreach ($node->all() as $node_visited) {
             /** @var int $vertexId */
-            $vertexId = $this->createVertexId($node_visited);
-            $this->createVertex($node_visited);
+            $vertexFrom = $this->createVertex($node_visited);
 
-            if (null === $parent = $node_visited->getParent()) {
-                continue;
+            foreach ($node_visited->children() as $child) {
+                $vertexTo = $this->createVertex($child);
+                $vertexFrom->createEdgeTo($vertexTo);
             }
-
-            /** @var int $hash_parent */
-            $hash_parent = $this->createVertexId($parent);
-            $this->createVertex($parent);
-
-            $this->getGraph()->getVertex($hash_parent)->createEdgeTo($this->getGraph()->getVertex($vertexId));
         }
 
         return $this->getGraph();
