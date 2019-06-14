@@ -78,6 +78,19 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->shouldReturn('root');
     }
 
+    public function it_can_draw_the_tree()
+    {
+        $this
+            ->beConstructedWith('root', 3);
+
+        foreach (\range(0, 30) as $number) {
+            $this->add(new ValueNode($number, 2));
+        }
+
+        $this
+            ->shouldHaveSameGraphImage($this->getWrappedObject());
+    }
+
     public function it_can_have_children()
     {
         $this

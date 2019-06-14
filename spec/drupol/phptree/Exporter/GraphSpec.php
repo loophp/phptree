@@ -6,9 +6,9 @@ namespace spec\drupol\phptree\Exporter;
 
 use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\ValueNode;
-use PhpSpec\ObjectBehavior;
+use spec\drupol\phptree\Node\NodeObjectBehavior;
 
-class GraphSpec extends ObjectBehavior
+class GraphSpec extends NodeObjectBehavior
 {
     public function it_can_generate_a_graph()
     {
@@ -29,6 +29,10 @@ class GraphSpec extends ObjectBehavior
         $this
             ->export($child1)
             ->shouldReturnAnInstanceOf(\Fhaculty\Graph\Graph::class);
+
+        $this
+            ->export($tree)
+            ->shouldHaveSameGraphImageFile($_SERVER['PWD'] . '/tests/fixtures/graphvizMvJSKP.png');
     }
 
     public function it_is_initializable()
