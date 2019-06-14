@@ -33,6 +33,18 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function __clone()
+    {
+        $this->storage = clone $this->storage;
+
+        foreach ($this->children() as $child) {
+            $child->setParent($this);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
@@ -71,22 +83,7 @@ class Node implements NodeInterface
      */
     public function clone(): NodeInterface
     {
-        // @todo: Replace with something better.
-        return \unserialize(\serialize($this));
-        // @todo: Unable to get this code working yet.
-        /*
-        $root = $this;
-
-        $root = clone $root;
-
-        $children = [];
-
-        foreach ($root->children() as $key => $child) {
-            $children[] = $child->clone();
-        }
-
-        return $root->withChildren(...$children);
-        */
+        return clone $this;
     }
 
     /**

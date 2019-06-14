@@ -27,6 +27,20 @@ abstract class Storage implements StorageInterface, \ArrayAccess
     /**
      * {@inheritdoc}
      */
+    public function __clone()
+    {
+        $this->storage = clone $this->storage;
+
+        $children = new \ArrayObject();
+        foreach ($this->get('children') as $key => $child) {
+            $children[] = clone $child;
+        }
+        $this->set('children', $children);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function get($key)
     {
         if (!$this->offsetExists($key)) {

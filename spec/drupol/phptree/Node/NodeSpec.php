@@ -10,11 +10,9 @@ use drupol\phptree\Node\ValueNode;
 
 class NodeSpec extends NodeObjectBehavior
 {
-    public function it_can_add(NodeInterface $node)
+    public function it_can_add()
     {
-        $node->setParent($this)->shouldBeCalledOnce();
-
-        $this->add($node)
+        $this->add(new Node())
             ->shouldReturn($this);
     }
 
@@ -40,8 +38,9 @@ class NodeSpec extends NodeObjectBehavior
 
         $node = new Node();
 
+        $node->add($this->getWrappedObject());
+
         $this
-            ->setParent($node)
             ->isRoot()
             ->shouldReturn(false);
     }
@@ -77,7 +76,7 @@ class NodeSpec extends NodeObjectBehavior
 
         $this
             ->delete($node2)
-            ->shouldReturn($node2->setParent(null));
+            ->shouldReturn($node2);
 
         $this
             ->degree()
@@ -89,7 +88,7 @@ class NodeSpec extends NodeObjectBehavior
 
         $this
             ->delete($node3)
-            ->shouldReturn($node3->setParent(null));
+            ->shouldReturn($node3);
 
         $this
             ->degree()
@@ -112,10 +111,12 @@ class NodeSpec extends NodeObjectBehavior
             ->getParent()
             ->shouldReturn(null);
 
+        $node = new Node();
+        $node->add($this->getWrappedObject());
+
         $this
-            ->setParent($parent)
             ->getParent()
-            ->shouldReturn($parent);
+            ->shouldReturn($node);
     }
 
     public function it_can_get_its_ancestors()
@@ -128,7 +129,7 @@ class NodeSpec extends NodeObjectBehavior
         $level1 = new Node($root);
         $level2 = new Node($level1);
 
-        $this->setParent($level2);
+        $level2->add($this->getWrappedObject());
 
         $this
             ->getAncestors()
