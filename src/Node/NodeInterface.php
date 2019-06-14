@@ -37,6 +37,14 @@ interface NodeInterface extends \Countable, \ArrayAccess, \Traversable, \Iterato
     public function children(): \Traversable;
 
     /**
+     * Clone the tree and all of its children.
+     *
+     * @return \drupol\phptree\Node\NodeInterface
+     *   The tree.
+     */
+    public function clone(): NodeInterface;
+
+    /**
      * The amount of children a node has.
      *
      * @return int
@@ -147,11 +155,11 @@ interface NodeInterface extends \Countable, \ArrayAccess, \Traversable, \Iterato
     /**
      * Get a clone of the object with or without children.
      *
-     * @param \drupol\phptree\Node\NodeInterface ...$nodes
+     * @param null|\drupol\phptree\Node\NodeInterface ...$nodes
      *   The children that the clone will have.
      *
      * @return \drupol\phptree\Node\NodeInterface
      *   The new object
      */
-    public function withChildren(NodeInterface ...$nodes): NodeInterface;
+    public function withChildren(?NodeInterface ...$nodes): NodeInterface;
 }

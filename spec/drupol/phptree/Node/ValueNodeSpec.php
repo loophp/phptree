@@ -4,10 +4,30 @@ declare(strict_types = 1);
 
 namespace spec\drupol\phptree\Node;
 
+use drupol\phptree\Exporter\Text;
 use drupol\phptree\Node\ValueNode;
 
 class ValueNodeSpec extends NodeObjectBehavior
 {
+    public function it_can_be_cloned()
+    {
+        $this->beConstructedWith(2);
+
+        $node1 = new ValueNode(\mt_rand());
+        $node2 = new ValueNode(\mt_rand());
+        $node3 = new ValueNode(\mt_rand());
+        $node4 = new ValueNode(\mt_rand());
+
+        $this
+            ->add($node1->add($node2), $node3->add($node4));
+
+        $exporter = new Text();
+
+        $export = $exporter->export($this->getWrappedObject()->clone());
+
+        $this->shouldHaveSameTextExport($export);
+    }
+
     public function it_can_be_manipulated_like_an_array()
     {
         $this

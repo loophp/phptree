@@ -69,6 +69,29 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function clone(): NodeInterface
+    {
+        // @todo: Replace with something better.
+        return \unserialize(\serialize($this));
+        // @todo: Unable to get this code working yet.
+        /*
+        $root = $this;
+
+        $root = clone $root;
+
+        $children = [];
+
+        foreach ($root->children() as $key => $child) {
+            $children[] = $child->clone();
+        }
+
+        return $root->withChildren(...$children);
+        */
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function count(): int
     {
         return \iterator_count($this->all()) - 1;
@@ -273,10 +296,12 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function withChildren(NodeInterface ...$nodes): NodeInterface
+    public function withChildren(?NodeInterface ...$nodes): NodeInterface
     {
         $clone = clone $this;
         $clone->storage()->getChildren()->exchangeArray([]);
+
+        $nodes = \array_filter($nodes);
 
         return [] === $nodes ?
             $clone :
