@@ -14,7 +14,7 @@ php:
 - 7.3
 
 before_install:
-- sudo apt-get install -y graphviz
+- sudo apt-get install -y graphviz graphviz-dev
 
 install:
 - composer install
