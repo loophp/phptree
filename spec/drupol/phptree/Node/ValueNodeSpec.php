@@ -45,11 +45,11 @@ class ValueNodeSpec extends NodeObjectBehavior
 
         $tree[25] = new ValueNode('Foo');
 
-        $export = '[root [a] [b] [c] [d] [e] [f] [g] [h] [i] [j] [k] [l] [m] [n] [o] [p] [q] [r] [s] [t] [u] [v] [w] [x] [y] [Foo]]';
+        $export = '[root[a][b][c][d][e][f][g][h][i][j][k][l][m][n][o][p][q][r][s][t][u][v][w][x][y][Foo]]';
         $this->shouldHaveSameTextExport($export);
 
         unset($tree[25]);
-        $export = '[root [a] [b] [c] [d] [e] [f] [g] [h] [i] [j] [k] [l] [m] [n] [o] [p] [q] [r] [s] [t] [u] [v] [w] [x] [y]]';
+        $export = '[root[a][b][c][d][e][f][g][h][i][j][k][l][m][n][o][p][q][r][s][t][u][v][w][x][y]]';
         $this->shouldHaveSameTextExport($export);
 
         $this->shouldThrow(\OutOfBoundsException::class)->during('offsetSet', [30, new ValueNode('out')]);
@@ -103,7 +103,7 @@ class ValueNodeSpec extends NodeObjectBehavior
             $tree->add(new ValueNode($value, 3));
         }
 
-        $export = '[root [A [C [I] [J] [K]] [D [L] [M] [N]] [E [O] [P] [Q]]] [B [F [R] [S] [T]] [G [U] [V] [W]] [H [X] [Y] [Z]]]]';
+        $export = '[root[A[C[I][J][K]][D[L][M][N]][E[O][P][Q]]][B[F[R][S][T]][G[U][V][W]][H[X][Y][Z]]]]';
 
         $this->shouldHaveSameTextExport($export);
         $this->shouldHaveSameGraph($tree);
@@ -121,12 +121,12 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this
             ->add($node1, $node2);
 
-        $this->shouldHaveSameTextExport('[root [A] [B]]');
+        $this->shouldHaveSameTextExport('[root[A][B]]');
 
         $this
             ->remove($node2);
 
-        $this->shouldHaveSameTextExport('[root [A]]');
+        $this->shouldHaveSameTextExport('[root[A]]');
         $this
             ->count()
             ->shouldReturn(1);
