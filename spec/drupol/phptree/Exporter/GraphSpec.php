@@ -29,6 +29,7 @@ class GraphSpec extends NodeObjectBehavior
             },
         ];
     }
+
     public function it_can_generate_a_graph()
     {
         $tree = new ValueNode('root');
@@ -51,7 +52,7 @@ class GraphSpec extends NodeObjectBehavior
 
         $this
             ->export($tree)
-            ->shouldHaveSameGraphImageFile($_SERVER['PWD'] . '/tests/fixtures/Exporter/GraphSpec1.png');
+            ->shouldHaveSameGraphImageFile('tests/fixtures/Exporter/GraphSpec1.png');
     }
 
     public function it_is_initializable()
