@@ -13,7 +13,7 @@ class TextSpec extends ObjectBehavior
 {
     public function it_can_import()
     {
-        $string = '[root [A [C [G] [H]] [D [I] [J]]] [B [E] [F]]]';
+        $string = '[root[A[C[G][H]][D[I][J]]][B[E][F]]]';
 
         $tree = new ValueNode('root', 2);
 
@@ -41,7 +41,7 @@ class TextSpec extends ObjectBehavior
         $this
             ->import($string)
             ->getValue()
-            ->shouldReturn('root ');
+            ->shouldReturn('root');
     }
 
     public function it_can_throw_an_error_when_cannot_import()
