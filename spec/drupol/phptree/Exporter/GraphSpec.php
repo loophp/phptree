@@ -5,16 +5,17 @@ declare(strict_types = 1);
 namespace spec\drupol\phptree\Exporter;
 
 use drupol\phptree\Exporter\Graph;
+use drupol\phptree\Importer\Text;
 use drupol\phptree\Node\ValueNode;
 use Graphp\GraphViz\GraphViz;
-use spec\drupol\phptree\Node\NodeObjectBehavior;
+use PhpSpec\ObjectBehavior;
 
 /**
  * Class GraphSpec.
  *
- * @method shouldHaveSameGraphImageFile(string $filepath)
+ * @method shouldHaveSameTextExport(string $filepath)
  */
-class GraphSpec extends NodeObjectBehavior
+class GraphSpec extends ObjectBehavior
 {
     /**
      * {@inheritdoc}
@@ -22,10 +23,13 @@ class GraphSpec extends NodeObjectBehavior
     public function getMatchers(): array
     {
         return [
-            'haveSameGraphImageFile' => function ($subject, $key) {
-                $left = (new GraphViz())->setFormat('png')->createImageFile($subject);
+            'haveSameTextExport' => function ($left, $right) {
+                $importer = new Text();
+                $exporter = new Graph();
 
-                return \sha1(\file_get_contents($left)) === \sha1(\file_get_contents($key));
+                $right = $exporter->export($importer->import($right));
+
+                return (new GraphViz())->createImageSrc($left) === (new GraphViz())->createImageSrc($right);
             },
         ];
     }
@@ -36,7 +40,7 @@ class GraphSpec extends NodeObjectBehavior
         $child1 = new ValueNode('child1');
         $child2 = new ValueNode('child2');
         $child3 = new ValueNode('child3');
-        $child4 = new ValueNode('child3');
+        $child4 = new ValueNode('child4');
         $child1->add($child4);
 
         $tree
@@ -52,7 +56,7 @@ class GraphSpec extends NodeObjectBehavior
 
         $this
             ->export($tree)
-            ->shouldHaveSameGraphImageFile('tests/fixtures/Exporter/GraphSpec1.png');
+            ->shouldHaveSameTextExport('[root[child1[child4]][child2][child3]]');
     }
 
     public function it_is_initializable()
