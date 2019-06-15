@@ -86,7 +86,7 @@ $graphViz->display($graphExporter->export($tree));
 
 // Export to text.
 $textExporter = new Text();
-echo $textExporter->export($tree); // [root [A [C [G [O] [P]] [H [Q] [R]]] [D [I [S] [T]] [J [U] [V]]]] [B [E [K [W] [X]] [L [Y] [Z]]] [F [M] [N]]]]⏎
+echo $textExporter->export($tree); // [root[A[C[G[O][P]][H[Q][R]]][D[I[S][T]][J[U][V]]]][B[E[K[W][X]][L[Y][Z]]][F[M][N]]]]⏎
 ```
 
 ## Code quality, tests and benchmarks
