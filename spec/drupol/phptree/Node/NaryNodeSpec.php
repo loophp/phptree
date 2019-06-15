@@ -68,11 +68,11 @@ class NaryNodeSpec extends NodeObjectBehavior
 
     public function it_can_throw_an_error_when_capacity_is_invalid()
     {
-        $this->beConstructedWith(-5);
+        $this->beConstructedWith(null);
 
         $this
             ->capacity()
-            ->shouldReturn(-5);
+            ->shouldBeNull();
 
         $this->shouldThrow(\Exception::class)
             ->during('add', [new NaryNode()]);
@@ -80,7 +80,7 @@ class NaryNodeSpec extends NodeObjectBehavior
 
     public function it_can_use_a_different_traverser()
     {
-        $this->beConstructedWith(2, null, new PreOrder());
+        $this->beConstructedWith(2, new PreOrder());
 
         $this->getTraverser()->shouldBeAnInstanceOf(PreOrder::class);
     }

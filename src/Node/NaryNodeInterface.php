@@ -14,10 +14,10 @@ interface NaryNodeInterface extends NodeInterface
     /**
      * Get the node capacity.
      *
-     * @return int
-     *   The node capacity
+     * @return null|int
+     *   The node capacity or null if no children is allowed.
      */
-    public function capacity(): int;
+    public function capacity(): ?int;
 
     /**
      * Get the traverser in use.

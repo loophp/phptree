@@ -11,7 +11,7 @@ class TrieNodeSpec extends NodeObjectBehavior
 {
     public function it_can_add_node()
     {
-        $this->beConstructedWith('root', 'root');
+        $this->beConstructedWith('key', 'value');
 
         $nodes = [
             1000,
@@ -42,6 +42,7 @@ class TrieNodeSpec extends NodeObjectBehavior
 
     public function it_is_initializable()
     {
+        $this->beConstructedWith('key', 'value');
         $this->shouldHaveType(TrieNode::class);
     }
 }

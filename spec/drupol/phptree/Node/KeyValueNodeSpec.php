@@ -24,15 +24,16 @@ class KeyValueNodeSpec extends NodeObjectBehavior
 
     public function it_can_throw_an_error_when_capacity_is_invalid()
     {
-        $this->beConstructedWith(-5);
+        $this->beConstructedWith('key', 'value', -5);
 
         $this
             ->capacity()
-            ->shouldReturn(0);
+            ->shouldReturn(-5);
     }
 
     public function it_is_initializable()
     {
+        $this->beConstructedWith('key', 'value');
         $this->shouldHaveType(KeyValueNode::class);
     }
 }

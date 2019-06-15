@@ -15,15 +15,19 @@ class NaryNode extends Node implements NaryNodeInterface
     /**
      * NaryNode constructor.
      *
-     * @param int $capacity
-     *   The maximum children a node can have
-     * @param null|\drupol\phptree\Node\NodeInterface $parent
-     *   The parent
+     * @param null|int $capacity
+     *   The maximum children a node can have. Null for no children,
+     *   if 0 then any number of children is allowed.
      * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
-     *   The traverser
+     *   The traverser.
+     * @param null|\drupol\phptree\Node\NodeInterface $parent
+     *   The parent.
      */
-    public function __construct(int $capacity = 0, NodeInterface $parent = null, TraverserInterface $traverser = null)
-    {
+    public function __construct(
+        ?int $capacity = 0,
+        ?TraverserInterface $traverser = null,
+        ?NodeInterface $parent = null
+    ) {
         parent::__construct($parent);
 
         $this->storage()->set(
@@ -31,7 +35,10 @@ class NaryNode extends Node implements NaryNodeInterface
             $capacity
         );
 
-        $this->storage()->set('traverser', $traverser ?? new BreadthFirst());
+        $this->storage()->set(
+            'traverser',
+            $traverser ?? new BreadthFirst()
+        );
     }
 
     /**
@@ -65,7 +72,7 @@ class NaryNode extends Node implements NaryNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function capacity(): int
+    public function capacity(): ?int
     {
         return $this->storage()->get('capacity');
     }
@@ -115,7 +122,7 @@ class NaryNode extends Node implements NaryNodeInterface
 
             $capacity = $candidate->capacity();
 
-            if (0 > $capacity) {
+            if (null === $capacity) {
                 continue;
             }
 

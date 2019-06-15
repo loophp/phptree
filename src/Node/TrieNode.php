@@ -41,13 +41,13 @@ class TrieNode extends KeyValueNode
     /**
      * @param \drupol\phptree\Node\ValueNodeInterface $node
      *
+     * @throws \Exception
+     *
      * @return \drupol\phptree\Node\NodeInterface|\drupol\phptree\Node\ValueNodeInterface
      */
     private function append(ValueNodeInterface $node)
     {
-        /** @var \drupol\phptree\Node\ValueNodeInterface $child */
         foreach ($this->children() as $child) {
-            /** @var \drupol\phptree\Node\ValueNodeInterface $node */
             if ($node->getValue() === $child->getValue()) {
                 return $child;
             }
