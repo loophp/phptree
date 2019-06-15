@@ -55,15 +55,15 @@ class NaryNodeSpec extends NodeObjectBehavior
         $child2 = new NaryNode(2);
         $child3 = new Node();
         $child4 = new Node();
-        $child5 = new Node();
-        $child6 = new Node();
-        $child7 = new Node();
 
         $this
-            ->add($child1, $child2, $child3, $child4, $child5, $child6, $child7);
+            ->add($child1, $child2, $child3, $child4);
 
         $this->degree()->shouldReturn(2);
         $this->count()->shouldReturn(4);
+
+        $this->shouldThrow(\Exception::class)
+            ->during('add', [new Node()]);
     }
 
     public function it_can_throw_an_error_when_capacity_is_invalid()
@@ -72,7 +72,10 @@ class NaryNodeSpec extends NodeObjectBehavior
 
         $this
             ->capacity()
-            ->shouldReturn(0);
+            ->shouldReturn(-5);
+
+        $this->shouldThrow(\Exception::class)
+            ->during('add', [new NaryNode()]);
     }
 
     public function it_can_use_a_different_traverser()

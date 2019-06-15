@@ -26,10 +26,6 @@ class NaryNode extends Node implements NaryNodeInterface
     {
         parent::__construct($parent);
 
-        $capacity = 0 > $capacity ?
-            0 :
-            $capacity;
-
         $this->storage()->set(
             'capacity',
             $capacity
@@ -56,18 +52,10 @@ class NaryNode extends Node implements NaryNodeInterface
                 continue;
             }
 
-            foreach ($this->getTraverser()->traverse($this) as $candidate) {
-                if (!($candidate instanceof NaryNodeInterface)) {
-                    continue;
-                }
-
-                if ($candidate->degree() >= $candidate->capacity()) {
-                    continue;
-                }
-
-                $candidate->add($node);
-
-                break;
+            if (null !== $parent = $this->findFirstAvailableNode($this)) {
+                $parent->add($node);
+            } else {
+                throw new \Exception('Unable to add the node to the tree.');
             }
         }
 
@@ -104,5 +92,40 @@ class NaryNode extends Node implements NaryNodeInterface
 
             parent::offsetSet($offset, $value);
         }
+    }
+
+    /**
+     * Find the first available node in the tree.
+     *
+     * When adding nodes to a NaryNode based tree, you must traverse the tree
+     * and find the first node that can be used as a parent for the node to add.
+     *
+     * @param \drupol\phptree\Node\NodeInterface $tree
+     *   The base node.
+     *
+     * @return null|\drupol\phptree\Node\NodeInterface
+     *   A node, null if none are found.
+     */
+    protected function findFirstAvailableNode(NodeInterface $tree): ?NodeInterface
+    {
+        foreach ($this->getTraverser()->traverse($tree) as $candidate) {
+            if (!($candidate instanceof NaryNodeInterface)) {
+                continue;
+            }
+
+            $capacity = $candidate->capacity();
+
+            if (0 > $capacity) {
+                continue;
+            }
+
+            if (0 !== $capacity && $candidate->degree() >= $capacity) {
+                continue;
+            }
+
+            return $candidate;
+        }
+
+        return null;
     }
 }
