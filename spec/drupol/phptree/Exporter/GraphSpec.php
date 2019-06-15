@@ -6,10 +6,29 @@ namespace spec\drupol\phptree\Exporter;
 
 use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Node\ValueNode;
+use Graphp\GraphViz\GraphViz;
 use spec\drupol\phptree\Node\NodeObjectBehavior;
 
+/**
+ * Class GraphSpec.
+ *
+ * @method shouldHaveSameGraphImageFile(string $filepath)
+ */
 class GraphSpec extends NodeObjectBehavior
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function getMatchers(): array
+    {
+        return [
+            'haveSameGraphImageFile' => function ($subject, $key) {
+                $left = (new GraphViz())->setFormat('png')->createImageFile($subject);
+
+                return \sha1(\file_get_contents($left)) === \sha1(\file_get_contents($key));
+            },
+        ];
+    }
     public function it_can_generate_a_graph()
     {
         $tree = new ValueNode('root');
@@ -32,7 +51,7 @@ class GraphSpec extends NodeObjectBehavior
 
         $this
             ->export($tree)
-            ->shouldHaveSameGraphImageFile($_SERVER['PWD'] . '/tests/fixtures/graphvizMvJSKP.png');
+            ->shouldHaveSameGraphImageFile($_SERVER['PWD'] . '/tests/fixtures/Exporter/GraphSpec1.png');
     }
 
     public function it_is_initializable()
