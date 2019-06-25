@@ -29,7 +29,8 @@ It provides different trees implementations:
 
 Exporters and importers:
 * **Ascii**: Export a tree into an ascii graphic, just for swag and visualisation fun.
-* **Graph**: Export a tree into a graph using the [graphp/graphp](https://github.com/graphp/graph) library.
+* **Graph**: Export a tree into a Graph using the [graphp/graphp](https://github.com/graphp/graph) library.
+* **GraphViz**: Export a tree into a script in [GraphViz](http://www.graphviz.org/) format.
 * **Text**: Export a tree into a simple string, easy for storing in a database.
 
 Modifier:
@@ -51,8 +52,7 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 
 ## Optional packages
 
-* [graphp/graphp](https://github.com/graphp/graph): To convert a tree into a graph.
-* [graphp/graphviz](https://github.com/graphp/graphviz): To render a graph into dot format or an image.
+* [graphp/graphp](https://github.com/graphp/graph): To export a tree into a Graph.
 
 ## Usage
 
@@ -61,8 +61,7 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 
 declare(strict_types = 1);
 
-use Graphp\GraphViz\GraphViz;
-use drupol\phptree\Exporter\Graph;
+use drupol\phptree\Exporter\Gv;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Exporter\Text;
 
@@ -79,14 +78,15 @@ foreach (\range('A', 'Z') as $v) {
 // Add children to the root node.
 $tree->add(...$nodes);
 
-// Export to an image.
-$graphViz = new GraphViz();
-$graphExporter = new Graph();
-$graphViz->display($graphExporter->export($tree));
-
 // Export to text.
 $textExporter = new Text();
 echo $textExporter->export($tree); // [root[A[C[G[O][P]][H[Q][R]]][D[I[S][T]][J[U][V]]]][B[E[K[W][X]][L[Y][Z]]][F[M][N]]]]⏎
+
+// Export to a GraphViz script.
+$exporter = new Gv();
+$dotScript = $exporter->export($tree);
+file_put_contents('graph.gv', $dotScript);
+// Then do "dot -Tsvg graph.gv -o graph.svg" to export the script to SVG.
 ```
 
 ## Code quality, tests and benchmarks

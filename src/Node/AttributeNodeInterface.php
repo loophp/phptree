@@ -13,6 +13,7 @@ interface AttributeNodeInterface extends NaryNodeInterface
      * {@inheritdoc}
      */
     public function getAttribute($key);
+
     /**
      * {@inheritdoc}
      */

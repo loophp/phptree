@@ -16,11 +16,12 @@ class Gv implements ExporterInterface
     /**
      * The graph attributes.
      *
-     * @var string[]
+     * @var string[]|string[][]
      */
     private $attributes = [];
+
     /**
-     * Is the graph directed or undirected.
+     * The graph type.
      *
      * @var bool
      */
@@ -31,10 +32,6 @@ class Gv implements ExporterInterface
      */
     public function export(NodeInterface $node): string
     {
-        $directed = true === $this->getDirected() ?
-            '->' :
-            '--';
-
         $attributes = '';
         foreach ($this->attributes as $key => $attribute) {
             if (\is_string($attribute)) {
@@ -72,7 +69,7 @@ class Gv implements ExporterInterface
             $edges .= \sprintf(
                 '  "%s" %s "%s";' . "\n",
                 $this->getHash($parent),
-                $directed,
+                true === $this->getDirected() ? '->' : '--',
                 $this->getHash($child)
             );
         }
@@ -92,7 +89,7 @@ class Gv implements ExporterInterface
     }
 
     /**
-     * Set the graph as directed.
+     * Set the graph type, directed or undirected.
      *
      * @param bool $directed
      *   True for a directed graph, false otherwise.

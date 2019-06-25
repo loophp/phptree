@@ -15,7 +15,7 @@ interface StorageInterface
      * @param string $key
      *   The identifier name of the value.
      *
-     * @return null|int|mixed|string
+     * @return mixed
      *   The value.
      */
     public function get($key);

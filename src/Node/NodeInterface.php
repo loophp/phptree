@@ -23,7 +23,7 @@ interface NodeInterface extends \Countable, \ArrayAccess, \Traversable, \Iterato
     /**
      * Get all the nodes of a tree including the parent node itself.
      *
-     * @return \drupol\phptree\Node\NodeInterface|\Traversable
+     * @return \Traversable
      *   The node.
      */
     public function all(): \Traversable;
@@ -31,7 +31,7 @@ interface NodeInterface extends \Countable, \ArrayAccess, \Traversable, \Iterato
     /**
      * Get the children.
      *
-     * @return \drupol\phptree\Node\NodeInterface|\Traversable
+     * @return \Traversable
      *   The children
      */
     public function children(): \Traversable;

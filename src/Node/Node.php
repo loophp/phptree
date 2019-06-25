@@ -37,6 +37,7 @@ class Node implements NodeInterface
     {
         $this->storage = clone $this->storage;
 
+        /** @var \drupol\phptree\Node\NodeInterface $child */
         foreach ($this->children() as $child) {
             $child->setParent($this);
         }
@@ -63,15 +64,14 @@ class Node implements NodeInterface
     {
         yield $this;
 
-        foreach ($this->children() as $candidate) {
-            yield from $candidate->all();
+        /** @var \drupol\phptree\Node\NodeInterface $child */
+        foreach ($this->children() as $child) {
+            yield from $child->all();
         }
     }
 
     /**
      * {@inheritdoc}
-     *
-     * @return \drupol\phptree\Node\NodeInterface|\Traversable
      */
     public function children(): \Traversable
     {
@@ -137,6 +137,7 @@ class Node implements NodeInterface
      */
     public function find(NodeInterface $node): ?NodeInterface
     {
+        /** @var \drupol\phptree\Node\NodeInterface $candidate */
         foreach ($this->all() as $candidate) {
             if ($candidate === $node) {
                 return $node;
@@ -201,6 +202,7 @@ class Node implements NodeInterface
     {
         $height = $this->depth();
 
+        /** @var \drupol\phptree\Node\NodeInterface $child */
         foreach ($this->children() as $child) {
             $height = \max($height, $child->height());
         }
