@@ -48,18 +48,10 @@ class Gv implements ExporterInterface
             }
 
             if (\is_array($attribute)) {
-                $attributesText = \array_map(
-                    static function ($key, $value) {
-                        return \sprintf('%s="%s"', $key, $value);
-                    },
-                    \array_keys($attribute),
-                    $attribute
-                );
-
                 $attributes .= \sprintf(
                     '  %s %s' . "\n",
                     $key,
-                    '[' . \implode(' ', $attributesText) . ']'
+                    $this->attributesArrayToText($attribute)
                 );
 
                 continue;
@@ -129,6 +121,28 @@ class Gv implements ExporterInterface
         $this->attributes = $attributes;
 
         return $this;
+    }
+
+    /**
+     * Converts an attributes array to string.
+     *
+     * @param array $attributes
+     *   The attributes.
+     *
+     * @return string
+     *   The attributes as string.
+     */
+    protected function attributesArrayToText(array $attributes): string
+    {
+        $attributesText = \array_map(
+            static function ($key, $value) {
+                return \sprintf('%s="%s"', $key, $value);
+            },
+            \array_keys($attributes),
+            $attributes
+        );
+
+        return '[' . \implode(' ', $attributesText) . ']';
     }
 
     /**
@@ -213,14 +227,6 @@ EOF;
             }
         }
 
-        $attributesText = \array_map(
-            static function ($key, $value) {
-                return \sprintf('%s="%s"', $key, $value);
-            },
-            \array_keys($attributes),
-            $attributes
-        );
-
-        return '[' . \implode(' ', $attributesText) . ']';
+        return $this->attributesArrayToText($attributes);
     }
 }
