@@ -14,6 +14,7 @@ class TrieNode extends KeyValueNode
      */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
+        /** @var \drupol\phptree\Node\ValueNodeInterface $node */
         foreach ($nodes as $node) {
             $data = $node->getValue();
 
@@ -47,6 +48,7 @@ class TrieNode extends KeyValueNode
      */
     private function append(ValueNodeInterface $node)
     {
+        /** @var \drupol\phptree\Node\ValueNodeInterface $child */
         foreach ($this->children() as $child) {
             if ($node->getValue() === $child->getValue()) {
                 return $child;

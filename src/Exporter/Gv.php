@@ -32,11 +32,11 @@ class Gv implements ExporterInterface
      */
     public function export(NodeInterface $node): string
     {
-        $attributes = '';
+        $attributes = [];
         foreach ($this->attributes as $key => $attribute) {
             if (\is_string($attribute)) {
-                $attributes .= \sprintf(
-                    '  %s = %s' . "\n",
+                $attributes[] = \sprintf(
+                    '  %s = %s',
                     $key,
                     $attribute
                 );
@@ -45,8 +45,8 @@ class Gv implements ExporterInterface
             }
 
             if (\is_array($attribute)) {
-                $attributes .= \sprintf(
-                    '  %s %s' . "\n",
+                $attributes[] = \sprintf(
+                    '  %s %s',
                     $key,
                     $this->attributesArrayToText($attribute)
                 );
@@ -55,26 +55,30 @@ class Gv implements ExporterInterface
             }
         }
 
-        $nodes = '';
+        $nodes = [];
         foreach ($node->all() as $child) {
-            $nodes .= \sprintf(
-                '  "%s" %s' . "\n",
+            $nodes[] = \sprintf(
+                '  "%s" %s',
                 $this->getHash($child),
                 $this->getNodeAttributes($child)
             );
         }
 
-        $edges = '';
+        $edges = [];
         foreach ($this->findEdges($node) as $parent => $child) {
-            $edges .= \sprintf(
-                '  "%s" %s "%s";' . "\n",
+            $edges[] = \sprintf(
+                '  "%s" %s "%s";',
                 $this->getHash($parent),
                 true === $this->getDirected() ? '->' : '--',
                 $this->getHash($child)
             );
         }
 
-        return $this->getGv($attributes, $nodes, $edges);
+        return $this->getGv(
+            implode(PHP_EOL, $attributes),
+            implode(PHP_EOL, $nodes),
+            implode(PHP_EOL, $edges)
+        );
     }
 
     /**
@@ -179,9 +183,13 @@ class Gv implements ExporterInterface
 
         return <<<EOF
 {$graphType} PHPTreeGraph {
-
+// The graph attributes.
 {$attributes}
+
+// The graph nodes.
 {$nodes}
+
+// The graph edges.
 {$edges}
 }
 EOF;
