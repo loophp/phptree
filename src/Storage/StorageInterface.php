@@ -19,6 +19,7 @@ interface StorageInterface
      *   The value.
      */
     public function get($key);
+
     /**
      * Store a value.
      *
