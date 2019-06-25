@@ -6,6 +6,7 @@ namespace spec\drupol\phptree\Exporter;
 
 use drupol\phptree\Exporter\Graph;
 use drupol\phptree\Importer\Text;
+use drupol\phptree\Node\AttributeNode;
 use drupol\phptree\Node\ValueNode;
 use Graphp\GraphViz\GraphViz;
 use PhpSpec\ObjectBehavior;
@@ -36,7 +37,7 @@ class GraphSpec extends ObjectBehavior
 
     public function it_can_generate_a_graph()
     {
-        $tree = new ValueNode('root');
+        $tree = new AttributeNode(['graphviz.label' => 'root']);
         $child1 = new ValueNode('child1');
         $child2 = new ValueNode('child2');
         $child3 = new ValueNode('child3');
