@@ -32,28 +32,29 @@ class Gv implements ExporterInterface
      */
     public function export(NodeInterface $node): string
     {
-        $attributes = [];
-        foreach ($this->attributes as $key => $attribute) {
-            if (\is_string($attribute)) {
-                $attributes[] = \sprintf(
-                    '  %s = %s',
-                    $key,
-                    $attribute
-                );
+        $attributes = \array_map(
+            function ($key, $data) {
+                if (\is_string($data)) {
+                    return \sprintf(
+                        '  %s = %s',
+                        $key,
+                        $data
+                    );
+                }
 
-                continue;
-            }
+                if (\is_array($data)) {
+                    return \sprintf(
+                        '  %s %s',
+                        $key,
+                        $this->attributesArrayToText($data)
+                    );
+                }
 
-            if (\is_array($attribute)) {
-                $attributes[] = \sprintf(
-                    '  %s %s',
-                    $key,
-                    $this->attributesArrayToText($attribute)
-                );
-
-                continue;
-            }
-        }
+                return null;
+            },
+            \array_keys($this->attributes),
+            $this->attributes
+        );
 
         $nodes = [];
         foreach ($node->all() as $child) {
