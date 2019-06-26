@@ -75,9 +75,9 @@ class Gv implements ExporterInterface
         }
 
         return $this->getGv(
-            implode(PHP_EOL, $attributes),
-            implode(PHP_EOL, $nodes),
-            implode(PHP_EOL, $edges)
+            \implode(PHP_EOL, $attributes),
+            \implode(PHP_EOL, $nodes),
+            \implode(PHP_EOL, $edges)
         );
     }
 

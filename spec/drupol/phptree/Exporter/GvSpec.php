@@ -56,21 +56,22 @@ class GvSpec extends ObjectBehavior
 
         $result = <<<EOF
 digraph PHPTreeGraph {
-
+// The graph attributes.
   ratio = fill
   node [style="filled"]
 
+// The graph nodes.
   "{$nodes['root']['hash']}" [label="{$nodes['root']['value']}"]
   "{$nodes['child1']['hash']}" [label="{$nodes['child1']['value']}"]
   "{$nodes['child4']['hash']}" [label="{$nodes['child4']['value']}"]
   "{$nodes['child2']['hash']}" [label="{$nodes['child2']['value']}"]
   "{$nodes['child3']['hash']}" [label="{$nodes['child3']['value']}"]
 
+// The graph edges.
   "{$nodes['root']['hash']}" -> "{$nodes['child1']['hash']}";
   "{$nodes['child1']['hash']}" -> "{$nodes['child4']['hash']}";
   "{$nodes['root']['hash']}" -> "{$nodes['child2']['hash']}";
   "{$nodes['root']['hash']}" -> "{$nodes['child3']['hash']}";
-
 }
 EOF;
         $this
@@ -81,21 +82,22 @@ EOF;
 
         $result = <<<EOF
 graph PHPTreeGraph {
-
+// The graph attributes.
   ratio = fill
   node [style="filled"]
 
+// The graph nodes.
   "{$nodes['root']['hash']}" [label="{$nodes['root']['value']}"]
   "{$nodes['child1']['hash']}" [label="{$nodes['child1']['value']}"]
   "{$nodes['child4']['hash']}" [label="{$nodes['child4']['value']}"]
   "{$nodes['child2']['hash']}" [label="{$nodes['child2']['value']}"]
   "{$nodes['child3']['hash']}" [label="{$nodes['child3']['value']}"]
 
+// The graph edges.
   "{$nodes['root']['hash']}" -- "{$nodes['child1']['hash']}";
   "{$nodes['child1']['hash']}" -- "{$nodes['child4']['hash']}";
   "{$nodes['root']['hash']}" -- "{$nodes['child2']['hash']}";
   "{$nodes['root']['hash']}" -- "{$nodes['child3']['hash']}";
-
 }
 EOF;
         $this
