@@ -57,7 +57,7 @@ class Ascii implements ExporterInterface
      */
     private function doExportAsArray(NodeInterface $node): array
     {
-        if (!($node instanceof ValueNodeInterface)) {
+        if (!$this->isValidNode($node)) {
             throw new \InvalidArgumentException('Must implements ValueNodeInterface');
         }
 
@@ -68,7 +68,35 @@ class Ascii implements ExporterInterface
         }
 
         return [] === $children ?
-            [$node->getValue()] :
-            [$node->getValue(), $children];
+            [$this->getNodeRepresentation($node)] :
+            [$this->getNodeRepresentation($node), $children];
+    }
+
+    /**
+     * Check if a node is valid for being exported.
+     *
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *   The node.
+     *
+     * @return bool
+     *   True if it's valid, false otherwise.
+     */
+    protected function isValidNode(NodeInterface $node): bool
+    {
+        return $node instanceof ValueNodeInterface;
+    }
+
+    /**
+     * Get a string representation of the node.
+     *
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *   The node.
+     *
+     * @return string
+     *   The node representation.
+     */
+    protected function getNodeRepresentation(NodeInterface $node): string
+    {
+        return $node->getValue();
     }
 }
