@@ -21,7 +21,7 @@ class Ascii implements ExporterInterface
             new \RecursiveArrayIterator(
                 $this->doExportAsArray($node)
             ),
-            \RecursiveTreeIterator::BYPASS_KEY,
+            \RecursiveTreeIterator::SELF_FIRST,
             \CachingIterator::CATCH_GET_CHILD,
             \RecursiveTreeIterator::SELF_FIRST
         );
@@ -47,46 +47,6 @@ class Ascii implements ExporterInterface
     }
 
     /**
-     * Export the tree in an array.
-     *
-     * @param \drupol\phptree\Node\NodeInterface $node
-     *   The node
-     *
-     * @return array
-     *   The tree exported into an array
-     */
-    private function doExportAsArray(NodeInterface $node): array
-    {
-        if (!$this->isValidNode($node)) {
-            throw new \InvalidArgumentException('Must implements ValueNodeInterface');
-        }
-
-        $children = [];
-        /** @var ValueNodeInterface $child */
-        foreach ($node->children() as $child) {
-            $children[] = $this->doExportAsArray($child);
-        }
-
-        return [] === $children ?
-            [$this->getNodeRepresentation($node)] :
-            [$this->getNodeRepresentation($node), $children];
-    }
-
-    /**
-     * Check if a node is valid for being exported.
-     *
-     * @param \drupol\phptree\Node\NodeInterface $node
-     *   The node.
-     *
-     * @return bool
-     *   True if it's valid, false otherwise.
-     */
-    protected function isValidNode(NodeInterface $node): bool
-    {
-        return $node instanceof ValueNodeInterface;
-    }
-
-    /**
      * Get a string representation of the node.
      *
      * @param \drupol\phptree\Node\NodeInterface $node
@@ -97,6 +57,32 @@ class Ascii implements ExporterInterface
      */
     protected function getNodeRepresentation(NodeInterface $node): string
     {
-        return $node->getValue();
+        if ($node instanceof ValueNodeInterface) {
+            return $node->getValue();
+        }
+
+        return \sha1(\spl_object_hash($node));
+    }
+
+    /**
+     * Export the tree in an array.
+     *
+     * @param \drupol\phptree\Node\NodeInterface $node
+     *   The node
+     *
+     * @return array
+     *   The tree exported into an array
+     */
+    private function doExportAsArray(NodeInterface $node): array
+    {
+        $children = [];
+        /** @var ValueNodeInterface $child */
+        foreach ($node->children() as $child) {
+            $children[] = $this->doExportAsArray($child);
+        }
+
+        return [] === $children ?
+            [$this->getNodeRepresentation($node)] :
+            [$this->getNodeRepresentation($node), $children];
     }
 }

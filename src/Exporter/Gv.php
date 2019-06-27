@@ -34,14 +34,6 @@ class Gv implements ExporterInterface
     {
         $attributes = \array_map(
             function ($key, $data) {
-                if (\is_string($data)) {
-                    return \sprintf(
-                        '  %s = %s',
-                        $key,
-                        $data
-                    );
-                }
-
                 if (\is_array($data)) {
                     return \sprintf(
                         '  %s %s',
@@ -50,7 +42,11 @@ class Gv implements ExporterInterface
                     );
                 }
 
-                return null;
+                return \sprintf(
+                    '  %s = %s',
+                    $key,
+                    $data
+                );
             },
             \array_keys($this->attributes),
             $this->attributes
