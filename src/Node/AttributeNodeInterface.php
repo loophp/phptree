@@ -10,22 +10,42 @@ namespace drupol\phptree\Node;
 interface AttributeNodeInterface extends NaryNodeInterface
 {
     /**
-     * {@inheritdoc}
+     * Get an attribute.
+     *
+     * @return mixed
+     *   The value of the attribute.
      */
-    public function getAttribute($key);
+    public function getAttribute(string $key);
 
     /**
-     * {@inheritdoc}
+     * Get the attributes.
+     *
+     * @return \Traversable
+     *   The attributes.
      */
     public function getAttributes(): \Traversable;
 
     /**
-     * {@inheritdoc}
+     * Set an attribute.
+     *
+     * @param string $key
+     *   The attribute key.
+     * @param mixed $value
+     *   The attribute value.
+     *
+     * @return \drupol\phptree\Node\AttributeNodeInterface
+     *   The node.
      */
     public function setAttribute(string $key, $value): AttributeNodeInterface;
 
     /**
-     * {@inheritdoc}
+     * Set the attributes.
+     *
+     * @param \Traversable $attributes
+     *   The attributes.
+     *
+     * @return \drupol\phptree\Node\AttributeNodeInterface
+     *   The node.
      */
     public function setAttributes(\Traversable $attributes): AttributeNodeInterface;
 }

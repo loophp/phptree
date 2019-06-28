@@ -58,7 +58,7 @@ class Ascii implements ExporterInterface
     protected function getNodeRepresentation(NodeInterface $node): string
     {
         if ($node instanceof ValueNodeInterface) {
-            return $node->getValue();
+            return (string) $node->getValue();
         }
 
         return \sha1(\spl_object_hash($node));

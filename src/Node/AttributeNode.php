@@ -33,7 +33,7 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getAttribute($key)
+    public function getAttribute(string $key)
     {
         return $this->getAttributes()[$key] ?? null;
     }
