@@ -19,6 +19,7 @@
         "php": ">=7.1"
     },
     "require-dev": {
+        "drupol/launcher": "^1.0",
         "drupol/php-conventions": "^1",
         "drupol/phpspec-annotation": "^1",
         "graphp/graphviz": "^0.2",
