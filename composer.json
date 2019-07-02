@@ -16,14 +16,14 @@
         }
     ],
     "require": {
-        "php": ">=7.1"
+        "php": ">= 7.1"
     },
     "require-dev": {
-        "drupol/launcher": "^1.0",
+        "drupol/launcher": "^1 || ^2",
         "drupol/php-conventions": "^1",
         "drupol/phpspec-annotation": "^1",
         "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.12",
+        "infection/infection": "^0.13",
         "leanphp/phpspec-code-coverage": "^4",
         "phpbench/phpbench": "^0.16",
         "phpspec/phpspec": "^4",
@@ -31,9 +31,6 @@
         "scrutinizer/ocular": "^1"
     },
     "config": {
-        "platform": {
-            "php": "7.1.28"
-        },
         "sort-packages": true
     },
     "autoload": {
