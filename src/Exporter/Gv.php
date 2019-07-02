@@ -57,7 +57,7 @@ class Gv implements ExporterInterface
             $nodes[] = \sprintf(
                 '  "%s" %s',
                 $this->getHash($child),
-                $this->getNodeAttributes($child)
+                $this->attributesArrayToText($this->getNodeAttributes($child))
             );
         }
 
@@ -212,10 +212,10 @@ EOF;
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node interface.
      *
-     * @return string
-     *   The attributes as a string.
+     * @return array
+     *   The attributes as an array.
      */
-    protected function getNodeAttributes(NodeInterface $node): string
+    protected function getNodeAttributes(NodeInterface $node): array
     {
         $attributes = [];
 
@@ -229,6 +229,6 @@ EOF;
             }
         }
 
-        return $this->attributesArrayToText($attributes);
+        return $attributes;
     }
 }
