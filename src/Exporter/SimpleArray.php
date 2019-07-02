@@ -10,7 +10,7 @@ use drupol\phptree\Node\ValueNodeInterface;
 /**
  * Class SimpleArray.
  */
-class SimpleArray implements ExporterInterface
+class SimpleArray extends AbstractExporter
 {
     /**
      * {@inheritdoc}
@@ -28,7 +28,7 @@ class SimpleArray implements ExporterInterface
         }
 
         return [] === $children ?
-            ['value' => $node->getValue()] :
-            ['value' => $node->getValue(), 'children' => $children];
+            ['value' => $this->getNodeRepresentation($node)] :
+            ['value' => $this->getNodeRepresentation($node), 'children' => $children];
     }
 }

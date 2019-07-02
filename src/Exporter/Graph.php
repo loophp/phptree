@@ -6,14 +6,13 @@ namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\AttributeNodeInterface;
 use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNodeInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
 use Fhaculty\Graph\Vertex;
 
 /**
  * Class Graph.
  */
-class Graph implements ExporterInterface
+class Graph extends AbstractExporter
 {
     /**
      * The graph.
@@ -59,9 +58,10 @@ class Graph implements ExporterInterface
         if (false === $this->getGraph()->hasVertex($vertexId)) {
             $vertex = $this->getGraph()->createVertex($vertexId);
 
-            if ($node instanceof ValueNodeInterface) {
-                $vertex->setAttribute('graphviz.label', $node->getValue());
-            }
+            $vertex->setAttribute(
+                'graphviz.label',
+                $this->getNodeRepresentation($node)
+            );
 
             if ($node instanceof AttributeNodeInterface) {
                 foreach ($node->getAttributes() as $key => $value) {

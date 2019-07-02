@@ -6,12 +6,11 @@ namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\AttributeNodeInterface;
 use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNodeInterface;
 
 /**
  * Class Gv.
  */
-class Gv implements ExporterInterface
+class Gv extends AbstractExporter
 {
     /**
      * The graph attributes.
@@ -217,11 +216,9 @@ EOF;
      */
     protected function getNodeAttributes(NodeInterface $node): array
     {
-        $attributes = [];
-
-        if ($node instanceof ValueNodeInterface) {
-            $attributes['label'] = $node->getValue();
-        }
+        $attributes = [
+            'label' => $this->getNodeRepresentation($node),
+        ];
 
         if ($node instanceof AttributeNodeInterface) {
             foreach ($node->getAttributes() as $key => $value) {
