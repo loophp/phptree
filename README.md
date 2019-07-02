@@ -52,6 +52,7 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 
 ## Optional packages
 
+* [drupol/launcher](https://github.com/drupol/launcher): To automatically open a resource using the proper application on your operating system.
 * [graphp/graphp](https://github.com/graphp/graph): To export a tree into a Graph.
 
 ## Usage
@@ -62,8 +63,10 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 declare(strict_types = 1);
 
 use drupol\phptree\Exporter\Gv;
+use drupol\phptree\Exporter\GvConvert;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Exporter\Text;
+use drupol\launcher\Launcher;
 
 include './vendor/autoload.php';
 
@@ -87,6 +90,15 @@ $exporter = new Gv();
 $dotScript = $exporter->export($tree);
 file_put_contents('graph.gv', $dotScript);
 // Then do "dot -Tsvg graph.gv -o graph.svg" to export the script to SVG.
+
+// Or use GvConvert() that does it for you.
+$exporter = new GvConvert();
+$imagePath = $exporter->setFormat('png')->export($tree);
+
+// If you want to launch the image, you can use an optional package.
+// do: composer require drupol/launcher
+// then:
+Launcher::open($imagePath);
 ```
 
 ## Code quality, tests and benchmarks
