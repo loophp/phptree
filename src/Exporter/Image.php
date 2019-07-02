@@ -7,9 +7,9 @@ namespace drupol\phptree\Exporter;
 use drupol\phptree\Node\NodeInterface;
 
 /**
- * Class GvConvert.
+ * Class Image.
  */
-class GvConvert extends Gv
+class Image extends Gv
 {
     /**
      * @var string
@@ -21,7 +21,7 @@ class GvConvert extends Gv
     private $format = 'svg';
 
     /**
-     * GvDisplay constructor.
+     * Image constructor.
      */
     public function __construct()
     {
@@ -71,9 +71,9 @@ class GvConvert extends Gv
      *
      * @param string $executable
      *
-     * @return \drupol\phptree\Exporter\GvConvert
+     * @return \drupol\phptree\Exporter\Image
      */
-    public function setExecutable(string $executable): GvConvert
+    public function setExecutable(string $executable): Image
     {
         $this->executable = $executable;
 
@@ -83,9 +83,9 @@ class GvConvert extends Gv
     /**
      * @param string $format
      *
-     * @return \drupol\phptree\Exporter\GvConvert
+     * @return \drupol\phptree\Exporter\Image
      */
-    public function setFormat(string $format): GvConvert
+    public function setFormat(string $format): Image
     {
         $this->format = $format;
 

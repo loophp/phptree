@@ -4,11 +4,11 @@ declare(strict_types = 1);
 
 namespace spec\drupol\phptree\Exporter;
 
-use drupol\phptree\Exporter\GvConvert;
+use drupol\phptree\Exporter\Image;
 use drupol\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;
 
-class GvConvertSpec extends ObjectBehavior
+class ImageSpec extends ObjectBehavior
 {
     public function it_can_convert_a_tree_into_a_file()
     {
@@ -50,7 +50,7 @@ class GvConvertSpec extends ObjectBehavior
     }
     public function it_is_initializable()
     {
-        $this->shouldHaveType(GvConvert::class);
+        $this->shouldHaveType(Image::class);
 
         $this
             ->getExecutable()
