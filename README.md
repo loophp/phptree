@@ -6,7 +6,9 @@
  [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
  [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/drupol/phptree/master)](https://stryker-mutator.github.io)
  [![License](https://img.shields.io/packagist/l/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
-
+ [![Say Thanks!](https://img.shields.io/badge/Say-thanks-brightgreen.svg?style=flat-square)](https://saythanks.io/to/drupol)
+ [![Donate!](https://img.shields.io/badge/Donate-Paypal-brightgreen.svg?style=flat-square)](https://paypal.me/drupol)
+ 
 # PhpTree
 
 ## Description
