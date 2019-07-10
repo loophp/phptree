@@ -24,7 +24,7 @@ class GraphSpec extends ObjectBehavior
     public function getMatchers(): array
     {
         return [
-            'haveSameTextExport' => function ($left, $right) {
+            'haveSameTextExport' => static function ($left, $right) {
                 $importer = new Text();
                 $exporter = new Graph();
 
@@ -35,7 +35,7 @@ class GraphSpec extends ObjectBehavior
         ];
     }
 
-    public function it_can_generate_a_graph()
+    public function it_can_generate_a_graph(): void
     {
         $tree = new AttributeNode(['graphviz.label' => 'root']);
         $child1 = new ValueNode('child1');
@@ -60,7 +60,7 @@ class GraphSpec extends ObjectBehavior
             ->shouldHaveSameTextExport('[root[child1[child4]][child2][child3]]');
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Graph::class);
     }

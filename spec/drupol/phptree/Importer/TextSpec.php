@@ -11,13 +11,14 @@ use PhpSpec\ObjectBehavior;
 
 class TextSpec extends ObjectBehavior
 {
-    public function it_can_import()
+    public function it_can_import(): void
     {
         $string = '[root[A[C[G][H]][D[I][J]]][B[E][F]]]';
 
         $tree = new ValueNode('root', 2);
 
         $nodes = [];
+
         foreach (\range('A', 'J') as $value) {
             $nodes[$value] = new ValueNode($value);
         }
@@ -44,7 +45,7 @@ class TextSpec extends ObjectBehavior
             ->shouldReturn('root');
     }
 
-    public function it_can_throw_an_error_when_cannot_import()
+    public function it_can_throw_an_error_when_cannot_import(): void
     {
         $string = 'invalid string';
 
@@ -53,7 +54,7 @@ class TextSpec extends ObjectBehavior
             ->during('import', [$string]);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Text::class);
     }

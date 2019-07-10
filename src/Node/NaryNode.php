@@ -88,7 +88,7 @@ class NaryNode extends Node implements NaryNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (null === $offset) {
             $this->add($value);

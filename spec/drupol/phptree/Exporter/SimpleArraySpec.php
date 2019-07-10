@@ -11,7 +11,7 @@ use PhpSpec\ObjectBehavior;
 
 class SimpleArraySpec extends ObjectBehavior
 {
-    public function it_can_export_to_an_array()
+    public function it_can_export_to_an_array(): void
     {
         $tree = new ValueNode('root', 2);
 
@@ -20,6 +20,7 @@ class SimpleArraySpec extends ObjectBehavior
             ->shouldReturn(['value' => 'root']);
 
         $nodes = [];
+
         foreach (\range('A', 'J') as $value) {
             $nodes[$value] = new ValueNode($value, 2);
         }
@@ -75,7 +76,7 @@ class SimpleArraySpec extends ObjectBehavior
             ->shouldReturn($return);
     }
 
-    public function it_can_throw_an_error_when_tree_is_not_a_valuenode()
+    public function it_can_throw_an_error_when_tree_is_not_a_valuenode(): void
     {
         $tree = new Node();
 
@@ -90,7 +91,7 @@ class SimpleArraySpec extends ObjectBehavior
             ->during('export', [$tree]);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(SimpleArray::class);
     }

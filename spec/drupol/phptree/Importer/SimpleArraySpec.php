@@ -10,7 +10,7 @@ use PhpSpec\ObjectBehavior;
 
 class SimpleArraySpec extends ObjectBehavior
 {
-    public function it_can_import()
+    public function it_can_import(): void
     {
         $array = [
             'value' => 'root',
@@ -39,7 +39,7 @@ class SimpleArraySpec extends ObjectBehavior
             ->shouldReturn(true);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(SimpleArray::class);
     }

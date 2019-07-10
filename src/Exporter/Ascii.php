@@ -40,7 +40,7 @@ class Ascii extends AbstractExporter
                     '┐' :
                     ' ' . $entry;
 
-            $output .= $tree->getPrefix() . $entry . $tree->getPostfix() . PHP_EOL;
+            $output .= $tree->getPrefix() . $entry . $tree->getPostfix() . \PHP_EOL;
         }
 
         return $output;

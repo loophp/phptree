@@ -13,7 +13,7 @@ use drupol\phptree\Traverser\TraverserInterface;
 
 class NaryNodeSpec extends NodeObjectBehavior
 {
-    public function it_can_be_counted()
+    public function it_can_be_counted(): void
     {
         $this->beConstructedWith(2);
 
@@ -26,19 +26,19 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->shouldReturn(26);
     }
 
-    public function it_can_get_its_traverser()
+    public function it_can_get_its_traverser(): void
     {
         $this->getTraverser()->shouldBeAnInstanceOf(TraverserInterface::class);
     }
 
-    public function it_can_get_the_capacity()
+    public function it_can_get_the_capacity(): void
     {
         $this
             ->capacity()
             ->shouldReturn(0);
     }
 
-    public function it_can_get_the_capacity_when_using_a_custom_capacity()
+    public function it_can_get_the_capacity_when_using_a_custom_capacity(): void
     {
         $this->beConstructedWith(3);
 
@@ -47,7 +47,7 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->shouldReturn(3);
     }
 
-    public function it_can_have_children()
+    public function it_can_have_children(): void
     {
         $this->beConstructedWith(2);
 
@@ -66,7 +66,7 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->during('add', [new Node()]);
     }
 
-    public function it_can_throw_an_error_when_capacity_is_invalid()
+    public function it_can_throw_an_error_when_capacity_is_invalid(): void
     {
         $this->beConstructedWith(null);
 
@@ -78,14 +78,14 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->during('add', [new NaryNode()]);
     }
 
-    public function it_can_use_a_different_traverser()
+    public function it_can_use_a_different_traverser(): void
     {
         $this->beConstructedWith(2, new PreOrder());
 
         $this->getTraverser()->shouldBeAnInstanceOf(PreOrder::class);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(NaryNode::class);
 

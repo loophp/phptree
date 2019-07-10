@@ -9,7 +9,7 @@ use drupol\phptree\Node\ValueNode;
 
 class ValueNodeSpec extends NodeObjectBehavior
 {
-    public function it_can_be_cloned()
+    public function it_can_be_cloned(): void
     {
         $this->beConstructedWith(2);
 
@@ -28,7 +28,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->shouldHaveSameTextExport($export);
     }
 
-    public function it_can_be_manipulated_like_an_array()
+    public function it_can_be_manipulated_like_an_array(): void
     {
         $this
             ->beConstructedWith('root', 26);
@@ -40,7 +40,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         }
 
         foreach ($tree->children() as $key => $child) {
-            $tree[$key] = new ValueNode(\strtolower($child->getValue()));
+            $tree[$key] = new ValueNode(\mb_strtolower($child->getValue()));
         }
 
         $tree[25] = new ValueNode('Foo');
@@ -68,7 +68,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->offsetGet(0)->getValue()->shouldReturn('zero');
     }
 
-    public function it_can_be_set_with_a_value()
+    public function it_can_be_set_with_a_value(): void
     {
         $this
             ->beConstructedWith('root');
@@ -78,7 +78,7 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->shouldReturn('root');
     }
 
-    public function it_can_draw_the_tree()
+    public function it_can_draw_the_tree(): void
     {
         $this
             ->beConstructedWith('root', 3);
@@ -91,7 +91,7 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->shouldHaveSameGraphImage($this->getWrappedObject());
     }
 
-    public function it_can_have_children()
+    public function it_can_have_children(): void
     {
         $this
             ->beConstructedWith('root', 2);
@@ -109,7 +109,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->shouldHaveSameGraph($tree);
     }
 
-    public function it_can_remove()
+    public function it_can_remove(): void
     {
         $this
             ->beConstructedWith('root');
@@ -143,7 +143,7 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->shouldReturn(0);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this
             ->beConstructedWith('root');

@@ -10,7 +10,7 @@ use PhpSpec\ObjectBehavior;
 
 class AsciiSpec extends ObjectBehavior
 {
-    public function it_can_export_to_ascii()
+    public function it_can_export_to_ascii(): void
     {
         $tree = new ValueNode('root', 2);
 
@@ -95,7 +95,7 @@ EOF;
             ->shouldReturn($expected);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Ascii::class);
     }

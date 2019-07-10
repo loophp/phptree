@@ -10,13 +10,13 @@ use drupol\phptree\Node\ValueNode;
 
 class NodeSpec extends NodeObjectBehavior
 {
-    public function it_can_add()
+    public function it_can_add(): void
     {
         $this->add(new Node())
             ->shouldReturn($this);
     }
 
-    public function it_can_check_if_its_a_leaf()
+    public function it_can_check_if_its_a_leaf(): void
     {
         $this
             ->isLeaf()
@@ -30,7 +30,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(false);
     }
 
-    public function it_can_check_if_node_is_root()
+    public function it_can_check_if_node_is_root(): void
     {
         $this
             ->isRoot()
@@ -45,7 +45,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(false);
     }
 
-    public function it_can_count_its_children()
+    public function it_can_count_its_children(): void
     {
         $this
             ->count()
@@ -59,7 +59,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(1);
     }
 
-    public function it_can_delete()
+    public function it_can_delete(): void
     {
         $node1 = new Node();
         $node2 = new Node();
@@ -105,7 +105,7 @@ class NodeSpec extends NodeObjectBehavior
             ->during('delete', [$this]);
     }
 
-    public function it_can_get_and_set_the_parent(NodeInterface $parent)
+    public function it_can_get_and_set_the_parent(NodeInterface $parent): void
     {
         $this
             ->getParent()
@@ -119,7 +119,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn($node);
     }
 
-    public function it_can_get_its_ancestors()
+    public function it_can_get_its_ancestors(): void
     {
         $this
             ->getAncestors()
@@ -136,7 +136,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldYield(new \ArrayIterator([$level2, $level1, $root]));
     }
 
-    public function it_can_get_its_children()
+    public function it_can_get_its_children(): void
     {
         $this
             ->children()
@@ -155,7 +155,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldYield(new \ArrayIterator([$node, $node]));
     }
 
-    public function it_can_get_its_depth()
+    public function it_can_get_its_depth(): void
     {
         $this
             ->depth()
@@ -170,6 +170,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(1);
 
         $nodes = [];
+
         foreach (\range('A', 'Z') as $v) {
             $nodes[] = new ValueNode($v, 2);
         }
@@ -181,13 +182,14 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(1);
     }
 
-    public function it_can_get_its_height()
+    public function it_can_get_its_height(): void
     {
         $this
             ->height()
             ->shouldReturn(0);
 
         $tree = $this;
+
         foreach (\range('A', 'B') as $key => $v) {
             $node = new ValueNode($v, 1);
             $tree->add($node);
@@ -214,7 +216,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(0);
     }
 
-    public function it_can_get_its_sibblings()
+    public function it_can_get_its_sibblings(): void
     {
         $this
             ->getSibblings()
@@ -231,10 +233,11 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldYield(new \ArrayIterator([$node2, $node3]));
     }
 
-    public function it_can_get_the_size()
+    public function it_can_get_the_size(): void
     {
         $nodes = [];
         $linearNodes = [];
+
         foreach (\range('a', 'e') as $lowercaseValue) {
             $node1 = new Node();
             $linearNodes[] = $node1;
@@ -256,7 +259,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(30);
     }
 
-    public function it_can_remove()
+    public function it_can_remove(): void
     {
         $node1 = new Node();
         $node2 = new Node();
@@ -283,7 +286,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(0);
     }
 
-    public function it_can_use_withChildren()
+    public function it_can_use_withChildren(): void
     {
         $this
             ->withChildren()
@@ -302,7 +305,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldYield(new \ArrayIterator([]));
     }
 
-    public function it_has_a_degree()
+    public function it_has_a_degree(): void
     {
         $this
             ->degree()
@@ -316,7 +319,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(1);
     }
 
-    public function it_is_a_traversable()
+    public function it_is_a_traversable(): void
     {
         $node1 = new Node();
         $node2 = new Node();
@@ -328,7 +331,7 @@ class NodeSpec extends NodeObjectBehavior
         $this->shouldIterateLike($this->all());
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Node::class);
     }

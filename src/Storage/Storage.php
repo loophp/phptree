@@ -9,7 +9,7 @@ namespace drupol\phptree\Storage;
  *
  * @internal
  */
-abstract class Storage implements StorageInterface, \ArrayAccess
+abstract class Storage implements \ArrayAccess, StorageInterface
 {
     /**
      * @var \ArrayObject
@@ -32,6 +32,7 @@ abstract class Storage implements StorageInterface, \ArrayAccess
         $this->storage = clone $this->storage;
 
         $children = new \ArrayObject();
+
         foreach ($this->get('children') as $key => $child) {
             $children[] = clone $child;
         }
@@ -69,7 +70,7 @@ abstract class Storage implements StorageInterface, \ArrayAccess
     /**
      * {@inheritdoc}
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->storage->offsetSet($offset, $value);
     }
@@ -77,7 +78,7 @@ abstract class Storage implements StorageInterface, \ArrayAccess
     /**
      * {@inheritdoc}
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $this->storage->offsetUnset($offset);
     }

@@ -15,6 +15,7 @@ class Image extends Gv
      * @var string
      */
     private $executable = 'dot';
+
     /**
      * @var string
      */
@@ -25,7 +26,7 @@ class Image extends Gv
      */
     public function __construct()
     {
-        if (0 === \stripos(PHP_OS, 'WIN')) {
+        if (0 === \mb_stripos(\PHP_OS, 'WIN')) {
             $this->executable = 'dot.exe';
         }
     }
@@ -135,7 +136,7 @@ class Image extends Gv
      */
     private function writeToFile(string $path, string $content): bool
     {
-        $ret = \file_put_contents($path, $content, LOCK_EX);
+        $ret = \file_put_contents($path, $content, \LOCK_EX);
 
         if (false === $ret) {
             throw new \Exception('Unable to write graphviz script to temporary file');

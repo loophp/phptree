@@ -10,7 +10,7 @@ use PhpSpec\ObjectBehavior;
 
 class ImageSpec extends ObjectBehavior
 {
-    public function it_can_convert_a_tree_into_a_file()
+    public function it_can_convert_a_tree_into_a_file(): void
     {
         $tree = new ValueNode('root');
 
@@ -19,7 +19,7 @@ class ImageSpec extends ObjectBehavior
             ->shouldBeString();
     }
 
-    public function it_can_set_and_get_the_executable()
+    public function it_can_set_and_get_the_executable(): void
     {
         $this
             ->getExecutable()
@@ -34,7 +34,7 @@ class ImageSpec extends ObjectBehavior
             ->shouldBe('foo');
     }
 
-    public function it_can_set_and_get_the_format()
+    public function it_can_set_and_get_the_format(): void
     {
         $this
             ->getFormat()
@@ -48,7 +48,8 @@ class ImageSpec extends ObjectBehavior
             ->getFormat()
             ->shouldReturn('png');
     }
-    public function it_is_initializable()
+
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Image::class);
 

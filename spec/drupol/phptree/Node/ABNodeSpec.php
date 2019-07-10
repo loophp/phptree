@@ -8,13 +8,14 @@ use drupol\phptree\Node\ABNode;
 
 class ABNodeSpec extends NodeObjectBehavior
 {
-    public function it_balance_a_tree()
+    public function it_balance_a_tree(): void
     {
         $this->beConstructedWith(1);
 
         $data = \range(0, 40);
 
         $nodes = [];
+
         foreach ($data as $key => $value) {
             $nodes[$key] = new ABNode(2);
         }
@@ -62,7 +63,8 @@ class ABNodeSpec extends NodeObjectBehavior
             ->count()
             ->shouldReturn(20);
     }
-    public function it_is_initializable()
+
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(ABNode::class);
     }

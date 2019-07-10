@@ -59,10 +59,10 @@ class Text extends SimpleArray
 
         foreach (\array_filter($matches) as $match) {
             $item = [];
-            $position = \strpos($match, '[');
+            $position = \mb_strpos($match, '[');
 
             if (false !== $position) {
-                $item['value'] = \substr($match, 0, $position);
+                $item['value'] = \mb_substr($match, 0, $position);
             } else {
                 $item['value'] = $match;
             }

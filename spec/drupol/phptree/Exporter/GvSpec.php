@@ -11,7 +11,7 @@ use PhpSpec\ObjectBehavior;
 
 class GvSpec extends ObjectBehavior
 {
-    public function it_can_export_to_dot_gv()
+    public function it_can_export_to_dot_gv(): void
     {
         $attributes = [
             'ratio' => 'fill',
@@ -104,7 +104,8 @@ EOF;
             ->export($tree)
             ->shouldReturn($result);
     }
-    public function it_is_initializable()
+
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Gv::class);
     }

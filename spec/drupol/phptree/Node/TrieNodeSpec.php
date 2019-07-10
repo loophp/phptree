@@ -9,7 +9,7 @@ use drupol\phptree\Node\TrieNode;
 
 class TrieNodeSpec extends NodeObjectBehavior
 {
-    public function it_can_add_node()
+    public function it_can_add_node(): void
     {
         $this->beConstructedWith('key', 'value');
 
@@ -40,7 +40,7 @@ class TrieNodeSpec extends NodeObjectBehavior
             ->shouldReturn(43);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->beConstructedWith('key', 'value');
         $this->shouldHaveType(TrieNode::class);

@@ -20,14 +20,16 @@ class TrieNode extends KeyValueNode
 
             $hash = \hash('sha256', $node->getKey() . $data);
 
-            $node = new TrieNode($hash, \substr($data, 0, 1));
+            $node = new TrieNode($hash, \mb_substr($data, 0, 1));
             $parent = $this->append($node);
 
-            $dataWithoutFirstLetter = \substr($data, 1);
+            $dataWithoutFirstLetter = \mb_substr($data, 1);
+
             if ('' < $dataWithoutFirstLetter) {
                 $parent->add(new TrieNode($hash, $dataWithoutFirstLetter));
             } else {
                 $nodes = [$node->getValue()];
+
                 foreach ($node->getAncestors() as $ancestor) {
                     $nodes[] = $ancestor->getValue();
                 }

@@ -52,6 +52,7 @@ class Gv extends AbstractExporter
         );
 
         $nodes = [];
+
         foreach ($node->all() as $child) {
             $nodes[] = \sprintf(
                 '  "%s" %s',
@@ -61,6 +62,7 @@ class Gv extends AbstractExporter
         }
 
         $edges = [];
+
         foreach ($this->findEdges($node) as $parent => $child) {
             $edges[] = \sprintf(
                 '  "%s" %s "%s";',
@@ -71,9 +73,9 @@ class Gv extends AbstractExporter
         }
 
         return $this->getGv(
-            \implode(PHP_EOL, $attributes),
-            \implode(PHP_EOL, $nodes),
-            \implode(PHP_EOL, $edges)
+            \implode(\PHP_EOL, $attributes),
+            \implode(\PHP_EOL, $nodes),
+            \implode(\PHP_EOL, $edges)
         );
     }
 

@@ -27,7 +27,7 @@ abstract class NodeObjectBehavior extends ObjectBehavior
     public function getMatchers(): array
     {
         return [
-            'haveSameGraph' => function ($subject, $key) {
+            'haveSameGraph' => static function ($subject, $key) {
                 $exporterText = new Text();
 
                 $left = $exporterText->export($subject);
@@ -35,21 +35,21 @@ abstract class NodeObjectBehavior extends ObjectBehavior
 
                 return $left === $right;
             },
-            'haveSameTextExport' => function ($subject, $key) {
+            'haveSameTextExport' => static function ($subject, $key) {
                 $exporterText = new Text();
 
                 $left = $exporterText->export($subject);
 
                 return $left === $key;
             },
-            'notHaveSameTextExport' => function ($subject, $key) {
+            'notHaveSameTextExport' => static function ($subject, $key) {
                 $exporterText = new Text();
 
                 $left = $exporterText->export($subject);
 
                 return $left !== $key;
             },
-            'haveSameGraphImage' => function ($subject, $key) {
+            'haveSameGraphImage' => static function ($subject, $key) {
                 $exporter = new Graph();
 
                 $left = $exporter->export($subject);
@@ -60,7 +60,7 @@ abstract class NodeObjectBehavior extends ObjectBehavior
 
                 return \file_get_contents($left) === \file_get_contents($right);
             },
-            'haveSameGraphImageFile' => function ($subject, $key) {
+            'haveSameGraphImageFile' => static function ($subject, $key) {
                 $left = (new GraphViz())->setFormat('png')->createImageFile($subject);
 
                 return \file_get_contents($left) === \file_get_contents($key);

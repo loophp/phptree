@@ -10,11 +10,12 @@ use PhpSpec\ObjectBehavior;
 
 class ReverseSpec extends ObjectBehavior
 {
-    public function it_can_reverse_a_tree()
+    public function it_can_reverse_a_tree(): void
     {
         $tree1 = new ValueNode('root');
 
         $nodes = [];
+
         foreach (\range('A', 'E') as $value) {
             $nodes[] = new ValueNode($value);
         }
@@ -31,7 +32,7 @@ class ReverseSpec extends ObjectBehavior
         $this->modify($tree1)->shouldNotBeEqualTo($tree2);
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Reverse::class);
     }

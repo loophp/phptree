@@ -10,13 +10,14 @@ use PhpSpec\ObjectBehavior;
 
 class PostOrderSpec extends ObjectBehavior
 {
-    public function it_can_traverse_a_tree()
+    public function it_can_traverse_a_tree(): void
     {
         $tree = new Node();
 
         $data = \range('A', 'E');
 
         $nodes = [];
+
         foreach ($data as $key => $value) {
             $nodes[] = new Node();
         }
@@ -30,7 +31,7 @@ class PostOrderSpec extends ObjectBehavior
             ->shouldYield(new \ArrayIterator($nodes));
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(PostOrder::class);
     }

@@ -10,7 +10,7 @@ use PhpSpec\ObjectBehavior;
 
 class TextSpec extends ObjectBehavior
 {
-    public function it_can_export_to_text()
+    public function it_can_export_to_text(): void
     {
         $tree = new ValueNode('root', 2);
 
@@ -19,6 +19,7 @@ class TextSpec extends ObjectBehavior
             ->shouldReturn('[root]');
 
         $nodes = [];
+
         foreach (\range('A', 'J') as $value) {
             $nodes[$value] = new ValueNode($value, 2);
         }
@@ -30,7 +31,7 @@ class TextSpec extends ObjectBehavior
             ->shouldReturn('[root[A[C[G][H]][D[I][J]]][B[E][F]]]');
     }
 
-    public function it_is_initializable()
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(Text::class);
     }

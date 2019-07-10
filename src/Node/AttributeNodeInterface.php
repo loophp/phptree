@@ -12,6 +12,8 @@ interface AttributeNodeInterface extends NaryNodeInterface
     /**
      * Get an attribute.
      *
+     * @param string $key
+     *
      * @return mixed
      *   The value of the attribute.
      */

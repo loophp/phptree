@@ -9,7 +9,7 @@ use PhpSpec\ObjectBehavior;
 
 class AttributeNodeSpec extends ObjectBehavior
 {
-    public function it_can_set_and_get_the_attributes()
+    public function it_can_set_and_get_the_attributes(): void
     {
         $attributes = [
             'foo' => 'bar',
@@ -27,7 +27,8 @@ class AttributeNodeSpec extends ObjectBehavior
             ->getAttribute('bar')
             ->shouldReturn('foo');
     }
-    public function it_is_initializable()
+
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(AttributeNode::class);
     }

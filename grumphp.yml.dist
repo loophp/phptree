@@ -1,5 +1,5 @@
 imports:
-  - { resource: vendor/drupol/php-conventions/config/php7/grumphp.yml }
+  - { resource: vendor/drupol/php-conventions/config/php71/grumphp.yml }
 
 parameters:
   extensions:

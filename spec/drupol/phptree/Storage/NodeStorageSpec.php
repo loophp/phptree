@@ -9,7 +9,7 @@ use PhpSpec\ObjectBehavior;
 
 class NodeStorageSpec extends ObjectBehavior
 {
-    public function it_can_offsetUnset()
+    public function it_can_offsetUnset(): void
     {
         $this->set('foo', 'bar');
 
@@ -20,7 +20,8 @@ class NodeStorageSpec extends ObjectBehavior
         $this->shouldThrow(\InvalidArgumentException::class)
             ->during('get', ['foo']);
     }
-    public function it_is_initializable()
+
+    public function it_is_initializable(): void
     {
         $this->shouldHaveType(NodeStorage::class);
     }

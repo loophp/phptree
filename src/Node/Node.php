@@ -245,7 +245,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (!($value instanceof NodeInterface)) {
             throw new \InvalidArgumentException(
@@ -260,7 +260,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         $this->storage()->getChildren()->offsetUnset($offset);
     }

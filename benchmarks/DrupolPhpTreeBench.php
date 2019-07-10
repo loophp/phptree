@@ -23,7 +23,7 @@ class DrupolPhpTreeBench extends AbstractBench
      * @Iterations(5)
      * @Warmup(10)
      */
-    public function benchTreeAdd()
+    public function benchTreeAdd(): void
     {
         $this->tree = new ValueNode('root', 2);
 
@@ -35,7 +35,7 @@ class DrupolPhpTreeBench extends AbstractBench
     /**
      * Init the object.
      */
-    public function initObject()
+    public function initObject(): void
     {
     }
 }
