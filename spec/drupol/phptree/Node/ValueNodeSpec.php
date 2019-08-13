@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
@@ -13,10 +13,10 @@ class ValueNodeSpec extends NodeObjectBehavior
     {
         $this->beConstructedWith(2);
 
-        $node1 = new ValueNode(\mt_rand());
-        $node2 = new ValueNode(\mt_rand());
-        $node3 = new ValueNode(\mt_rand());
-        $node4 = new ValueNode(\mt_rand());
+        $node1 = new ValueNode(mt_rand());
+        $node2 = new ValueNode(mt_rand());
+        $node3 = new ValueNode(mt_rand());
+        $node4 = new ValueNode(mt_rand());
 
         $this
             ->add($node1->add($node2), $node3->add($node4));
@@ -35,12 +35,12 @@ class ValueNodeSpec extends NodeObjectBehavior
 
         $tree = $this->getWrappedObject();
 
-        foreach (\range('A', 'Z') as $value) {
+        foreach (range('A', 'Z') as $value) {
             $tree[] = new ValueNode($value, 3);
         }
 
         foreach ($tree->children() as $key => $child) {
-            $tree[$key] = new ValueNode(\mb_strtolower($child->getValue()));
+            $tree[$key] = new ValueNode(mb_strtolower($child->getValue()));
         }
 
         $tree[25] = new ValueNode('Foo');
@@ -83,7 +83,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this
             ->beConstructedWith('root', 3);
 
-        foreach (\range(0, 30) as $number) {
+        foreach (range(0, 30) as $number) {
             $this->add(new ValueNode($number, 2));
         }
 
@@ -98,7 +98,7 @@ class ValueNodeSpec extends NodeObjectBehavior
 
         $tree = new ValueNode('root', 2);
 
-        foreach (\range('A', 'Z') as $value) {
+        foreach (range('A', 'Z') as $value) {
             $this[] = new ValueNode($value, 3);
             $tree->add(new ValueNode($value, 3));
         }

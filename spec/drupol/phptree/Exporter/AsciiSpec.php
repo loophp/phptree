@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Exporter;
 
@@ -14,11 +14,11 @@ class AsciiSpec extends ObjectBehavior
     {
         $tree = new ValueNode('root', 2);
 
-        foreach (\range('A', 'Z') as $key => $value) {
+        foreach (range('A', 'Z') as $key => $value) {
             $nodes[$value] = new ValueNode($value, 2);
         }
 
-        $tree->add(...\array_values($nodes));
+        $tree->add(...array_values($nodes));
 
         $expected = <<<'EOF'
 ├─ root

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
@@ -38,7 +38,7 @@ interface AttributeNodeInterface extends NaryNodeInterface
      * @return \drupol\phptree\Node\AttributeNodeInterface
      *   The node.
      */
-    public function setAttribute(string $key, $value): AttributeNodeInterface;
+    public function setAttribute(string $key, $value): self;
 
     /**
      * Set the attributes.
@@ -49,5 +49,5 @@ interface AttributeNodeInterface extends NaryNodeInterface
      * @return \drupol\phptree\Node\AttributeNodeInterface
      *   The node.
      */
-    public function setAttributes(\Traversable $attributes): AttributeNodeInterface;
+    public function setAttributes(\Traversable $attributes): self;
 }

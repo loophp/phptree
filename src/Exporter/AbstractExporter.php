@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Exporter;
 
@@ -27,6 +27,6 @@ abstract class AbstractExporter implements ExporterInterface
             return (string) $node->getValue();
         }
 
-        return \sha1(\spl_object_hash($node));
+        return sha1(spl_object_hash($node));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
@@ -18,23 +18,23 @@ class TrieNode extends KeyValueNode
         foreach ($nodes as $node) {
             $data = $node->getValue();
 
-            $hash = \hash('sha256', $node->getKey() . $data);
+            $hash = hash('sha256', $node->getKey() . $data);
 
-            $node = new TrieNode($hash, \mb_substr($data, 0, 1));
+            $node = new self($hash, mb_substr($data, 0, 1));
             $parent = $this->append($node);
 
-            $dataWithoutFirstLetter = \mb_substr($data, 1);
+            $dataWithoutFirstLetter = mb_substr($data, 1);
 
             if ('' < $dataWithoutFirstLetter) {
-                $parent->add(new TrieNode($hash, $dataWithoutFirstLetter));
+                $parent->add(new self($hash, $dataWithoutFirstLetter));
             } else {
                 $nodes = [$node->getValue()];
 
                 foreach ($node->getAncestors() as $ancestor) {
                     $nodes[] = $ancestor->getValue();
                 }
-                \array_pop($nodes);
-                $node->append(new TrieNode($hash, \strrev(\implode('', $nodes))));
+                array_pop($nodes);
+                $node->append(new self($hash, strrev(implode('', $nodes))));
             }
         }
 

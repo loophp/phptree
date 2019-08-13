@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Exporter;
 
@@ -25,7 +25,7 @@ class Text extends AbstractExporter
         }
 
         return [] === $children ?
-            \sprintf('[%s]', $this->getNodeRepresentation($node)) :
-            \sprintf('[%s%s]', $this->getNodeRepresentation($node), \implode('', $children));
+            sprintf('[%s]', $this->getNodeRepresentation($node)) :
+            sprintf('[%s%s]', $this->getNodeRepresentation($node), implode('', $children));
     }
 }

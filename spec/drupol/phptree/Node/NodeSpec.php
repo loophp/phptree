@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
@@ -171,7 +171,7 @@ class NodeSpec extends NodeObjectBehavior
 
         $nodes = [];
 
-        foreach (\range('A', 'Z') as $v) {
+        foreach (range('A', 'Z') as $v) {
             $nodes[] = new ValueNode($v, 2);
         }
 
@@ -190,7 +190,7 @@ class NodeSpec extends NodeObjectBehavior
 
         $tree = $this;
 
-        foreach (\range('A', 'B') as $key => $v) {
+        foreach (range('A', 'B') as $key => $v) {
             $node = new ValueNode($v, 1);
             $tree->add($node);
             $tree = $node;
@@ -200,7 +200,7 @@ class NodeSpec extends NodeObjectBehavior
             ->height()
             ->shouldReturn(2);
 
-        foreach (\range('C', 'F') as $key => $v) {
+        foreach (range('C', 'F') as $key => $v) {
             $node = new ValueNode($v, 1);
             $tree->add($node);
             $tree = $node;
@@ -238,11 +238,11 @@ class NodeSpec extends NodeObjectBehavior
         $nodes = [];
         $linearNodes = [];
 
-        foreach (\range('a', 'e') as $lowercaseValue) {
+        foreach (range('a', 'e') as $lowercaseValue) {
             $node1 = new Node();
             $linearNodes[] = $node1;
 
-            foreach (\range('A', 'E') as $uppercaseValue) {
+            foreach (range('A', 'E') as $uppercaseValue) {
                 $node2 = new Node();
                 $linearNodes[] = $node2;
 

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Exporter;
 
@@ -34,23 +34,23 @@ class GvSpec extends ObjectBehavior
             ->add($child1, $child2, $child3);
 
         $nodes['root'] = [
-            'hash' => \sha1(\spl_object_hash($tree)),
+            'hash' => sha1(spl_object_hash($tree)),
             'value' => 'root',
         ];
         $nodes['child1'] = [
-            'hash' => \sha1(\spl_object_hash($child1)),
+            'hash' => sha1(spl_object_hash($child1)),
             'value' => $child1->getValue(),
         ];
         $nodes['child2'] = [
-            'hash' => \sha1(\spl_object_hash($child2)),
+            'hash' => sha1(spl_object_hash($child2)),
             'value' => $child2->getValue(),
         ];
         $nodes['child3'] = [
-            'hash' => \sha1(\spl_object_hash($child3)),
+            'hash' => sha1(spl_object_hash($child3)),
             'value' => $child3->getValue(),
         ];
         $nodes['child4'] = [
-            'hash' => \sha1(\spl_object_hash($child4)),
+            'hash' => sha1(spl_object_hash($child4)),
             'value' => $child4->getValue(),
         ];
 

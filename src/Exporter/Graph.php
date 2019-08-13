@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Exporter;
 
@@ -84,7 +84,7 @@ class Graph extends AbstractExporter
      */
     protected function createVertexId(NodeInterface $node)
     {
-        return \spl_object_hash($node);
+        return spl_object_hash($node);
     }
 
     /**

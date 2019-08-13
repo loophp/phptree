@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Traverser;
 
@@ -14,7 +14,7 @@ class PreOrderSpec extends ObjectBehavior
     {
         $tree = new Node();
 
-        $data = \range('A', 'E');
+        $data = range('A', 'E');
 
         $nodes = [];
 
@@ -24,7 +24,7 @@ class PreOrderSpec extends ObjectBehavior
 
         $tree->add(...$nodes);
 
-        $rootAndNodes = \array_merge([$tree], $nodes);
+        $rootAndNodes = array_merge([$tree], $nodes);
 
         $this
             ->traverse($tree)

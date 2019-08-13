@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Modifier;
 
@@ -16,13 +16,13 @@ class ReverseSpec extends ObjectBehavior
 
         $nodes = [];
 
-        foreach (\range('A', 'E') as $value) {
+        foreach (range('A', 'E') as $value) {
             $nodes[] = new ValueNode($value);
         }
         $tree1->add(...$nodes);
 
         $tree2 = new ValueNode('root');
-        $tree2->add(...\array_reverse($nodes));
+        $tree2->add(...array_reverse($nodes));
 
         $this
             ->modify($tree1)

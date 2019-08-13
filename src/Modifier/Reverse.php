@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Modifier;
 
@@ -22,7 +22,7 @@ class Reverse implements ModifierInterface
             $children->append($this->modify($child));
         }
 
-        return $tree->withChildren(...\array_reverse(
+        return $tree->withChildren(...array_reverse(
             $children->getArrayCopy()
         ));
     }

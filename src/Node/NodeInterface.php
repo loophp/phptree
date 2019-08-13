@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
@@ -18,7 +18,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return NodeInterface
      *   The node
      */
-    public function add(NodeInterface ...$node): NodeInterface;
+    public function add(self ...$node): self;
 
     /**
      * Get all the nodes of a tree including the parent node itself.
@@ -42,7 +42,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return \drupol\phptree\Node\NodeInterface
      *   The tree.
      */
-    public function clone(): NodeInterface;
+    public function clone(): self;
 
     /**
      * The amount of children a node has.
@@ -61,7 +61,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return null|\drupol\phptree\Node\NodeInterface
      *   The node that has been removed without parent, null otherwise.
      */
-    public function delete(NodeInterface $node): ?NodeInterface;
+    public function delete(self $node): ?self;
 
     /**
      * Get the node depth from the root node.
@@ -80,7 +80,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return null|\drupol\phptree\Node\NodeInterface
      *   The node if found, false otherwise.
      */
-    public function find(NodeInterface $node): ?NodeInterface;
+    public function find(self $node): ?self;
 
     /**
      * Get the ancestors of a node.
@@ -96,7 +96,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return null|NodeInterface
      *   The parent node if any, null otherwise
      */
-    public function getParent(): ?NodeInterface;
+    public function getParent(): ?self;
 
     /**
      * Get the node's sibblings.
@@ -139,7 +139,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return NodeInterface
      *   The node
      */
-    public function remove(NodeInterface ...$node): NodeInterface;
+    public function remove(self ...$node): self;
 
     /**
      * Set the parent.
@@ -150,7 +150,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return NodeInterface
      *   The node
      */
-    public function setParent(?NodeInterface $node): NodeInterface;
+    public function setParent(?self $node): self;
 
     /**
      * Get a clone of the object with or without children.
@@ -161,5 +161,5 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return \drupol\phptree\Node\NodeInterface
      *   The new object
      */
-    public function withChildren(?NodeInterface ...$nodes): NodeInterface;
+    public function withChildren(?self ...$nodes): self;
 }

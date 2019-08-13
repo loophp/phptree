@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Exporter;
 
@@ -21,11 +21,11 @@ class SimpleArraySpec extends ObjectBehavior
 
         $nodes = [];
 
-        foreach (\range('A', 'J') as $value) {
+        foreach (range('A', 'J') as $value) {
             $nodes[$value] = new ValueNode($value, 2);
         }
 
-        $tree->add(...\array_values($nodes));
+        $tree->add(...array_values($nodes));
 
         $return = [
             'value' => 'root',
@@ -80,11 +80,11 @@ class SimpleArraySpec extends ObjectBehavior
     {
         $tree = new Node();
 
-        foreach (\range('A', 'Z') as $key => $value) {
+        foreach (range('A', 'Z') as $key => $value) {
             $nodes[$value] = new Node();
         }
 
-        $tree->add(...\array_values($nodes));
+        $tree->add(...array_values($nodes));
 
         $this
             ->shouldThrow(\InvalidArgumentException::class)

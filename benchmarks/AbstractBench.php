@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\benchmarks;
 
@@ -11,6 +11,6 @@ abstract class AbstractBench
      */
     public function getData()
     {
-        return \range(1, 100);
+        return range(1, 100);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Traverser;
 
@@ -31,7 +31,7 @@ class InOrder implements TraverserInterface
      */
     private function doTraverse(NodeInterface $node): \Traversable
     {
-        $middle = \floor($node->degree() / 2);
+        $middle = floor($node->degree() / 2);
 
         foreach ($node->children() as $key => $child) {
             if ((int) $key === (int) $middle) {

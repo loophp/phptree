@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\tests\Exporter;
 
@@ -37,6 +37,6 @@ class KeyValueGraph extends Graph
             return $node->getKey() . $node->getValue();
         }
 
-        return \sha1((string) parent::createVertexId($node));
+        return sha1((string) parent::createVertexId($node));
     }
 }

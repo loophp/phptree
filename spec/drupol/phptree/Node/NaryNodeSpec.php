@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
@@ -17,7 +17,7 @@ class NaryNodeSpec extends NodeObjectBehavior
     {
         $this->beConstructedWith(2);
 
-        foreach (\range('A', 'Z') as $value) {
+        foreach (range('A', 'Z') as $value) {
             $this->add(new ValueNode($value, 3));
         }
 

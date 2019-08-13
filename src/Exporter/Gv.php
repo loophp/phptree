@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Exporter;
 
@@ -31,30 +31,30 @@ class Gv extends AbstractExporter
      */
     public function export(NodeInterface $node): string
     {
-        $attributes = \array_map(
+        $attributes = array_map(
             function ($key, $data) {
                 if (\is_array($data)) {
-                    return \sprintf(
+                    return sprintf(
                         '  %s %s',
                         $key,
                         $this->attributesArrayToText($data)
                     );
                 }
 
-                return \sprintf(
+                return sprintf(
                     '  %s = %s',
                     $key,
                     $data
                 );
             },
-            \array_keys($this->attributes),
+            array_keys($this->attributes),
             $this->attributes
         );
 
         $nodes = [];
 
         foreach ($node->all() as $child) {
-            $nodes[] = \sprintf(
+            $nodes[] = sprintf(
                 '  "%s" %s',
                 $this->getHash($child),
                 $this->attributesArrayToText($this->getNodeAttributes($child))
@@ -64,7 +64,7 @@ class Gv extends AbstractExporter
         $edges = [];
 
         foreach ($this->findEdges($node) as $parent => $child) {
-            $edges[] = \sprintf(
+            $edges[] = sprintf(
                 '  "%s" %s "%s";',
                 $this->getHash($parent),
                 true === $this->getDirected() ? '->' : '--',
@@ -73,9 +73,9 @@ class Gv extends AbstractExporter
         }
 
         return $this->getGv(
-            \implode(\PHP_EOL, $attributes),
-            \implode(\PHP_EOL, $nodes),
-            \implode(\PHP_EOL, $edges)
+            implode(\PHP_EOL, $attributes),
+            implode(\PHP_EOL, $nodes),
+            implode(\PHP_EOL, $edges)
         );
     }
 
@@ -99,7 +99,7 @@ class Gv extends AbstractExporter
      * @return \drupol\phptree\Exporter\Gv
      *   The exporter.
      */
-    public function setDirected(bool $directed = true): Gv
+    public function setDirected(bool $directed = true): self
     {
         $this->directed = $directed;
 
@@ -115,7 +115,7 @@ class Gv extends AbstractExporter
      * @return \drupol\phptree\Exporter\Gv
      *   The exporter.
      */
-    public function setGraphAttributes(array $attributes): Gv
+    public function setGraphAttributes(array $attributes): self
     {
         $this->attributes = $attributes;
 
@@ -133,15 +133,15 @@ class Gv extends AbstractExporter
      */
     protected function attributesArrayToText(array $attributes): string
     {
-        $attributesText = \array_map(
+        $attributesText = array_map(
             static function ($key, $value) {
-                return \sprintf('%s="%s"', $key, $value);
+                return sprintf('%s="%s"', $key, $value);
             },
-            \array_keys($attributes),
+            array_keys($attributes),
             $attributes
         );
 
-        return '[' . \implode(' ', $attributesText) . ']';
+        return '[' . implode(' ', $attributesText) . ']';
     }
 
     /**
@@ -204,7 +204,7 @@ EOF;
      */
     protected function getHash(NodeInterface $node): string
     {
-        return \sha1(\spl_object_hash($node));
+        return sha1(spl_object_hash($node));
     }
 
     /**

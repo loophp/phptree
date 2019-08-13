@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Storage;
 
@@ -30,5 +30,5 @@ interface StorageInterface
      *
      * @return StorageInterface
      */
-    public function set($key, $value): StorageInterface;
+    public function set($key, $value): self;
 }

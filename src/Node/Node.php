@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
@@ -91,7 +91,7 @@ class Node implements NodeInterface
      */
     public function count(): int
     {
-        return \iterator_count($this->all()) - 1;
+        return iterator_count($this->all()) - 1;
     }
 
     /**
@@ -129,7 +129,7 @@ class Node implements NodeInterface
      */
     public function depth(): int
     {
-        return \iterator_count($this->getAncestors());
+        return iterator_count($this->getAncestors());
     }
 
     /**
@@ -204,7 +204,7 @@ class Node implements NodeInterface
 
         /** @var \drupol\phptree\Node\NodeInterface $child */
         foreach ($this->children() as $child) {
-            $height = \max($height, $child->height());
+            $height = max($height, $child->height());
         }
 
         return $height;
@@ -271,7 +271,7 @@ class Node implements NodeInterface
     public function remove(NodeInterface ...$nodes): NodeInterface
     {
         $this->storage()->getChildren()->exchangeArray(
-            \array_filter(
+            array_filter(
                 $this->storage()->getChildren()->getArrayCopy(),
                 static function ($child) use ($nodes) {
                     return !\in_array($child, $nodes, true);
@@ -300,7 +300,7 @@ class Node implements NodeInterface
         $clone = clone $this;
         $clone->storage()->getChildren()->exchangeArray([]);
 
-        $nodes = \array_filter($nodes);
+        $nodes = array_filter($nodes);
 
         return [] === $nodes ?
             $clone :

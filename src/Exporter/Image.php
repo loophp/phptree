@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Exporter;
 
@@ -26,7 +26,7 @@ class Image extends Gv
      */
     public function __construct()
     {
-        if (0 === \mb_stripos(\PHP_OS, 'WIN')) {
+        if (0 === mb_stripos(\PHP_OS, 'WIN')) {
             $this->executable = 'dot.exe';
         }
     }
@@ -44,9 +44,9 @@ class Image extends Gv
 
         $this->writeToFile($path, parent::export($node));
 
-        \system($this->getConvertCommand($path));
+        system($this->getConvertCommand($path));
 
-        return \sprintf('%s.%s', $path, $this->getFormat());
+        return sprintf('%s.%s', $path, $this->getFormat());
     }
 
     /**
@@ -74,7 +74,7 @@ class Image extends Gv
      *
      * @return \drupol\phptree\Exporter\Image
      */
-    public function setExecutable(string $executable): Image
+    public function setExecutable(string $executable): self
     {
         $this->executable = $executable;
 
@@ -86,7 +86,7 @@ class Image extends Gv
      *
      * @return \drupol\phptree\Exporter\Image
      */
-    public function setFormat(string $format): Image
+    public function setFormat(string $format): self
     {
         $this->format = $format;
 
@@ -100,7 +100,7 @@ class Image extends Gv
      */
     private function getConvertCommand(string $path): string
     {
-        return \sprintf(
+        return sprintf(
             '%s -T%s %s -o %s.%s',
             $this->getExecutable(),
             $this->getFormat(),
@@ -117,7 +117,7 @@ class Image extends Gv
      */
     private function getTemporaryFile(): string
     {
-        $path = \tempnam(\sys_get_temp_dir(), 'graphviz');
+        $path = tempnam(sys_get_temp_dir(), 'graphviz');
 
         if (false === $path) {
             throw new \Exception('Unable to get temporary file name for graphviz script');
@@ -136,7 +136,7 @@ class Image extends Gv
      */
     private function writeToFile(string $path, string $content): bool
     {
-        $ret = \file_put_contents($path, $content, \LOCK_EX);
+        $ret = file_put_contents($path, $content, \LOCK_EX);
 
         if (false === $ret) {
             throw new \Exception('Unable to write graphviz script to temporary file');

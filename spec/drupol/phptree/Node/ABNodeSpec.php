@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
@@ -12,7 +12,7 @@ class ABNodeSpec extends NodeObjectBehavior
     {
         $this->beConstructedWith(1);
 
-        $data = \range(0, 40);
+        $data = range(0, 40);
 
         $nodes = [];
 

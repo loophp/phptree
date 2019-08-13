@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
@@ -29,18 +29,18 @@ class ABNode extends NaryNode
                 $count[$child->count()] = $child;
             }
 
-            $keys = \array_keys($count);
+            $keys = array_keys($count);
             $keys[] = 0;
 
-            if (\min($keys) === \max($keys)) {
+            if (min($keys) === max($keys)) {
                 parent::add($node);
 
                 continue;
             }
 
-            \ksort($count);
+            ksort($count);
 
-            $child = \array_shift($count);
+            $child = array_shift($count);
             $child->add($node);
         }
 

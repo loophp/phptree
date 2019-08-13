@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
@@ -58,12 +58,12 @@ abstract class NodeObjectBehavior extends ObjectBehavior
                 $left = (new GraphViz())->setFormat('png')->createImageFile($left);
                 $right = (new GraphViz())->setFormat('png')->createImageFile($right);
 
-                return \file_get_contents($left) === \file_get_contents($right);
+                return file_get_contents($left) === file_get_contents($right);
             },
             'haveSameGraphImageFile' => static function ($subject, $key) {
                 $left = (new GraphViz())->setFormat('png')->createImageFile($subject);
 
-                return \file_get_contents($left) === \file_get_contents($key);
+                return file_get_contents($left) === file_get_contents($key);
             },
         ];
     }

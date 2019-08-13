@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Importer;
 
@@ -19,11 +19,11 @@ class TextSpec extends ObjectBehavior
 
         $nodes = [];
 
-        foreach (\range('A', 'J') as $value) {
+        foreach (range('A', 'J') as $value) {
             $nodes[$value] = new ValueNode($value);
         }
 
-        $tree->add(...\array_values($nodes));
+        $tree->add(...array_values($nodes));
 
         $this
             ->import($string)

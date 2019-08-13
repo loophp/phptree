@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace drupol\phptree\Importer;
 
@@ -53,16 +53,16 @@ class Text extends SimpleArray
     {
         $result = [];
 
-        \preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)\]~', $subject, $matches);
+        preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)\]~', $subject, $matches);
 
         $matches = (array) $matches['nested'];
 
-        foreach (\array_filter($matches) as $match) {
+        foreach (array_filter($matches) as $match) {
             $item = [];
-            $position = \mb_strpos($match, '[');
+            $position = mb_strpos($match, '[');
 
             if (false !== $position) {
-                $item['value'] = \mb_substr($match, 0, $position);
+                $item['value'] = mb_substr($match, 0, $position);
             } else {
                 $item['value'] = $match;
             }

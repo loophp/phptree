@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Traverser;
 
@@ -18,10 +18,10 @@ class BreadthFirstSpec extends ObjectBehavior
         $nodes1 = [];
         $nodes2 = [];
 
-        foreach (\range('1', '5') as $lowercaseValue) {
+        foreach (range('1', '5') as $lowercaseValue) {
             $node1 = new Node();
 
-            foreach (\range('A', 'E') as $uppercaseValue) {
+            foreach (range('A', 'E') as $uppercaseValue) {
                 $node2 = new Node();
 
                 $node1->add($node2);
@@ -35,7 +35,7 @@ class BreadthFirstSpec extends ObjectBehavior
 
         $tree->add(...$nodes);
 
-        $rootAndNodes = \array_merge([$tree], $nodes1, $nodes2);
+        $rootAndNodes = array_merge([$tree], $nodes1, $nodes2);
 
         $this
             ->traverse($tree)

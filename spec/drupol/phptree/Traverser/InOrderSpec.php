@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Traverser;
 
@@ -14,11 +14,11 @@ class InOrderSpec extends ObjectBehavior
     {
         $tree = new ValueNode('root', 2);
 
-        foreach (\range('A', 'E') as $key => $value) {
+        foreach (range('A', 'E') as $key => $value) {
             $nodes[$value] = new ValueNode($value, 2);
         }
 
-        $tree->add(...\array_values($nodes));
+        $tree->add(...array_values($nodes));
 
         $nodes['root'] = $tree;
         $nodes = [
@@ -39,11 +39,11 @@ class InOrderSpec extends ObjectBehavior
     {
         $tree = new ValueNode('root', 4);
 
-        foreach (\range('A', 'Z') as $key => $value) {
+        foreach (range('A', 'Z') as $key => $value) {
             $nodes[$value] = new ValueNode($value, 4);
         }
 
-        $tree->add(...\array_values($nodes));
+        $tree->add(...array_values($nodes));
 
         $nodes['root'] = $tree;
         $nodes = [

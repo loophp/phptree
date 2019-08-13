@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace spec\drupol\phptree\Traverser;
 
@@ -14,7 +14,7 @@ class PostOrderSpec extends ObjectBehavior
     {
         $tree = new Node();
 
-        $data = \range('A', 'E');
+        $data = range('A', 'E');
 
         $nodes = [];
 
