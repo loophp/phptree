@@ -65,7 +65,7 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 declare(strict_types = 1);
 
 use drupol\phptree\Exporter\Gv;
-use drupol\phptree\Exporter\GvConvert;
+use drupol\phptree\Exporter\Image;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Exporter\Text;
 use drupol\launcher\Launcher;
@@ -77,7 +77,7 @@ $tree = new ValueNode('root', 2);
 
 $nodes = [];
 foreach (\range('A', 'Z') as $v) {
-    $nodes[] = new ValueNode($v);
+    $nodes[] = new ValueNode($v, 2);
 }
 
 // Add children to the root node.
@@ -93,8 +93,8 @@ $dotScript = $exporter->export($tree);
 file_put_contents('graph.gv', $dotScript);
 // Then do "dot -Tsvg graph.gv -o graph.svg" to export the script to SVG.
 
-// Or use GvConvert() that does it for you.
-$exporter = new GvConvert();
+// Or use the image converter that does it for you.
+$exporter = new Image();
 $imagePath = $exporter->setFormat('png')->export($tree);
 
 // If you want to launch the image, you can use an optional package.
