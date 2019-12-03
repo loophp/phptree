@@ -19,16 +19,16 @@
         "php": ">= 7.1"
     },
     "require-dev": {
-        "drupol/launcher": "^2.2",
-        "drupol/php-conventions": "^1",
+        "drupol/launcher": "^2.2.2",
+        "drupol/php-conventions": "^1.6.7",
         "drupol/phpspec-annotation": "^1",
-        "drupol/phpspec-code-coverage": "^4 || ^5",
+        "friends-of-phpspec/phpspec-code-coverage": "^4 || ^5",
         "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.13",
-        "phpbench/phpbench": "^0.16",
-        "phpspec/phpspec": "^4 || ^5",
+        "infection/infection": "^0.13.6",
+        "phpbench/phpbench": "^0.16.10",
+        "phpspec/phpspec": "^5 || ^6 || ^7",
         "phptaskman/changelog": "^1.0",
-        "scrutinizer/ocular": "^1"
+        "sebastian/comparator": "^3"
     },
     "config": {
         "sort-packages": true

@@ -14,11 +14,11 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
     /**
      * KeyValueNode constructor.
      *
-     * @param null|mixed $key
-     * @param null|mixed $value
-     * @param null|int $capacity
-     * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
-     * @param null|\drupol\phptree\Node\NodeInterface $parent
+     * @param mixed|null $key
+     * @param mixed|null $value
+     * @param int|null $capacity
+     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(
         $key,

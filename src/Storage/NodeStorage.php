@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Storage;
 
+use ArrayObject;
 use drupol\phptree\Node\NodeInterface;
 
 /**
@@ -20,7 +21,7 @@ final class NodeStorage extends Storage implements NodeStorageInterface
     {
         parent::__construct();
 
-        $this->set('children', new \ArrayObject());
+        $this->set('children', new ArrayObject());
     }
 
     /**

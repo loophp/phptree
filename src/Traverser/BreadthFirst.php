@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace drupol\phptree\Traverser;
 
 use drupol\phptree\Node\NodeInterface;
+use SplQueue;
+use Traversable;
 
 /**
  * Class BreadthFirst.
@@ -14,9 +16,9 @@ class BreadthFirst implements TraverserInterface
     /**
      * {@inheritdoc}
      */
-    public function traverse(NodeInterface $node): \Traversable
+    public function traverse(NodeInterface $node): Traversable
     {
-        $queue = new \SplQueue();
+        $queue = new SplQueue();
         $queue->enqueue($node);
 
         yield $node;

@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Exporter;
 
+use CachingIterator;
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNodeInterface;
+use RecursiveArrayIterator;
+use RecursiveTreeIterator;
+
+use const PHP_EOL;
 
 /**
  * Class Ascii.
@@ -17,21 +22,21 @@ class Ascii extends AbstractExporter
      */
     public function export(NodeInterface $node): string
     {
-        $tree = new \RecursiveTreeIterator(
-            new \RecursiveArrayIterator(
+        $tree = new RecursiveTreeIterator(
+            new RecursiveArrayIterator(
                 $this->doExportAsArray($node)
             ),
-            \RecursiveTreeIterator::SELF_FIRST,
-            \CachingIterator::CATCH_GET_CHILD,
-            \RecursiveTreeIterator::SELF_FIRST
+            RecursiveTreeIterator::SELF_FIRST,
+            CachingIterator::CATCH_GET_CHILD,
+            RecursiveTreeIterator::SELF_FIRST
         );
 
-        $tree->setPrefixPart(\RecursiveTreeIterator::PREFIX_LEFT, '');
-        $tree->setPrefixPart(\RecursiveTreeIterator::PREFIX_END_HAS_NEXT, '├─');
-        $tree->setPrefixPart(\RecursiveTreeIterator::PREFIX_END_LAST, '└─');
-        $tree->setPrefixPart(\RecursiveTreeIterator::PREFIX_RIGHT, '');
-        $tree->setPrefixPart(\RecursiveTreeIterator::PREFIX_MID_LAST, '  ');
-        $tree->setPrefixPart(\RecursiveTreeIterator::PREFIX_MID_HAS_NEXT, '│ ');
+        $tree->setPrefixPart(RecursiveTreeIterator::PREFIX_LEFT, '');
+        $tree->setPrefixPart(RecursiveTreeIterator::PREFIX_END_HAS_NEXT, '├─');
+        $tree->setPrefixPart(RecursiveTreeIterator::PREFIX_END_LAST, '└─');
+        $tree->setPrefixPart(RecursiveTreeIterator::PREFIX_RIGHT, '');
+        $tree->setPrefixPart(RecursiveTreeIterator::PREFIX_MID_LAST, '  ');
+        $tree->setPrefixPart(RecursiveTreeIterator::PREFIX_MID_HAS_NEXT, '│ ');
 
         $output = '';
 
@@ -40,7 +45,7 @@ class Ascii extends AbstractExporter
                     '┐' :
                     ' ' . $entry;
 
-            $output .= $tree->getPrefix() . $entry . $tree->getPostfix() . \PHP_EOL;
+            $output .= $tree->getPrefix() . $entry . $tree->getPostfix() . PHP_EOL;
         }
 
         return $output;

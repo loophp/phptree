@@ -12,7 +12,7 @@ interface ValueNodeInterface extends NaryNodeInterface
     /**
      * Get the value property.
      *
-     * @return null|mixed|string
+     * @return mixed|string|null
      *   The value property
      */
     public function getValue();

@@ -7,6 +7,7 @@ namespace spec\drupol\phptree\Exporter;
 use drupol\phptree\Exporter\SimpleArray;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\ValueNode;
+use InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
 
 class SimpleArraySpec extends ObjectBehavior
@@ -87,7 +88,7 @@ class SimpleArraySpec extends ObjectBehavior
         $tree->add(...array_values($nodes));
 
         $this
-            ->shouldThrow(\InvalidArgumentException::class)
+            ->shouldThrow(InvalidArgumentException::class)
             ->during('export', [$tree]);
     }
 

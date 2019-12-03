@@ -6,6 +6,8 @@ namespace drupol\phptree\Node;
 
 use drupol\phptree\Traverser\BreadthFirst;
 use drupol\phptree\Traverser\TraverserInterface;
+use Exception;
+use OutOfBoundsException;
 
 /**
  * Class NaryNode.
@@ -15,12 +17,12 @@ class NaryNode extends Node implements NaryNodeInterface
     /**
      * NaryNode constructor.
      *
-     * @param null|int $capacity
+     * @param int|null $capacity
      *   The maximum children a node can have. Null for no children,
      *   if 0 then any number of children is allowed.
-     * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
+     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
      *   The traverser.
-     * @param null|\drupol\phptree\Node\NodeInterface $parent
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      *   The parent.
      */
     public function __construct(
@@ -62,7 +64,7 @@ class NaryNode extends Node implements NaryNodeInterface
             if (null !== $parent = $this->findFirstAvailableNode($this)) {
                 $parent->add($node);
             } else {
-                throw new \Exception('Unable to add the node to the tree.');
+                throw new Exception('Unable to add the node to the tree.');
             }
         }
 
@@ -94,7 +96,7 @@ class NaryNode extends Node implements NaryNodeInterface
             $this->add($value);
         } else {
             if ($this->capacity() - 1 < $offset) {
-                throw new \OutOfBoundsException('The offset is out of range.');
+                throw new OutOfBoundsException('The offset is out of range.');
             }
 
             parent::offsetSet($offset, $value);
@@ -110,7 +112,7 @@ class NaryNode extends Node implements NaryNodeInterface
      * @param \drupol\phptree\Node\NodeInterface $tree
      *   The base node.
      *
-     * @return null|\drupol\phptree\Node\NodeInterface
+     * @return \drupol\phptree\Node\NodeInterface|null
      *   A node, null if none are found.
      */
     protected function findFirstAvailableNode(NodeInterface $tree): ?NodeInterface

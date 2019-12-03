@@ -6,6 +6,7 @@ namespace drupol\phptree\Importer;
 
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNode;
+use InvalidArgumentException;
 
 /**
  * Class Text.
@@ -20,7 +21,7 @@ class Text extends SimpleArray
         $parsed = $this->parse($data);
 
         if ([] === $parsed) {
-            throw new \InvalidArgumentException('Unable to import the given data.');
+            throw new InvalidArgumentException('Unable to import the given data.');
         }
 
         return $this->arrayToTree($parsed[0]);

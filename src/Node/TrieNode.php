@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
+use Exception;
+
 /**
  * Class TrieNode.
  */
@@ -44,7 +46,7 @@ class TrieNode extends KeyValueNode
     /**
      * @param \drupol\phptree\Node\ValueNodeInterface $node
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return \drupol\phptree\Node\NodeInterface|\drupol\phptree\Node\ValueNodeInterface
      */

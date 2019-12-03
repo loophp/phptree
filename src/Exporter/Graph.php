@@ -79,7 +79,7 @@ class Graph extends AbstractExporter
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node
      *
-     * @return null|int|string
+     * @return int|string|null
      *   A vertex ID
      */
     protected function createVertexId(NodeInterface $node)

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
+use ArrayObject;
 use drupol\phptree\Node\AttributeNode;
 use PhpSpec\ObjectBehavior;
 
@@ -15,7 +16,7 @@ class AttributeNodeSpec extends ObjectBehavior
             'foo' => 'bar',
         ];
 
-        $attributes = new \ArrayObject($attributes);
+        $attributes = new ArrayObject($attributes);
 
         $this
             ->setAttributes($attributes)

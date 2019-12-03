@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace spec\drupol\phptree\Storage;
 
 use drupol\phptree\Storage\NodeStorage;
+use InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
 
 class NodeStorageSpec extends ObjectBehavior
@@ -17,7 +18,7 @@ class NodeStorageSpec extends ObjectBehavior
 
         $this->offsetUnset('foo');
 
-        $this->shouldThrow(\InvalidArgumentException::class)
+        $this->shouldThrow(InvalidArgumentException::class)
             ->during('get', ['foo']);
     }
 

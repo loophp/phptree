@@ -6,6 +6,10 @@ namespace drupol\phptree\Node;
 
 use drupol\phptree\Storage\NodeStorage;
 use drupol\phptree\Storage\StorageInterface;
+use InvalidArgumentException;
+use Traversable;
+
+use function in_array;
 
 /**
  * Class Node.
@@ -22,9 +26,9 @@ class Node implements NodeInterface
     /**
      * Node constructor.
      *
-     * @param null|\drupol\phptree\Node\NodeInterface $parent
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
-    public function __construct(NodeInterface $parent = null)
+    public function __construct(?NodeInterface $parent = null)
     {
         $this->storage = new NodeStorage();
         $this->storage()->setParent($parent);
@@ -60,7 +64,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function all(): \Traversable
+    public function all(): Traversable
     {
         yield $this;
 
@@ -73,7 +77,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function children(): \Traversable
+    public function children(): Traversable
     {
         yield from $this->storage()->getChildren();
     }
@@ -105,13 +109,13 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function delete(NodeInterface $node, NodeInterface $root = null): ?NodeInterface
+    public function delete(NodeInterface $node, ?NodeInterface $root = null): ?NodeInterface
     {
         $root = $root ?? $this;
 
         if ($candidate = $this->find($node)) {
             if ($candidate === $root) {
-                throw new \InvalidArgumentException('Unable to delete root node.');
+                throw new InvalidArgumentException('Unable to delete root node.');
             }
 
             if (null !== $parent = $candidate->getParent()) {
@@ -150,7 +154,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getAncestors(): \Traversable
+    public function getAncestors(): Traversable
     {
         $node = $this;
 
@@ -178,7 +182,7 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getSibblings(): \Traversable
+    public function getSibblings(): Traversable
     {
         $parent = $this->storage()->getParent();
 
@@ -248,7 +252,7 @@ class Node implements NodeInterface
     public function offsetSet($offset, $value): void
     {
         if (!($value instanceof NodeInterface)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 'The value must implements NodeInterface.'
             );
         }
@@ -274,7 +278,7 @@ class Node implements NodeInterface
             array_filter(
                 $this->storage()->getChildren()->getArrayCopy(),
                 static function ($child) use ($nodes) {
-                    return !\in_array($child, $nodes, true);
+                    return !in_array($child, $nodes, true);
                 }
             )
         );

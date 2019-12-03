@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Traverser;
 
+use ArrayIterator;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Traverser\InOrder;
 use PhpSpec\ObjectBehavior;
@@ -32,7 +33,7 @@ class InOrderSpec extends ObjectBehavior
 
         $this
             ->traverse($tree)
-            ->shouldYield(new \ArrayIterator($nodes));
+            ->shouldYield(new ArrayIterator($nodes));
     }
 
     public function it_can_traverse_a_tree_of_degree4(): void
@@ -78,7 +79,7 @@ class InOrderSpec extends ObjectBehavior
 
         $this
             ->traverse($tree)
-            ->shouldYield(new \ArrayIterator($nodes));
+            ->shouldYield(new ArrayIterator($nodes));
     }
 
     public function it_is_initializable(): void

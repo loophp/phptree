@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Modifier;
 
+use ArrayObject;
 use drupol\phptree\Node\NodeInterface;
 
 /**
@@ -16,7 +17,7 @@ class Reverse implements ModifierInterface
      */
     public function modify(NodeInterface $tree): NodeInterface
     {
-        $children = new \ArrayObject();
+        $children = new ArrayObject();
 
         foreach ($tree->children() as $child) {
             $children->append($this->modify($child));

@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\NodeInterface;
+use Exception;
+
+use const LOCK_EX;
+use const PHP_OS;
 
 /**
  * Class Image.
@@ -26,7 +30,7 @@ class Image extends Gv
      */
     public function __construct()
     {
-        if (0 === mb_stripos(\PHP_OS, 'WIN')) {
+        if (0 === mb_stripos(PHP_OS, 'WIN')) {
             $this->executable = 'dot.exe';
         }
     }
@@ -34,7 +38,7 @@ class Image extends Gv
     /**
      * @param \drupol\phptree\Node\NodeInterface $node
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return string
      */
@@ -111,7 +115,7 @@ class Image extends Gv
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      *
      * @return string
      */
@@ -120,7 +124,7 @@ class Image extends Gv
         $path = tempnam(sys_get_temp_dir(), 'graphviz');
 
         if (false === $path) {
-            throw new \Exception('Unable to get temporary file name for graphviz script');
+            throw new Exception('Unable to get temporary file name for graphviz script');
         }
 
         return $path;
@@ -130,16 +134,16 @@ class Image extends Gv
      * @param string $path
      * @param string $content
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return bool
      */
     private function writeToFile(string $path, string $content): bool
     {
-        $ret = file_put_contents($path, $content, \LOCK_EX);
+        $ret = file_put_contents($path, $content, LOCK_EX);
 
         if (false === $ret) {
-            throw new \Exception('Unable to write graphviz script to temporary file');
+            throw new Exception('Unable to write graphviz script to temporary file');
         }
 
         return true;

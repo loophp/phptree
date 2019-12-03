@@ -7,6 +7,7 @@ namespace spec\drupol\phptree\Importer;
 use drupol\phptree\Importer\Text;
 use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Node\ValueNodeInterface;
+use InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
 
 class TextSpec extends ObjectBehavior
@@ -50,7 +51,7 @@ class TextSpec extends ObjectBehavior
         $string = 'invalid string';
 
         $this
-            ->shouldThrow(\InvalidArgumentException::class)
+            ->shouldThrow(InvalidArgumentException::class)
             ->during('import', [$string]);
     }
 

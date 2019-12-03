@@ -10,6 +10,7 @@ use drupol\phptree\Node\ValueNode;
 use drupol\phptree\Traverser\BreadthFirst;
 use drupol\phptree\Traverser\PreOrder;
 use drupol\phptree\Traverser\TraverserInterface;
+use Exception;
 
 class NaryNodeSpec extends NodeObjectBehavior
 {
@@ -62,7 +63,7 @@ class NaryNodeSpec extends NodeObjectBehavior
         $this->degree()->shouldReturn(2);
         $this->count()->shouldReturn(4);
 
-        $this->shouldThrow(\Exception::class)
+        $this->shouldThrow(Exception::class)
             ->during('add', [new Node()]);
     }
 
@@ -74,7 +75,7 @@ class NaryNodeSpec extends NodeObjectBehavior
             ->capacity()
             ->shouldBeNull();
 
-        $this->shouldThrow(\Exception::class)
+        $this->shouldThrow(Exception::class)
             ->during('add', [new NaryNode()]);
     }
 

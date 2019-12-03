@@ -14,7 +14,7 @@ interface NaryNodeInterface extends NodeInterface
     /**
      * Get the node capacity.
      *
-     * @return null|int
+     * @return int|null
      *   The node capacity or null if no children is allowed.
      */
     public function capacity(): ?int;

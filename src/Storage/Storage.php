@@ -4,15 +4,19 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Storage;
 
+use ArrayAccess;
+use ArrayObject;
+use InvalidArgumentException;
+
 /**
  * Class Storage.
  *
  * @internal
  */
-abstract class Storage implements \ArrayAccess, StorageInterface
+abstract class Storage implements ArrayAccess, StorageInterface
 {
     /**
-     * @var \ArrayObject
+     * @var ArrayObject
      */
     private $storage;
 
@@ -21,7 +25,7 @@ abstract class Storage implements \ArrayAccess, StorageInterface
      */
     public function __construct()
     {
-        $this->storage = new \ArrayObject();
+        $this->storage = new ArrayObject();
     }
 
     /**
@@ -31,7 +35,7 @@ abstract class Storage implements \ArrayAccess, StorageInterface
     {
         $this->storage = clone $this->storage;
 
-        $children = new \ArrayObject();
+        $children = new ArrayObject();
 
         foreach ($this->get('children') as $key => $child) {
             $children[] = clone $child;
@@ -45,7 +49,7 @@ abstract class Storage implements \ArrayAccess, StorageInterface
     public function get($key)
     {
         if (!$this->offsetExists($key)) {
-            throw new \InvalidArgumentException('Invalid key ' . $key . '.');
+            throw new InvalidArgumentException('Invalid key ' . $key . '.');
         }
 
         return $this->offsetGet($key);

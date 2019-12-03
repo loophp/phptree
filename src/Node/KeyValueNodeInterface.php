@@ -12,7 +12,7 @@ interface KeyValueNodeInterface extends ValueNodeInterface
     /**
      * Get the key property.
      *
-     * @return null|int|mixed|string
+     * @return int|mixed|string|null
      *   The key property
      */
     public function getKey();

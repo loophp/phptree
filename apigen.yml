@@ -1,6 +1,0 @@
-parameters:
-    visibility_levels: [public, protected, private]
-    annotation_groups: [todo, deprecated]
-    title: "PhpTree API documentation"
-    base_url: "https://not-a-number.io/phptree"
-    overwrite: false

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
+use Traversable;
+
 /**
  * Interface AttributeNodeInterface.
  */
@@ -22,10 +24,10 @@ interface AttributeNodeInterface extends NaryNodeInterface
     /**
      * Get the attributes.
      *
-     * @return \Traversable
+     * @return Traversable
      *   The attributes.
      */
-    public function getAttributes(): \Traversable;
+    public function getAttributes(): Traversable;
 
     /**
      * Set an attribute.
@@ -38,16 +40,16 @@ interface AttributeNodeInterface extends NaryNodeInterface
      * @return \drupol\phptree\Node\AttributeNodeInterface
      *   The node.
      */
-    public function setAttribute(string $key, $value): self;
+    public function setAttribute(string $key, $value): AttributeNodeInterface;
 
     /**
      * Set the attributes.
      *
-     * @param \Traversable $attributes
+     * @param Traversable $attributes
      *   The attributes.
      *
      * @return \drupol\phptree\Node\AttributeNodeInterface
      *   The node.
      */
-    public function setAttributes(\Traversable $attributes): self;
+    public function setAttributes(Traversable $attributes): AttributeNodeInterface;
 }

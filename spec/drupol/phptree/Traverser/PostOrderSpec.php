@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Traverser;
 
+use ArrayIterator;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Traverser\PostOrder;
 use PhpSpec\ObjectBehavior;
@@ -28,7 +29,7 @@ class PostOrderSpec extends ObjectBehavior
 
         $this
             ->traverse($tree)
-            ->shouldYield(new \ArrayIterator($nodes));
+            ->shouldYield(new ArrayIterator($nodes));
     }
 
     public function it_is_initializable(): void

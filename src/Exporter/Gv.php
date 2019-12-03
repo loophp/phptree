@@ -6,6 +6,11 @@ namespace drupol\phptree\Exporter;
 
 use drupol\phptree\Node\AttributeNodeInterface;
 use drupol\phptree\Node\NodeInterface;
+use Generator;
+
+use function is_array;
+
+use const PHP_EOL;
 
 /**
  * Class Gv.
@@ -33,7 +38,7 @@ class Gv extends AbstractExporter
     {
         $attributes = array_map(
             function ($key, $data) {
-                if (\is_array($data)) {
+                if (is_array($data)) {
                     return sprintf(
                         '  %s %s',
                         $key,
@@ -73,9 +78,9 @@ class Gv extends AbstractExporter
         }
 
         return $this->getGv(
-            implode(\PHP_EOL, $attributes),
-            implode(\PHP_EOL, $nodes),
-            implode(\PHP_EOL, $edges)
+            implode(PHP_EOL, $attributes),
+            implode(PHP_EOL, $nodes),
+            implode(PHP_EOL, $edges)
         );
     }
 
@@ -150,7 +155,7 @@ class Gv extends AbstractExporter
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The root node.
      *
-     * @return \Generator
+     * @return Generator
      *   Yield the parent and child node.
      */
     protected function findEdges(NodeInterface $node): iterable

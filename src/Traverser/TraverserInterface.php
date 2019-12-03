@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace drupol\phptree\Traverser;
 
 use drupol\phptree\Node\NodeInterface;
+use Generator;
+use Traversable;
 
 /**
  * Interface TraverserInterface.
@@ -17,7 +19,7 @@ interface TraverserInterface
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node
      *
-     * @return \Generator|NodeInterface[]|\Traversable
+     * @return Generator|NodeInterface[]|Traversable
      */
-    public function traverse(NodeInterface $node): \Traversable;
+    public function traverse(NodeInterface $node): Traversable;
 }

@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
+use ArrayIterator;
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNode;
+use Generator;
+use InvalidArgumentException;
 
 class NodeSpec extends NodeObjectBehavior
 {
@@ -101,7 +104,7 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(null);
 
         $this
-            ->shouldThrow(\InvalidArgumentException::class)
+            ->shouldThrow(InvalidArgumentException::class)
             ->during('delete', [$this]);
     }
 
@@ -123,7 +126,7 @@ class NodeSpec extends NodeObjectBehavior
     {
         $this
             ->getAncestors()
-            ->shouldYield(new \ArrayIterator([]));
+            ->shouldYield(new ArrayIterator([]));
 
         $root = new Node();
         $level1 = new Node($root);
@@ -133,18 +136,18 @@ class NodeSpec extends NodeObjectBehavior
 
         $this
             ->getAncestors()
-            ->shouldYield(new \ArrayIterator([$level2, $level1, $root]));
+            ->shouldYield(new ArrayIterator([$level2, $level1, $root]));
     }
 
     public function it_can_get_its_children(): void
     {
         $this
             ->children()
-            ->shouldBeAnInstanceOf(\Generator::class);
+            ->shouldBeAnInstanceOf(Generator::class);
 
         $this
             ->children()
-            ->shouldYield(new \ArrayIterator([]));
+            ->shouldYield(new ArrayIterator([]));
 
         $node = new Node();
 
@@ -152,7 +155,7 @@ class NodeSpec extends NodeObjectBehavior
             ->add($node)
             ->add($node)
             ->children()
-            ->shouldYield(new \ArrayIterator([$node, $node]));
+            ->shouldYield(new ArrayIterator([$node, $node]));
     }
 
     public function it_can_get_its_depth(): void
@@ -220,7 +223,7 @@ class NodeSpec extends NodeObjectBehavior
     {
         $this
             ->getSibblings()
-            ->shouldYield(new \ArrayIterator([]));
+            ->shouldYield(new ArrayIterator([]));
 
         $node1 = new Node();
         $node2 = new Node();
@@ -230,7 +233,7 @@ class NodeSpec extends NodeObjectBehavior
 
         $this
             ->getSibblings()
-            ->shouldYield(new \ArrayIterator([$node2, $node3]));
+            ->shouldYield(new ArrayIterator([$node2, $node3]));
     }
 
     public function it_can_get_the_size(): void
@@ -297,12 +300,12 @@ class NodeSpec extends NodeObjectBehavior
         $this
             ->withChildren($child)
             ->children()
-            ->shouldYield(new \ArrayIterator([$child]));
+            ->shouldYield(new ArrayIterator([$child]));
 
         $this
             ->withChildren()
             ->children()
-            ->shouldYield(new \ArrayIterator([]));
+            ->shouldYield(new ArrayIterator([]));
     }
 
     public function it_has_a_degree(): void

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace drupol\phptree\Traverser;
 
 use drupol\phptree\Node\NodeInterface;
+use Traversable;
 
 /**
  * Class PostOrder.
@@ -19,7 +20,7 @@ class PostOrder implements TraverserInterface
     /**
      * {@inheritdoc}
      */
-    public function traverse(NodeInterface $node): \Traversable
+    public function traverse(NodeInterface $node): Traversable
     {
         $this->index = 0;
 
@@ -29,7 +30,7 @@ class PostOrder implements TraverserInterface
     /**
      * {@inheritdoc}
      */
-    private function doTraverse(NodeInterface $node): \Traversable
+    private function doTraverse(NodeInterface $node): Traversable
     {
         foreach ($node->children() as $child) {
             yield from $this->doTraverse($child);

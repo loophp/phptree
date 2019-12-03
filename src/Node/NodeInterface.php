@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
+use ArrayAccess;
+use Countable;
+use IteratorAggregate;
+use Traversable;
+
 /**
  * Interface NodeInterface.
  */
-interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
+interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
 {
     /**
      * The node to add.
@@ -18,23 +23,23 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return NodeInterface
      *   The node
      */
-    public function add(self ...$node): self;
+    public function add(NodeInterface ...$node): NodeInterface;
 
     /**
      * Get all the nodes of a tree including the parent node itself.
      *
-     * @return \Traversable
+     * @return Traversable
      *   The node.
      */
-    public function all(): \Traversable;
+    public function all(): Traversable;
 
     /**
      * Get the children.
      *
-     * @return \Traversable
+     * @return Traversable
      *   The children
      */
-    public function children(): \Traversable;
+    public function children(): Traversable;
 
     /**
      * Clone the tree and all of its children.
@@ -42,7 +47,7 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return \drupol\phptree\Node\NodeInterface
      *   The tree.
      */
-    public function clone(): self;
+    public function clone(): NodeInterface;
 
     /**
      * The amount of children a node has.
@@ -58,10 +63,10 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node to remove.
      *
-     * @return null|\drupol\phptree\Node\NodeInterface
+     * @return \drupol\phptree\Node\NodeInterface|null
      *   The node that has been removed without parent, null otherwise.
      */
-    public function delete(self $node): ?self;
+    public function delete(NodeInterface $node): ?NodeInterface;
 
     /**
      * Get the node depth from the root node.
@@ -77,34 +82,34 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node to find.
      *
-     * @return null|\drupol\phptree\Node\NodeInterface
+     * @return \drupol\phptree\Node\NodeInterface|null
      *   The node if found, false otherwise.
      */
-    public function find(self $node): ?self;
+    public function find(NodeInterface $node): ?NodeInterface;
 
     /**
      * Get the ancestors of a node.
      *
-     * @return \Traversable
+     * @return Traversable
      *   The ancestors
      */
-    public function getAncestors(): \Traversable;
+    public function getAncestors(): Traversable;
 
     /**
      * Get the parent node.
      *
-     * @return null|NodeInterface
+     * @return NodeInterface|null
      *   The parent node if any, null otherwise
      */
-    public function getParent(): ?self;
+    public function getParent(): ?NodeInterface;
 
     /**
      * Get the node's sibblings.
      *
-     * @return \Traversable
+     * @return Traversable
      *   The sibblings
      */
-    public function getSibblings(): \Traversable;
+    public function getSibblings(): Traversable;
 
     /**
      * Get the tree height.
@@ -139,27 +144,27 @@ interface NodeInterface extends \ArrayAccess, \Countable, \IteratorAggregate
      * @return NodeInterface
      *   The node
      */
-    public function remove(self ...$node): self;
+    public function remove(NodeInterface ...$node): NodeInterface;
 
     /**
      * Set the parent.
      *
-     * @param null|NodeInterface $node
+     * @param NodeInterface|null $node
      *   The parent node
      *
      * @return NodeInterface
      *   The node
      */
-    public function setParent(?self $node): self;
+    public function setParent(?NodeInterface $node): NodeInterface;
 
     /**
      * Get a clone of the object with or without children.
      *
-     * @param null|\drupol\phptree\Node\NodeInterface ...$nodes
+     * @param \drupol\phptree\Node\NodeInterface|null ...$nodes
      *   The children that the clone will have.
      *
      * @return \drupol\phptree\Node\NodeInterface
      *   The new object
      */
-    public function withChildren(?self ...$nodes): self;
+    public function withChildren(?NodeInterface ...$nodes): NodeInterface;
 }

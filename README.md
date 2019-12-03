@@ -1,7 +1,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
  [![GitHub stars](https://img.shields.io/github/stars/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
  [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
- [![Build Status](https://img.shields.io/travis/drupol/phptree/master.svg?style=flat-square)](https://travis-ci.org/drupol/phptree)
+ [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/drupol/phptree/Continuous%20Integration?style=flat-square)](https://github.com/drupol/phptree/actions)
  [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
  [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
  [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/drupol/phptree/master)](https://stryker-mutator.github.io)
@@ -39,8 +39,6 @@ Modifier:
 * **Reverse**: To reverse a tree, all the children are mirrored.
 
 ## Documentation
-
-API documentation is automatically generated with [APIGen](https://github.com/ApiGen/ApiGen) and available at [this address](https://not-a-number.io/phptree/).
 
 Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](https://not-a-number.io/2018/phptree-a-fast-tree-implementation)
 
@@ -105,7 +103,7 @@ Launcher::open($imagePath);
 
 ## Code quality, tests and benchmarks
 
-Every time changes are introduced into the library, [Travis CI](https://travis-ci.org/drupol/phptree/builds) run the tests and the benchmarks.
+Every time changes are introduced into the library, [Github](https://github.com/drupol/phptree/actions) run the tests and the benchmarks.
 
 The library has tests written with [PHPSpec](http://www.phpspec.net/).
 Feel free to check them out in the `spec` directory. Run `composer phpspec` to trigger the tests.

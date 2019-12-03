@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Storage;
 
+use ArrayObject;
 use drupol\phptree\Node\NodeInterface;
 
 interface NodeStorageInterface extends StorageInterface
@@ -11,19 +12,19 @@ interface NodeStorageInterface extends StorageInterface
     /**
      * Get the children.
      *
-     * @return \ArrayObject
+     * @return ArrayObject
      */
     public function getChildren();
 
     /**
      * Get the parent.
      *
-     * @return null|NodeInterface
+     * @return NodeInterface|null
      */
     public function getParent(): ?NodeInterface;
 
     /**
-     * @param null|NodeInterface $parent
+     * @param NodeInterface|null $parent
      *
      * @return StorageInterface
      */

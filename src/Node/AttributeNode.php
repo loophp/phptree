@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
+use ArrayObject;
 use drupol\phptree\Traverser\TraverserInterface;
+use Traversable;
 
 /**
  * Class AttributeNode.
@@ -15,9 +17,9 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
      * ValueNode constructor.
      *
      * @param array $attributes
-     * @param null|int $capacity
-     * @param null|\drupol\phptree\Traverser\TraverserInterface $traverser
-     * @param null|\drupol\phptree\Node\NodeInterface $parent
+     * @param int|null $capacity
+     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
+     * @param \drupol\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(
         array $attributes = [],
@@ -27,7 +29,7 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     ) {
         parent::__construct($capacity, $traverser, $parent);
 
-        $this->storage()->set('attributes', new \ArrayObject($attributes));
+        $this->storage()->set('attributes', new ArrayObject($attributes));
     }
 
     /**
@@ -41,7 +43,7 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getAttributes(): \Traversable
+    public function getAttributes(): Traversable
     {
         return $this->storage()->get('attributes');
     }
@@ -59,7 +61,7 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setAttributes(\Traversable $attributes): AttributeNodeInterface
+    public function setAttributes(Traversable $attributes): AttributeNodeInterface
     {
         $this->storage()->set('attributes', $attributes);
 

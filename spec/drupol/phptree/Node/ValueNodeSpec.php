@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
+use ArrayIterator;
 use drupol\phptree\Exporter\Text;
 use drupol\phptree\Node\ValueNode;
+use InvalidArgumentException;
+use OutOfBoundsException;
 
 class ValueNodeSpec extends NodeObjectBehavior
 {
@@ -52,8 +55,8 @@ class ValueNodeSpec extends NodeObjectBehavior
         $export = '[root[a][b][c][d][e][f][g][h][i][j][k][l][m][n][o][p][q][r][s][t][u][v][w][x][y]]';
         $this->shouldHaveSameTextExport($export);
 
-        $this->shouldThrow(\OutOfBoundsException::class)->during('offsetSet', [30, new ValueNode('out')]);
-        $this->shouldThrow(\OutOfBoundsException::class)->during('offsetSet', [26, new ValueNode('out')]);
+        $this->shouldThrow(OutOfBoundsException::class)->during('offsetSet', [30, new ValueNode('out')]);
+        $this->shouldThrow(OutOfBoundsException::class)->during('offsetSet', [26, new ValueNode('out')]);
 
         $this->offsetExists(0)->shouldReturn(true);
         $this->offsetExists(25)->shouldReturn(false);
@@ -64,7 +67,7 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->offsetSet(0, new ValueNode('zero'));
         $this->offsetGet(0)->getValue()->shouldReturn('zero');
 
-        $this->shouldThrow(\InvalidArgumentException::class)->during('offsetSet', [0, 'This is not a node']);
+        $this->shouldThrow(InvalidArgumentException::class)->during('offsetSet', [0, 'This is not a node']);
         $this->offsetGet(0)->getValue()->shouldReturn('zero');
     }
 
@@ -150,7 +153,7 @@ class ValueNodeSpec extends NodeObjectBehavior
 
         $this->shouldHaveType(ValueNode::class);
 
-        $this->children()->shouldYield(new \ArrayIterator([]));
+        $this->children()->shouldYield(new ArrayIterator([]));
 
         $export = '[root]';
         $this->shouldHaveSameTextExport($export);
