@@ -21,14 +21,13 @@
     "require-dev": {
         "drupol/launcher": "^2.2.2",
         "drupol/php-conventions": "^1.6.7",
-        "drupol/phpspec-annotation": "^1",
-        "friends-of-phpspec/phpspec-code-coverage": "^4 || ^5",
+        "drupol/phpmerkle": "^2.2",
+        "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
         "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.13.6",
+        "infection/infection": "^0.13.6 || ^0.15.0",
         "phpbench/phpbench": "^0.16.10",
-        "phpspec/phpspec": "^5 || ^6 || ^7",
-        "phptaskman/changelog": "^1.0",
-        "sebastian/comparator": "^3"
+        "phpspec/phpspec": "^5.1.2 || ^6.1",
+        "phptaskman/changelog": "^1.0"
     },
     "config": {
         "sort-packages": true
