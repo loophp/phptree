@@ -19,10 +19,6 @@ jobs:
           - php7.2
           - php7.3
 
-        dependencies:
-          - lowest
-          - highest
-
     steps:
       - name: "Checkout"
         uses: actions/checkout@master
