@@ -43,7 +43,7 @@ class MerkleNode extends ValueNode
             return parent::getValue();
         }
 
-        return $this->hash();
+        return $this->clone()->hash();
     }
 
     /**

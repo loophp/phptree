@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Node;
 
-use drupol\phpmerkle\Hasher\DoubleSha256;
-use drupol\phptree\Node\MerkleNode;
 use drupol\phpmerkle\Hasher\DummyHasher;
+use drupol\phptree\Node\MerkleNode;
 use PhpSpec\ObjectBehavior;
 
 class MerkleNodeSpec extends ObjectBehavior
@@ -14,7 +13,7 @@ class MerkleNodeSpec extends ObjectBehavior
     public function it_can_get_a_hash()
     {
         $this
-            ->beConstructedWith('root', 2, new DoubleSha256());
+            ->beConstructedWith('root');
 
         $input = [
             null,
@@ -50,7 +49,7 @@ class MerkleNodeSpec extends ObjectBehavior
         ];
 
         foreach ($input as $word) {
-            $nodes[] = new MerkleNode($word, 2, new DoubleSha256());
+            $nodes[] = new MerkleNode($word);
         }
 
         $this
@@ -77,9 +76,19 @@ class MerkleNodeSpec extends ObjectBehavior
         ];
 
         $this
-            ->add(...$nodes)
+            ->add(...$nodes);
+
+        $this
+            ->count()
+            ->shouldReturn(5);
+
+        $this
             ->getValue()
             ->shouldReturn('abcc');
+
+        $this
+            ->count()
+            ->shouldReturn(5);
     }
 
     public function it_can_get_the_value_of_a_tree_with_three_nodes()
@@ -103,6 +112,33 @@ class MerkleNodeSpec extends ObjectBehavior
             ->add($node)
             ->getValue()
             ->shouldReturn('aa');
+    }
+
+    public function it_can_handle_null_values()
+    {
+        $nodes = [
+            new MerkleNode(null, 2, new DummyHasher()),
+            new MerkleNode(null, 2, new DummyHasher()),
+            new MerkleNode('a', 2, new DummyHasher()),
+            new MerkleNode('b', 2, new DummyHasher()),
+            new MerkleNode(null, 2, new DummyHasher()),
+            new MerkleNode('c', 2, new DummyHasher()),
+        ];
+
+        $this
+            ->add(...$nodes);
+
+        $this
+            ->count()
+            ->shouldReturn(6);
+
+        $this
+            ->getValue()
+            ->shouldReturn('abcc');
+
+        $this
+            ->count()
+            ->shouldReturn(6);
     }
 
     public function it_is_initializable()
