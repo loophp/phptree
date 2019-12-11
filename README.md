@@ -22,6 +22,7 @@ It provides different trees implementations:
 * **KeyValue node**: extends the Value node and allows you to attach a key and a value to the node.
 * **Trie node**: extends the KeyValue node, a simple [Trie tree](https://en.wikipedia.org/wiki/Trie).
 * **Auto-balanced node**: extends the N-ary node and tries to keep the tree as symetric as possible. It automatically balance all the children as soon as they are added.
+* **Merkle node**: a tree in which every non-leaf node is labelled with the cryptographic hash of the labels of its child nodes.
 
 [4 trees traversal algorithms](https://en.wikipedia.org/wiki/Tree_traversal):
 * **In order**
