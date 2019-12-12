@@ -14,7 +14,7 @@ interface BuilderInterface
     /**
      * @param iterable<NodeInterface> $nodes
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \drupol\phptree\Node\NodeInterface|null
      */
-    public static function create(iterable $nodes): NodeInterface;
+    public static function create(iterable $nodes): ?NodeInterface;
 }
