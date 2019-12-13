@@ -233,6 +233,19 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function level(int $level): Traversable
+    {
+        /** @var \drupol\phptree\Node\NodeInterface $node */
+        foreach ($this->all() as $node) {
+            if ($node->depth() === $level) {
+                yield $node;
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function offsetExists($offset)
     {
         return $this->storage()->getChildren()->offsetExists($offset);
