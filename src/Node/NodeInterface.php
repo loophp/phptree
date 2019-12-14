@@ -11,6 +11,9 @@ use Traversable;
 
 /**
  * Interface NodeInterface.
+ *
+ * @template-extends ArrayAccess<int, mixed>
+ * @template-extends IteratorAggregate<int, mixed>
  */
 interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
 {
@@ -28,7 +31,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get all the nodes of a tree including the parent node itself.
      *
-     * @return Traversable
+     * @return Traversable<\drupol\phptree\Node\NodeInterface>
      *   The node.
      */
     public function all(): Traversable;
@@ -36,7 +39,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get the children.
      *
-     * @return Traversable
+     * @return Traversable<\drupol\phptree\Node\NodeInterface>
      *   The children
      */
     public function children(): Traversable;
@@ -90,7 +93,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get the ancestors of a node.
      *
-     * @return Traversable
+     * @return Traversable<\drupol\phptree\Node\NodeInterface>
      *   The ancestors
      */
     public function getAncestors(): Traversable;
@@ -106,7 +109,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get the node's sibblings.
      *
-     * @return Traversable
+     * @return Traversable<\drupol\phptree\Node\NodeInterface>
      *   The sibblings
      */
     public function getSibblings(): Traversable;

@@ -16,7 +16,7 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     /**
      * ValueNode constructor.
      *
-     * @param array $attributes
+     * @param array<int|string, mixed> $attributes
      * @param int|null $capacity
      * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
      * @param \drupol\phptree\Node\NodeInterface|null $parent

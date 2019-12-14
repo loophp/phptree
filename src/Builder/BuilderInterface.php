@@ -12,7 +12,7 @@ use drupol\phptree\Node\NodeInterface;
 interface BuilderInterface
 {
     /**
-     * @param iterable<NodeInterface> $nodes
+     * @param iterable<mixed> $nodes
      *
      * @return \drupol\phptree\Node\NodeInterface|null
      */

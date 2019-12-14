@@ -114,7 +114,7 @@ class Gv extends AbstractExporter
     /**
      * Set the graph attributes.
      *
-     * @param array $attributes
+     * @param array<mixed, mixed> $attributes
      *   The graph attributes.
      *
      * @return \drupol\phptree\Exporter\Gv
@@ -130,7 +130,7 @@ class Gv extends AbstractExporter
     /**
      * Converts an attributes array to string.
      *
-     * @param array $attributes
+     * @param array<mixed, mixed> $attributes
      *   The attributes.
      *
      * @return string
@@ -155,7 +155,7 @@ class Gv extends AbstractExporter
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The root node.
      *
-     * @return Generator
+     * @return Generator<NodeInterface, NodeInterface>
      *   Yield the parent and child node.
      */
     protected function findEdges(NodeInterface $node): iterable
@@ -218,7 +218,7 @@ EOF;
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node interface.
      *
-     * @return array
+     * @return array<mixed, mixed>
      *   The attributes as an array.
      */
     protected function getNodeAttributes(NodeInterface $node): array

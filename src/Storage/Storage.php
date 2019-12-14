@@ -12,11 +12,13 @@ use InvalidArgumentException;
  * Class Storage.
  *
  * @internal
+ *
+ * @implements ArrayAccess<string, mixed>
  */
 abstract class Storage implements ArrayAccess, StorageInterface
 {
     /**
-     * @var ArrayObject
+     * @var ArrayObject<string, mixed>
      */
     private $storage;
 
@@ -56,7 +58,9 @@ abstract class Storage implements ArrayAccess, StorageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     *
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -64,7 +68,9 @@ abstract class Storage implements ArrayAccess, StorageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     *
+     * @return mixed
      */
     public function offsetGet($offset)
     {
@@ -72,17 +78,22 @@ abstract class Storage implements ArrayAccess, StorageInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     * @param mixed $value
+     *
+     * @return void
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet($offset, $value)
     {
         $this->storage->offsetSet($offset, $value);
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     *
+     * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset)
     {
         $this->storage->offsetUnset($offset);
     }

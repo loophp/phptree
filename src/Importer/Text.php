@@ -33,7 +33,7 @@ class Text extends SimpleArray
      * @param mixed $arguments
      *   The arguments
      *
-     * @return \drupol\phptree\Node\Node
+     * @return \drupol\phptree\Node\NodeInterface
      *   The node
      */
     protected function createNode($arguments): NodeInterface
@@ -47,10 +47,10 @@ class Text extends SimpleArray
      * @param string $subject
      *   The subject string
      *
-     * @return array|bool
+     * @return array<int, mixed>
      *   The array
      */
-    private function parse(string $subject)
+    private function parse(string $subject): array
     {
         $result = [];
 

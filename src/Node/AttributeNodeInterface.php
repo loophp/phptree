@@ -24,7 +24,7 @@ interface AttributeNodeInterface extends NaryNodeInterface
     /**
      * Get the attributes.
      *
-     * @return Traversable
+     * @return Traversable<int|string, mixed>
      *   The attributes.
      */
     public function getAttributes(): Traversable;
@@ -45,7 +45,7 @@ interface AttributeNodeInterface extends NaryNodeInterface
     /**
      * Set the attributes.
      *
-     * @param Traversable $attributes
+     * @param Traversable<int|string, mixed> $attributes
      *   The attributes.
      *
      * @return \drupol\phptree\Node\AttributeNodeInterface

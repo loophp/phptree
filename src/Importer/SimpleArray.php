@@ -23,7 +23,7 @@ class SimpleArray implements ImporterInterface
     /**
      * Convert an array into a tree.
      *
-     * @param array $data
+     * @param array<string, mixed> $data
      *
      * @return \drupol\phptree\Node\NodeInterface
      *   The tree

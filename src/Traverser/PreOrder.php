@@ -28,7 +28,9 @@ class PreOrder implements TraverserInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param NodeInterface $node
+     *
+     * @return Traversable<NodeInterface>
      */
     private function doTraverse(NodeInterface $node): Traversable
     {

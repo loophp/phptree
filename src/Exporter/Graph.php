@@ -29,7 +29,6 @@ class Graph extends AbstractExporter
         $this->graph = new OriginalGraph();
 
         foreach ($node->all() as $node_visited) {
-            /** @var int $vertexId */
             $vertexFrom = $this->createVertex($node_visited);
 
             foreach ($node_visited->children() as $child) {
@@ -65,7 +64,7 @@ class Graph extends AbstractExporter
 
             if ($node instanceof AttributeNodeInterface) {
                 foreach ($node->getAttributes() as $key => $value) {
-                    $vertex->setAttribute($key, $value);
+                    $vertex->setAttribute((string) $key, $value);
                 }
             }
         }

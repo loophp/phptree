@@ -65,7 +65,7 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
     {
         return array_reduce(
             $this->modifiers,
-            static function (NodeInterface $tree, ModifierInterface $modifier): NodeInterface {
+            static function (MerkleNodeInterface $tree, ModifierInterface $modifier): MerkleNodeInterface {
                 return $modifier->modify($tree);
             },
             $this->clone()

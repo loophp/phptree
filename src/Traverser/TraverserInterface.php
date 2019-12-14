@@ -19,7 +19,7 @@ interface TraverserInterface
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node
      *
-     * @return Generator|NodeInterface[]|Traversable
+     * @return Generator|Traversable<NodeInterface>
      */
     public function traverse(NodeInterface $node): Traversable;
 }

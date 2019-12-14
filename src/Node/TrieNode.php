@@ -16,7 +16,6 @@ class TrieNode extends KeyValueNode
      */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
-        /** @var \drupol\phptree\Node\KeyValueNodeInterface $node */
         foreach ($nodes as $node) {
             $data = $node->getValue();
 
@@ -32,6 +31,7 @@ class TrieNode extends KeyValueNode
             } else {
                 $nodes = [$node->getValue()];
 
+                /** @var \drupol\phptree\Node\KeyValueNodeInterface $ancestor */
                 foreach ($node->getAncestors() as $ancestor) {
                     $nodes[] = $ancestor->getValue();
                 }

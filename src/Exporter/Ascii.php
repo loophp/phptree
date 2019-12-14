@@ -57,7 +57,7 @@ class Ascii extends AbstractExporter
      * @param \drupol\phptree\Node\NodeInterface $node
      *   The node
      *
-     * @return array
+     * @return array<int, mixed>
      *   The tree exported into an array
      */
     private function doExportAsArray(NodeInterface $node): array

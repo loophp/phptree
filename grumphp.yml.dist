@@ -2,6 +2,7 @@ imports:
   - { resource: vendor/drupol/php-conventions/config/php71/grumphp.yml }
 
 parameters:
+  tasks.phpstan.config: phpstan.neon
   extra_tasks:
     phpspec:
       verbose: true

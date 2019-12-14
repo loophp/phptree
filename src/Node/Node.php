@@ -164,7 +164,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return Traversable<\drupol\phptree\Node\NodeInterface>
      */
     public function getIterator()
     {
@@ -244,7 +244,9 @@ class Node implements NodeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     *
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -252,7 +254,9 @@ class Node implements NodeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     *
+     * @return \drupol\phptree\Node\NodeInterface
      */
     public function offsetGet($offset)
     {
@@ -260,7 +264,10 @@ class Node implements NodeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     * @param mixed $value
+     *
+     * @return void
      */
     public function offsetSet($offset, $value): void
     {
@@ -275,9 +282,11 @@ class Node implements NodeInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     *
+     * @return void
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset)
     {
         $this->storage()->getChildren()->offsetUnset($offset);
     }

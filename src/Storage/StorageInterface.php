@@ -30,5 +30,5 @@ interface StorageInterface
      *
      * @return StorageInterface
      */
-    public function set($key, $value): self;
+    public function set($key, $value): StorageInterface;
 }

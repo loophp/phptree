@@ -12,7 +12,7 @@ interface NodeStorageInterface extends StorageInterface
     /**
      * Get the children.
      *
-     * @return ArrayObject
+     * @return ArrayObject<int, NodeInterface>
      */
     public function getChildren();
 
