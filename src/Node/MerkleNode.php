@@ -7,6 +7,7 @@ namespace drupol\phptree\Node;
 use drupol\phpmerkle\Hasher\DoubleSha256;
 use drupol\phpmerkle\Hasher\HasherInterface;
 use drupol\phptree\Modifier\FulfillCapacity;
+use drupol\phptree\Modifier\ModifierInterface;
 use drupol\phptree\Modifier\RemoveNullNode;
 
 /**
@@ -62,14 +63,13 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
      */
     public function normalize(): MerkleNodeInterface
     {
-        $tree = $this->clone();
-
-        foreach ($this->modifiers as $modifier) {
-            $tree = $modifier->modify($tree);
-        }
-
-        /** @var \drupol\phptree\Node\MerkleNodeInterface $tree */
-        return $tree;
+        return array_reduce(
+            $this->modifiers,
+            static function (NodeInterface $tree, ModifierInterface $modifier): NodeInterface {
+                return $modifier->modify($tree);
+            },
+            $this->clone()
+        );
     }
 
     /**

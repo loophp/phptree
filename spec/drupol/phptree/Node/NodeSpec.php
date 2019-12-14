@@ -262,6 +262,38 @@ class NodeSpec extends NodeObjectBehavior
             ->shouldReturn(30);
     }
 
+    public function it_can_get_the_tree_levels(): void
+    {
+        $nodeLevel3_1 = new Node();
+        $nodeLevel3_2 = new Node();
+        $nodeLevel2 = new Node();
+        $nodeLevel1 = new Node();
+
+        $nodeLevel2->add($nodeLevel3_1, $nodeLevel3_2);
+        $nodeLevel1->add($nodeLevel2);
+        $this->add($nodeLevel1);
+
+        $this
+            ->level(0)
+            ->shouldYield([$this]);
+
+        $this
+            ->level(1)
+            ->shouldYield([$nodeLevel1]);
+
+        $this
+            ->level(2)
+            ->shouldYield([$nodeLevel2]);
+
+        $this
+            ->level(3)
+            ->shouldYield([$nodeLevel3_1, $nodeLevel3_2]);
+
+        $this
+            ->level(4)
+            ->shouldYield([]);
+    }
+
     public function it_can_remove(): void
     {
         $node1 = new Node();
@@ -306,38 +338,6 @@ class NodeSpec extends NodeObjectBehavior
             ->withChildren()
             ->children()
             ->shouldYield(new ArrayIterator([]));
-    }
-
-    public function it_can_get_the_tree_levels(): void
-    {
-        $nodeLevel3_1 = new Node();
-        $nodeLevel3_2 = new Node();
-        $nodeLevel2 = new Node();
-        $nodeLevel1 = new Node();
-
-        $nodeLevel2->add($nodeLevel3_1, $nodeLevel3_2);
-        $nodeLevel1->add($nodeLevel2);
-        $this->add($nodeLevel1);
-
-        $this
-            ->level(0)
-            ->shouldYield([$this]);
-
-        $this
-            ->level(1)
-            ->shouldYield([$nodeLevel1]);
-
-        $this
-            ->level(2)
-            ->shouldYield([$nodeLevel2]);
-
-        $this
-            ->level(3)
-            ->shouldYield([$nodeLevel3_1, $nodeLevel3_2]);
-
-        $this
-            ->level(4)
-            ->shouldYield([]);
     }
 
     public function it_has_a_degree(): void
