@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace spec\drupol\phptree\Modifier;
 
-use drupol\phptree\Exporter\Ascii;
 use drupol\phptree\Modifier\RemoveNullNode;
 use drupol\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;

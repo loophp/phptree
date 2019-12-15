@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Node;
 
-use drupol\phptree\Storage\NodeStorage;
-use drupol\phptree\Storage\StorageInterface;
 use InvalidArgumentException;
 use Traversable;
 
+use function array_key_exists;
+use function count;
 use function in_array;
 
 /**
@@ -17,11 +17,14 @@ use function in_array;
 class Node implements NodeInterface
 {
     /**
-     * The storage property.
-     *
-     * @var \drupol\phptree\Storage\NodeStorageInterface
+     * @var \drupol\phptree\Node\NodeInterface[]
      */
-    private $storage;
+    private $children;
+
+    /**
+     * @var \drupol\phptree\Node\NodeInterface|null
+     */
+    private $parent;
 
     /**
      * Node constructor.
@@ -30,8 +33,8 @@ class Node implements NodeInterface
      */
     public function __construct(?NodeInterface $parent = null)
     {
-        $this->storage = new NodeStorage();
-        $this->storage()->setParent($parent);
+        $this->parent = $parent;
+        $this->children = [];
     }
 
     /**
@@ -39,11 +42,9 @@ class Node implements NodeInterface
      */
     public function __clone()
     {
-        $this->storage = clone $this->storage;
-
         /** @var \drupol\phptree\Node\NodeInterface $child */
-        foreach ($this->children() as $child) {
-            $child->setParent($this);
+        foreach ($this->children as $id => $child) {
+            $this->children[$id] = $child->clone()->setParent($this);
         }
     }
 
@@ -53,9 +54,7 @@ class Node implements NodeInterface
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
-            $this->storage()->getChildren()->append(
-                $node->setParent($this)
-            );
+            $this->children[] = $node->setParent($this);
         }
 
         return $this;
@@ -79,7 +78,7 @@ class Node implements NodeInterface
      */
     public function children(): Traversable
     {
-        yield from $this->storage()->getChildren();
+        yield from $this->children;
     }
 
     /**
@@ -103,7 +102,7 @@ class Node implements NodeInterface
      */
     public function degree(): int
     {
-        return $this->storage()->getChildren()->count();
+        return count($this->children);
     }
 
     /**
@@ -176,7 +175,7 @@ class Node implements NodeInterface
      */
     public function getParent(): ?NodeInterface
     {
-        return $this->storage()->getParent();
+        return $this->parent;
     }
 
     /**
@@ -184,10 +183,10 @@ class Node implements NodeInterface
      */
     public function getSibblings(): Traversable
     {
-        $parent = $this->storage()->getParent();
+        $parent = $this->parent;
 
         if (null === $parent) {
-            return $this->storage()->getChildren()->exchangeArray([]);
+            return [];
         }
 
         foreach ($parent->children() as $child) {
@@ -227,7 +226,7 @@ class Node implements NodeInterface
      */
     public function isRoot(): bool
     {
-        return null === $this->storage()->getParent();
+        return null === $this->parent;
     }
 
     /**
@@ -250,7 +249,7 @@ class Node implements NodeInterface
      */
     public function offsetExists($offset)
     {
-        return $this->storage()->getChildren()->offsetExists($offset);
+        return array_key_exists($offset, $this->children);
     }
 
     /**
@@ -260,7 +259,7 @@ class Node implements NodeInterface
      */
     public function offsetGet($offset)
     {
-        return $this->storage()->getChildren()->offsetGet($offset);
+        return $this->children[$offset];
     }
 
     /**
@@ -277,8 +276,7 @@ class Node implements NodeInterface
             );
         }
 
-        $this->storage()->getChildren()
-            ->offsetSet($offset, $value->setParent($this));
+        $this->children[$offset] = $value->setParent($this);
     }
 
     /**
@@ -288,7 +286,7 @@ class Node implements NodeInterface
      */
     public function offsetUnset($offset)
     {
-        $this->storage()->getChildren()->offsetUnset($offset);
+        unset($this->children[$offset]);
     }
 
     /**
@@ -296,14 +294,13 @@ class Node implements NodeInterface
      */
     public function remove(NodeInterface ...$nodes): NodeInterface
     {
-        $this->storage()->getChildren()->exchangeArray(
+        $this->children =
             array_filter(
-                $this->storage()->getChildren()->getArrayCopy(),
+                $this->children,
                 static function ($child) use ($nodes) {
                     return !in_array($child, $nodes, true);
                 }
-            )
-        );
+            );
 
         return $this;
     }
@@ -313,7 +310,7 @@ class Node implements NodeInterface
      */
     public function setParent(?NodeInterface $node): NodeInterface
     {
-        $this->storage()->setParent($node);
+        $this->parent = $node;
 
         return $this;
     }
@@ -324,22 +321,12 @@ class Node implements NodeInterface
     public function withChildren(?NodeInterface ...$nodes): NodeInterface
     {
         $clone = clone $this;
-        $clone->storage()->getChildren()->exchangeArray([]);
+        $clone->children = [];
 
         $nodes = array_filter($nodes);
 
         return [] === $nodes ?
             $clone :
             $clone->add(...$nodes);
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return \drupol\phptree\Storage\NodeStorageInterface
-     */
-    protected function storage(): StorageInterface
-    {
-        return $this->storage;
     }
 }

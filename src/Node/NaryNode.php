@@ -15,6 +15,16 @@ use OutOfBoundsException;
 class NaryNode extends Node implements NaryNodeInterface
 {
     /**
+     * @var int
+     */
+    private $capacity;
+
+    /**
+     * @var \drupol\phptree\Traverser\TraverserInterface
+     */
+    private $traverser;
+
+    /**
      * NaryNode constructor.
      *
      * @param int|null $capacity
@@ -32,15 +42,9 @@ class NaryNode extends Node implements NaryNodeInterface
     ) {
         parent::__construct($parent);
 
-        $this->storage()->set(
-            'capacity',
-            $capacity
-        );
+        $this->capacity = $capacity;
 
-        $this->storage()->set(
-            'traverser',
-            $traverser ?? new BreadthFirst()
-        );
+        $this->traverser = $traverser ?? new BreadthFirst();
     }
 
     /**
@@ -76,7 +80,7 @@ class NaryNode extends Node implements NaryNodeInterface
      */
     public function capacity(): ?int
     {
-        return $this->storage()->get('capacity');
+        return $this->capacity;
     }
 
     /**
@@ -84,7 +88,7 @@ class NaryNode extends Node implements NaryNodeInterface
      */
     public function getTraverser(): TraverserInterface
     {
-        return $this->storage()->get('traverser');
+        return $this->traverser;
     }
 
     /**

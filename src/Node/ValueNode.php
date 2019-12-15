@@ -12,6 +12,11 @@ use drupol\phptree\Traverser\TraverserInterface;
 class ValueNode extends NaryNode implements ValueNodeInterface
 {
     /**
+     * @var mixed
+     */
+    private $value;
+
+    /**
      * ValueNode constructor.
      *
      * @param mixed|null $value
@@ -27,7 +32,7 @@ class ValueNode extends NaryNode implements ValueNodeInterface
     ) {
         parent::__construct($capacity, $traverser, $parent);
 
-        $this->storage()->set('value', $value);
+        $this->value = $value;
     }
 
     /**
@@ -35,6 +40,6 @@ class ValueNode extends NaryNode implements ValueNodeInterface
      */
     public function getValue()
     {
-        return $this->storage()->get('value');
+        return $this->value;
     }
 }

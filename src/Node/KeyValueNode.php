@@ -12,6 +12,11 @@ use drupol\phptree\Traverser\TraverserInterface;
 class KeyValueNode extends ValueNode implements KeyValueNodeInterface
 {
     /**
+     * @var mixed
+     */
+    private $key;
+
+    /**
      * KeyValueNode constructor.
      *
      * @param mixed|null $key
@@ -29,7 +34,7 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
     ) {
         parent::__construct($value, $capacity, $traverser, $parent);
 
-        $this->storage()->set('key', $key);
+        $this->key = $key;
     }
 
     /**
@@ -37,6 +42,6 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
      */
     public function getKey()
     {
-        return $this->storage()->get('key');
+        return $this->key;
     }
 }
