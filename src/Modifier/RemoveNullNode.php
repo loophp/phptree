@@ -31,6 +31,7 @@ class RemoveNullNode implements ModifierInterface
             }
 
             $parent->remove($item);
+            $this->modify($parent);
         }
 
         return $tree;
