@@ -15,10 +15,10 @@ interface ModifierInterface
      * Modify the tree.
      *
      * @param NodeInterface $tree
-     *   The original tree
+     *   The original tree.
      *
-     * @return NodeInterface
-     *   A new tree
+     * @return \drupol\phptree\Node\AttributeNodeInterface|\drupol\phptree\Node\MerkleNodeInterface|\drupol\phptree\Node\ValueNodeInterface|NodeInterface
+     *   A new tree.
      */
     public function modify(NodeInterface $tree): NodeInterface;
 }

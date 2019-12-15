@@ -79,7 +79,7 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
     {
         // If node is a leaf, then compute its hash from its value.
         if (true === $node->isLeaf()) {
-            return $this->hasher->hash($node->getValue());
+            return $this->hasher->hash((string) $node->getValue());
         }
 
         $hash = '';
