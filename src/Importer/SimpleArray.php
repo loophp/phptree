@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace drupol\phptree\Importer;
 
-use drupol\phptree\Node\Node;
 use drupol\phptree\Node\NodeInterface;
 use drupol\phptree\Node\ValueNode;
 
