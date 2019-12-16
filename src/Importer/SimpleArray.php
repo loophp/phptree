@@ -6,6 +6,7 @@ namespace drupol\phptree\Importer;
 
 use drupol\phptree\Node\Node;
 use drupol\phptree\Node\NodeInterface;
+use drupol\phptree\Node\ValueNode;
 
 /**
  * Class SimpleArray.
@@ -54,6 +55,6 @@ class SimpleArray implements ImporterInterface
      */
     protected function createNode($data): NodeInterface
     {
-        return new Node();
+        return new ValueNode($data);
     }
 }
