@@ -232,6 +232,14 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function label(): string
+    {
+        return sha1(spl_object_hash($this));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function level(int $level): Traversable
     {
         /** @var \drupol\phptree\Node\NodeInterface $node */

@@ -42,4 +42,12 @@ class ValueNode extends NaryNode implements ValueNodeInterface
     {
         return $this->value;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function label(): string
+    {
+        return (string) $this->getValue();
+    }
 }

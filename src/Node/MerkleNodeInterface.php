@@ -10,6 +10,11 @@ namespace drupol\phptree\Node;
 interface MerkleNodeInterface extends ValueNodeInterface
 {
     /**
+     * @return string
+     */
+    public function hash(): string;
+
+    /**
      * @return \drupol\phptree\Node\MerkleNodeInterface
      */
     public function normalize(): MerkleNodeInterface;

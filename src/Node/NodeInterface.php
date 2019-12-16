@@ -139,6 +139,11 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     public function isRoot(): bool;
 
     /**
+     * @return string
+     */
+    public function label(): string;
+
+    /**
      * @param int $level
      *
      * @return Traversable<\drupol\phptree\Node\NodeInterface>

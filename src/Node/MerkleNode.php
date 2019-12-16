@@ -49,10 +49,18 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getValue()
+    public function hash(): string
+    {
+        return $this->hasher->unpack($this->doHash($this->normalize()));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function label(): string
     {
         if (true === $this->isLeaf()) {
-            return parent::getValue();
+            return $this->getValue();
         }
 
         return $this->hash();
@@ -79,7 +87,7 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
     {
         // If node is a leaf, then compute its hash from its value.
         if (true === $node->isLeaf()) {
-            return $this->hasher->hash((string) $node->getValue());
+            return $this->hasher->hash($node->getValue());
         }
 
         $hash = '';
@@ -89,13 +97,5 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
         }
 
         return $this->hasher->hash($hash);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    private function hash(): string
-    {
-        return $this->hasher->unpack($this->doHash($this->normalize()));
     }
 }

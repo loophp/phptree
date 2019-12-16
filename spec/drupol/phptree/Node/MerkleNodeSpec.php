@@ -54,8 +54,30 @@ class MerkleNodeSpec extends ObjectBehavior
 
         $this
             ->add(...$nodes)
-            ->getValue()
+            ->hash()
             ->shouldReturn('c689102cdf2a5b30c2e21fdad85e4bb401085227aff672a7240ceb3410ff1fb6');
+    }
+
+    public function it_can_get_its_label()
+    {
+        $this
+            ->label()
+            ->shouldReturn('root');
+
+        $nodes = [
+            new MerkleNode(null, 2, new DummyHasher()),
+            new MerkleNode(null, 2, new DummyHasher()),
+            new MerkleNode('a', 2, new DummyHasher()),
+            new MerkleNode('b', 2, new DummyHasher()),
+            new MerkleNode('c', 2, new DummyHasher()),
+        ];
+
+        $this
+            ->add(...$nodes);
+
+        $this
+            ->label()
+            ->shouldReturn('abcc');
     }
 
     public function it_can_get_the_value_of_a_tree_with_a_single_node()
@@ -83,7 +105,7 @@ class MerkleNodeSpec extends ObjectBehavior
             ->shouldReturn(5);
 
         $this
-            ->getValue()
+            ->hash()
             ->shouldReturn('abcc');
 
         $this
@@ -100,7 +122,7 @@ class MerkleNodeSpec extends ObjectBehavior
 
         $this
             ->add(...$nodes)
-            ->getValue()
+            ->hash()
             ->shouldReturn('ab');
     }
 
@@ -110,7 +132,7 @@ class MerkleNodeSpec extends ObjectBehavior
 
         $this
             ->add($node)
-            ->getValue()
+            ->hash()
             ->shouldReturn('aa');
     }
 
@@ -134,6 +156,10 @@ class MerkleNodeSpec extends ObjectBehavior
 
         $this
             ->getValue()
+            ->shouldReturn('root');
+
+        $this
+            ->hash()
             ->shouldReturn('abcc');
 
         $this
