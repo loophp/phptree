@@ -20,7 +20,7 @@
     },
     "require-dev": {
         "drupol/launcher": "^2.2.2",
-        "drupol/php-conventions": "^1.6.7",
+        "drupol/php-conventions": "^1.6.10",
         "drupol/phpmerkle": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
         "graphp/graphviz": "^0.2",
