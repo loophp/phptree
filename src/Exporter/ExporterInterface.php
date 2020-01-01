@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Exporter;
+namespace loophp\phptree\Exporter;
 
-use drupol\phptree\Node\NodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 /**
  * Interface ExporterInterface.

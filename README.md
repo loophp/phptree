@@ -1,13 +1,12 @@
-[![Latest Stable Version](https://img.shields.io/packagist/v/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
- [![GitHub stars](https://img.shields.io/github/stars/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
- [![Total Downloads](https://img.shields.io/packagist/dt/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
- [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/drupol/phptree/Continuous%20Integration?style=flat-square)](https://github.com/drupol/phptree/actions)
- [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
- [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/drupol/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/drupol/phptree/?branch=master)
- [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/drupol/phptree/master)](https://stryker-mutator.github.io)
- [![License](https://img.shields.io/packagist/l/drupol/phptree.svg?style=flat-square)](https://packagist.org/packages/drupol/phptree)
- [![Say Thanks!](https://img.shields.io/badge/Say-thanks-brightgreen.svg?style=flat-square)](https://saythanks.io/to/drupol)
- [![Donate!](https://img.shields.io/badge/Donate-Paypal-brightgreen.svg?style=flat-square)](https://paypal.me/drupol)
+[![Latest Stable Version](https://img.shields.io/packagist/v/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
+ [![GitHub stars](https://img.shields.io/github/stars/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
+ [![Total Downloads](https://img.shields.io/packagist/dt/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
+ [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/loophp/phptree/Continuous%20Integration?style=flat-square)](https://github.com/loophp/phptree/actions)
+ [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/loophp/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/loophp/phptree/?branch=master)
+ [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/loophp/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/loophp/phptree/?branch=master)
+ [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/loophp/phptree/master)](https://stryker-mutator.github.io)
+ [![License](https://img.shields.io/packagist/l/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
+ [![Donate!](https://img.shields.io/badge/Donate-Paypal-brightgreen.svg?style=flat-square)](https://paypal.me/loophp)
  
 # PhpTree
 
@@ -49,11 +48,11 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 
 ## Installation
 
-```composer require drupol/phptree```
+```composer require loophp/phptree```
 
 ## Optional packages
 
-* [drupol/launcher](https://github.com/drupol/launcher): To automatically open a resource using the proper application on your operating system.
+* [loophp/launcher](https://github.com/loophp/launcher): To automatically open a resource using the proper application on your operating system.
 * [graphp/graphp](https://github.com/graphp/graph): To export a tree into a Graph.
 
 ## Usage
@@ -63,11 +62,11 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 
 declare(strict_types = 1);
 
-use drupol\phptree\Exporter\Gv;
-use drupol\phptree\Exporter\Image;
-use drupol\phptree\Node\ValueNode;
-use drupol\phptree\Exporter\Text;
-use drupol\launcher\Launcher;
+use loophp\phptree\Exporter\Gv;
+use loophp\phptree\Exporter\Image;
+use loophp\phptree\Node\ValueNode;
+use loophp\phptree\Exporter\Text;
+use loophp\launcher\Launcher;
 
 include './vendor/autoload.php';
 
@@ -97,14 +96,14 @@ $exporter = new Image();
 $imagePath = $exporter->setFormat('png')->export($tree);
 
 // If you want to launch the image, you can use an optional package.
-// do: composer require drupol/launcher
+// do: composer require loophp/launcher
 // then:
 Launcher::open($imagePath);
 ```
 
 ## Code quality, tests and benchmarks
 
-Every time changes are introduced into the library, [Github](https://github.com/drupol/phptree/actions) run the tests and the benchmarks.
+Every time changes are introduced into the library, [Github](https://github.com/loophp/phptree/actions) run the tests and the benchmarks.
 
 The library has tests written with [PHPSpec](http://www.phpspec.net/).
 Feel free to check them out in the `spec` directory. Run `composer phpspec` to trigger the tests.

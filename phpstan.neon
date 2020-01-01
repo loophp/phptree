@@ -1,5 +1,5 @@
 parameters:
     checkMissingIterableValueType: false
     ignoreErrors:
-        - '#Method drupol\\phptree\\Node\\MerkleNode::normalize\(\) should return drupol\\phptree\\Node\\MerkleNodeInterface but returns drupol\\phptree\\Node\\NodeInterface.#'
-        - '#Anonymous function should return drupol\\phptree\\Node\\MerkleNodeInterface but returns drupol\\phptree\\Node\\NodeInterface.#'
+        - '#Method loophp\\phptree\\Node\\MerkleNode::normalize\(\) should return loophp\\phptree\\Node\\MerkleNodeInterface but returns loophp\\phptree\\Node\\NodeInterface.#'
+        - '#Anonymous function should return loophp\\phptree\\Node\\MerkleNodeInterface but returns loophp\\phptree\\Node\\NodeInterface.#'

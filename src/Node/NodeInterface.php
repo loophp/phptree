@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 use ArrayAccess;
 use Countable;
@@ -31,7 +31,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get all the nodes of a tree including the parent node itself.
      *
-     * @return Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return Traversable<\loophp\phptree\Node\NodeInterface>
      *   The node.
      */
     public function all(): Traversable;
@@ -39,7 +39,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get the children.
      *
-     * @return Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return Traversable<\loophp\phptree\Node\NodeInterface>
      *   The children
      */
     public function children(): Traversable;
@@ -47,7 +47,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Clone the tree and all of its children.
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      *   The tree.
      */
     public function clone(): NodeInterface;
@@ -63,10 +63,10 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Remove a node (and its subnodes) from a tree.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node to remove.
      *
-     * @return \drupol\phptree\Node\NodeInterface|null
+     * @return \loophp\phptree\Node\NodeInterface|null
      *   The node that has been removed without parent, null otherwise.
      */
     public function delete(NodeInterface $node): ?NodeInterface;
@@ -82,10 +82,10 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Check if a node is find is in the tree.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node to find.
      *
-     * @return \drupol\phptree\Node\NodeInterface|null
+     * @return \loophp\phptree\Node\NodeInterface|null
      *   The node if found, false otherwise.
      */
     public function find(NodeInterface $node): ?NodeInterface;
@@ -93,7 +93,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get the ancestors of a node.
      *
-     * @return Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return Traversable<\loophp\phptree\Node\NodeInterface>
      *   The ancestors
      */
     public function getAncestors(): Traversable;
@@ -109,7 +109,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get the node's sibblings.
      *
-     * @return Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return Traversable<\loophp\phptree\Node\NodeInterface>
      *   The sibblings
      */
     public function getSibblings(): Traversable;
@@ -146,7 +146,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * @param int $level
      *
-     * @return Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return Traversable<\loophp\phptree\Node\NodeInterface>
      */
     public function level(int $level): Traversable;
 
@@ -175,10 +175,10 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Get a clone of the object with or without children.
      *
-     * @param \drupol\phptree\Node\NodeInterface|null ...$nodes
+     * @param \loophp\phptree\Node\NodeInterface|null ...$nodes
      *   The children that the clone will have.
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      *   The new object
      */
     public function withChildren(?NodeInterface ...$nodes): NodeInterface;

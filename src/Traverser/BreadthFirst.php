@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Traverser;
+namespace loophp\phptree\Traverser;
 
-use drupol\phptree\Node\NodeInterface;
+use loophp\phptree\Node\NodeInterface;
 use SplQueue;
 use Traversable;
 

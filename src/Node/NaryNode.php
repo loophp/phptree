@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
-use drupol\phptree\Traverser\BreadthFirst;
-use drupol\phptree\Traverser\TraverserInterface;
 use Exception;
+use loophp\phptree\Traverser\BreadthFirst;
+use loophp\phptree\Traverser\TraverserInterface;
 use OutOfBoundsException;
 
 /**
@@ -20,7 +20,7 @@ class NaryNode extends Node implements NaryNodeInterface
     private $capacity;
 
     /**
-     * @var \drupol\phptree\Traverser\TraverserInterface
+     * @var \loophp\phptree\Traverser\TraverserInterface
      */
     private $traverser;
 
@@ -30,9 +30,9 @@ class NaryNode extends Node implements NaryNodeInterface
      * @param int|null $capacity
      *   The maximum children a node can have. Null for no children,
      *   if 0 then any number of children is allowed.
-     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
+     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
      *   The traverser.
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
+     * @param \loophp\phptree\Node\NodeInterface|null $parent
      *   The parent.
      */
     public function __construct(
@@ -113,10 +113,10 @@ class NaryNode extends Node implements NaryNodeInterface
      * When adding nodes to a NaryNode based tree, you must traverse the tree
      * and find the first node that can be used as a parent for the node to add.
      *
-     * @param \drupol\phptree\Node\NodeInterface $tree
+     * @param \loophp\phptree\Node\NodeInterface $tree
      *   The base node.
      *
-     * @return \drupol\phptree\Node\NodeInterface|null
+     * @return \loophp\phptree\Node\NodeInterface|null
      *   A node, null if none are found.
      */
     protected function findFirstAvailableNode(NodeInterface $tree): ?NodeInterface

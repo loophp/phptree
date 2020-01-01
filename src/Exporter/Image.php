@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Exporter;
+namespace loophp\phptree\Exporter;
 
-use drupol\phptree\Node\NodeInterface;
 use Exception;
+use loophp\phptree\Node\NodeInterface;
 
 use const LOCK_EX;
 use const PHP_OS;
@@ -36,7 +36,7 @@ class Image extends Gv
     }
 
     /**
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *
      * @throws Exception
      *
@@ -76,7 +76,7 @@ class Image extends Gv
      *
      * @param string $executable
      *
-     * @return \drupol\phptree\Exporter\Image
+     * @return \loophp\phptree\Exporter\Image
      */
     public function setExecutable(string $executable): self
     {
@@ -88,7 +88,7 @@ class Image extends Gv
     /**
      * @param string $format
      *
-     * @return \drupol\phptree\Exporter\Image
+     * @return \loophp\phptree\Exporter\Image
      */
     public function setFormat(string $format): self
     {

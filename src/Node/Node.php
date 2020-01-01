@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 use InvalidArgumentException;
 use Traversable;
@@ -17,19 +17,19 @@ use function in_array;
 class Node implements NodeInterface
 {
     /**
-     * @var \drupol\phptree\Node\NodeInterface[]
+     * @var \loophp\phptree\Node\NodeInterface[]
      */
     private $children;
 
     /**
-     * @var \drupol\phptree\Node\NodeInterface|null
+     * @var \loophp\phptree\Node\NodeInterface|null
      */
     private $parent;
 
     /**
      * Node constructor.
      *
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
+     * @param \loophp\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(?NodeInterface $parent = null)
     {
@@ -42,7 +42,7 @@ class Node implements NodeInterface
      */
     public function __clone()
     {
-        /** @var \drupol\phptree\Node\NodeInterface $child */
+        /** @var \loophp\phptree\Node\NodeInterface $child */
         foreach ($this->children as $id => $child) {
             $this->children[$id] = $child->clone()->setParent($this);
         }
@@ -67,7 +67,7 @@ class Node implements NodeInterface
     {
         yield $this;
 
-        /** @var \drupol\phptree\Node\NodeInterface $child */
+        /** @var \loophp\phptree\Node\NodeInterface $child */
         foreach ($this->children() as $child) {
             yield from $child->all();
         }
@@ -140,7 +140,7 @@ class Node implements NodeInterface
      */
     public function find(NodeInterface $node): ?NodeInterface
     {
-        /** @var \drupol\phptree\Node\NodeInterface $candidate */
+        /** @var \loophp\phptree\Node\NodeInterface $candidate */
         foreach ($this->all() as $candidate) {
             if ($candidate === $node) {
                 return $node;
@@ -163,7 +163,7 @@ class Node implements NodeInterface
     }
 
     /**
-     * @return Traversable<\drupol\phptree\Node\NodeInterface>
+     * @return Traversable<\loophp\phptree\Node\NodeInterface>
      */
     public function getIterator()
     {
@@ -205,7 +205,7 @@ class Node implements NodeInterface
     {
         $height = $this->depth();
 
-        /** @var \drupol\phptree\Node\NodeInterface $child */
+        /** @var \loophp\phptree\Node\NodeInterface $child */
         foreach ($this->children() as $child) {
             $height = max($height, $child->height());
         }
@@ -242,7 +242,7 @@ class Node implements NodeInterface
      */
     public function level(int $level): Traversable
     {
-        /** @var \drupol\phptree\Node\NodeInterface $node */
+        /** @var \loophp\phptree\Node\NodeInterface $node */
         foreach ($this->all() as $node) {
             if ($node->depth() === $level) {
                 yield $node;
@@ -263,7 +263,7 @@ class Node implements NodeInterface
     /**
      * @param mixed $offset
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      */
     public function offsetGet($offset)
     {

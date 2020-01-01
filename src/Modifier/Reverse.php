@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Modifier;
+namespace loophp\phptree\Modifier;
 
 use ArrayObject;
-use drupol\phptree\Node\NodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 /**
  * Class Reverse.

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
-use drupol\phptree\Traverser\TraverserInterface;
+use loophp\phptree\Traverser\TraverserInterface;
 
 /**
  * Class KeyValueNode.
@@ -22,8 +22,8 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
      * @param mixed|null $key
      * @param mixed|null $value
      * @param int|null $capacity
-     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
+     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
+     * @param \loophp\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(
         $key,

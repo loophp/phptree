@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 /**
  * Interface AttributeNodeInterface.
@@ -35,7 +35,7 @@ interface AttributeNodeInterface extends NaryNodeInterface
      * @param mixed $value
      *   The attribute value.
      *
-     * @return \drupol\phptree\Node\AttributeNodeInterface
+     * @return \loophp\phptree\Node\AttributeNodeInterface
      *   The node.
      */
     public function setAttribute(string $key, $value): AttributeNodeInterface;
@@ -46,7 +46,7 @@ interface AttributeNodeInterface extends NaryNodeInterface
      * @param array<int|string, mixed> $attributes
      *   The attributes.
      *
-     * @return \drupol\phptree\Node\AttributeNodeInterface
+     * @return \loophp\phptree\Node\AttributeNodeInterface
      *   The node.
      */
     public function setAttributes(array $attributes): AttributeNodeInterface;

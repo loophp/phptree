@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Exporter;
+namespace loophp\phptree\Exporter;
 
-use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNodeInterface;
 use InvalidArgumentException;
+use loophp\phptree\Node\NodeInterface;
+use loophp\phptree\Node\ValueNodeInterface;
 
 /**
  * Class SimpleArray.

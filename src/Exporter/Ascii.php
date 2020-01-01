@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Exporter;
+namespace loophp\phptree\Exporter;
 
 use CachingIterator;
-use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNodeInterface;
+use loophp\phptree\Node\NodeInterface;
+use loophp\phptree\Node\ValueNodeInterface;
 use RecursiveArrayIterator;
 use RecursiveTreeIterator;
 
@@ -54,7 +54,7 @@ class Ascii extends AbstractExporter
     /**
      * Export the tree in an array.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node
      *
      * @return array<int, mixed>

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Traverser;
+namespace loophp\phptree\Traverser;
 
-use drupol\phptree\Node\NodeInterface;
 use Generator;
+use loophp\phptree\Node\NodeInterface;
 use Traversable;
 
 /**
@@ -16,7 +16,7 @@ interface TraverserInterface
     /**
      * Traverse the tree.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node
      *
      * @return Generator|Traversable<NodeInterface>

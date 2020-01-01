@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Exporter;
+namespace loophp\phptree\Exporter;
 
-use drupol\phptree\Node\AttributeNodeInterface;
-use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Graph as OriginalGraph;
 use Fhaculty\Graph\Vertex;
+use loophp\phptree\Node\AttributeNodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 /**
  * Class Graph.
@@ -43,7 +43,7 @@ class Graph extends AbstractExporter
     /**
      * Create a vertex.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node
      *
      * @return \Fhaculty\Graph\Vertex
@@ -75,7 +75,7 @@ class Graph extends AbstractExporter
     /**
      * Create a vertex ID.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node
      *
      * @return int|string|null

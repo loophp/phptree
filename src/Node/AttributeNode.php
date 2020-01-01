@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
-use drupol\phptree\Traverser\TraverserInterface;
+use loophp\phptree\Traverser\TraverserInterface;
 
 /**
  * Class AttributeNode.
@@ -21,8 +21,8 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
      *
      * @param array<int|string, mixed> $attributes
      * @param int|null $capacity
-     * @param \drupol\phptree\Traverser\TraverserInterface|null $traverser
-     * @param \drupol\phptree\Node\NodeInterface|null $parent
+     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
+     * @param \loophp\phptree\Node\NodeInterface|null $parent
      */
     public function __construct(
         array $attributes = [],

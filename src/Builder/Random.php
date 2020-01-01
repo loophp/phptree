@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Builder;
+namespace loophp\phptree\Builder;
 
-use drupol\phptree\Node\NodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 use function is_callable;
 
@@ -40,7 +40,7 @@ class Random implements BuilderInterface
     /**
      * @param array<mixed> $parameters
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      */
     private static function createNode(array $parameters = []): NodeInterface
     {
@@ -61,9 +61,9 @@ class Random implements BuilderInterface
     }
 
     /**
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      */
     private static function pickRandomNode(NodeInterface $node): NodeInterface
     {

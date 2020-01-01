@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Importer;
+namespace loophp\phptree\Importer;
 
-use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNode;
+use loophp\phptree\Node\NodeInterface;
+use loophp\phptree\Node\ValueNode;
 
 /**
  * Class SimpleArray.
@@ -25,7 +25,7 @@ class SimpleArray implements ImporterInterface
      *
      * @param array<string, mixed> $data
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      *   The tree
      */
     protected function arrayToTree(array $data): NodeInterface
@@ -49,7 +49,7 @@ class SimpleArray implements ImporterInterface
      * @param mixed $data
      *   The arguments
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      *   The node
      */
     protected function createNode($data): NodeInterface

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 /**
  * Interface KeyValueNodeInterface.

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\benchmarks;
+namespace loophp\phptree\benchmarks;
 
-use drupol\phptree\Node\ValueNode;
+use loophp\phptree\Node\ValueNode;
 use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
 
 /**
- * @Groups({"drupol/phptree"})
+ * @Groups({"loophp/phptree"})
  * @BeforeMethods({"initObject"})
  */
 class DrupolPhpTreeBench extends AbstractBench
 {
     /**
-     * @var \drupol\phptree\Node\NodeInterface
+     * @var \loophp\phptree\Node\NodeInterface
      */
     private $tree;
 

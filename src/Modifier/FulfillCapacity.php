@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Modifier;
+namespace loophp\phptree\Modifier;
 
-use drupol\phptree\Node\NodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 /**
  * Class FulfillCapacity.
@@ -16,7 +16,7 @@ class FulfillCapacity implements ModifierInterface
      */
     public function modify(NodeInterface $tree): NodeInterface
     {
-        /** @var \drupol\phptree\Node\MerkleNode $item */
+        /** @var \loophp\phptree\Node\MerkleNode $item */
         foreach ($tree->all() as $item) {
             $capacity = $item->capacity();
 

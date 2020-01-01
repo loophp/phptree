@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Exporter;
+namespace loophp\phptree\Exporter;
 
-use drupol\phptree\Node\AttributeNodeInterface;
-use drupol\phptree\Node\NodeInterface;
 use Generator;
+use loophp\phptree\Node\AttributeNodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 use function is_array;
 
@@ -101,7 +101,7 @@ class Gv extends AbstractExporter
      * @param bool $directed
      *   True for a directed graph, false otherwise.
      *
-     * @return \drupol\phptree\Exporter\Gv
+     * @return \loophp\phptree\Exporter\Gv
      *   The exporter.
      */
     public function setDirected(bool $directed = true): self
@@ -117,7 +117,7 @@ class Gv extends AbstractExporter
      * @param array<mixed, mixed> $attributes
      *   The graph attributes.
      *
-     * @return \drupol\phptree\Exporter\Gv
+     * @return \loophp\phptree\Exporter\Gv
      *   The exporter.
      */
     public function setGraphAttributes(array $attributes): self
@@ -152,7 +152,7 @@ class Gv extends AbstractExporter
     /**
      * Recursively find all the edges in a tree.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The root node.
      *
      * @return Generator<NodeInterface, NodeInterface>
@@ -201,7 +201,7 @@ EOF;
     /**
      * Get the hash of a node.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node.
      *
      * @return string
@@ -215,7 +215,7 @@ EOF;
     /**
      * Get the node attributes.
      *
-     * @param \drupol\phptree\Node\NodeInterface $node
+     * @param \loophp\phptree\Node\NodeInterface $node
      *   The node interface.
      *
      * @return array<mixed, mixed>

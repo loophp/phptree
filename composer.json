@@ -1,5 +1,5 @@
 {
-    "name": "drupol/phptree",
+    "name": "loophp/phptree",
     "type": "library",
     "description": "An implementation of tree data structure",
     "keywords": [
@@ -20,28 +20,29 @@
     },
     "require-dev": {
         "drupol/launcher": "^2.2.2",
-        "drupol/php-conventions": "^1.6.10",
+        "drupol/php-conventions": "^1.6.11",
         "drupol/phpmerkle": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
         "graphp/graphviz": "^0.2",
         "infection/infection": "^0.13.6 || ^0.15.0",
         "phpbench/phpbench": "^0.16.10",
-        "phpspec/phpspec": "^5.1.2 || ^6.1",
-        "phptaskman/changelog": "^1.0"
+        "phpspec/phpspec": "^5.1.2 || ^6.1.1",
+        "phptaskman/changelog": "^1.0",
+        "scrutinizer/ocular": "^1.6.0"
     },
     "config": {
         "sort-packages": true
     },
     "autoload": {
         "psr-4": {
-            "drupol\\phptree\\": "src/"
+            "loophp\\phptree\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "drupol\\phptree\\tests\\": "tests/src/",
-            "drupol\\phptree\\benchmarks\\": "benchmarks/",
-            "spec\\drupol\\phptree\\": "spec/drupol/phptree/"
+            "loophp\\phptree\\tests\\": "tests/src/",
+            "loophp\\phptree\\benchmarks\\": "benchmarks/",
+            "spec\\loophp\\phptree\\": "spec/loophp/phptree/"
         }
     },
     "scripts": {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Importer;
+namespace loophp\phptree\Importer;
 
-use drupol\phptree\Node\NodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 /**
  * Interface ImporterInterface.

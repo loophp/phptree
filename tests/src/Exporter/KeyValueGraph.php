@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\tests\Exporter;
+namespace loophp\phptree\tests\Exporter;
 
-use drupol\phptree\Exporter\Graph;
-use drupol\phptree\Node\KeyValueNodeInterface;
-use drupol\phptree\Node\NodeInterface;
 use Fhaculty\Graph\Vertex;
+use loophp\phptree\Exporter\Graph;
+use loophp\phptree\Node\KeyValueNodeInterface;
+use loophp\phptree\Node\NodeInterface;
 
 /**
  * Class KeyValueGraph.

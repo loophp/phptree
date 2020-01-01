@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 use drupol\phpmerkle\Hasher\DoubleSha256;
 use drupol\phpmerkle\Hasher\HasherInterface;
-use drupol\phptree\Modifier\FulfillCapacity;
-use drupol\phptree\Modifier\ModifierInterface;
-use drupol\phptree\Modifier\RemoveNullNode;
+use loophp\phptree\Modifier\FulfillCapacity;
+use loophp\phptree\Modifier\ModifierInterface;
+use loophp\phptree\Modifier\RemoveNullNode;
 
 /**
  * Class MerkleNode.
@@ -21,7 +21,7 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
     private $hasher;
 
     /**
-     * @var \drupol\phptree\Modifier\ModifierInterface[]
+     * @var \loophp\phptree\Modifier\ModifierInterface[]
      */
     private $modifiers;
 
@@ -91,7 +91,7 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
         }
 
         $hash = '';
-        /** @var \drupol\phptree\Node\MerkleNodeInterface $child */
+        /** @var \loophp\phptree\Node\MerkleNodeInterface $child */
         foreach ($node->children() as $child) {
             $hash .= $this->doHash($child);
         }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 /**
  * Interface MerkleNodeInterface.
@@ -15,7 +15,7 @@ interface MerkleNodeInterface extends ValueNodeInterface
     public function hash(): string;
 
     /**
-     * @return \drupol\phptree\Node\MerkleNodeInterface
+     * @return \loophp\phptree\Node\MerkleNodeInterface
      */
     public function normalize(): MerkleNodeInterface;
 }

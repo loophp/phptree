@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\benchmarks;
+namespace loophp\phptree\benchmarks;
 
 abstract class AbstractBench
 {

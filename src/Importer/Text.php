@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Importer;
+namespace loophp\phptree\Importer;
 
-use drupol\phptree\Node\NodeInterface;
-use drupol\phptree\Node\ValueNode;
 use InvalidArgumentException;
+use loophp\phptree\Node\NodeInterface;
+use loophp\phptree\Node\ValueNode;
 
 /**
  * Class Text.
@@ -33,7 +33,7 @@ class Text extends SimpleArray
      * @param mixed $arguments
      *   The arguments
      *
-     * @return \drupol\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\NodeInterface
      *   The node
      */
     protected function createNode($arguments): NodeInterface

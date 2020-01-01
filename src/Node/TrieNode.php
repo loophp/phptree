@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace drupol\phptree\Node;
+namespace loophp\phptree\Node;
 
 use Exception;
 
@@ -31,7 +31,7 @@ class TrieNode extends KeyValueNode
             } else {
                 $nodes = [$node->getValue()];
 
-                /** @var \drupol\phptree\Node\KeyValueNodeInterface $ancestor */
+                /** @var \loophp\phptree\Node\KeyValueNodeInterface $ancestor */
                 foreach ($node->getAncestors() as $ancestor) {
                     $nodes[] = $ancestor->getValue();
                 }
@@ -44,15 +44,15 @@ class TrieNode extends KeyValueNode
     }
 
     /**
-     * @param \drupol\phptree\Node\ValueNodeInterface $node
+     * @param \loophp\phptree\Node\ValueNodeInterface $node
      *
      * @throws Exception
      *
-     * @return \drupol\phptree\Node\NodeInterface|\drupol\phptree\Node\ValueNodeInterface
+     * @return \loophp\phptree\Node\NodeInterface|\loophp\phptree\Node\ValueNodeInterface
      */
     private function append(ValueNodeInterface $node)
     {
-        /** @var \drupol\phptree\Node\ValueNodeInterface $child */
+        /** @var \loophp\phptree\Node\ValueNodeInterface $child */
         foreach ($this->children() as $child) {
             if ($node->getValue() === $child->getValue()) {
                 return $child;
