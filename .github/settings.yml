@@ -39,7 +39,7 @@ repository:
     allow_squash_merge: false
     default_branch: master
     description: "An implementation of tree data structure"
-    topics: tree,data structure,binary tree
+    topics: tree,data-structure,binary-tree
     has_downloads: true
     has_issues: true
     has_pages: false
