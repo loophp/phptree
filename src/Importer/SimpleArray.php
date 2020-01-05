@@ -36,7 +36,7 @@ class SimpleArray implements ImporterInterface
 
         $node = $this->createNode($data['value']);
 
-        foreach ($data['children'] as $key => $child) {
+        foreach ($data['children'] as $child) {
             $node->add($this->arrayToTree($child));
         }
 
