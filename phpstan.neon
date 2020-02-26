@@ -3,3 +3,4 @@ parameters:
     ignoreErrors:
         - '#Method loophp\\phptree\\Node\\MerkleNode::normalize\(\) should return loophp\\phptree\\Node\\MerkleNodeInterface but returns loophp\\phptree\\Node\\NodeInterface.#'
         - '#Anonymous function should return loophp\\phptree\\Node\\MerkleNodeInterface but returns loophp\\phptree\\Node\\NodeInterface.#'
+        - '#Method loophp\\phptree\\Importer\\NikicPhpParserImporter::parseNode\(\) should return loophp\\phptree\\Node\\AttributeNodeInterface but returns loophp\\phptree\\Node\\NodeInterface.#'

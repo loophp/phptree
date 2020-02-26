@@ -3,6 +3,14 @@ imports:
 
 parameters:
   tasks.phpstan.config: phpstan.neon
+  tasks.phpcs.ignore_patterns:
+    - "/benchmarks/"
+    - "/spec/"
+    - "/tests/"
+    - "/vendor/"
+    - "/config/"
+    - "/Resources/"
+    - "/public/"
   extra_tasks:
     phpspec:
       verbose: true
@@ -12,8 +20,8 @@ parameters:
       threads: 10
       test_framework: phpspec
       configuration: infection.json.dist
-      min_msi: 95
-      min_covered_msi: 95
+      min_msi: 90
+      min_covered_msi: 90
       metadata:
         priority: 2000
 
