@@ -99,8 +99,10 @@ class NaryNode extends Node implements NaryNodeInterface
         if (null === $offset) {
             $this->add($value);
         } else {
-            if ($this->capacity() - 1 < $offset) {
-                throw new OutOfBoundsException('The offset is out of range.');
+            if (0 !== $this->capacity()) {
+                if ($this->capacity() - 1 < $offset) {
+                    throw new OutOfBoundsException('The offset is out of range.');
+                }
             }
 
             parent::offsetSet($offset, $value);
