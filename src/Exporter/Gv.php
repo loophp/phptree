@@ -138,12 +138,20 @@ class Gv extends AbstractExporter
      */
     protected function attributesArrayToText(array $attributes): string
     {
-        $attributesText = array_map(
-            static function ($key, $value) {
-                return sprintf('%s="%s"', $key, $value);
-            },
-            array_keys($attributes),
-            $attributes
+        $attributesText = array_filter(
+            array_map(
+                static function ($key, $value) {
+                    if (null === $value || is_scalar($value) || method_exists($value, '__toString')) {
+                        $value = (string) $value;
+                    } else {
+                        return null;
+                    }
+
+                    return sprintf('%s="%s"', $key, $value);
+                },
+                array_keys($attributes),
+                $attributes
+            )
         );
 
         return '[' . implode(' ', $attributesText) . ']';
