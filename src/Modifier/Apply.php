@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace loophp\phptree\Modifier;
 
 use loophp\phptree\Node\NodeInterface;
+use loophp\phptree\Traverser\PostOrder;
+use loophp\phptree\Traverser\TraverserInterface;
 
 /**
  * Class Apply.
@@ -17,13 +19,20 @@ class Apply implements ModifierInterface
     private $apply;
 
     /**
-     * Filter constructor.
+     * @var \loophp\phptree\Traverser\TraverserInterface|null
+     */
+    private $traverser;
+
+    /**
+     * Apply constructor.
      *
      * @param callable $apply
+     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
      */
-    public function __construct(callable $apply)
+    public function __construct(callable $apply, ?TraverserInterface $traverser = null)
     {
         $this->apply = $apply;
+        $this->traverser = $traverser ?? new PostOrder();
     }
 
     /**
@@ -31,8 +40,7 @@ class Apply implements ModifierInterface
      */
     public function modify(NodeInterface $tree): NodeInterface
     {
-        /** @var \loophp\phptree\Node\MerkleNode $item */
-        foreach ($tree->all() as $item) {
+        foreach ($this->traverser->traverse($tree) as $item) {
             ($this->apply)($item);
         }
 
