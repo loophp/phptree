@@ -59,11 +59,9 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
      */
     public function label(): string
     {
-        if (true === $this->isLeaf()) {
-            return $this->getValue();
-        }
-
-        return $this->hash();
+        return true === $this->isLeaf() ?
+            $this->getValue() :
+            $this->hash();
     }
 
     /**
