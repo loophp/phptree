@@ -162,6 +162,19 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     public function remove(NodeInterface ...$node): NodeInterface;
 
     /**
+     * Replace a node with another one and return the parent.
+     *
+     * It may also return null if the replace failed.
+     *
+     * @param \loophp\phptree\Node\NodeInterface $node
+     *   The replacement node.
+     *
+     * @return \loophp\phptree\Node\NodeInterface|null
+     *   The node parent if successful, null otherwise.
+     */
+    public function replace(NodeInterface $node): ?NodeInterface;
+
+    /**
      * Set the parent.
      *
      * @param NodeInterface|null $node

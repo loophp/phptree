@@ -146,6 +146,31 @@ class ValueNodeSpec extends NodeObjectBehavior
             ->shouldReturn(0);
     }
 
+    public function it_can_replace_a_node_with_another_one()
+    {
+        $this
+            ->beConstructedWith('root');
+
+        $node1 = new ValueNode('A');
+        $node2 = new ValueNode('B');
+        $node3 = new ValueNode('C');
+
+        $this
+            ->add($node1, $node2, $node3);
+
+        $node4 = new ValueNode('D');
+
+        $this
+            ->offsetGet(0)
+            ->replace($node4);
+
+        $this->shouldHaveSameTextExport('[root[D][B][C]]');
+
+        $this
+            ->replace($node4)
+            ->shouldReturn(null);
+    }
+
     public function it_is_initializable(): void
     {
         $this

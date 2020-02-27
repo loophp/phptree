@@ -316,6 +316,27 @@ class Node implements NodeInterface
     /**
      * {@inheritdoc}
      */
+    public function replace(NodeInterface $node): ?NodeInterface
+    {
+        if (null === $parent = $this->getParent()) {
+            return null;
+        }
+
+        // Find the key of the current node in the parent.
+        foreach ($parent->children() as $key => $child) {
+            if ($this === $child) {
+                $parent[$key] = $node;
+
+                return $parent;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setParent(?NodeInterface $node): NodeInterface
     {
         $this->parent = $node;
