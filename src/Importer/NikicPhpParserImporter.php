@@ -42,43 +42,12 @@ final class NikicPhpParserImporter implements ImporterInterface
     /**
      * @param \PhpParser\Node $astNode
      *
-     * @return array<int, Node>
-     */
-    private function getNodeChildren(Node $astNode): array
-    {
-        $subNodeNames = $astNode->getSubNodeNames();
-
-        $nodes = [];
-
-        foreach ($subNodeNames as $subNodeName) {
-            $subNodes = $astNode->{$subNodeName};
-
-            if (!is_array($subNodes)) {
-                $subNodes = [$subNodes];
-            }
-
-            foreach ($subNodes as $subNode) {
-                if (false === ($subNode instanceof Node)) {
-                    continue;
-                }
-
-                $nodes[] = $subNode;
-            }
-        }
-
-        return $nodes;
-    }
-
-    /**
-     * @param \PhpParser\Node $astNode
-     *
+     * @return \loophp\phptree\Node\NodeInterface
      * @throws \Exception
-     *
-     * @return AttributeNodeInterface
      */
-    private function parseNode(Node $astNode): AttributeNodeInterface
+    private function createNewNode(Node $astNode): NodeInterface
     {
-        $attributes = [
+        $defaultAttributes = [
             'label' => sprintf('%s', $astNode->getType()),
             'type' => $astNode->getType(),
             'class' => get_class($astNode),
@@ -86,8 +55,50 @@ final class NikicPhpParserImporter implements ImporterInterface
             'astNode' => $astNode,
         ];
 
-        return (new AttributeNode($attributes))
-            ->add(...$this->parseNodes($this->getNodeChildren($astNode)));
+        return (new AttributeNode($defaultAttributes))
+            ->add(...$this->parseNodes($this->getAllNodeChildren($astNode)));
+    }
+
+    /**
+     * @param \PhpParser\Node $astNode
+     *
+     * @return array<int, Node>
+     */
+    private function getAllNodeChildren(Node $astNode): array
+    {
+        /** @var array<int, array<int, Node>> $astNodes */
+        $astNodes = array_map(
+            static function (string $subNodeName) use ($astNode): array {
+                $subNodes = $astNode->{$subNodeName};
+
+                if (!is_array($subNodes)) {
+                    $subNodes = [$subNodes];
+                }
+
+                return array_filter(
+                    $subNodes,
+                    'is_object'
+                );
+            },
+            $astNode->getSubNodeNames()
+        );
+
+        return array_merge(...$astNodes);
+    }
+
+    /**
+     * @param \PhpParser\Node $astNode
+     * @param callable $default
+     *
+     * @return \loophp\phptree\Node\AttributeNodeInterface
+     */
+    private function getNodeFromCache(Node $astNode, callable $default): AttributeNodeInterface
+    {
+        if (false === $this->nodeMap->contains($astNode)) {
+            $this->nodeMap->attach($astNode, $default($astNode));
+        }
+
+        return $this->nodeMap->offsetGet($astNode);
     }
 
     /**
@@ -101,14 +112,8 @@ final class NikicPhpParserImporter implements ImporterInterface
     {
         $treeNodes = [];
 
-        foreach ($astNodes as $node) {
-            if (false === $this->nodeMap->contains($node)) {
-                $treeNode = $this->parseNode($node);
-                $treeNode->setAttribute('astNode', $node);
-                $this->nodeMap->attach($node, $treeNode);
-            }
-
-            $treeNodes[] = $this->nodeMap->offsetGet($node);
+        foreach ($astNodes as $astNode) {
+            $treeNodes[] = $this->getNodeFromCache($astNode, [$this, 'createNewNode']);
         }
 
         return $treeNodes;
