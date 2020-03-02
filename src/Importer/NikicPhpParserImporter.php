@@ -42,8 +42,9 @@ final class NikicPhpParserImporter implements ImporterInterface
     /**
      * @param \PhpParser\Node $astNode
      *
-     * @return \loophp\phptree\Node\NodeInterface
      * @throws \Exception
+     *
+     * @return \loophp\phptree\Node\NodeInterface
      */
     private function createNewNode(Node $astNode): NodeInterface
     {
