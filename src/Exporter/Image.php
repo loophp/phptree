@@ -7,13 +7,12 @@ namespace loophp\phptree\Exporter;
 use Exception;
 use loophp\phptree\Node\NodeInterface;
 
-use const LOCK_EX;
 use const PHP_OS;
 
 /**
  * Class Image.
  */
-class Image extends Gv
+final class Image extends AbstractExporter
 {
     /**
      * @var string
@@ -44,13 +43,13 @@ class Image extends Gv
      */
     public function export(NodeInterface $node): string
     {
-        $path = $this->getTemporaryFile();
+        if (false === $tmp = tempnam(sys_get_temp_dir(), 'phptree-export-')) {
+            return '';
+        }
 
-        $this->writeToFile($path, parent::export($node));
+        file_put_contents($tmp, (new Gv())->export($node));
 
-        system($this->getConvertCommand($path));
-
-        return sprintf('%s.%s', $path, $this->getFormat());
+        return shell_exec($this->getConvertCommand($tmp));
     }
 
     /**
@@ -105,47 +104,10 @@ class Image extends Gv
     private function getConvertCommand(string $path): string
     {
         return sprintf(
-            '%s -T%s %s -o %s.%s',
+            '%s -T%s %s',
             $this->getExecutable(),
             $this->getFormat(),
-            $path,
-            $path,
-            $this->getFormat()
+            $path
         );
-    }
-
-    /**
-     * @throws Exception
-     *
-     * @return string
-     */
-    private function getTemporaryFile(): string
-    {
-        $path = tempnam(sys_get_temp_dir(), 'graphviz');
-
-        if (false === $path) {
-            throw new Exception('Unable to get temporary file name for graphviz script');
-        }
-
-        return $path;
-    }
-
-    /**
-     * @param string $path
-     * @param string $content
-     *
-     * @throws Exception
-     *
-     * @return bool
-     */
-    private function writeToFile(string $path, string $content): bool
-    {
-        $ret = file_put_contents($path, $content, LOCK_EX);
-
-        if (false === $ret) {
-            throw new Exception('Unable to write graphviz script to temporary file');
-        }
-
-        return true;
     }
 }

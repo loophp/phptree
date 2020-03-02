@@ -10,7 +10,7 @@ use loophp\phptree\Node\ValueNodeInterface;
 /**
  * Class Text.
  */
-class Text extends AbstractExporter
+final class Text extends AbstractExporter
 {
     /**
      * {@inheritdoc}

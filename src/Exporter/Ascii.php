@@ -15,7 +15,7 @@ use const PHP_EOL;
 /**
  * Class Ascii.
  */
-class Ascii extends AbstractExporter
+final class Ascii extends AbstractExporter
 {
     /**
      * {@inheritdoc}

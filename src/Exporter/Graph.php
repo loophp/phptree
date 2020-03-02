@@ -12,7 +12,7 @@ use loophp\phptree\Node\NodeInterface;
 /**
  * Class Graph.
  */
-class Graph extends AbstractExporter
+final class Graph extends AbstractExporter
 {
     /**
      * The graph.

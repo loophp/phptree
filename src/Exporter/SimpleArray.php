@@ -11,7 +11,7 @@ use loophp\phptree\Node\ValueNodeInterface;
 /**
  * Class SimpleArray.
  */
-class SimpleArray extends AbstractExporter
+final class SimpleArray extends AbstractExporter
 {
     /**
      * {@inheritdoc}

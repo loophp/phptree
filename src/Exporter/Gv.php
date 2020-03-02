@@ -15,7 +15,7 @@ use const PHP_EOL;
 /**
  * Class Gv.
  */
-class Gv extends AbstractExporter
+final class Gv extends AbstractExporter
 {
     /**
      * The graph attributes.
