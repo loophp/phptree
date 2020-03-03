@@ -52,7 +52,7 @@ Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](htt
 
 ## Optional packages
 
-* [loophp/launcher](https://github.com/loophp/launcher): To automatically open a resource using the proper application on your operating system.
+* [drupol/launcher](https://github.com/drupol/launcher): To automatically open a resource using the proper application on your operating system.
 * [graphp/graphp](https://github.com/graphp/graph): To export a tree into a Graph.
 
 ## Usage
@@ -83,22 +83,23 @@ $tree->add(...$nodes);
 
 // Export to text.
 $textExporter = new Text();
-echo $textExporter->export($tree); // [root[A[C[G[O][P]][H[Q][R]]][D[I[S][T]][J[U][V]]]][B[E[K[W][X]][L[Y][Z]]][F[M][N]]]]⏎
+$textExporter->export($tree); // [root[A[C[G[O][P]][H[Q][R]]][D[I[S][T]][J[U][V]]]][B[E[K[W][X]][L[Y][Z]]][F[M][N]]]]⏎
 
-// Export to a GraphViz script.
-$exporter = new Gv();
-$dotScript = $exporter->export($tree);
-file_put_contents('graph.gv', $dotScript);
-// Then do "dot -Tsvg graph.gv -o graph.svg" to export the script to SVG.
+// Export to a GraphViz script with the Gv exporter
+$graphvizExporter = new Gv();
+$dotScript = $graphvizExporter->export($tree);
+file_put_contents('tree.dot', $dotScript);
+// Then do "dot -Tsvg tree.dot -o tree.svg" to export in SVG.
 
-// Or use the image converter that does it for you.
-$exporter = new Image();
-$imagePath = $exporter->setFormat('png')->export($tree);
+// Or use the Image exporter that does it for you.
+$imageExporter = new Image();
+$imageContent = $imageExporter->setFormat('png')->export($tree);
+file_put_contents('tree.png', $imageContent);
 
 // If you want to launch the image, you can use an optional package.
-// do: composer require loophp/launcher
+// do: composer require drupol/launcher
 // then:
-Launcher::open($imagePath);
+Launcher::open('tree.png');
 ```
 
 ## Code quality, tests and benchmarks
