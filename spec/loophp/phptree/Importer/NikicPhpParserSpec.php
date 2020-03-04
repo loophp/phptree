@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace spec\loophp\phptree\Importer;
 
 use Error;
-use loophp\phptree\Importer\NikicPhpParserImporter;
+use loophp\phptree\Importer\NikicPhpParser;
 use loophp\phptree\Node\AttributeNodeInterface;
 use PhpParser\ParserFactory;
 use PhpSpec\ObjectBehavior;
 
-class NikicPhpParserImporterSpec extends ObjectBehavior
+class NikicPhpParserSpec extends ObjectBehavior
 {
     public function it_can_import(): void
     {
@@ -53,6 +53,6 @@ class NikicPhpParserImporterSpec extends ObjectBehavior
 
     public function it_is_initializable(): void
     {
-        $this->shouldHaveType(NikicPhpParserImporter::class);
+        $this->shouldHaveType(NikicPhpParser::class);
     }
 }

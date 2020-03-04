@@ -11,10 +11,12 @@ use loophp\phptree\Node\NodeInterface;
 use PhpParser\Node;
 use SplObjectStorage;
 
-use function get_class;
 use function is_array;
 
-final class NikicPhpParserImporter implements ImporterInterface
+/**
+ * Class NikicPhpParser.
+ */
+final class NikicPhpParser implements ImporterInterface
 {
     /**
      * @var SplObjectStorage
@@ -36,7 +38,7 @@ final class NikicPhpParserImporter implements ImporterInterface
     public function import($data): NodeInterface
     {
         return (new AttributeNode(['label' => 'root']))
-            ->add(...$this->parseNodes($data));
+            ->add(...$this->parseNodes(...$data));
     }
 
     /**
@@ -49,15 +51,12 @@ final class NikicPhpParserImporter implements ImporterInterface
     private function createNewNode(Node $astNode): NodeInterface
     {
         $defaultAttributes = [
-            'label' => sprintf('%s', $astNode->getType()),
-            'type' => $astNode->getType(),
-            'class' => get_class($astNode),
-            'shape' => 'rect',
+            'label' => $astNode->getType(),
             'astNode' => $astNode,
         ];
 
         return (new AttributeNode($defaultAttributes))
-            ->add(...$this->parseNodes($this->getAllNodeChildren($astNode)));
+            ->add(...$this->parseNodes(...$this->getAllNodeChildren($astNode)));
     }
 
     /**
@@ -103,13 +102,13 @@ final class NikicPhpParserImporter implements ImporterInterface
     }
 
     /**
-     * @param Node[] $astNodes
+     * @param Node ...$astNodes
      *
      * @throws \Exception
      *
      * @return AttributeNodeInterface[]
      */
-    private function parseNodes(array $astNodes): array
+    private function parseNodes(Node ...$astNodes): array
     {
         $treeNodes = [];
 
