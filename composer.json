@@ -25,6 +25,7 @@
         "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
         "graphp/graphviz": "^0.2",
         "infection/infection": "^0.13.6 || ^0.15.0",
+        "microsoft/tolerant-php-parser": "^0.0.20",
         "nikic/php-parser": "^4.3",
         "phpbench/phpbench": "^0.16.10",
         "phpspec/phpspec": "^5.1.2 || ^6.1.1",
