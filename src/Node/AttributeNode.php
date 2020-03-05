@@ -54,6 +54,14 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     /**
      * {@inheritdoc}
      */
+    public function label(): string
+    {
+        return (string) $this->getAttribute('label');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setAttribute(string $key, $value): AttributeNodeInterface
     {
         $this->attributes[$key] = $value;
