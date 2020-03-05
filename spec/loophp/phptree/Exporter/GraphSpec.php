@@ -25,10 +25,7 @@ class GraphSpec extends ObjectBehavior
     {
         return [
             'haveSameTextExport' => static function ($left, $right) {
-                $importer = new Text();
-                $exporter = new Graph();
-
-                $right = $exporter->export($importer->import($right));
+                $right = (new Graph())->export((new Text())->import($right)[0]);
 
                 return (new GraphViz())->createImageSrc($left) === (new GraphViz())->createImageSrc($right);
             },
