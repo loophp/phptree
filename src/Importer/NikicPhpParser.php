@@ -9,7 +9,6 @@ use loophp\phptree\Node\AttributeNode;
 use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
 use PhpParser\Node;
-use SplObjectStorage;
 
 use function is_array;
 
@@ -19,16 +18,6 @@ use function is_array;
 final class NikicPhpParser implements ImporterInterface
 {
     /**
-     * @var SplObjectStorage
-     */
-    private $nodeMap;
-
-    public function __construct()
-    {
-        $this->nodeMap = new SplObjectStorage();
-    }
-
-    /**
      * @param Node[] $data
      *
      * @throws Exception
@@ -37,26 +26,17 @@ final class NikicPhpParser implements ImporterInterface
      */
     public function import($data): NodeInterface
     {
-        return (new AttributeNode(['label' => 'root']))
-            ->add(...$this->parseNodes(...$data));
+        return $this->parseNode($this->createNode(['label' => 'root']), ...$data);
     }
 
     /**
-     * @param \PhpParser\Node $astNode
+     * @param array $attributes
      *
-     * @throws \Exception
-     *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\AttributeNodeInterface
      */
-    private function createNewNode(Node $astNode): NodeInterface
+    private function createNode(array $attributes): AttributeNodeInterface
     {
-        $defaultAttributes = [
-            'label' => $astNode->getType(),
-            'astNode' => $astNode,
-        ];
-
-        return (new AttributeNode($defaultAttributes))
-            ->add(...$this->parseNodes(...$this->getAllNodeChildren($astNode)));
+        return new AttributeNode($attributes);
     }
 
     /**
@@ -87,35 +67,28 @@ final class NikicPhpParser implements ImporterInterface
     }
 
     /**
-     * @param \PhpParser\Node $astNode
-     * @param callable $default
-     *
-     * @return \loophp\phptree\Node\AttributeNodeInterface
-     */
-    private function getNodeFromCache(Node $astNode, callable $default): AttributeNodeInterface
-    {
-        if (false === $this->nodeMap->contains($astNode)) {
-            $this->nodeMap->attach($astNode, $default($astNode));
-        }
-
-        return $this->nodeMap->offsetGet($astNode);
-    }
-
-    /**
+     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
      * @param Node ...$astNodes
      *
-     * @throws \Exception
-     *
-     * @return AttributeNodeInterface[]
+     * @return \loophp\phptree\Node\NodeInterface
      */
-    private function parseNodes(Node ...$astNodes): array
+    private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {
-        $treeNodes = [];
-
-        foreach ($astNodes as $astNode) {
-            $treeNodes[] = $this->getNodeFromCache($astNode, [$this, 'createNewNode']);
-        }
-
-        return $treeNodes;
+        return array_reduce(
+            $astNodes,
+            function (AttributeNodeInterface $carry, Node $astNode): NodeInterface {
+                return $carry
+                    ->add(
+                        $this->parseNode(
+                            $this->createNode([
+                                'label' => $astNode->getType(),
+                                'astNode' => $astNode,
+                            ]),
+                            ...$this->getAllNodeChildren($astNode)
+                        )
+                    );
+            },
+            $parent
+        );
     }
 }
