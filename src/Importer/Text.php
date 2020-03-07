@@ -4,41 +4,37 @@ declare(strict_types=1);
 
 namespace loophp\phptree\Importer;
 
-use InvalidArgumentException;
+use loophp\phptree\Node\AttributeNode;
+use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
-use loophp\phptree\Node\ValueNode;
 
 /**
  * Class Text.
  */
-class Text extends SimpleArray
+final class Text implements ImporterInterface
 {
     /**
      * {@inheritdoc}
      */
     public function import($data): NodeInterface
     {
-        $parsed = $this->parse($data);
-
-        if ([] === $parsed) {
-            throw new InvalidArgumentException('Unable to import the given data.');
-        }
-
-        return $this->arrayToTree($parsed[0]);
+        return $this->parseNode(new AttributeNode(['label' => 'root']), $data);
     }
 
     /**
      * Create a node.
      *
-     * @param mixed $arguments
-     *   The arguments
+     * @param string $label
+     *   The node label
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\AttributeNodeInterface
      *   The node
      */
-    protected function createNode($arguments): NodeInterface
+    private function createNode(string $label): AttributeNodeInterface
     {
-        return new ValueNode($arguments);
+        return new AttributeNode([
+            'label' => $label,
+        ]);
     }
 
     /**
@@ -47,34 +43,55 @@ class Text extends SimpleArray
      * @param string $subject
      *   The subject string
      *
-     * @return array<int, mixed>
+     * @return array<string, mixed>
      *   The array
      */
     private function parse(string $subject): array
     {
-        $result = [];
+        $result = [
+            'value' => mb_substr($subject, 1, mb_strpos($subject, '[', 1) - 1),
+            'children' => [],
+        ];
 
-        preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)\]~', $subject, $matches);
-
-        $matches = (array) $matches['nested'];
-
-        foreach (array_filter($matches) as $match) {
-            $item = [];
-            $position = mb_strpos($match, '[');
-
-            if (false !== $position) {
-                $item['value'] = mb_substr($match, 0, $position);
-            } else {
-                $item['value'] = $match;
-            }
-
-            if ([] !== $children = $this->parse($match)) {
-                $item['children'] = $children;
-            }
-
-            $result[] = $item;
+        if (false === $nextBracket = mb_strpos($subject, '[', 1)) {
+            return $result;
         }
 
+        // Todo: Improve the regex.
+        preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)]~', mb_substr($subject, $nextBracket, -1), $matches);
+
+        $result['children'] = array_map(
+            static function (string $match): string {
+                return sprintf('[%s]', $match);
+            },
+            array_filter((array) $matches['nested'])
+        );
+
         return $result;
+    }
+
+    /**
+     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
+     * @param string ...$nodes
+     *
+     * @return \loophp\phptree\Node\NodeInterface
+     */
+    private function parseNode(AttributeNodeInterface $parent, string ...$nodes): NodeInterface
+    {
+        return array_reduce(
+            $nodes,
+            function (AttributeNodeInterface $carry, string $node): NodeInterface {
+                $data = $this->parse($node);
+
+                return $carry
+                    ->add(
+                        $this->parseNode(
+                            $this->createNode($data['value']),
+                            ...$data['children']
+                        )
+                    );
+            },
+            $parent
+        );
     }
 }

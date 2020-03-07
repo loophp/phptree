@@ -4,43 +4,21 @@ declare(strict_types=1);
 
 namespace loophp\phptree\Importer;
 
+use loophp\phptree\Node\AttributeNode;
+use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
-use loophp\phptree\Node\ValueNode;
 
 /**
  * Class SimpleArray.
  */
-class SimpleArray implements ImporterInterface
+final class SimpleArray implements ImporterInterface
 {
     /**
      * {@inheritdoc}
      */
     public function import($data): NodeInterface
     {
-        return $this->arrayToTree($data);
-    }
-
-    /**
-     * Convert an array into a tree.
-     *
-     * @param array<string, mixed> $data
-     *
-     * @return \loophp\phptree\Node\NodeInterface
-     *   The tree
-     */
-    protected function arrayToTree(array $data): NodeInterface
-    {
-        $data += [
-            'children' => [],
-        ];
-
-        $node = $this->createNode($data['value']);
-
-        foreach ($data['children'] as $child) {
-            $node->add($this->arrayToTree($child));
-        }
-
-        return $node;
+        return $this->parseNode(new AttributeNode(['label' => 'root']), $data);
     }
 
     /**
@@ -49,11 +27,38 @@ class SimpleArray implements ImporterInterface
      * @param mixed $data
      *   The arguments
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return \loophp\phptree\Node\AttributeNodeInterface
      *   The node
      */
-    protected function createNode($data): NodeInterface
+    private function createNode($data): AttributeNodeInterface
     {
-        return new ValueNode($data);
+        return new AttributeNode([
+            'data' => $data,
+        ]);
+    }
+
+    /**
+     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
+     * @param array ...$nodes
+     *
+     * @return \loophp\phptree\Node\NodeInterface
+     */
+    private function parseNode(AttributeNodeInterface $parent, array ...$nodes): NodeInterface
+    {
+        return array_reduce(
+            $nodes,
+            function (AttributeNodeInterface $carry, array $node): NodeInterface {
+                $node += ['children' => []];
+
+                return $carry
+                    ->add(
+                        $this->parseNode(
+                            $this->createNode($node),
+                            ...$node['children']
+                        )
+                    );
+            },
+            $parent
+        );
     }
 }
