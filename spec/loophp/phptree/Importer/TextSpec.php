@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace spec\loophp\phptree\Importer;
 
-use InvalidArgumentException;
 use loophp\phptree\Importer\Text;
+use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\ValueNode;
-use loophp\phptree\Node\ValueNodeInterface;
 use PhpSpec\ObjectBehavior;
 
 class TextSpec extends ObjectBehavior
@@ -28,31 +27,17 @@ class TextSpec extends ObjectBehavior
 
         $this
             ->import($string)
-            ->shouldImplement(ValueNodeInterface::class);
+            ->shouldImplement(AttributeNodeInterface::class);
 
         $this
             ->import($string)
             ->count()
-            ->shouldReturn(10);
+            ->shouldReturn(11);
 
         $this
             ->import($string)
             ->isRoot()
             ->shouldReturn(true);
-
-        $this
-            ->import($string)
-            ->getValue()
-            ->shouldReturn('root');
-    }
-
-    public function it_can_throw_an_error_when_cannot_import(): void
-    {
-        $string = 'invalid string';
-
-        $this
-            ->shouldThrow(InvalidArgumentException::class)
-            ->during('import', [$string]);
     }
 
     public function it_is_initializable(): void

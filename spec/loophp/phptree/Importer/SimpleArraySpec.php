@@ -31,7 +31,7 @@ class SimpleArraySpec extends ObjectBehavior
         $this
             ->import($array)
             ->count()
-            ->shouldReturn(2);
+            ->shouldReturn(3);
 
         $this
             ->import($array)
