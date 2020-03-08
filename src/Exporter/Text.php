@@ -10,7 +10,7 @@ use loophp\phptree\Node\ValueNodeInterface;
 /**
  * Class Text.
  */
-final class Text extends AbstractExporter
+final class Text implements ExporterInterface
 {
     /**
      * {@inheritdoc}
@@ -25,7 +25,7 @@ final class Text extends AbstractExporter
         }
 
         return [] === $children ?
-            sprintf('[%s]', $this->getNodeRepresentation($node)) :
-            sprintf('[%s%s]', $this->getNodeRepresentation($node), implode('', $children));
+            sprintf('[%s]', $node->label()) :
+            sprintf('[%s%s]', $node->label(), implode('', $children));
     }
 }

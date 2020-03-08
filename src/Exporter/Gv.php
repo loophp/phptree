@@ -15,7 +15,7 @@ use const PHP_EOL;
 /**
  * Class Gv.
  */
-final class Gv extends AbstractExporter
+final class Gv implements ExporterInterface
 {
     /**
      * The graph attributes.
@@ -136,7 +136,7 @@ final class Gv extends AbstractExporter
      * @return string
      *   The attributes as string.
      */
-    protected function attributesArrayToText(array $attributes): string
+    private function attributesArrayToText(array $attributes): string
     {
         $attributesText = array_filter(
             array_map(
@@ -166,7 +166,7 @@ final class Gv extends AbstractExporter
      * @return Generator<NodeInterface, NodeInterface>
      *   Yield the parent and child node.
      */
-    protected function findEdges(NodeInterface $node): iterable
+    private function findEdges(NodeInterface $node): iterable
     {
         foreach ($node->children() as $child) {
             yield $node => $child;
@@ -186,7 +186,7 @@ final class Gv extends AbstractExporter
      * @return string
      *   The content of the .gv file.
      */
-    protected function getGv(string $attributes = '', string $nodes = '', string $edges = ''): string
+    private function getGv(string $attributes = '', string $nodes = '', string $edges = ''): string
     {
         $graphType = $this->getDirected() ?
             'digraph' :
@@ -215,7 +215,7 @@ EOF;
      * @return string
      *   The hash of the node.
      */
-    protected function getHash(NodeInterface $node): string
+    private function getHash(NodeInterface $node): string
     {
         return sha1(spl_object_hash($node));
     }
@@ -229,10 +229,10 @@ EOF;
      * @return array<mixed, mixed>
      *   The attributes as an array.
      */
-    protected function getNodeAttributes(NodeInterface $node): array
+    private function getNodeAttributes(NodeInterface $node): array
     {
         $attributes = [
-            'label' => $this->getNodeRepresentation($node),
+            'label' => $node->label(),
         ];
 
         if ($node instanceof AttributeNodeInterface) {

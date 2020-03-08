@@ -12,7 +12,7 @@ use const PHP_OS;
 /**
  * Class Image.
  */
-final class Image extends AbstractExporter
+final class Image implements ExporterInterface
 {
     /**
      * @var string

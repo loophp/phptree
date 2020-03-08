@@ -15,7 +15,7 @@ use const PHP_EOL;
 /**
  * Class Ascii.
  */
-final class Ascii extends AbstractExporter
+final class Ascii implements ExporterInterface
 {
     /**
      * {@inheritdoc}
@@ -69,7 +69,7 @@ final class Ascii extends AbstractExporter
         }
 
         return [] === $children ?
-            [$this->getNodeRepresentation($node)] :
-            [$this->getNodeRepresentation($node), $children];
+            [$node->label()] :
+            [$node->label(), $children];
     }
 }

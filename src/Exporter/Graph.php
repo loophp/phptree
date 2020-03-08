@@ -12,7 +12,7 @@ use loophp\phptree\Node\NodeInterface;
 /**
  * Class Graph.
  */
-final class Graph extends AbstractExporter
+final class Graph implements ExporterInterface
 {
     /**
      * The graph.
@@ -49,7 +49,7 @@ final class Graph extends AbstractExporter
      * @return \Fhaculty\Graph\Vertex
      *   A vertex
      */
-    protected function createVertex(NodeInterface $node): Vertex
+    private function createVertex(NodeInterface $node): Vertex
     {
         /** @var int $vertexId */
         $vertexId = $this->createVertexId($node);
@@ -59,7 +59,7 @@ final class Graph extends AbstractExporter
 
             $vertex->setAttribute(
                 'graphviz.label',
-                $this->getNodeRepresentation($node)
+                $node->label()
             );
 
             if ($node instanceof AttributeNodeInterface) {
@@ -78,10 +78,10 @@ final class Graph extends AbstractExporter
      * @param \loophp\phptree\Node\NodeInterface $node
      *   The node
      *
-     * @return int|string|null
+     * @return string
      *   A vertex ID
      */
-    protected function createVertexId(NodeInterface $node)
+    private function createVertexId(NodeInterface $node): string
     {
         return spl_object_hash($node);
     }
@@ -89,7 +89,7 @@ final class Graph extends AbstractExporter
     /**
      * @return \Fhaculty\Graph\Graph
      */
-    protected function getGraph(): OriginalGraph
+    private function getGraph(): OriginalGraph
     {
         return $this->graph;
     }

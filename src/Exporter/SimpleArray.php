@@ -11,7 +11,7 @@ use loophp\phptree\Node\ValueNodeInterface;
 /**
  * Class SimpleArray.
  */
-final class SimpleArray extends AbstractExporter
+final class SimpleArray implements ExporterInterface
 {
     /**
      * {@inheritdoc}
@@ -29,7 +29,7 @@ final class SimpleArray extends AbstractExporter
         }
 
         return [] === $children ?
-            ['value' => $this->getNodeRepresentation($node)] :
-            ['value' => $this->getNodeRepresentation($node), 'children' => $children];
+            ['value' => $node->label()] :
+            ['value' => $node->label(), 'children' => $children];
     }
 }
