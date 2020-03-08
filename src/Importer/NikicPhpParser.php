@@ -63,7 +63,9 @@ final class NikicPhpParser implements ImporterInterface
             $astNode->getSubNodeNames()
         );
 
-        return array_merge(...$astNodes);
+        return [] === $astNodes ?
+            [] :
+            array_merge(...$astNodes);
     }
 
     /**

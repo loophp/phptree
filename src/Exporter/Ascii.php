@@ -6,7 +6,6 @@ namespace loophp\phptree\Exporter;
 
 use CachingIterator;
 use loophp\phptree\Node\NodeInterface;
-use loophp\phptree\Node\ValueNodeInterface;
 use RecursiveArrayIterator;
 use RecursiveTreeIterator;
 
@@ -22,9 +21,11 @@ final class Ascii implements ExporterInterface
      */
     public function export(NodeInterface $node): string
     {
+        $exporter = new SimpleArray();
+
         $tree = new RecursiveTreeIterator(
             new RecursiveArrayIterator(
-                $this->doExportAsArray($node)
+                $exporter->export($node)
             ),
             RecursiveTreeIterator::SELF_FIRST,
             CachingIterator::CATCH_GET_CHILD,
@@ -49,27 +50,5 @@ final class Ascii implements ExporterInterface
         }
 
         return $output;
-    }
-
-    /**
-     * Export the tree in an array.
-     *
-     * @param \loophp\phptree\Node\NodeInterface $node
-     *   The node
-     *
-     * @return array<int, mixed>
-     *   The tree exported into an array
-     */
-    private function doExportAsArray(NodeInterface $node): array
-    {
-        $children = [];
-        /** @var ValueNodeInterface $child */
-        foreach ($node->children() as $child) {
-            $children[] = $this->doExportAsArray($child);
-        }
-
-        return [] === $children ?
-            [$node->label()] :
-            [$node->label(), $children];
     }
 }

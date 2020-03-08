@@ -83,7 +83,7 @@ final class Graph implements ExporterInterface
      */
     private function createVertexId(NodeInterface $node): string
     {
-        return spl_object_hash($node);
+        return sha1(spl_object_hash($node));
     }
 
     /**

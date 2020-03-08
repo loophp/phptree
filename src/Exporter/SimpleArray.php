@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace loophp\phptree\Exporter;
 
-use InvalidArgumentException;
 use loophp\phptree\Node\NodeInterface;
-use loophp\phptree\Node\ValueNodeInterface;
 
 /**
  * Class SimpleArray.
@@ -18,12 +16,9 @@ final class SimpleArray implements ExporterInterface
      */
     public function export(NodeInterface $node)
     {
-        if (!($node instanceof ValueNodeInterface)) {
-            throw new InvalidArgumentException('Must implements ValueNodeInterface');
-        }
-
         $children = [];
-        /** @var ValueNodeInterface $child */
+
+        /** @var NodeInterface $child */
         foreach ($node->children() as $child) {
             $children[] = $this->export($child);
         }

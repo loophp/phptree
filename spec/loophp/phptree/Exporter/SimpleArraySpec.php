@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace spec\loophp\phptree\Exporter;
 
-use InvalidArgumentException;
 use loophp\phptree\Exporter\SimpleArray;
-use loophp\phptree\Node\Node;
 use loophp\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;
 
@@ -75,21 +73,6 @@ class SimpleArraySpec extends ObjectBehavior
         $this
             ->export($tree)
             ->shouldReturn($return);
-    }
-
-    public function it_can_throw_an_error_when_tree_is_not_a_valuenode(): void
-    {
-        $tree = new Node();
-
-        foreach (range('A', 'Z') as $key => $value) {
-            $nodes[$value] = new Node();
-        }
-
-        $tree->add(...array_values($nodes));
-
-        $this
-            ->shouldThrow(InvalidArgumentException::class)
-            ->during('export', [$tree]);
     }
 
     public function it_is_initializable(): void

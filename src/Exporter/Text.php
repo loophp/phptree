@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace loophp\phptree\Exporter;
 
 use loophp\phptree\Node\NodeInterface;
-use loophp\phptree\Node\ValueNodeInterface;
 
 /**
  * Class Text.
@@ -19,7 +18,7 @@ final class Text implements ExporterInterface
     {
         $children = [];
 
-        /** @var ValueNodeInterface $child */
+        /** @var NodeInterface $child */
         foreach ($node->children() as $child) {
             $children[] = $this->export($child);
         }
