@@ -14,7 +14,7 @@ final class SimpleArray implements ExporterInterface
     /**
      * {@inheritdoc}
      */
-    public function export(NodeInterface $node)
+    public function export(NodeInterface $node): array
     {
         $children = [];
 

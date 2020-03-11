@@ -22,8 +22,8 @@ class KeyValueNode extends ValueNode implements KeyValueNodeInterface
      * @param mixed|null $key
      * @param mixed|null $value
      * @param int|null $capacity
-     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
-     * @param \loophp\phptree\Node\NodeInterface|null $parent
+     * @param TraverserInterface|null $traverser
+     * @param NodeInterface|null $parent
      */
     public function __construct(
         $key,

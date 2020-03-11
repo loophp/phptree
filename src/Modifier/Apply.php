@@ -19,7 +19,7 @@ class Apply implements ModifierInterface
     private $apply;
 
     /**
-     * @var \loophp\phptree\Traverser\TraverserInterface|null
+     * @var TraverserInterface|null
      */
     private $traverser;
 
@@ -27,7 +27,7 @@ class Apply implements ModifierInterface
      * Apply constructor.
      *
      * @param callable $apply
-     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
+     * @param TraverserInterface|null $traverser
      */
     public function __construct(callable $apply, ?TraverserInterface $traverser = null)
     {

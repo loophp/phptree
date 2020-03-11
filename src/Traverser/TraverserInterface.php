@@ -16,7 +16,7 @@ interface TraverserInterface
     /**
      * Traverse the tree.
      *
-     * @param \loophp\phptree\Node\NodeInterface $node
+     * @param NodeInterface $node
      *   The node
      *
      * @return Generator|Traversable<NodeInterface>

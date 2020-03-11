@@ -27,7 +27,7 @@ final class SimpleArray implements ImporterInterface
      * @param mixed $data
      *   The arguments
      *
-     * @return \loophp\phptree\Node\AttributeNodeInterface
+     * @return AttributeNodeInterface
      *   The node
      */
     private function createNode($data): AttributeNodeInterface
@@ -38,7 +38,7 @@ final class SimpleArray implements ImporterInterface
     }
 
     /**
-     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
+     * @param AttributeNodeInterface $parent
      * @param array ...$nodes
      *
      * @return \loophp\phptree\Node\NodeInterface

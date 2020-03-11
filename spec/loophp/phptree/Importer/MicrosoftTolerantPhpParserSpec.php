@@ -25,7 +25,7 @@ class MicrosoftTolerantPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(582);
+            ->shouldReturn(586);
 
         $file = __DIR__ . '/../../../../tests/sample.php';
 

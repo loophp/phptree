@@ -14,7 +14,7 @@ interface BuilderInterface
     /**
      * @param iterable<mixed> $nodes
      *
-     * @return \loophp\phptree\Node\NodeInterface|null
+     * @return NodeInterface|null
      */
     public static function create(iterable $nodes): ?NodeInterface;
 }

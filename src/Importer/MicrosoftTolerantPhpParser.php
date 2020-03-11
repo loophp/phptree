@@ -21,7 +21,7 @@ final class MicrosoftTolerantPhpParser implements ImporterInterface
      *
      * @throws Exception
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return NodeInterface
      */
     public function import($data): NodeInterface
     {
@@ -31,7 +31,7 @@ final class MicrosoftTolerantPhpParser implements ImporterInterface
     /**
      * @param array $attributes
      *
-     * @return \loophp\phptree\Node\AttributeNodeInterface
+     * @return AttributeNodeInterface
      */
     private function createNode(array $attributes): AttributeNodeInterface
     {
@@ -39,10 +39,10 @@ final class MicrosoftTolerantPhpParser implements ImporterInterface
     }
 
     /**
-     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
-     * @param \Microsoft\PhpParser\Node ...$astNodes
+     * @param AttributeNodeInterface $parent
+     * @param Node ...$astNodes
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return NodeInterface
      */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {

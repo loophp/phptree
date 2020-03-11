@@ -27,7 +27,7 @@ final class Text implements ImporterInterface
      * @param string $label
      *   The node label
      *
-     * @return \loophp\phptree\Node\AttributeNodeInterface
+     * @return AttributeNodeInterface
      *   The node
      */
     private function createNode(string $label): AttributeNodeInterface
@@ -58,7 +58,7 @@ final class Text implements ImporterInterface
         }
 
         // Todo: Improve the regex.
-        preg_match_all('~[^\[\]]+|\[(?<nested>(?R)*)]~', mb_substr($subject, $nextBracket, -1), $matches);
+        preg_match_all('#[^\[\]]+|\[(?<nested>(?R)*)]#', mb_substr($subject, $nextBracket, -1), $matches);
 
         $result['children'] = array_map(
             static function (string $match): string {
@@ -71,7 +71,7 @@ final class Text implements ImporterInterface
     }
 
     /**
-     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
+     * @param AttributeNodeInterface $parent
      * @param string ...$nodes
      *
      * @return \loophp\phptree\Node\NodeInterface

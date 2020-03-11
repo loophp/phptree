@@ -20,14 +20,14 @@ final class NikicPhpAst implements ImporterInterface
     /**
      * @var array<int, \ast\Metadata>
      */
-    private $metadata;
+    private $metadata = [];
 
     /**
      * @param Node $data
      *
      * @throws Exception
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return NodeInterface
      */
     public function import($data): NodeInterface
     {
@@ -39,7 +39,7 @@ final class NikicPhpAst implements ImporterInterface
     /**
      * @param array $attributes
      *
-     * @return \loophp\phptree\Node\AttributeNodeInterface
+     * @return AttributeNodeInterface
      */
     private function createNode(array $attributes): AttributeNodeInterface
     {
@@ -47,10 +47,10 @@ final class NikicPhpAst implements ImporterInterface
     }
 
     /**
-     * @param \loophp\phptree\Node\AttributeNodeInterface $parent
+     * @param AttributeNodeInterface $parent
      * @param Node ...$astNodes
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return NodeInterface
      */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {

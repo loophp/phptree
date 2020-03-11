@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace loophp\phptree\Modifier;
 
 use loophp\phptree\Node\NodeInterface;
+use loophp\phptree\Node\ValueNodeInterface;
 use loophp\phptree\Traverser\PostOrder;
+use loophp\phptree\Traverser\PreOrder;
 use loophp\phptree\Traverser\TraverserInterface;
 
 /**
@@ -14,14 +16,14 @@ use loophp\phptree\Traverser\TraverserInterface;
 class RemoveNullNode implements ModifierInterface
 {
     /**
-     * @var \loophp\phptree\Traverser\PreOrder|\loophp\phptree\Traverser\TraverserInterface
+     * @var PreOrder|TraverserInterface
      */
     private $traverser;
 
     /**
      * RemoveNullNode constructor.
      *
-     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
+     * @param TraverserInterface|null $traverser
      */
     public function __construct(?TraverserInterface $traverser = null)
     {
@@ -33,13 +35,13 @@ class RemoveNullNode implements ModifierInterface
      */
     public function modify(NodeInterface $tree): NodeInterface
     {
-        /** @var \loophp\phptree\Node\ValueNodeInterface $item */
+        /** @var ValueNodeInterface $item */
         foreach ($this->traverser->traverse($tree) as $item) {
             if (null === $parent = $item->getParent()) {
                 continue;
             }
 
-            if (false === $item->isLeaf()) {
+            if (!$item->isLeaf()) {
                 continue;
             }
 

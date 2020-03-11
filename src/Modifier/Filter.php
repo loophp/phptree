@@ -6,6 +6,7 @@ namespace loophp\phptree\Modifier;
 
 use loophp\phptree\Node\NodeInterface;
 use loophp\phptree\Traverser\PostOrder;
+use loophp\phptree\Traverser\PreOrder;
 use loophp\phptree\Traverser\TraverserInterface;
 
 /**
@@ -19,7 +20,7 @@ class Filter implements ModifierInterface
     private $filter;
 
     /**
-     * @var \loophp\phptree\Traverser\PreOrder|\loophp\phptree\Traverser\TraverserInterface
+     * @var PreOrder|TraverserInterface
      */
     private $traverser;
 
@@ -27,7 +28,7 @@ class Filter implements ModifierInterface
      * Filter constructor.
      *
      * @param callable $filter
-     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
+     * @param TraverserInterface|null $traverser
      */
     public function __construct(callable $filter, ?TraverserInterface $traverser = null)
     {
@@ -45,7 +46,7 @@ class Filter implements ModifierInterface
                 continue;
             }
 
-            if (false === (bool) ($this->filter)($item)) {
+            if (!(bool) ($this->filter)($item)) {
                 continue;
             }
 

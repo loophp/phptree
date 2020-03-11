@@ -43,10 +43,10 @@ final class Graph implements ExporterInterface
     /**
      * Create a vertex.
      *
-     * @param \loophp\phptree\Node\NodeInterface $node
+     * @param NodeInterface $node
      *   The node
      *
-     * @return \Fhaculty\Graph\Vertex
+     * @return Vertex
      *   A vertex
      */
     private function createVertex(NodeInterface $node): Vertex
@@ -54,7 +54,7 @@ final class Graph implements ExporterInterface
         /** @var int $vertexId */
         $vertexId = $this->createVertexId($node);
 
-        if (false === $this->getGraph()->hasVertex($vertexId)) {
+        if (!$this->getGraph()->hasVertex($vertexId)) {
             $vertex = $this->getGraph()->createVertex($vertexId);
 
             $vertex->setAttribute(
@@ -75,7 +75,7 @@ final class Graph implements ExporterInterface
     /**
      * Create a vertex ID.
      *
-     * @param \loophp\phptree\Node\NodeInterface $node
+     * @param NodeInterface $node
      *   The node
      *
      * @return string

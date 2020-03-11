@@ -27,7 +27,7 @@ class Random implements BuilderInterface
                 continue;
             }
 
-            if (false === ($root instanceof NodeInterface)) {
+            if (!$root instanceof NodeInterface) {
                 continue;
             }
 

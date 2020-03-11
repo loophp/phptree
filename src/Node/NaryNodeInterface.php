@@ -22,7 +22,7 @@ interface NaryNodeInterface extends NodeInterface
     /**
      * Get the traverser in use.
      *
-     * @return \loophp\phptree\Traverser\TraverserInterface
+     * @return TraverserInterface
      *   The traverser
      */
     public function getTraverser(): TraverserInterface;

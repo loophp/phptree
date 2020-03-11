@@ -17,19 +17,19 @@ use function in_array;
 class Node implements NodeInterface
 {
     /**
-     * @var \loophp\phptree\Node\NodeInterface[]
+     * @var array<\loophp\phptree\Node\NodeInterface>
      */
-    private $children;
+    private $children = [];
 
     /**
-     * @var \loophp\phptree\Node\NodeInterface|null
+     * @var NodeInterface|null
      */
     private $parent;
 
     /**
      * Node constructor.
      *
-     * @param \loophp\phptree\Node\NodeInterface|null $parent
+     * @param NodeInterface|null $parent
      */
     public function __construct(?NodeInterface $parent = null)
     {
@@ -42,7 +42,7 @@ class Node implements NodeInterface
      */
     public function __clone()
     {
-        /** @var \loophp\phptree\Node\NodeInterface $child */
+        /** @var NodeInterface $child */
         foreach ($this->children as $id => $child) {
             $this->children[$id] = $child->clone()->setParent($this);
         }
@@ -67,7 +67,7 @@ class Node implements NodeInterface
     {
         yield $this;
 
-        /** @var \loophp\phptree\Node\NodeInterface $child */
+        /** @var NodeInterface $child */
         foreach ($this->children() as $child) {
             yield from $child->all();
         }
@@ -112,7 +112,7 @@ class Node implements NodeInterface
     {
         $root = $root ?? $this;
 
-        if ($candidate = $this->find($node)) {
+        if (null !== ($candidate = $this->find($node))) {
             if ($candidate === $root) {
                 throw new InvalidArgumentException('Unable to delete root node.');
             }
@@ -140,7 +140,7 @@ class Node implements NodeInterface
      */
     public function find(NodeInterface $node): ?NodeInterface
     {
-        /** @var \loophp\phptree\Node\NodeInterface $candidate */
+        /** @var NodeInterface $candidate */
         foreach ($this->all() as $candidate) {
             if ($candidate === $node) {
                 return $node;
@@ -205,7 +205,7 @@ class Node implements NodeInterface
     {
         $height = $this->depth();
 
-        /** @var \loophp\phptree\Node\NodeInterface $child */
+        /** @var NodeInterface $child */
         foreach ($this->children() as $child) {
             $height = max($height, $child->height());
         }
@@ -242,7 +242,7 @@ class Node implements NodeInterface
      */
     public function level(int $level): Traversable
     {
-        /** @var \loophp\phptree\Node\NodeInterface $node */
+        /** @var NodeInterface $node */
         foreach ($this->all() as $node) {
             if ($node->depth() === $level) {
                 yield $node;
@@ -263,7 +263,7 @@ class Node implements NodeInterface
     /**
      * @param mixed $offset
      *
-     * @return \loophp\phptree\Node\NodeInterface
+     * @return NodeInterface
      */
     public function offsetGet($offset)
     {
@@ -327,11 +327,11 @@ class Node implements NodeInterface
             if ($this === $child) {
                 $parent[$key] = $node;
 
-                return $parent;
+                break;
             }
         }
 
-        return $this;
+        return $parent;
     }
 
     /**

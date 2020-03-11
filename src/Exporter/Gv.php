@@ -72,7 +72,7 @@ final class Gv implements ExporterInterface
             $edges[] = sprintf(
                 '  "%s" %s "%s";',
                 $this->getHash($parent),
-                true === $this->getDirected() ? '->' : '--',
+                $this->getDirected() ? '->' : '--',
                 $this->getHash($child)
             );
         }
@@ -192,18 +192,16 @@ final class Gv implements ExporterInterface
             'digraph' :
             'graph';
 
-        return <<<EOF
-{$graphType} PHPTreeGraph {
+        return sprintf('%s PHPTreeGraph {
 // The graph attributes.
-{$attributes}
+%s
 
 // The graph nodes.
-{$nodes}
+%s
 
 // The graph edges.
-{$edges}
-}
-EOF;
+%s
+}', $graphType, $attributes, $nodes, $edges);
     }
 
     /**

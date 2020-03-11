@@ -16,21 +16,21 @@ use loophp\phptree\Modifier\RemoveNullNode;
 class MerkleNode extends ValueNode implements MerkleNodeInterface
 {
     /**
-     * @var \drupol\phpmerkle\Hasher\HasherInterface
+     * @var HasherInterface
      */
     private $hasher;
 
     /**
-     * @var \loophp\phptree\Modifier\ModifierInterface[]
+     * @var ModifierInterface[]
      */
-    private $modifiers;
+    private $modifiers = [];
 
     /**
      * MerkleNode constructor.
      *
      * @param mixed $value
      * @param int $capacity
-     * @param \drupol\phpmerkle\Hasher\HasherInterface $hasher
+     * @param HasherInterface $hasher
      */
     public function __construct(
         $value,
@@ -59,7 +59,7 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
      */
     public function label(): string
     {
-        return true === $this->isLeaf() ?
+        return $this->isLeaf() ?
             $this->getValue() :
             $this->hash();
     }
@@ -84,12 +84,12 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
     private function doHash(MerkleNodeInterface $node): string
     {
         // If node is a leaf, then compute its hash from its value.
-        if (true === $node->isLeaf()) {
+        if ($node->isLeaf()) {
             return $this->hasher->hash($node->getValue());
         }
 
         $hash = '';
-        /** @var \loophp\phptree\Node\MerkleNodeInterface $child */
+        /** @var MerkleNodeInterface $child */
         foreach ($node->children() as $child) {
             $hash .= $this->doHash($child);
         }

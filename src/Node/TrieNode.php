@@ -31,7 +31,7 @@ class TrieNode extends KeyValueNode
             } else {
                 $nodes = [$node->getValue()];
 
-                /** @var \loophp\phptree\Node\KeyValueNodeInterface $ancestor */
+                /** @var KeyValueNodeInterface $ancestor */
                 foreach ($node->getAncestors() as $ancestor) {
                     $nodes[] = $ancestor->getValue();
                 }
@@ -44,15 +44,15 @@ class TrieNode extends KeyValueNode
     }
 
     /**
-     * @param \loophp\phptree\Node\ValueNodeInterface $node
+     * @param ValueNodeInterface $node
      *
      * @throws Exception
      *
-     * @return \loophp\phptree\Node\NodeInterface|\loophp\phptree\Node\ValueNodeInterface
+     * @return NodeInterface|ValueNodeInterface
      */
     private function append(ValueNodeInterface $node)
     {
-        /** @var \loophp\phptree\Node\ValueNodeInterface $child */
+        /** @var ValueNodeInterface $child */
         foreach ($this->children() as $child) {
             if ($node->getValue() === $child->getValue()) {
                 return $child;

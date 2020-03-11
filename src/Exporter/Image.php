@@ -35,7 +35,7 @@ final class Image implements ExporterInterface
     }
 
     /**
-     * @param \loophp\phptree\Node\NodeInterface $node
+     * @param NodeInterface $node
      *
      * @throws Exception
      *
@@ -43,7 +43,7 @@ final class Image implements ExporterInterface
      */
     public function export(NodeInterface $node): string
     {
-        if (false === $tmp = tempnam(sys_get_temp_dir(), 'phptree-export-')) {
+        if (!($tmp = tempnam(sys_get_temp_dir(), 'phptree-export-'))) {
             return '';
         }
 

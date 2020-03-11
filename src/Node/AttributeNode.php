@@ -14,15 +14,15 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
     /**
      * @var array
      */
-    private $attributes;
+    private $attributes = [];
 
     /**
      * ValueNode constructor.
      *
      * @param array<int|string, mixed> $attributes
      * @param int|null $capacity
-     * @param \loophp\phptree\Traverser\TraverserInterface|null $traverser
-     * @param \loophp\phptree\Node\NodeInterface|null $parent
+     * @param TraverserInterface|null $traverser
+     * @param NodeInterface|null $parent
      */
     public function __construct(
         array $attributes = [],
