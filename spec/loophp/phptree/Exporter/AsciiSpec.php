@@ -7,6 +7,7 @@ namespace spec\loophp\phptree\Exporter;
 use loophp\phptree\Exporter\Ascii;
 use loophp\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;
+use const PHP_EOL;
 
 class AsciiSpec extends ObjectBehavior
 {

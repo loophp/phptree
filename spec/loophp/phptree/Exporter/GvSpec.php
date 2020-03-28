@@ -8,6 +8,7 @@ use loophp\phptree\Exporter\Gv;
 use loophp\phptree\Node\AttributeNode;
 use loophp\phptree\Node\ValueNode;
 use PhpSpec\ObjectBehavior;
+use const PHP_EOL;
 
 class GvSpec extends ObjectBehavior
 {
