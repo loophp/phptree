@@ -30,7 +30,7 @@ class NikicPhpAstSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(84);
+            ->shouldReturn(87);
     }
 
     public function it_is_initializable(): void

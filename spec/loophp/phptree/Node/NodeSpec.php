@@ -369,5 +369,8 @@ class NodeSpec extends NodeObjectBehavior
     public function it_is_initializable(): void
     {
         $this->shouldHaveType(Node::class);
+        $this
+            ->label()
+            ->shouldNotBeNull();
     }
 }

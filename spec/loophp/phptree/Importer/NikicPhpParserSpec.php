@@ -48,7 +48,7 @@ class NikicPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(104);
+            ->shouldReturn(109);
     }
 
     public function it_is_initializable(): void

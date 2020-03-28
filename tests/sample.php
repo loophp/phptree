@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+include __DIR__ . '/vendor/autoload.php';
+
 function foo($a)
 {
     return $a . $a;

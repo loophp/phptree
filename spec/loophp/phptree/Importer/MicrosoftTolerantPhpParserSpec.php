@@ -34,7 +34,7 @@ class MicrosoftTolerantPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(112);
+            ->shouldReturn(117);
     }
 
     public function it_is_initializable(): void
