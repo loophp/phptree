@@ -55,6 +55,6 @@ class ImageSpec extends ObjectBehavior
 
         $this
             ->getExecutable()
-            ->shouldReturn('dot');
+            ->shouldNotBeNull();
     }
 }
