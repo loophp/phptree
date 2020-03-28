@@ -192,16 +192,21 @@ final class Gv implements ExporterInterface
             'digraph' :
             'graph';
 
-        return sprintf('%s PHPTreeGraph {
-// The graph attributes.
-%s
-
-// The graph nodes.
-%s
-
-// The graph edges.
-%s
-}', $graphType, $attributes, $nodes, $edges);
+        return implode(
+            PHP_EOL,
+            [
+                sprintf('%s PHPTreeGraph {', $graphType),
+                '// The graph attributes.',
+                $attributes,
+                '',
+                '// The graph nodes.',
+                $nodes,
+                '',
+                '// The graph edges.',
+                $edges,
+                '}',
+            ]
+        );
     }
 
     /**

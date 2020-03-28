@@ -36,7 +36,7 @@ labels:
 repository:
     allow_merge_commit: true
     allow_rebase_merge: false
-    allow_squash_merge: false
+    allow_squash_merge: true
     default_branch: master
     description: "An implementation of tree data structure"
     topics: tree,data-structure,binary-tree
