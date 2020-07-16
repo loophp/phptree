@@ -45,7 +45,7 @@ final class Image implements ExporterInterface
 
         file_put_contents($tmp, (new Gv())->export($node));
 
-        return shell_exec($this->getConvertCommand($tmp));
+        return (string) shell_exec($this->getConvertCommand($tmp));
     }
 
     /**
