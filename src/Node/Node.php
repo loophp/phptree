@@ -28,8 +28,6 @@ class Node implements NodeInterface
 
     /**
      * Node constructor.
-     *
-     * @param NodeInterface|null $parent
      */
     public function __construct(?NodeInterface $parent = null)
     {
@@ -273,8 +271,6 @@ class Node implements NodeInterface
     /**
      * @param mixed $offset
      * @param mixed $value
-     *
-     * @return void
      */
     public function offsetSet($offset, $value): void
     {

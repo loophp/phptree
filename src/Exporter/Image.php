@@ -35,11 +35,7 @@ final class Image implements ExporterInterface
     }
 
     /**
-     * @param NodeInterface $node
-     *
      * @throws Exception
-     *
-     * @return string
      */
     public function export(NodeInterface $node): string
     {
@@ -54,17 +50,12 @@ final class Image implements ExporterInterface
 
     /**
      * Get the executable to use.
-     *
-     * @return string
      */
     public function getExecutable(): string
     {
         return $this->executable;
     }
 
-    /**
-     * @return string
-     */
     public function getFormat(): string
     {
         return $this->format;
@@ -72,8 +63,6 @@ final class Image implements ExporterInterface
 
     /**
      * Change the executable to use.
-     *
-     * @param string $executable
      *
      * @return \loophp\phptree\Exporter\Image
      */
@@ -85,8 +74,6 @@ final class Image implements ExporterInterface
     }
 
     /**
-     * @param string $format
-     *
      * @return \loophp\phptree\Exporter\Image
      */
     public function setFormat(string $format): self
@@ -96,11 +83,6 @@ final class Image implements ExporterInterface
         return $this;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return string
-     */
     private function getConvertCommand(string $path): string
     {
         return sprintf(

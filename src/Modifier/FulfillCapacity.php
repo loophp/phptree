@@ -22,8 +22,6 @@ class FulfillCapacity implements ModifierInterface
 
     /**
      * FulfillCapacity constructor.
-     *
-     * @param TraverserInterface|null $traverser
      */
     public function __construct(?TraverserInterface $traverser = null)
     {

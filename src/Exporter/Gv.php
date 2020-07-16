@@ -178,8 +178,6 @@ final class Gv implements ExporterInterface
     /**
      * Get the default GV file content.
      *
-     * @param string $attributes
-     * @param string $nodes
      * @param string $edges
      *   The edges.
      *

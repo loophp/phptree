@@ -44,8 +44,6 @@ class TrieNode extends KeyValueNode
     }
 
     /**
-     * @param ValueNodeInterface $node
-     *
      * @throws Exception
      *
      * @return NodeInterface|ValueNodeInterface

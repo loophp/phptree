@@ -29,7 +29,6 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
      * MerkleNode constructor.
      *
      * @param mixed $value
-     * @param int $capacity
      * @param HasherInterface $hasher
      */
     public function __construct(

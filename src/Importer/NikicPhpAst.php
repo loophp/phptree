@@ -26,8 +26,6 @@ final class NikicPhpAst implements ImporterInterface
      * @param Node $data
      *
      * @throws Exception
-     *
-     * @return NodeInterface
      */
     public function import($data): NodeInterface
     {
@@ -36,21 +34,13 @@ final class NikicPhpAst implements ImporterInterface
         return $this->parseNode($this->createNode(['label' => 'root']), $data);
     }
 
-    /**
-     * @param array $attributes
-     *
-     * @return AttributeNodeInterface
-     */
     private function createNode(array $attributes): AttributeNodeInterface
     {
         return new AttributeNode($attributes);
     }
 
     /**
-     * @param AttributeNodeInterface $parent
      * @param Node ...$astNodes
-     *
-     * @return NodeInterface
      */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {

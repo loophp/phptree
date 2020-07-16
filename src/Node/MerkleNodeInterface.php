@@ -9,9 +9,6 @@ namespace loophp\phptree\Node;
  */
 interface MerkleNodeInterface extends ValueNodeInterface
 {
-    /**
-     * @return string
-     */
     public function hash(): string;
 
     /**

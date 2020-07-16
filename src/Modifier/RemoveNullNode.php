@@ -22,8 +22,6 @@ class RemoveNullNode implements ModifierInterface
 
     /**
      * RemoveNullNode constructor.
-     *
-     * @param TraverserInterface|null $traverser
      */
     public function __construct(?TraverserInterface $traverser = null)
     {

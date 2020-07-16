@@ -28,8 +28,6 @@ class PostOrder implements TraverserInterface
     }
 
     /**
-     * @param NodeInterface $node
-     *
      * @return Traversable<NodeInterface>
      */
     private function doTraverse(NodeInterface $node): Traversable

@@ -9,9 +9,6 @@ use loophp\phptree\Traverser\BreadthFirst;
 use loophp\phptree\Traverser\TraverserInterface;
 use OutOfBoundsException;
 
-/**
- * Class NaryNode.
- */
 class NaryNode extends Node implements NaryNodeInterface
 {
     /**
@@ -27,7 +24,7 @@ class NaryNode extends Node implements NaryNodeInterface
     /**
      * NaryNode constructor.
      *
-     * @param int|null $capacity
+     * @param int $capacity
      *   The maximum children a node can have. Null for no children,
      *   if 0 then any number of children is allowed.
      * @param TraverserInterface|null $traverser
@@ -36,7 +33,7 @@ class NaryNode extends Node implements NaryNodeInterface
      *   The parent.
      */
     public function __construct(
-        ?int $capacity = 0,
+        int $capacity = 0,
         ?TraverserInterface $traverser = null,
         ?NodeInterface $parent = null
     ) {
@@ -78,7 +75,7 @@ class NaryNode extends Node implements NaryNodeInterface
     /**
      * {@inheritdoc}
      */
-    public function capacity(): ?int
+    public function capacity(): int
     {
         return $this->capacity;
     }

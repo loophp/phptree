@@ -8,9 +8,6 @@ use loophp\phptree\Node\NodeInterface;
 use loophp\phptree\Traverser\PostOrder;
 use loophp\phptree\Traverser\TraverserInterface;
 
-/**
- * Class Apply.
- */
 class Apply implements ModifierInterface
 {
     /**
@@ -19,15 +16,12 @@ class Apply implements ModifierInterface
     private $apply;
 
     /**
-     * @var TraverserInterface|null
+     * @var TraverserInterface
      */
     private $traverser;
 
     /**
      * Apply constructor.
-     *
-     * @param callable $apply
-     * @param TraverserInterface|null $traverser
      */
     public function __construct(callable $apply, ?TraverserInterface $traverser = null)
     {

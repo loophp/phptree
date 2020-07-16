@@ -39,8 +39,6 @@ class Random implements BuilderInterface
 
     /**
      * @param array<mixed> $parameters
-     *
-     * @return \loophp\phptree\Node\NodeInterface
      */
     private static function createNode(array $parameters = []): NodeInterface
     {
@@ -60,11 +58,6 @@ class Random implements BuilderInterface
         return new $class(...$parameters);
     }
 
-    /**
-     * @param \loophp\phptree\Node\NodeInterface $node
-     *
-     * @return \loophp\phptree\Node\NodeInterface
-     */
     private static function pickRandomNode(NodeInterface $node): NodeInterface
     {
         $pick = (int) random_int(0, $node->count());

@@ -20,13 +20,10 @@ class ValueNode extends NaryNode implements ValueNodeInterface
      * ValueNode constructor.
      *
      * @param mixed|null $value
-     * @param int|null $capacity
-     * @param TraverserInterface|null $traverser
-     * @param NodeInterface|null $parent
      */
     public function __construct(
         $value,
-        ?int $capacity = 0,
+        int $capacity = 0,
         ?TraverserInterface $traverser = null,
         ?NodeInterface $parent = null
     ) {

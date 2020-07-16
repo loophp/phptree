@@ -40,8 +40,9 @@ class ABNode extends NaryNode
 
             ksort($count);
 
-            $child = array_shift($count);
-            $child->add($node);
+            if (null !== $child = array_shift($count)) {
+                $child->add($node);
+            }
         }
 
         return $this;

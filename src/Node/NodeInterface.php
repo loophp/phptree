@@ -138,14 +138,9 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
      */
     public function isRoot(): bool;
 
-    /**
-     * @return string
-     */
     public function label(): string;
 
     /**
-     * @param int $level
-     *
      * @return Traversable<\loophp\phptree\Node\NodeInterface>
      */
     public function level(int $level): Traversable;

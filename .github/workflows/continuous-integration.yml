@@ -28,6 +28,7 @@ jobs:
                   php-version: ${{ matrix.php-versions }}
                   extensions: ast,mbstring,xdebug
                   tools: pecl
+
             - name: Get Composer Cache Directory
               id: composer-cache
               run: echo "::set-output name=dir::$(composer config cache-files-dir)"

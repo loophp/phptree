@@ -38,10 +38,7 @@ final class SimpleArray implements ImporterInterface
     }
 
     /**
-     * @param AttributeNodeInterface $parent
      * @param array ...$nodes
-     *
-     * @return \loophp\phptree\Node\NodeInterface
      */
     private function parseNode(AttributeNodeInterface $parent, array ...$nodes): NodeInterface
     {

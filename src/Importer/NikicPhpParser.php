@@ -21,27 +21,18 @@ final class NikicPhpParser implements ImporterInterface
      * @param Node[] $data
      *
      * @throws Exception
-     *
-     * @return NodeInterface
      */
     public function import($data): NodeInterface
     {
         return $this->parseNode($this->createNode(['label' => 'root']), ...$data);
     }
 
-    /**
-     * @param array $attributes
-     *
-     * @return AttributeNodeInterface
-     */
     private function createNode(array $attributes): AttributeNodeInterface
     {
         return new AttributeNode($attributes);
     }
 
     /**
-     * @param \PhpParser\Node $astNode
-     *
      * @return array<int, Node>
      */
     private function getAllNodeChildren(Node $astNode): array
@@ -69,10 +60,7 @@ final class NikicPhpParser implements ImporterInterface
     }
 
     /**
-     * @param AttributeNodeInterface $parent
      * @param Node ...$astNodes
-     *
-     * @return NodeInterface
      */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {

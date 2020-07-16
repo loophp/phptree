@@ -71,10 +71,7 @@ final class Text implements ImporterInterface
     }
 
     /**
-     * @param AttributeNodeInterface $parent
      * @param string ...$nodes
-     *
-     * @return \loophp\phptree\Node\NodeInterface
      */
     private function parseNode(AttributeNodeInterface $parent, string ...$nodes): NodeInterface
     {

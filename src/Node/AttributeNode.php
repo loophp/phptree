@@ -6,27 +6,21 @@ namespace loophp\phptree\Node;
 
 use loophp\phptree\Traverser\TraverserInterface;
 
-/**
- * Class AttributeNode.
- */
 class AttributeNode extends NaryNode implements AttributeNodeInterface
 {
     /**
      * @var array
      */
-    private $attributes = [];
+    private $attributes;
 
     /**
      * ValueNode constructor.
      *
      * @param array<int|string, mixed> $attributes
-     * @param int|null $capacity
-     * @param TraverserInterface|null $traverser
-     * @param NodeInterface|null $parent
      */
     public function __construct(
         array $attributes = [],
-        ?int $capacity = 0,
+        int $capacity = 0,
         ?TraverserInterface $traverser = null,
         ?NodeInterface $parent = null
     ) {

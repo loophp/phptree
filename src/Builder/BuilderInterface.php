@@ -13,8 +13,6 @@ interface BuilderInterface
 {
     /**
      * @param iterable<mixed> $nodes
-     *
-     * @return NodeInterface|null
      */
     public static function create(iterable $nodes): ?NodeInterface;
 }

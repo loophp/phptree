@@ -86,9 +86,6 @@ final class Graph implements ExporterInterface
         return sha1(spl_object_hash($node));
     }
 
-    /**
-     * @return \Fhaculty\Graph\Graph
-     */
     private function getGraph(): OriginalGraph
     {
         return $this->graph;
