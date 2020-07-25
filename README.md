@@ -4,6 +4,7 @@
  [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/loophp/phptree/Continuous%20Integration?style=flat-square)](https://github.com/loophp/phptree/actions)
  [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/loophp/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/loophp/phptree/?branch=master)
  [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/loophp/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/loophp/phptree/?branch=master)
+ [![Type Coverage](https://shepherd.dev/github/loophp/phptree/coverage.svg)](https://shepherd.dev/github/loophp/phptree)
  [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/loophp/phptree/master)](https://stryker-mutator.github.io)
  [![License](https://img.shields.io/packagist/l/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
  [![Donate!](https://img.shields.io/badge/Donate-Paypal-brightgreen.svg?style=flat-square)](https://paypal.me/loophp)
