@@ -8,14 +8,8 @@ use loophp\phptree\Node\NodeInterface;
 
 use function is_callable;
 
-/**
- * Class Random.
- */
 class Random implements BuilderInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function create(iterable $nodes): ?NodeInterface
     {
         $root = null;
@@ -38,11 +32,16 @@ class Random implements BuilderInterface
     }
 
     /**
-     * @param array<mixed> $parameters
+     * @param array<int, class-string|callable():(NodeInterface)|mixed> $parameters
      */
     private static function createNode(array $parameters = []): NodeInterface
     {
         $parameters = array_map(
+            /**
+             * @param class-string|callable():(NodeInterface)|mixed $parameter
+             *
+             * @return class-string|mixed
+             */
             static function ($parameter) {
                 if (is_callable($parameter)) {
                     return $parameter();

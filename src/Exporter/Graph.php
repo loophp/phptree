@@ -9,35 +9,22 @@ use Fhaculty\Graph\Vertex;
 use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Class Graph.
- */
 final class Graph implements ExporterInterface
 {
-    /**
-     * The graph.
-     *
-     * @var \Fhaculty\Graph\Graph
-     */
-    private $graph;
-
-    /**
-     * {@inheritdoc}
-     */
     public function export(NodeInterface $node): OriginalGraph
     {
-        $this->graph = new OriginalGraph();
+        $graph = new OriginalGraph();
 
         foreach ($node->all() as $node_visited) {
-            $vertexFrom = $this->createVertex($node_visited);
+            $vertexFrom = $this->createVertex($node_visited, $graph);
 
             foreach ($node_visited->children() as $child) {
-                $vertexTo = $this->createVertex($child);
+                $vertexTo = $this->createVertex($child, $graph);
                 $vertexFrom->createEdgeTo($vertexTo);
             }
         }
 
-        return $this->getGraph();
+        return $graph;
     }
 
     /**
@@ -49,13 +36,13 @@ final class Graph implements ExporterInterface
      * @return Vertex
      *   A vertex
      */
-    private function createVertex(NodeInterface $node): Vertex
+    private function createVertex(NodeInterface $node, OriginalGraph $graph): Vertex
     {
         /** @var int $vertexId */
         $vertexId = $this->createVertexId($node);
 
-        if (!$this->getGraph()->hasVertex($vertexId)) {
-            $vertex = $this->getGraph()->createVertex($vertexId);
+        if (!$graph->hasVertex($vertexId)) {
+            $vertex = $graph->createVertex($vertexId);
 
             $vertex->setAttribute(
                 'graphviz.label',
@@ -69,25 +56,11 @@ final class Graph implements ExporterInterface
             }
         }
 
-        return $this->getGraph()->getVertex($vertexId);
+        return $graph->getVertex($vertexId);
     }
 
-    /**
-     * Create a vertex ID.
-     *
-     * @param NodeInterface $node
-     *   The node
-     *
-     * @return string
-     *   A vertex ID
-     */
     private function createVertexId(NodeInterface $node): string
     {
         return sha1(spl_object_hash($node));
-    }
-
-    private function getGraph(): OriginalGraph
-    {
-        return $this->graph;
     }
 }

@@ -6,13 +6,10 @@ namespace loophp\phptree\Builder;
 
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Interface BuilderInterface.
- */
 interface BuilderInterface
 {
     /**
-     * @param iterable<mixed> $nodes
+     * @param iterable<int, array<int, class-string|callable():(NodeInterface)|mixed>> $nodes
      */
     public static function create(iterable $nodes): ?NodeInterface;
 }
