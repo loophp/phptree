@@ -46,6 +46,10 @@ Modifier:
 
 Blog post: [https://not-a-number.io/2018/phptree-a-fast-tree-implementation](https://not-a-number.io/2018/phptree-a-fast-tree-implementation)
 
+## Changelog
+
+See [CHANGELOG.MD][phptree changelog]
+
 ## Requirements
 
 * PHP >= 7.1
@@ -122,3 +126,5 @@ Before each commit some inspections are executed with [GrumPHP](https://github.c
 ## Contributing
 
 Feel free to contribute to this library by sending Github pull requests. I'm quite reactive :-)
+
+[phptree changelog]: https://github.com/loophp/phptree/blob/master/CHANGELOG.md
