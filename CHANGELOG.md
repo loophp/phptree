@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.6.4](https://github.com/loophp/phptree/compare/2.6.3...2.6.4)
+## [2.6.5](https://github.com/loophp/phptree/compare/2.6.4...2.6.5)
+
+### Commits
+
+- Revert "fix: Add new parameter to dot command." [`0e46a87`](https://github.com/loophp/phptree/commit/0e46a8722e646126e1747463b51a6ae8ec7e4b75)
+
+## [2.6.4](https://github.com/loophp/phptree/compare/2.6.3...2.6.4) - 2020-10-28
 
 ### Merged
 
@@ -13,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Commits
 
+- docs: Update changelog. [`345042b`](https://github.com/loophp/phptree/commit/345042bcb596327848ea25be71cddcf4c014db21)
 - chore: Update composer.json. [`7775d49`](https://github.com/loophp/phptree/commit/7775d49beb64bf298e48ad2c459d66bb99ac014d)
 - ci: Drop support of PHP 7.1 in CI only for now. [`7725071`](https://github.com/loophp/phptree/commit/77250715592bef0aeb939bf948b0431c56f67e61)
 - docs: Update README, add link to changelog. [`64ba104`](https://github.com/loophp/phptree/commit/64ba104c3fa09bba62a4c2c050be9b872c149634)
