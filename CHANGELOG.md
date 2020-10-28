@@ -5,10 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/loophp/phptree/compare/2.6.3...HEAD)
+## [2.6.4](https://github.com/loophp/phptree/compare/2.6.3...2.6.4)
+
+### Merged
+
+- fix: Add new parameter to dot command. [`#20`](https://github.com/loophp/phptree/pull/20)
 
 ### Commits
 
+- chore: Update composer.json. [`7775d49`](https://github.com/loophp/phptree/commit/7775d49beb64bf298e48ad2c459d66bb99ac014d)
+- ci: Drop support of PHP 7.1 in CI only for now. [`7725071`](https://github.com/loophp/phptree/commit/77250715592bef0aeb939bf948b0431c56f67e61)
+- docs: Update README, add link to changelog. [`64ba104`](https://github.com/loophp/phptree/commit/64ba104c3fa09bba62a4c2c050be9b872c149634)
+- docs: Add CHANGELOG.md file [`ce93ce8`](https://github.com/loophp/phptree/commit/ce93ce8e169f7d13aa9adcc80e0d83cf0aec9a9d)
+- ci: Update Github actions configuration [`c4cde82`](https://github.com/loophp/phptree/commit/c4cde82285440f544bd7339ab12a768fe04194ef)
 - Fix CS. [`045936a`](https://github.com/loophp/phptree/commit/045936a30125f77ffee17823fd42c6035ad3146b)
 - Enable Psalm, Infection and Insights reports. [`4edfd8f`](https://github.com/loophp/phptree/commit/4edfd8fdb21119138a9fef4b82110f067f03ee36)
 - Fix PHPStan warning. [`04a3450`](https://github.com/loophp/phptree/commit/04a3450906d488111b967222b423edaf6fc519a5)
