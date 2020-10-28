@@ -20,17 +20,17 @@
     },
     "require-dev": {
         "drupol/launcher": "^2.2.2",
-        "drupol/php-conventions": "^1.7.2 || ^1.8.6",
+        "drupol/php-conventions": "^1.7.2 || ^1.8.6 || ^2",
         "drupol/phpmerkle": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
         "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.13.6 || ^0.15.0",
+        "infection/infection": "^0.13.6 || ^0.15.3",
         "microsoft/tolerant-php-parser": "^0.0.20",
         "nikic/php-parser": "^4.3",
         "phpbench/phpbench": "^0.16.10",
-        "phpspec/phpspec": "^5.1.2 || ^6.2.1",
+        "phpspec/phpspec": "^5.1.2 || ^6.2.2",
         "phptaskman/changelog": "^1.0",
-        "vimeo/psalm": "^3.12.2"
+        "vimeo/psalm": "^3.18.2"
     },
     "config": {
         "sort-packages": true
