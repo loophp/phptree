@@ -86,10 +86,12 @@ final class Image implements ExporterInterface
     private function getConvertCommand(string $path): string
     {
         return sprintf(
-            '%s -T%s %s',
+            '%s -T%s %s -o%s.%s',
             $this->getExecutable(),
             $this->getFormat(),
-            $path
+            $path,
+            $path,
+            $this->getFormat()
         );
     }
 }
