@@ -1,7 +1,9 @@
 imports:
-  - { resource: vendor/drupol/php-conventions/config/php71/grumphp.yml }
+  - { resource: vendor/drupol/php-conventions/config/php73/grumphp.yml }
 
 parameters:
+  tasks.license.holder: Pol Dellaiera
+  tasks.license.date_from: 2018
   tasks.phpstan.config: phpstan.neon
   tasks.phpcs.ignore_patterns:
     - "/benchmarks/"

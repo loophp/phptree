@@ -19,18 +19,17 @@
         "php": ">= 7.1"
     },
     "require-dev": {
-        "drupol/launcher": "^2.2.2",
-        "drupol/php-conventions": "^1.7.2 || ^1.8.6 || ^2",
+        "drupol/php-conventions": "^5",
         "drupol/phpmerkle": "^2.2",
-        "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
+        "friends-of-phpspec/phpspec-code-coverage": "^5",
         "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.13.6 || ^0.15.3",
+        "infection/infection": "^0.22",
+        "infection/phpspec-adapter": "^0.1",
+        "loophp/launcher": "^2.2.2",
         "microsoft/tolerant-php-parser": "^0.0.20",
-        "nikic/php-parser": "^4.3",
+        "nikic/php-parser": "^4",
         "phpbench/phpbench": "^0.16.10",
-        "phpspec/phpspec": "^5.1.2 || ^6.2.2",
-        "phptaskman/changelog": "^1.0",
-        "vimeo/psalm": "^3.18.2"
+        "phpspec/phpspec": "^7"
     },
     "config": {
         "sort-packages": true
@@ -48,10 +47,23 @@
         }
     },
     "scripts": {
-        "apigen": "./vendor/bin/apigen generate src --destination build/docs",
-        "bench": "./vendor/bin/phpbench run --report=aggregate --store --precision=3",
+        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
         "grumphp": "./vendor/bin/grumphp run",
-        "infection": "./vendor/bin/infection run -j 10",
-        "scrutinizer": "./vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml"
-    }
+        "infection": "./vendor/bin/infection run -j 1"
+    },
+    "support": {
+        "issues": "https://github.com/loophp/phptree/issues",
+        "source": "https://github.com/loophp/phptree"
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/drupol"
+        },
+        {
+            "type": "paypal",
+            "url": "https://www.paypal.me/drupol"
+        }
+    ]
 }
