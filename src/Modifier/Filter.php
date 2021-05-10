@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Modifier;
@@ -33,9 +38,6 @@ class Filter implements ModifierInterface
         $this->traverser = $traverser ?? new PostOrder();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function modify(NodeInterface $tree): NodeInterface
     {
         foreach ($this->traverser->traverse($tree) as $item) {

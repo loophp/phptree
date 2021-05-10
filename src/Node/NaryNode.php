@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Node;
@@ -44,9 +49,6 @@ class NaryNode extends Node implements NaryNodeInterface
         $this->traverser = $traverser ?? new BreadthFirst();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         $capacity = $this->capacity();
@@ -72,25 +74,16 @@ class NaryNode extends Node implements NaryNodeInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function capacity(): int
     {
         return $this->capacity;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTraverser(): TraverserInterface
     {
         return $this->traverser;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function offsetSet($offset, $value): void
     {
         if (null === $offset) {

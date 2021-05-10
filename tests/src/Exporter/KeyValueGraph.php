@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\tests\Exporter;
@@ -14,9 +19,6 @@ use loophp\phptree\Node\NodeInterface;
  */
 class KeyValueGraph extends Graph
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function createVertex(NodeInterface $node): Vertex
     {
         $vertex = parent::createVertex($node);
@@ -28,9 +30,6 @@ class KeyValueGraph extends Graph
         return $vertex;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function createVertexId(NodeInterface $node)
     {
         if ($node instanceof KeyValueNodeInterface) {

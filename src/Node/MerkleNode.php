@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Node;
@@ -45,17 +50,11 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hash(): string
     {
         return $this->hasher->unpack($this->doHash($this->normalize()));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function label(): string
     {
         return $this->isLeaf() ?
@@ -63,9 +62,6 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
             $this->hash();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function normalize(): MerkleNodeInterface
     {
         return array_reduce(
@@ -77,9 +73,6 @@ class MerkleNode extends ValueNode implements MerkleNodeInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     private function doHash(MerkleNodeInterface $node): string
     {
         // If node is a leaf, then compute its hash from its value.

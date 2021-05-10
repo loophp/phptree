@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Node;
@@ -29,33 +34,21 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
         $this->attributes = $attributes;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAttribute(string $key)
     {
         return $this->getAttributes()[$key] ?? null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAttributes(): array
     {
         return $this->attributes;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function label(): string
     {
         return (string) $this->getAttribute('label');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setAttribute(string $key, $value): AttributeNodeInterface
     {
         $this->attributes[$key] = $value;
@@ -63,9 +56,6 @@ class AttributeNode extends NaryNode implements AttributeNodeInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setAttributes(array $attributes): AttributeNodeInterface
     {
         $this->attributes = $attributes;

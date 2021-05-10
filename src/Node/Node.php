@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Node;
@@ -35,9 +40,6 @@ class Node implements NodeInterface
         $this->children = [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __clone()
     {
         /** @var NodeInterface $child */
@@ -46,9 +48,6 @@ class Node implements NodeInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
@@ -58,9 +57,6 @@ class Node implements NodeInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function all(): Traversable
     {
         yield $this;
@@ -71,41 +67,26 @@ class Node implements NodeInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function children(): Traversable
     {
         yield from $this->children;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function clone(): NodeInterface
     {
         return clone $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function count(): int
     {
         return iterator_count($this->all()) - 1;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function degree(): int
     {
         return count($this->children);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function delete(NodeInterface $node, ?NodeInterface $root = null): ?NodeInterface
     {
         $root = $root ?? $this;
@@ -125,17 +106,11 @@ class Node implements NodeInterface
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function depth(): int
     {
         return iterator_count($this->getAncestors());
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function find(NodeInterface $node): ?NodeInterface
     {
         /** @var NodeInterface $candidate */
@@ -148,9 +123,6 @@ class Node implements NodeInterface
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAncestors(): Traversable
     {
         $node = $this;
@@ -168,17 +140,11 @@ class Node implements NodeInterface
         yield from $this->all();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getParent(): ?NodeInterface
     {
         return $this->parent;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSibblings(): Traversable
     {
         $parent = $this->parent;
@@ -196,9 +162,6 @@ class Node implements NodeInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function height(): int
     {
         $height = $this->depth();
@@ -211,33 +174,21 @@ class Node implements NodeInterface
         return $height;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isLeaf(): bool
     {
         return 0 === $this->degree();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function isRoot(): bool
     {
         return null === $this->parent;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function label(): string
     {
         return sha1(spl_object_hash($this));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function level(int $level): Traversable
     {
         /** @var NodeInterface $node */
@@ -293,9 +244,6 @@ class Node implements NodeInterface
         unset($this->children[$offset]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function remove(NodeInterface ...$nodes): NodeInterface
     {
         $this->children =
@@ -309,9 +257,6 @@ class Node implements NodeInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function replace(NodeInterface $node): ?NodeInterface
     {
         if (null === $parent = $this->getParent()) {
@@ -330,9 +275,6 @@ class Node implements NodeInterface
         return $parent;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setParent(?NodeInterface $node): NodeInterface
     {
         $this->parent = $node;
@@ -340,9 +282,6 @@ class Node implements NodeInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function withChildren(?NodeInterface ...$nodes): NodeInterface
     {
         $clone = clone $this;

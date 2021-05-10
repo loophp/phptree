@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Node;
@@ -32,17 +37,11 @@ class ValueNode extends NaryNode implements ValueNodeInterface
         $this->value = $value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getValue()
     {
         return $this->value;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function label(): string
     {
         return (string) $this->getValue();

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace loophp\phptree\Modifier;
@@ -12,9 +17,6 @@ use loophp\phptree\Node\NodeInterface;
  */
 class Reverse implements ModifierInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function modify(NodeInterface $tree): NodeInterface
     {
         $children = new ArrayObject();
