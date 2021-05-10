@@ -14,7 +14,7 @@ jobs:
             fail-fast: false
             matrix:
                 operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-                php-versions: ['7.2', '7.3', '7.4']
+                php-versions: ['7.4']
 
         steps:
             - name: Set git to use LF
@@ -57,7 +57,7 @@ jobs:
                   STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
 
             - name: Send PSALM data
-              run: vendor/bin/psalm --shepherd --stats
+              run: vendor/bin/psalm --shepherd --stats src/
               continue-on-error: true
 
             - name: Send Scrutinizer data
