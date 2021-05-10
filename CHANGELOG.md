@@ -5,10 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.6.5](https://github.com/loophp/phptree/compare/2.6.4...2.6.5)
+## [2.6.6](https://github.com/loophp/phptree/compare/2.6.5...2.6.6)
 
 ### Commits
 
+- ci: Only test on PHP 7.4. [`237335d`](https://github.com/loophp/phptree/commit/237335dc4461712c324a126219cdc96ab2d3a988)
+- refactor: Autofix code-style. [`5bcbe38`](https://github.com/loophp/phptree/commit/5bcbe38214a1dae003681022601d172b664f58a8)
+- chore: Add Docker stack. [`aba5b39`](https://github.com/loophp/phptree/commit/aba5b39301563974d32c41127224625fbccf99db)
+- chore: Switch to drupol/php-conventions:^5. [`31e953f`](https://github.com/loophp/phptree/commit/31e953f2f00079a57fa29a608f7e591a02061399)
+
+## [2.6.5](https://github.com/loophp/phptree/compare/2.6.4...2.6.5) - 2020-10-28
+
+### Commits
+
+- docs: Update changelog. [`3ce0e36`](https://github.com/loophp/phptree/commit/3ce0e36a8e15151ffd1b3c2d33b2a7554e9c58e6)
 - Revert "fix: Add new parameter to dot command." [`0e46a87`](https://github.com/loophp/phptree/commit/0e46a8722e646126e1747463b51a6ae8ec7e4b75)
 
 ## [2.6.4](https://github.com/loophp/phptree/compare/2.6.3...2.6.4) - 2020-10-28
