@@ -23,10 +23,10 @@ class TrieNode extends KeyValueNode
 
             $hash = hash('sha256', $node->getKey() . $data);
 
-            $node = new self($hash, mb_substr($data, 0, 1));
+            $node = new self($hash, substr($data, 0, 1));
             $parent = $this->append($node);
 
-            $dataWithoutFirstLetter = mb_substr($data, 1);
+            $dataWithoutFirstLetter = substr($data, 1);
 
             if ('' < $dataWithoutFirstLetter) {
                 $parent->add(new self($hash, $dataWithoutFirstLetter));

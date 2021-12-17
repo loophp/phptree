@@ -34,7 +34,7 @@ final class Image implements ExporterInterface
      */
     public function __construct()
     {
-        if (0 === mb_stripos(PHP_OS, 'WIN')) {
+        if (0 === stripos(PHP_OS, 'WIN')) {
             $this->executable = 'dot.exe';
         }
     }
