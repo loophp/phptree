@@ -1,56 +1,20 @@
 {
     "name": "loophp/phptree",
-    "type": "library",
     "description": "An implementation of tree data structure",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "tree",
         "php",
         "data structure",
         "binary tree"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Pol Dellaiera",
             "email": "pol.dellaiera@protonmail.com"
         }
     ],
-    "require": {
-        "php": ">= 7.1"
-    },
-    "require-dev": {
-        "drupol/php-conventions": "^5",
-        "drupol/phpmerkle": "^2.2",
-        "friends-of-phpspec/phpspec-code-coverage": "^5",
-        "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.22",
-        "infection/phpspec-adapter": "^0.1",
-        "loophp/launcher": "^2.2.2",
-        "microsoft/tolerant-php-parser": "^0.0.20",
-        "nikic/php-parser": "^4",
-        "phpspec/phpspec": "^7"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "autoload": {
-        "psr-4": {
-            "loophp\\phptree\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "loophp\\phptree\\tests\\": "tests/src/",
-            "loophp\\phptree\\benchmarks\\": "benchmarks/",
-            "spec\\loophp\\phptree\\": "spec/loophp/phptree/"
-        }
-    },
-    "scripts": {
-        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
-        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
-        "grumphp": "./vendor/bin/grumphp run",
-        "infection": "./vendor/bin/infection run -j 1"
-    },
     "support": {
         "issues": "https://github.com/loophp/phptree/issues",
         "source": "https://github.com/loophp/phptree"
@@ -64,5 +28,42 @@
             "type": "paypal",
             "url": "https://www.paypal.me/drupol"
         }
-    ]
+    ],
+    "require": {
+        "php": ">= 7.1"
+    },
+    "require-dev": {
+        "drupol/launcher": "^2.2",
+        "drupol/php-conventions": "^5",
+        "drupol/phpmerkle": "^2.2",
+        "friends-of-phpspec/phpspec-code-coverage": "^5",
+        "graphp/graphviz": "^0.2",
+        "infection/infection": "^0.22",
+        "infection/phpspec-adapter": "^0.1",
+        "loophp/launcher": "^2.2.2",
+        "microsoft/tolerant-php-parser": "^0.0.20",
+        "nikic/php-parser": "^4",
+        "phpspec/phpspec": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "loophp\\phptree\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "loophp\\phptree\\tests\\": "tests/src/",
+            "loophp\\phptree\\benchmarks\\": "benchmarks/",
+            "spec\\loophp\\phptree\\": "spec/loophp/phptree/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
+        "grumphp": "./vendor/bin/grumphp run",
+        "infection": "./vendor/bin/infection run -j 1"
+    }
 }
