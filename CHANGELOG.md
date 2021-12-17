@@ -5,10 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.6.6](https://github.com/loophp/phptree/compare/2.6.5...2.6.6)
+## [2.6.7](https://github.com/loophp/phptree/compare/2.6.6...2.6.7)
+
+### Merged
+
+- Update .gitattributes [`#21`](https://github.com/loophp/phptree/pull/21)
 
 ### Commits
 
+- Do not use `mb_*` string functions, they are not needed. [`3f13970`](https://github.com/loophp/phptree/commit/3f1397043071532a8501ae712277059b6f517bcd)
+- chore: Normalize composer.json. [`de7af15`](https://github.com/loophp/phptree/commit/de7af15c6db8fb78ff46f2d56c9493e7e5dc40af)
+- ci: Enable pcov. [`511fc3c`](https://github.com/loophp/phptree/commit/511fc3c795be9d287018b1fe6192d40f2bd899ce)
+- chore: Remove unused dev dependency. [`1ca8c28`](https://github.com/loophp/phptree/commit/1ca8c2859b56923e932c85552ad98cc952118d82)
+
+## [2.6.6](https://github.com/loophp/phptree/compare/2.6.5...2.6.6) - 2021-05-10
+
+### Commits
+
+- docs: Update changelog. [`2012c88`](https://github.com/loophp/phptree/commit/2012c884003dfca0253611f767a67315004c0ff4)
 - ci: Only test on PHP 7.4. [`237335d`](https://github.com/loophp/phptree/commit/237335dc4461712c324a126219cdc96ab2d3a988)
 - refactor: Autofix code-style. [`5bcbe38`](https://github.com/loophp/phptree/commit/5bcbe38214a1dae003681022601d172b664f58a8)
 - chore: Add Docker stack. [`aba5b39`](https://github.com/loophp/phptree/commit/aba5b39301563974d32c41127224625fbccf99db)
