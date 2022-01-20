@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace loophp\phptree\Node;
 
 use InvalidArgumentException;
+use ReturnTypeWillChange;
 use Traversable;
 
 use function array_key_exists;
@@ -133,9 +134,9 @@ class Node implements NodeInterface
     }
 
     /**
-     * @return Traversable<\loophp\phptree\Node\NodeInterface>
+     * @return Traversable<NodeInterface>
      */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         yield from $this->all();
     }
@@ -204,6 +205,7 @@ class Node implements NodeInterface
      *
      * @return bool
      */
+    #[ReturnTypeWillChange]
     public function offsetExists($offset)
     {
         return array_key_exists($offset, $this->children);
@@ -214,6 +216,7 @@ class Node implements NodeInterface
      *
      * @return NodeInterface
      */
+    #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->children[$offset];
@@ -239,6 +242,7 @@ class Node implements NodeInterface
      *
      * @return void
      */
+    #[ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         unset($this->children[$offset]);
