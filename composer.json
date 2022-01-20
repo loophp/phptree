@@ -58,6 +58,13 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "phpstan/extension-installer": true,
+            "ergebnis/composer-normalize": true,
+            "phpro/grumphp": true,
+            "infection/extension-installer": true
+        },
         "sort-packages": true
     },
     "scripts": {
