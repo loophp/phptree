@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.6.7](https://github.com/loophp/phptree/compare/2.6.6...2.6.7)
+## [2.6.8](https://github.com/loophp/phptree/compare/2.6.7...2.6.8)
+
+### Commits
+
+- fix: Hopefully fix issues with PHP 8.1. [`7d44398`](https://github.com/loophp/phptree/commit/7d44398cf20d28755d28287c4572e801922a94e1)
+- chore: Add `allow-plugins`. [`e7cc646`](https://github.com/loophp/phptree/commit/e7cc646c0eb25f6aab361a10dd99af36d7969d2a)
+- chore: Update license year. [`9f7a31e`](https://github.com/loophp/phptree/commit/9f7a31e2c97e415b414bb682f9281de7011451ff)
+
+## [2.6.7](https://github.com/loophp/phptree/compare/2.6.6...2.6.7) - 2021-12-17
 
 ### Merged
 
@@ -13,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Commits
 
+- docs: Add/update CHANGELOG. [`8f35555`](https://github.com/loophp/phptree/commit/8f355550b5c13b783d1a270b1f5ccf2767220021)
 - Do not use `mb_*` string functions, they are not needed. [`3f13970`](https://github.com/loophp/phptree/commit/3f1397043071532a8501ae712277059b6f517bcd)
 - chore: Normalize composer.json. [`de7af15`](https://github.com/loophp/phptree/commit/de7af15c6db8fb78ff46f2d56c9493e7e5dc40af)
 - ci: Enable pcov. [`511fc3c`](https://github.com/loophp/phptree/commit/511fc3c795be9d287018b1fe6192d40f2bd899ce)
