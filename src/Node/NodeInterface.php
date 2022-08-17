@@ -25,13 +25,13 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * The node to add.
      *
-     * @param NodeInterface ...$node
-     *   The node to add.
+     * @param NodeInterface ...$nodes
+     *   The nodes to add.
      *
      * @return NodeInterface
      *   The node
      */
-    public function add(NodeInterface ...$node): NodeInterface;
+    public function add(NodeInterface ...$nodes): NodeInterface;
 
     /**
      * Get all the nodes of a tree including the parent node itself.
@@ -159,7 +159,7 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
      * @return NodeInterface
      *   The node
      */
-    public function remove(NodeInterface ...$node): NodeInterface;
+    public function remove(NodeInterface ...$nodes): NodeInterface;
 
     /**
      * Replace a node with another one and return the parent.

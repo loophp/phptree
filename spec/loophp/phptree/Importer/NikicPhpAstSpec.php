@@ -27,7 +27,7 @@ class NikicPhpAstSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(545);
+            ->shouldReturn(551);
 
         $file = __DIR__ . '/../../../../tests/sample.php';
         $ast = \ast\parse_file($file, 50);

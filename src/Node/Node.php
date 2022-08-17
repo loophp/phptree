@@ -202,22 +202,18 @@ class Node implements NodeInterface
 
     /**
      * @param mixed $offset
-     *
-     * @return bool
      */
     #[ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->children);
     }
 
     /**
      * @param mixed $offset
-     *
-     * @return NodeInterface
      */
     #[ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet($offset): NodeInterface
     {
         return $this->children[$offset];
     }
@@ -239,11 +235,9 @@ class Node implements NodeInterface
 
     /**
      * @param mixed $offset
-     *
-     * @return void
      */
     #[ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->children[$offset]);
     }

@@ -23,22 +23,20 @@
         {
             "type": "github",
             "url": "https://github.com/drupol"
-        },
-        {
-            "type": "paypal",
-            "url": "https://www.paypal.me/drupol"
         }
     ],
     "require": {
-        "php": ">= 7.1"
+        "php": ">= 8.1"
     },
     "require-dev": {
+        "ext-ast": "*",
+        "ext-pcov": "*",
         "drupol/launcher": "^2.2",
         "drupol/php-conventions": "^5",
         "drupol/phpmerkle": "^2.2",
-        "friends-of-phpspec/phpspec-code-coverage": "^5",
+        "friends-of-phpspec/phpspec-code-coverage": "^6",
         "graphp/graphviz": "^0.2",
-        "infection/infection": "^0.22",
+        "infection/infection": ">= 0.22",
         "infection/phpspec-adapter": "^0.1",
         "loophp/launcher": "^2.2.2",
         "microsoft/tolerant-php-parser": "^0.0.20",
@@ -68,8 +66,8 @@
         "sort-packages": true
     },
     "scripts": {
-        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
-        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
+        "changelog-unreleased": "auto_changelog -c .auto-changelog -u",
+        "changelog-version": "auto_changelog -c .auto-changelog -v",
         "grumphp": "./vendor/bin/grumphp run",
         "infection": "./vendor/bin/infection run -j 1"
     }

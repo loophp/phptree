@@ -63,10 +63,6 @@ class ValueNodeSpec extends NodeObjectBehavior
         $this->shouldThrow(OutOfBoundsException::class)->during('offsetSet', [30, new ValueNode('out')]);
         $this->shouldThrow(OutOfBoundsException::class)->during('offsetSet', [26, new ValueNode('out')]);
 
-        $this->offsetExists(0)->shouldReturn(true);
-        $this->offsetExists(25)->shouldReturn(false);
-        $this->offsetExists(30)->shouldReturn(false);
-
         $this->offsetGet(0)->getValue()->shouldReturn('a');
 
         $this->offsetSet(0, new ValueNode('zero'));

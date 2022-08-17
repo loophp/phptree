@@ -1,6 +1,5 @@
 /.github/ export-ignore
 /benchmarks/ export-ignore
-/docker/auto-changelog/ export-ignore
 /spec/ export-ignore
 /tests/ export-ignore
 /.auto-changelog export-ignore
