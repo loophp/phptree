@@ -1,14 +1,14 @@
-[![Latest Stable Version](https://img.shields.io/packagist/v/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
- [![GitHub stars](https://img.shields.io/github/stars/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
- [![Total Downloads](https://img.shields.io/packagist/dt/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
- [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/loophp/phptree/Continuous%20Integration?style=flat-square)](https://github.com/loophp/phptree/actions)
- [![Scrutinizer code quality](https://img.shields.io/scrutinizer/quality/g/loophp/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/loophp/phptree/?branch=master)
- [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/loophp/phptree/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/loophp/phptree/?branch=master)
- [![Type Coverage](https://shepherd.dev/github/loophp/phptree/coverage.svg)](https://shepherd.dev/github/loophp/phptree)
- [![Mutation testing badge](https://badge.stryker-mutator.io/github.com/loophp/phptree/master)](https://stryker-mutator.github.io)
- [![License](https://img.shields.io/packagist/l/loophp/phptree.svg?style=flat-square)](https://packagist.org/packages/loophp/phptree)
- [![Donate!](https://img.shields.io/badge/Donate-Paypal-brightgreen.svg?style=flat-square)](https://paypal.me/loophp)
- 
+[![Latest Stable Version][latest stable version]][1]
+ [![GitHub stars][github stars]][1]
+ [![Total Downloads][total downloads]][1]
+ [![GitHub Workflow Status][github workflow status]][2]
+ [![Scrutinizer code quality][code quality]][3]
+ [![Type Coverage][type coverage]][4]
+ [![Code Coverage][code coverage]][3]
+ [![Mutation testing badge][mutation badge url]][mutation badge link]
+ [![License][license]][1]
+ [![Donate!][donate github]][5]
+
 # PhpTree
 
 ## Description
@@ -125,6 +125,43 @@ Before each commit some inspections are executed with [GrumPHP](https://github.c
 
 ## Contributing
 
-Feel free to contribute to this library by sending Github pull requests. I'm quite reactive :-)
+Feel free to contribute by sending pull requests. We are a
+usually very responsive team and we will help you going
+through your pull request from the beginning to the end.
+
+For some reasons, if you can't contribute to the code and
+willing to help, sponsoring is a good, sound and safe way
+to show us some gratitude for the hours we invested in this
+package.
+
+Sponsor me on [Github][5] and/or any of [the contributors][6].
+
+## Changelog
+
+See [CHANGELOG.md][43] for a changelog based on [git commits][44].
+
+For more detailed changelogs, please check [the release changelogs][45].
 
 [phptree changelog]: https://github.com/loophp/phptree/blob/master/CHANGELOG.md
+[1]: https://packagist.org/packages/loophp/phptree
+[2]: https://github.com/loophp/phptree/actions
+[latest stable version]: https://img.shields.io/packagist/v/loophp/phptree.svg?style=flat-square
+[github stars]: https://img.shields.io/github/stars/loophp/phptree.svg?style=flat-square
+[total downloads]: https://img.shields.io/packagist/dt/loophp/phptree.svg?style=flat-square
+[github workflow status]: https://img.shields.io/github/workflow/status/loophp/phptree/Unit%20tests?style=flat-square
+[code quality]: https://img.shields.io/scrutinizer/quality/g/loophp/phptree/master.svg?style=flat-square
+[3]: https://scrutinizer-ci.com/g/loophp/phptree/?branch=master
+[type coverage]: https://img.shields.io/badge/dynamic/json?style=flat-square&color=color&label=Type%20coverage&query=message&url=https%3A%2F%2Fshepherd.dev%2Fgithub%2Floophp%2Fphptree%2Fcoverage
+[4]: https://shepherd.dev/github/loophp/phptree
+[5]: https://github.com/sponsors/drupol
+[6]: https://github.com/loophp/phptree/graphs/contributors
+[code coverage]: https://img.shields.io/scrutinizer/coverage/g/loophp/phptree/master.svg?style=flat-square
+[license]: https://img.shields.io/packagist/l/loophp/phptree.svg?style=flat-square
+[donate github]: https://img.shields.io/badge/Sponsor-Github-brightgreen.svg?style=flat-square
+[donate paypal]: https://img.shields.io/badge/Sponsor-Paypal-brightgreen.svg?style=flat-square
+[mutation badge url]: https://img.shields.io/endpoint?style=flat-square&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Floophp%2Fphptree%2Fmaster
+[mutation badge link]: https://dashboard.stryker-mutator.io/reports/github.com/loophp/phptree/master
+[43]: https://github.com/loophp/phptree/blob/master/CHANGELOG.md
+[44]: https://github.com/loophp/phptree/commits/master
+[45]: https://github.com/loophp/phptree/releases
+
