@@ -1,5 +1,5 @@
 {
-    "timeout": 30,
+    "timeout": 10,
     "source": {
         "directories": [
             "src"
@@ -8,13 +8,12 @@
     "tmpDir": "build/logs/coverage/coverage-xml",
     "logs": {
         "github": true,
-        "text": "build/logs/infection/infection.log",
-        "summary": "build/logs/infection/summary.log",
-        "debug": "build/logs/infection/debug.log",
-        "perMutator": "build/logs/infection/per-mutator.md",
-        "html": "build/logs/infection/report.html",
-        "stryker": {
-            "report": "master"
+        "text": "build/infection.log",
+        "summary": "build/summary.log",
+        "debug": "build/debug.log",
+        "perMutator": "build/per-mutator.md",
+        "badge": {
+            "branch": "master"
         }
     },
     "testFramework":"phpspec"
