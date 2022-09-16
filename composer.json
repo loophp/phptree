@@ -36,10 +36,10 @@
         "drupol/phpmerkle": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^6",
         "graphp/graphviz": "^0.2",
-        "infection/infection": ">= 0.22",
-        "infection/phpspec-adapter": "^0.1",
+        "infection/infection": "^0.26",
+        "infection/phpspec-adapter": "^0.2",
         "loophp/launcher": "^2.2.2",
-        "microsoft/tolerant-php-parser": "^0.0.20",
+        "microsoft/tolerant-php-parser": "^0.1",
         "nikic/php-parser": "^4",
         "phpspec/phpspec": "^7"
     },

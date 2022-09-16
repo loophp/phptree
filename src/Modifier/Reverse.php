@@ -12,9 +12,6 @@ namespace loophp\phptree\Modifier;
 use ArrayObject;
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Class Reverse.
- */
 class Reverse implements ModifierInterface
 {
     public function modify(NodeInterface $tree): NodeInterface

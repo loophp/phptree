@@ -14,9 +14,6 @@ use loophp\phptree\Node\NodeInterface;
 
 use const PHP_OS;
 
-/**
- * Class Image.
- */
 final class Image implements ExporterInterface
 {
     /**

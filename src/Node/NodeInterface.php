@@ -153,9 +153,6 @@ interface NodeInterface extends ArrayAccess, Countable, IteratorAggregate
     /**
      * Remove children.
      *
-     * @param NodeInterface ...$node
-     *   The node to remove.
-     *
      * @return NodeInterface
      *   The node
      */

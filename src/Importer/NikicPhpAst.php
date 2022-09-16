@@ -17,9 +17,6 @@ use loophp\phptree\Node\NodeInterface;
 
 use function ast\get_metadata;
 
-/**
- * Class NikicPhpAst.
- */
 final class NikicPhpAst implements ImporterInterface
 {
     /**
@@ -44,9 +41,6 @@ final class NikicPhpAst implements ImporterInterface
         return new AttributeNode($attributes);
     }
 
-    /**
-     * @param Node ...$astNodes
-     */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {
         return array_reduce(

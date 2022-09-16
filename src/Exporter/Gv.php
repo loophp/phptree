@@ -14,12 +14,10 @@ use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
 
 use function is_array;
+use function is_scalar;
 
 use const PHP_EOL;
 
-/**
- * Class Gv.
- */
 final class Gv implements ExporterInterface
 {
     /**

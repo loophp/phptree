@@ -14,15 +14,10 @@ use loophp\phptree\Traverser\TraverserInterface;
 class AttributeNode extends NaryNode implements AttributeNodeInterface
 {
     /**
-     * @var array
+     * @var array<array-key, mixed>
      */
-    private $attributes;
+    private array $attributes;
 
-    /**
-     * ValueNode constructor.
-     *
-     * @param array<int|string, mixed> $attributes
-     */
     public function __construct(
         array $attributes = [],
         int $capacity = 0,

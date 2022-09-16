@@ -15,9 +15,6 @@ use loophp\phptree\Traverser\PostOrder;
 use loophp\phptree\Traverser\PreOrder;
 use loophp\phptree\Traverser\TraverserInterface;
 
-/**
- * Class RemoveNullNode.
- */
 class RemoveNullNode implements ModifierInterface
 {
     /**

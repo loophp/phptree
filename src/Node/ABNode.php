@@ -9,11 +9,6 @@ declare(strict_types=1);
 
 namespace loophp\phptree\Node;
 
-/**
- * Class ABNode.
- *
- * An auto-balanced node.
- */
 class ABNode extends NaryNode
 {
     public function add(NodeInterface ...$nodes): NodeInterface

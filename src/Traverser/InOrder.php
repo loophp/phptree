@@ -12,9 +12,6 @@ namespace loophp\phptree\Traverser;
 use loophp\phptree\Node\NodeInterface;
 use Traversable;
 
-/**
- * Class InOrder.
- */
 class InOrder implements TraverserInterface
 {
     /**

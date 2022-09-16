@@ -5,14 +5,6 @@ parameters:
   tasks.license.holder: Pol Dellaiera
   tasks.license.date_from: 2018
   tasks.phpstan.config: phpstan.neon
-  tasks.phpcs.ignore_patterns:
-    - "/benchmarks/"
-    - "/spec/"
-    - "/tests/"
-    - "/vendor/"
-    - "/config/"
-    - "/Resources/"
-    - "/public/"
   extra_tasks:
     phpspec:
       verbose: true

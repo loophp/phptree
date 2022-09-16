@@ -11,25 +11,25 @@ namespace loophp\phptree\Node;
 
 use Exception;
 
-/**
- * Class TrieNode.
- */
-class TrieNode extends KeyValueNode
+class TrieNode extends ValueNode
 {
+    /**
+     * @param ValueNodeInterface ...$nodes
+     */
     public function add(NodeInterface ...$nodes): NodeInterface
     {
         foreach ($nodes as $node) {
-            $data = $node->getValue();
+            [$key, $data] = $node->getValue();
 
-            $hash = hash('sha256', $node->getKey() . $data);
+            $hash = hash('sha256', $key . $data);
 
-            $node = new self($hash, substr($data, 0, 1));
+            $node = new self([$hash, substr($data, 0, 1)]);
             $parent = $this->append($node);
 
             $dataWithoutFirstLetter = substr($data, 1);
 
             if ('' < $dataWithoutFirstLetter) {
-                $parent->add(new self($hash, $dataWithoutFirstLetter));
+                $parent->add(new self([$hash, $dataWithoutFirstLetter]));
             } else {
                 $nodes = [$node->getValue()];
 
@@ -38,7 +38,7 @@ class TrieNode extends KeyValueNode
                     $nodes[] = $ancestor->getValue();
                 }
                 array_pop($nodes);
-                $node->append(new self($hash, strrev(implode('', $nodes))));
+                $node->append(new self([$hash, strrev(implode('', $nodes))]));
             }
         }
 

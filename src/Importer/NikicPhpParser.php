@@ -17,9 +17,6 @@ use PhpParser\Node;
 
 use function is_array;
 
-/**
- * Class NikicPhpParser.
- */
 final class NikicPhpParser implements ImporterInterface
 {
     /**
@@ -64,9 +61,6 @@ final class NikicPhpParser implements ImporterInterface
             array_merge(...$astNodes);
     }
 
-    /**
-     * @param Node ...$astNodes
-     */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {
         return array_reduce(

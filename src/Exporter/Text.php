@@ -11,9 +11,6 @@ namespace loophp\phptree\Exporter;
 
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Class Text.
- */
 final class Text implements ExporterInterface
 {
     public function export(NodeInterface $node): string

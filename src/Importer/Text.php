@@ -13,9 +13,6 @@ use loophp\phptree\Node\AttributeNode;
 use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Class Text.
- */
 final class Text implements ImporterInterface
 {
     public function import($data): NodeInterface
@@ -72,9 +69,6 @@ final class Text implements ImporterInterface
         return $result;
     }
 
-    /**
-     * @param string ...$nodes
-     */
     private function parseNode(AttributeNodeInterface $parent, string ...$nodes): NodeInterface
     {
         return array_reduce(

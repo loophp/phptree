@@ -11,9 +11,6 @@ namespace loophp\phptree\Exporter;
 
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Class SimpleArray.
- */
 final class SimpleArray implements ExporterInterface
 {
     public function export(NodeInterface $node): array

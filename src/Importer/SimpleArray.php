@@ -13,9 +13,6 @@ use loophp\phptree\Node\AttributeNode;
 use loophp\phptree\Node\AttributeNodeInterface;
 use loophp\phptree\Node\NodeInterface;
 
-/**
- * Class SimpleArray.
- */
 final class SimpleArray implements ImporterInterface
 {
     public function import($data): NodeInterface
@@ -39,9 +36,6 @@ final class SimpleArray implements ImporterInterface
         ]);
     }
 
-    /**
-     * @param array ...$nodes
-     */
     private function parseNode(AttributeNodeInterface $parent, array ...$nodes): NodeInterface
     {
         return array_reduce(

@@ -17,20 +17,14 @@ use function array_key_exists;
 use function count;
 use function in_array;
 
-/**
- * Class Node.
- */
 class Node implements NodeInterface
 {
     /**
-     * @var array<\loophp\phptree\Node\NodeInterface>
+     * @var array<NodeInterface>
      */
     private $children = [];
 
-    /**
-     * @var NodeInterface|null
-     */
-    private $parent;
+    private ?NodeInterface $parent;
 
     /**
      * Node constructor.
@@ -285,10 +279,6 @@ class Node implements NodeInterface
         $clone = clone $this;
         $clone->children = [];
 
-        $nodes = array_filter($nodes);
-
-        return [] === $nodes ?
-            $clone :
-            $clone->add(...$nodes);
+        return $clone->add(...array_filter($nodes));
     }
 }

@@ -16,9 +16,6 @@ use RecursiveTreeIterator;
 
 use const PHP_EOL;
 
-/**
- * Class Ascii.
- */
 final class Ascii implements ExporterInterface
 {
     public function export(NodeInterface $node): string

@@ -16,15 +16,9 @@ use OutOfBoundsException;
 
 class NaryNode extends Node implements NaryNodeInterface
 {
-    /**
-     * @var int
-     */
-    private $capacity;
+    private int $capacity;
 
-    /**
-     * @var TraverserInterface
-     */
-    private $traverser;
+    private TraverserInterface $traverser;
 
     /**
      * NaryNode constructor.
@@ -32,10 +26,6 @@ class NaryNode extends Node implements NaryNodeInterface
      * @param int $capacity
      *   The maximum children a node can have. Null for no children,
      *   if 0 then any number of children is allowed.
-     * @param TraverserInterface|null $traverser
-     *   The traverser.
-     * @param NodeInterface|null $parent
-     *   The parent.
      */
     public function __construct(
         int $capacity = 0,
@@ -45,7 +35,6 @@ class NaryNode extends Node implements NaryNodeInterface
         parent::__construct($parent);
 
         $this->capacity = $capacity;
-
         $this->traverser = $traverser ?? new BreadthFirst();
     }
 

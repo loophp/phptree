@@ -13,9 +13,6 @@ use loophp\phptree\Node\NodeInterface;
 use SplQueue;
 use Traversable;
 
-/**
- * Class BreadthFirst.
- */
 class BreadthFirst implements TraverserInterface
 {
     public function traverse(NodeInterface $node): Traversable

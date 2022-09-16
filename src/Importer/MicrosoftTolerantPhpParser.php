@@ -16,9 +16,6 @@ use loophp\phptree\Node\NodeInterface;
 use Microsoft\PhpParser\Node;
 use Microsoft\PhpParser\Node\SourceFileNode;
 
-/**
- * Class MicrosoftTolerantPhpParser.
- */
 final class MicrosoftTolerantPhpParser implements ImporterInterface
 {
     /**
@@ -36,9 +33,6 @@ final class MicrosoftTolerantPhpParser implements ImporterInterface
         return new AttributeNode($attributes);
     }
 
-    /**
-     * @param Node ...$astNodes
-     */
     private function parseNode(AttributeNodeInterface $parent, Node ...$astNodes): NodeInterface
     {
         return array_reduce(

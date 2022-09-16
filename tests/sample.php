@@ -24,7 +24,7 @@ if (1 === 2) {
     return 2;
 }
 
-    return 1;
+return 1;
 $a = (1 * 3) / 7;
 $b = 3;
 $c *= 2;

@@ -15,29 +15,17 @@ use loophp\phptree\Modifier\FulfillCapacity;
 use loophp\phptree\Modifier\ModifierInterface;
 use loophp\phptree\Modifier\RemoveNullNode;
 
-/**
- * Class MerkleNode.
- */
 class MerkleNode extends ValueNode implements MerkleNodeInterface
 {
-    /**
-     * @var HasherInterface
-     */
-    private $hasher;
+    private HasherInterface $hasher;
 
     /**
      * @var ModifierInterface[]
      */
     private $modifiers = [];
 
-    /**
-     * MerkleNode constructor.
-     *
-     * @param mixed $value
-     * @param HasherInterface $hasher
-     */
     public function __construct(
-        $value,
+        mixed $value,
         int $capacity = 2,
         ?HasherInterface $hasher = null
     ) {
