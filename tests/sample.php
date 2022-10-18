@@ -37,7 +37,7 @@ $b += 3;
 try {
     $a = 2;
 } catch (Exception $exception) {
-    echo 'gonna ' . 'break' . 'now!';
+    echo 'gonna breaknow!';
 }
 
 foreach (['a', 'b', 'c'] as $letter) {
