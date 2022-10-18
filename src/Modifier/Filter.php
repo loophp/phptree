@@ -26,9 +26,6 @@ class Filter implements ModifierInterface
      */
     private $traverser;
 
-    /**
-     * Filter constructor.
-     */
     public function __construct(callable $filter, ?TraverserInterface $traverser = null)
     {
         $this->filter = $filter;

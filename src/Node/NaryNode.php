@@ -21,8 +21,6 @@ class NaryNode extends Node implements NaryNodeInterface
     private TraverserInterface $traverser;
 
     /**
-     * NaryNode constructor.
-     *
      * @param int $capacity
      *   The maximum children a node can have. Null for no children,
      *   if 0 then any number of children is allowed.

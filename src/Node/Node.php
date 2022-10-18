@@ -22,13 +22,10 @@ class Node implements NodeInterface
     /**
      * @var array<NodeInterface>
      */
-    private $children = [];
+    private array $children;
 
     private ?NodeInterface $parent;
 
-    /**
-     * Node constructor.
-     */
     public function __construct(?NodeInterface $parent = null)
     {
         $this->parent = $parent;

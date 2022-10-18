@@ -22,7 +22,7 @@ final class NikicPhpAst implements ImporterInterface
     /**
      * @var array<int, \ast\Metadata>
      */
-    private $metadata = [];
+    private array $metadata;
 
     /**
      * @param Node $data

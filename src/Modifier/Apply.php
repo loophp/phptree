@@ -25,9 +25,6 @@ class Apply implements ModifierInterface
      */
     private $traverser;
 
-    /**
-     * Apply constructor.
-     */
     public function __construct(callable $apply, ?TraverserInterface $traverser = null)
     {
         $this->apply = $apply;

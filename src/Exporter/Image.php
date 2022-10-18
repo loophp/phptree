@@ -26,9 +26,6 @@ final class Image implements ExporterInterface
      */
     private $format = 'svg';
 
-    /**
-     * Image constructor.
-     */
     public function __construct()
     {
         if (0 === stripos(PHP_OS, 'WIN')) {
