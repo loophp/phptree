@@ -48,16 +48,16 @@ final class Text implements ImporterInterface
     private function parse(string $subject): array
     {
         $result = [
-            'value' => substr($subject, 1, strpos($subject, '[', 1) - 1),
+            'value' => mb_substr($subject, 1, mb_strpos($subject, '[', 1) - 1),
             'children' => [],
         ];
 
-        if (false === $nextBracket = strpos($subject, '[', 1)) {
+        if (false === $nextBracket = mb_strpos($subject, '[', 1)) {
             return $result;
         }
 
         // Todo: Improve the regex.
-        preg_match_all('#[^\[\]]+|\[(?<nested>(?R)*)]#', substr($subject, $nextBracket, -1), $matches);
+        preg_match_all('#[^\[\]]+|\[(?<nested>(?R)*)]#u', mb_substr($subject, $nextBracket, -1), $matches);
 
         $result['children'] = array_map(
             static function (string $match): string {

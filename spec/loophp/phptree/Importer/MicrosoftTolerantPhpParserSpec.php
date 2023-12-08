@@ -30,7 +30,7 @@ class MicrosoftTolerantPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(598);
+            ->shouldReturn(634);
 
         $file = __DIR__ . '/../../../../tests/sample.php';
 
@@ -39,7 +39,7 @@ class MicrosoftTolerantPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(117);
+            ->shouldReturn(114);
     }
 
     public function it_is_initializable(): void
