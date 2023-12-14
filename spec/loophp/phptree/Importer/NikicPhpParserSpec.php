@@ -38,7 +38,7 @@ class NikicPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(582);
+            ->shouldReturn(575);
 
         $file = __DIR__ . '/../../../../tests/sample.php';
 
@@ -53,7 +53,7 @@ class NikicPhpParserSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(109);
+            ->shouldReturn(105);
     }
 
     public function it_is_initializable(): void

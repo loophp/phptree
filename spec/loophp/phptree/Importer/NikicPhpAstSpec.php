@@ -27,7 +27,7 @@ class NikicPhpAstSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(551);
+            ->shouldReturn(542);
 
         $file = __DIR__ . '/../../../../tests/sample.php';
         $ast = \ast\parse_file($file, 50);
@@ -35,7 +35,7 @@ class NikicPhpAstSpec extends ObjectBehavior
         $this
             ->import($ast)
             ->count()
-            ->shouldReturn(87);
+            ->shouldReturn(85);
     }
 
     public function it_is_initializable(): void

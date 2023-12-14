@@ -9,16 +9,16 @@ declare(strict_types=1);
 
 namespace spec\loophp\phptree\Node;
 
-use loophp\phptree\Node\KeyValueNode;
 use loophp\phptree\Node\TrieNode;
+use loophp\phptree\Node\ValueNode;
 
 class TrieNodeSpec extends NodeObjectBehavior
 {
     public function it_can_add_node(): void
     {
-        $this->beConstructedWith('key', 'value');
+        $this->beConstructedWith('value');
 
-        $nodes = [
+        $values = [
             1000,
             1001,
             10011,
@@ -33,21 +33,27 @@ class TrieNodeSpec extends NodeObjectBehavior
             'cba',
             'dcba',
             'edcba',
+            'zd',
+            'zde',
+            'zden',
+            'zdeně',
+            'zdeněk',
         ];
 
-        foreach ($nodes as $key => $value) {
-            $nodes[$key] = new KeyValueNode($key, (string) $value);
+        $nodes = [];
+        foreach ($values as $key => $value) {
+            $nodes[] = new ValueNode([$key, (string) $value]);
         }
 
         $this
             ->add(...$nodes)
             ->count()
-            ->shouldReturn(43);
+            ->shouldReturn(54);
     }
 
     public function it_is_initializable(): void
     {
-        $this->beConstructedWith('key', 'value');
+        $this->beConstructedWith('value');
         $this->shouldHaveType(TrieNode::class);
     }
 }

@@ -23,22 +23,22 @@ class TrieNode extends ValueNode
 
             $hash = hash('sha256', $key . $data);
 
-            $node = new self([$hash, substr($data, 0, 1)]);
+            $node = new self([$hash, mb_substr($data, 0, 1)]);
             $parent = $this->append($node);
 
-            $dataWithoutFirstLetter = substr($data, 1);
+            $dataWithoutFirstLetter = mb_substr($data, 1);
 
             if ('' < $dataWithoutFirstLetter) {
                 $parent->add(new self([$hash, $dataWithoutFirstLetter]));
             } else {
-                $nodes = [$node->getValue()];
+                $values = [$node->getValue()[1]];
 
-                /** @var KeyValueNodeInterface $ancestor */
+                /** @var ValueNode $ancestor */
                 foreach ($node->getAncestors() as $ancestor) {
-                    $nodes[] = $ancestor->getValue();
+                    $values[] = $ancestor->getValue()[1];
                 }
                 array_pop($nodes);
-                $node->append(new self([$hash, strrev(implode('', $nodes))]));
+                $node->append(new self([$hash, $this->mbStrRev(implode('', $values))]));
             }
         }
 
@@ -54,7 +54,7 @@ class TrieNode extends ValueNode
     {
         /** @var ValueNodeInterface $child */
         foreach ($this->children() as $child) {
-            if ($node->getValue() === $child->getValue()) {
+            if ($node->getValue()[1] === $child->getValue()[1]) {
                 return $child;
             }
         }
@@ -62,5 +62,12 @@ class TrieNode extends ValueNode
         parent::add($node);
 
         return $node;
+    }
+
+    private function mbStrRev(string $string): string
+    {
+        $chars = mb_str_split($string);
+
+        return implode('', array_reverse($chars));
     }
 }
