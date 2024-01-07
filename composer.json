@@ -40,7 +40,7 @@
         "infection/phpspec-adapter": "^0.2",
         "loophp/launcher": "^2.2.2",
         "microsoft/tolerant-php-parser": "^0.1",
-        "nikic/php-parser": "^4",
+        "nikic/php-parser": "^5",
         "phpspec/phpspec": "^7"
     },
     "autoload": {
