@@ -32,7 +32,7 @@
         "ext-ast": "*",
         "ext-pcov": "*",
         "drupol/launcher": "^2.2",
-        "drupol/php-conventions": "^5",
+        "drupol/php-conventions": "^6",
         "drupol/phpmerkle": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^6",
         "graphp/graphviz": "^0.2",
