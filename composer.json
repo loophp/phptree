@@ -34,7 +34,7 @@
         "drupol/launcher": "^2.2",
         "drupol/php-conventions": "^6",
         "drupol/phpmerkle": "^2.2",
-        "friends-of-phpspec/phpspec-code-coverage": "^6",
+        "friends-of-phpspec/phpspec-code-coverage": "^7",
         "graphp/graphviz": "^0.2",
         "infection/infection": "^0.29",
         "infection/phpspec-adapter": "^0.2",
