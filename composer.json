@@ -41,7 +41,7 @@
         "loophp/launcher": "^2.2.2",
         "microsoft/tolerant-php-parser": "^0.1",
         "nikic/php-parser": "^4",
-        "phpspec/phpspec": "^7"
+        "phpspec/phpspec": "^8"
     },
     "autoload": {
         "psr-4": {
